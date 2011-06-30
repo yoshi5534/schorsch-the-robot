@@ -2,14 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-//#include "../Robot.h"
+#include "../Robot.h"
 
 namespace Ui {
     class MainWindow;
 }
 
-class MainWindow : public QMainWindow//, public QWidget
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 public:
     MainWindow(QWidget *parent = 0);
@@ -18,10 +17,13 @@ public:
 protected:
     void changeEvent(QEvent *e);
     void keyPressEvent(QKeyEvent *);
+    void keyReleaseEvent(QKeyEvent *);
 
 private:
+    bool mMovingLeft;
+    bool bInDrawingMode;
     Ui::MainWindow *ui;
-    //Robot mRobot;
+    Robot mRobot;
 };
 
 #endif // MAINWINDOW_H

@@ -3,9 +3,9 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "../HelperMethods.h"
-#include "../Joint.h"
-#include "../Types.h"
+#include "../RobotLib/HelperMethods.h"
+#include "../RobotLib/Joint.h"
+#include "../RobotLib/Types.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    mRobot.sendCommandAndLog("SP 20");
-    mRobot.setCommandDelay(500000);
+    mRobot.getPort()->sendCommandAndLog("SP 20");
+    mRobot.getPort()->setCommandDelay(500000);
 
     mMovingLeft = false;
     bInDrawingMode = false;
@@ -55,19 +55,19 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     if(event->key() == Qt::Key_I)
     {
         ui->lblOut->setText("Initializing home position: +207.43,-14.00,+338.59,+134.44,+178.84,R,A,O");
-        mRobot.sendCommandAndLog("PD 1,+207.43,-14.00,+338.59,+134.44,+178.84,R,A,O");
+        mRobot.getPort()->sendCommandAndLog("PD 1,+207.43,-14.00,+338.59,+134.44,+178.84,R,A,O");
     }
 
     if(event->key() == Qt::Key_R)
     {
         ui->lblOut->setText("Shut the fark up!");
-        mRobot.sendCommandAndLog("RS");
+        mRobot.getPort()->sendCommandAndLog("RS");
     }
 
     if(event->key() == Qt::Key_H)
     {
         ui->lblOut->setText("Screw you guys, I'm going home");
-        mRobot.sendCommandAndLog("MO 1");
+        mRobot.getPort()->sendCommandAndLog("MO 1");
     }
 
     if(event->key() == Qt::Key_Left)
@@ -75,11 +75,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         if(!bInDrawingMode)
         {
             ui->lblOut->setText("LEFT");
-            mRobot.sendCommandAndLog("DJ 1,2");
+            mRobot.getPort()->sendCommandAndLog("DJ 1,2");
         }
         else
         {
-            mRobot.sendCommandAndLog("DS -10,0,0");
+            mRobot.getPort()->sendCommandAndLog("DS -10,0,0");
         }
     }
 
@@ -88,11 +88,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         if(!bInDrawingMode)
         {
             ui->lblOut->setText("RIGHT");
-            mRobot.sendCommandAndLog("DJ 1,-2");
+            mRobot.getPort()->sendCommandAndLog("DJ 1,-2");
         }
         else
         {
-            mRobot.sendCommandAndLog("DS 10,0,0");
+            mRobot.getPort()->sendCommandAndLog("DS 10,0,0");
         }
     }
 
@@ -104,7 +104,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
         else
         {
-            mRobot.sendCommandAndLog("DS 0,0,-20");
+            mRobot.getPort()->sendCommandAndLog("DS 0,0,-20");
         }
     }
 
@@ -116,7 +116,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
         else
         {
-            mRobot.sendCommandAndLog("DS 0,0,20");
+            mRobot.getPort()->sendCommandAndLog("DS 0,0,20");
         }
     }
 
@@ -128,7 +128,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
         else
         {
-            mRobot.sendCommandAndLog("DS 0,10,0");
+            mRobot.getPort()->sendCommandAndLog("DS 0,10,0");
         }
     }
 
@@ -140,7 +140,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
         else
         {
-            mRobot.sendCommandAndLog("DS 0,-10,0");
+            mRobot.getPort()->sendCommandAndLog("DS 0,-10,0");
         }
     }
 
@@ -150,15 +150,15 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         {
             ui->lblOut->setText("Switching to normal mode");
             bInDrawingMode = false;
-            mRobot.sendCommandAndLog("PD 1,+207.43,-14.00,+338.59,+134.44,+178.84,R,A,O");
-            mRobot.sendCommandAndLog("MO 1");
+            mRobot.getPort()->sendCommandAndLog("PD 1,+207.43,-14.00,+338.59,+134.44,+178.84,R,A,O");
+            mRobot.getPort()->sendCommandAndLog("MO 1");
         }
         else
         {
             ui->lblOut->setText("Switching to drawing mode");
             bInDrawingMode = true;
-            mRobot.sendCommandAndLog("PD 1,+0.32,-404.75,+69.13,+220.54,+179.01,R,A,O");
-            mRobot.sendCommandAndLog("MO 1");
+            mRobot.getPort()->sendCommandAndLog("PD 1,+0.32,-404.75,+69.13,+220.54,+179.01,R,A,O");
+            mRobot.getPort()->sendCommandAndLog("MO 1");
         }
     }
 //        mRobot.sendCommandAndLog("IC 1");

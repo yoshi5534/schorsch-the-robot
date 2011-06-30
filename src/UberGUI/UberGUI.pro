@@ -15,3 +15,4 @@ HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
 LIBS += ../qextserialport/src/build/libqextserialportd.a
+LIBS += ../RobotLib/libRobotLib.a

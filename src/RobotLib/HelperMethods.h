@@ -4,6 +4,7 @@
  #include <sstream>
  #include <iostream>
  
+
  template< typename ValueType >
  std::string dataToString( ValueType inputValue )
  {
@@ -13,10 +14,12 @@
   return valueAsString;
  }
  
- 
-void log( std::string command )
-{
-	std::cout << command << std::endl;
-}
+ class HelperMethods
+ {
+    public:
+       static void log( std::string command );
+ };
+
+
 
 #endif // _HELPER_METHODS_H_

@@ -4,59 +4,60 @@
 
 #include "Types.h"
 #include "HelperMethods.h"
+#include "RobotPort.h"
 
-class Robot;
+
 
 class Joint
 {
   private:
     std::string _jointNumberAsString;
+    RobotPort* _robotPort;
     
     void checkRange(float64 value)
-	{
+    {
 	  
-	}
-         
+    }         
     
   public:
   
-    Joint( Robot* robot, std::string jointNumber )
+    Joint( RobotPort* robotPort, std::string jointNumber )
     {
-      if( robot == NULL )
+      if( robotPort == NULL )
       {
-		throw std::invalid_argument( "Joint::Joint robot is NULL" );
+        throw std::invalid_argument( "Joint::Joint robot is NULL" );
       }
       
-      _robot = robot;
+      _robotPort = robotPort;
       _jointNumberAsString = jointNumber;
     }
     
-    Joint( Robot* robot, uint8 jointNumber )
+    Joint( RobotPort* robotPort, uint8 jointNumber )
     {
-      if( robot == NULL )
+      if( robotPort == NULL )
       {
-		throw std::invalid_argument( "Joint::Joint robot is NULL" );
+        throw std::invalid_argument( "Joint::Joint robot is NULL" );
       }
       
-      _robot = robot;
+      _robotPort = robotPort;
       _jointNumberAsString = dataToString(jointNumber);
     }
     
     //void moveAbsolute( float64 value)
     //{ 
 	//  checkRange();
-	//  _robot->sendCommandAndLog("DJ 0, " + intToString<int65>(value) ); }
+        //  _robotPort->sendCommandAndLog("DJ 0, " + intToString<int65>(value) ); }
     //} 
     
     void moveRelative( float64 value)
-	{
-	  checkRange();
-	  _robot->sendCommandAndLog("DJ 0, " + intToString<int65>(value) ); } 
-	}
+    {
+        checkRange(value);
+        _robotPort->sendCommandAndLog("DJ 0, " + dataToString<int64>(value) );
+    }
     
     float64 where()
     {
-      
+      return 1;
     }
   
 };

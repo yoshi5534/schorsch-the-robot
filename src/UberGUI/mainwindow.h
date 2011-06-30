@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "../Robot.h"
+#include "../RobotLib/Robot.h"
 
 namespace Ui {
     class MainWindow;

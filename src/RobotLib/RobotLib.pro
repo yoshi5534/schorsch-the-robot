@@ -10,4 +10,5 @@ SOURCES += robotlib.cpp
 HEADERS += Robot.h \
     Types.h \
     HelperMethods.h \
-    Joint.h
+    Joint.h \
+    RobotPort.h

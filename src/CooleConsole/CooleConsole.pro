@@ -8,4 +8,5 @@ CONFIG -= app_bundle
 TEMPLATE = app
 SOURCES += main.cpp
 LIBS += ../qextserialport/src/build/libqextserialportd.a
+LIBS += ../RobotLib/libRobotLib.a
 HEADERS += ../Robot.h

@@ -6,115 +6,19 @@
 #include <QtDebug>
 #include <sstream>
 #include <stdexcept>
-
-class Robot
-{
-    private:
-        std::string _deviceName;
-        QextSerialPort*  _port;
-
-        void deletePort()
-        {
-            if( _port != NULL )
-            {
-                _port->close();
-                delete _port;
-                _port = NULL;
-            }
-        }
-
-       void openPort()
-        {
-            _port = new QextSerialPort(_deviceName.c_str(), QextSerialPort::Polling);
-            _port->setBaudRate(BAUD9600);
-            _port->setParity(PAR_EVEN);
-            _port->setDataBits(DATA_8);
-            _port->setStopBits(STOP_2);
-            _port->setFlowControl(FLOW_OFF);
-            _port->setTextModeEnabled(true);
-            _port->setTimeout(1000);
-            if(_port->isOpen())
-            {
-                _port->close();
-                _port->open(QIODevice::ReadWrite);
-
-                if( _port->isWritable() )
-                {
-                    return;
-                }
-            }
-
-            deletePort();
-            delete _port;
-            _port = NULL;
-
-            std::string errorMessage("Robot::openPort unable to open device ");
-            errorMessage += _deviceName;
-            throw std::invalid_argument( errorMessage );
-
-            return;
-        }
-
-       std::string intToString( int inputValue )
-       {
-           std::stringstream stream;
-           stream << inputValue;
-           std::string valueAsString = stream.str();
-           log( valueAsString );
-           return valueAsString;
-       }
-
-    public:
-        Robot( std::string deviceName = "/dev/ttyS0" )
-        : _deviceName( deviceName )
-        {
-            //open port
-            openPort();
-        }
-
-        virtual ~Robot()
-        {
-            deletePort();
-        }
-
-        void log( std::string command )
-        {
-            std::cout << command << std::endl;
-        }
-
-        void sendCommand( std::string command )
-        {
-            command += "\x0D";
-            _port->write(command.c_str());
-            sleep(1);
-        }
-
-        void sendCommandAndLog( std::string command )
-        {
-            log( command );
-            sendCommand( command );
-        }
-
-        void moveJointW( int value){ sendCommandAndLog("DJ 0, " + intToString(value) ); }
-        void moveJointS( int value){ sendCommandAndLog("DJ 1, " + intToString(value) ); }
-        void moveJointE( int value){ sendCommandAndLog("DJ 2, " + intToString(value) ); }
-        void moveJointP( int value){ sendCommandAndLog("DJ 4, " + intToString(value) ); }
-        void moveJointR( int value){ sendCommandAndLog("DJ 5, " + intToString(value) ); }
-};
-
-
-
+#include "../RobotLib/Robot.h"
+#include "../RobotLib/Keyboard.h"
 
 
 int main(int argc, char *argv[])
 {
-    Robot robot;
-
-    robot.sendCommandAndLog( "SP 30");
-    robot.sendCommandAndLog( "MO 42");
-    robot.sendCommandAndLog( "MO 1");
-    robot.sendCommandAndLog( "MO 44");
-    robot.sendCommandAndLog( "MO 1");
+//    Robot robot;
+//
+//    robot.sendCommandAndLog( "SP 30");
+//    robot.sendCommandAndLog( "MO 42");
+//    robot.sendCommandAndLog( "MO 1");
+//    robot.sendCommandAndLog( "MO 44");
+//    robot.sendCommandAndLog( "MO 1");
     //robot.moveJointW( -20 );
     //robot.moveJointS( -20 );
     //robot.moveJointE( -20 );
@@ -147,6 +51,77 @@ int main(int argc, char *argv[])
     //sendCommandAndLog( port, "MO 42");
    // sendCommandAndLog( port, "SP 2");
     //bsendCommandAndLog( port, "MO 42");
+
+
+    Robot robot("/dev/ttyS0", 750000);
+    Keyboard keyboard(&robot);
+
+    keyboard.switchOn();
+        keyboard.play("c1");
+        keyboard.play("d1");
+        keyboard.play("e1");
+        keyboard.play("f1");
+        keyboard.play("g1");
+        keyboard.play("g1");
+        keyboard.play("a1");
+        keyboard.play("a1");
+        keyboard.play("a1");
+        keyboard.play("a1");
+        keyboard.play("g1");
+        keyboard.play("a1");
+       keyboard.play("a1");
+        keyboard.play("a1");
+        keyboard.play("a1");
+        keyboard.play("g1");
+       keyboard.play("f1");
+        keyboard.play("f1");
+        keyboard.play("f1");
+            keyboard.play("f1");
+            keyboard.play("e1");
+            keyboard.play("e1");
+            keyboard.play("d1");
+            keyboard.play("d1");
+            keyboard.play("d1");
+            keyboard.play("d1");
+            keyboard.play("c1");
+
+
+    //    keyboard.play("f");
+    //    keyboard.play("g");
+    //    keyboard.play("a");
+    //    keyboard.play("h");
+    //    keyboard.play("c");
+    //    keyboard.play("d");
+    //    keyboard.play("e");
+    //    keyboard.play("f1");
+    //    keyboard.play("g1");
+    //    keyboard.play("a1");
+    //    keyboard.play("h1");
+    //    keyboard.play("c1");
+    //    keyboard.play("d1");
+    //    keyboard.play("e1");
+    //    keyboard.play("f2");
+    //    keyboard.play("g2");
+    //    keyboard.play("a2");
+    //    keyboard.play("h2");
+    //    keyboard.play("c2");
+
+//    keyboard.play("f#");
+//    keyboard.play("g#");
+//    keyboard.play("a#");
+//    keyboard.play("c1#");
+//    keyboard.play("d1#");
+//
+//    keyboard.play("f1#");
+//    keyboard.play("g1#");
+//    keyboard.play("a1#");
+//    keyboard.play("c2#");
+//    keyboard.play("d2#");
+//    keyboard.play("f2#");
+//    keyboard.play("g2#");
+//    keyboard.play("a2#");
+//
+    keyboard.switchOff();
 
     return 0;
 }

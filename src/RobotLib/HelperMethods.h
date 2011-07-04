@@ -3,16 +3,37 @@
  
  #include <sstream>
  #include <iostream>
+
  
 
- template< typename ValueType >
- std::string dataToString( ValueType inputValue )
- {
-  std::stringstream stream;
-  stream << inputValue;
-  std::string valueAsString = stream.str();
-  return valueAsString;
- }
+template< typename ValueType >
+static std::string dataToString( const ValueType& inputValue )
+{
+ std::ostringstream stream;
+ stream.precision(5);
+
+ stream << inputValue;
+
+ return stream.str();
+}
+
+static std::string dataToString( const int8& inputValue )
+{
+ std::ostringstream stream;
+ int16 temp = inputValue;
+ stream << temp;
+
+ return stream.str();
+}
+
+static std::string dataToString( const uint8& inputValue )
+{
+ std::ostringstream stream;
+ int16 temp = inputValue;
+ stream << temp;
+
+ return stream.str();
+}
  
  class HelperMethods
  {

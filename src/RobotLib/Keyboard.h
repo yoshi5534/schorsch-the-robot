@@ -14,90 +14,102 @@ class Keyboard
   private:
 	
 	
-    RobotPort* _robotPort;
+    Robot* _robot;
 	std::map< std::string, Position > _keyboardMapping;
 	float64 _angleA;
 	float64 _angleB;
 	Position _keyPressOffset;
 	
-  
 
-	
 	
   public:
   
-    Keyboard( RobotPort* robotPort )
+    Keyboard( Robot* robot )
     {
-      if( robotPort == NULL )
+      if( robot == NULL )
       {
         throw std::invalid_argument( "Keyboard::Keyboard robot is NULL" );
       }
       
-      _robotPort = robotPort;
+      _robot = robot;
 	  
-	  _keyboardMapping["f"]= Position(,,); 
-	  _keyboardMapping["g"]= Position(,,); 
-	  _keyboardMapping["a"]= Position(,,); 
-	  _keyboardMapping["h"]= Position(,,); 
-	  _keyboardMapping["c"]= Position(,,); 
-	  _keyboardMapping["d"]= Position(,,); 
-	  _keyboardMapping["e"]= Position(,,); 
-	  _keyboardMapping["f1"]= Position(,,); 
-	  _keyboardMapping["g1"]= Position(,,); 
-	  _keyboardMapping["a1"]= Position(,,); 
-	  _keyboardMapping["h1"]= Position(,,); 
-	  _keyboardMapping["c1"]= Position(,,); 
-	  _keyboardMapping["d1"]= Position(,,); 
-	  _keyboardMapping["e1"]= Position(,,); 
-	  _keyboardMapping["f2"]= Position(,,); 
-	  _keyboardMapping["g2"]= Position(,,); 
-	  _keyboardMapping["a2"]= Position(,,); 
-	  _keyboardMapping["h2"]= Position(,,); 
-	  _keyboardMapping["c2"]= Position(,,); 
-	  _keyboardMapping["d2"]= Position(,,); 
-	  _keyboardMapping["e2"]= Position(,,); 
-	  _keyboardMapping["f#"]= Position(,,); 
-	  _keyboardMapping["g#"]= Position(,,); 
-	  _keyboardMapping["a#"]= Position(,,); 
-	  _keyboardMapping["c1#"]= Position(,,); 
-	  _keyboardMapping["d1#"]= Position(,,); 
-	  _keyboardMapping["f1#"]= Position(,,); 
-	  _keyboardMapping["g1#"]= Position(,,); 
-	  _keyboardMapping["a1#"]= Position(,,); 
-	  _keyboardMapping["c2#"]= Position(,,); 
-	  _keyboardMapping["d#"]= Position(,,); 
-	  _angleA = 0.0;
-	  _angleB = 0.0;
-	  _keyPressOffset( 0, -10, 0);
-    }
-    
-    void moveRelative( float64 value)
-    {
-        checkRange(value);
-        _robotPort->sendCommandAndLog("DJ 0, " + dataToString<int64>(value) );
-    }
-    
+      float64 xOffset = -17.3;
+      float64 xStartPosition = -200;
+      _keyboardMapping["f"] = Position(xStartPosition- 0*xOffset,340, 55);
+      _keyboardMapping["g"] = Position(xStartPosition- 1*xOffset,340, 55);
+      _keyboardMapping["a"] = Position(xStartPosition- 2*xOffset,340, 55);
+      _keyboardMapping["h"] = Position(xStartPosition- 3*xOffset,340, 55);
+      _keyboardMapping["c"] = Position(xStartPosition- 4*xOffset,340, 55);
+      _keyboardMapping["d"] = Position(xStartPosition- 5*xOffset,340, 55);
+      _keyboardMapping["e"] = Position(xStartPosition- 6*xOffset,340, 55);
+      _keyboardMapping["f1"]= Position(xStartPosition- 7*xOffset,340, 55);
+      _keyboardMapping["g1"]= Position(xStartPosition- 8*xOffset,340, 55);
+      _keyboardMapping["a1"]= Position(xStartPosition- 9*xOffset,340, 55);
+      _keyboardMapping["h1"]= Position(xStartPosition- 10*xOffset,340, 55);
+      _keyboardMapping["c1"]= Position(xStartPosition- 11*xOffset,340, 55);
+      _keyboardMapping["d1"]= Position(xStartPosition- 12*xOffset,340, 55);
+      _keyboardMapping["e1"]= Position(xStartPosition- 13*xOffset,340, 55);
+      _keyboardMapping["f2"]= Position(xStartPosition- 14*xOffset,340, 55);
+      _keyboardMapping["g2"]= Position(xStartPosition- 15*xOffset,340, 55);
+      _keyboardMapping["a2"]= Position(xStartPosition- 16*xOffset,340, 55);
+      _keyboardMapping["h2"]= Position(xStartPosition- 17*xOffset,340, 55);
+      _keyboardMapping["c2"]= Position(xStartPosition- 18*xOffset,340, 55);
+      _keyboardMapping["f#"]= Position(-192.75,356,66);
+      _keyboardMapping["g#"]= Position(-172.36,356,66);
+      _keyboardMapping["a#"]= Position(-152.78,356,66);
+      _keyboardMapping["c1#"]= Position(-122.57,356,66);
+      _keyboardMapping["d1#"]= Position(-102.48,356,66);
+      _keyboardMapping["f1#"]= Position(-72.14,356, 66);
+      _keyboardMapping["g1#"]= Position(-52.40,356, 66);
+      _keyboardMapping["a1#"]= Position(-32.43,356, 66);
+      _keyboardMapping["c2#"]= Position(-0.94,356, 66);
+      _keyboardMapping["d2#"]= Position(19.03,356, 66);
+      _keyboardMapping["f2#"]= Position(49.52,356, 66);
+      _keyboardMapping["g2#"]= Position(69.58,356, 66);
+      _keyboardMapping["a2#"]= Position(88.55,356, 66);
+
+      _angleA = 45.0;
+      _angleB = 180.0;
+      _keyPressOffset = Position( 0, 0, -15);
+
+    }    
    
-    void play( std::string note, float64 timeInMiliseconds )
-	{
-	  //is note playable?
-	  std::map< std::string, Position >::iterator it = _keyboardMapping.find(note);
-	  if( it ==  std::map< std::string, Position >::npos )
-	  {
-		throw std::invalid_argument("Keyboard::play " + note + " is not an valid node");
-	  }
-	  else
-	  {
-		Position targetPosition = *it;		
-		//_robotPort.moveTo(targetPosition, _angleA, _angleB);
-		_robotPort.moveTo(targetPosition + _keyPressOffset, _angleA, _angleB);	
-		Sleep( timeInMiliseconds);
-		_robotPort.moveTo(targetPosition, _angleA, _angleB);
-	  } 
-	  
-	  
-	}
+    void play( std::string note, float64 timeInMiliseconds = 500)
+    {
+      //is note playable?
+      std::map< std::string, Position >::iterator it = _keyboardMapping.find(note);
+      if( it ==  _keyboardMapping.end() )
+      {
+            throw std::invalid_argument("Keyboard::play " + note + " is not an valid node");
+      }
+      else
+      {
+            Position targetPosition = it->second;
+            _robot->moveTo(targetPosition - _keyPressOffset, _angleA, _angleB);
+            _robot->moveTo(targetPosition + _keyPressOffset, _angleA, _angleB);
+             usleep( timeInMiliseconds);
+            _robot->moveTo(targetPosition, _angleA, _angleB);
+      }
+
+
+    }
 	
+    void switchOn()
+    {
+        _robot->moveTo(Position(45.66, 410.25, 65.10), _angleA, _angleB);
+        _robot->moveTo(Position(45.66, 410.25, 55.10), _angleA, _angleB);
+        _robot->moveTo(Position(49.46, 416.83, 55.10), _angleA, _angleB);
+        _robot->moveTo(Position(45.66, 410.25, 65.10), _angleA, _angleB);
+    }
+
+    void switchOff()
+    {
+
+        _robot->moveTo(Position(60.78, 436.51, 90.41), _angleA, _angleB);
+        _robot->moveTo(Position(60.78, 436.51, 52.73), _angleA, _angleB);
+        _robot->moveTo(Position(54.55, 423.76, 52.73), _angleA, _angleB);
+        _robot->moveTo(Position(60.78, 436.51, 63.41), _angleA, _angleB);
+    }
 
 };
 

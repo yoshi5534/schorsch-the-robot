@@ -50,18 +50,18 @@ class Robot
                 throw std::invalid_argument( "Robot::speed the value " + dataToString(speed) + " is not valid. Pleas chose an speed in the intervall [0,30]");
             }
 		  
-            _robotPort->sendCommand( "SP " + dataToString(speed) + " L 0");
+            _robotPort->sendCommandAndLog( "SP " + dataToString(speed));
         }
         
         void moveTo(Position positionToMoveTo, float64 a, float64 b)
 		{
-		  robotPort->sendCommand
+                  _robotPort->sendCommandAndLog
 		  ( 
 			"MP " + dataToString(positionToMoveTo.x) + 
-			" "   + dataToString(positionToMoveTo.y) + 
-			" "   + dataToString(positionToMoveTo.z) +
-			" "   + dataToString(a) + 
-			" "   + dataToString(b) 
+                        ","   + dataToString(positionToMoveTo.y) +
+                        ","   + dataToString(positionToMoveTo.z) +
+                        ","   + dataToString(a) +
+                        ","   + dataToString(b)
 		  );
 		}
 };

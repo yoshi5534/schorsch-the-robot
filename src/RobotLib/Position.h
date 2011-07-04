@@ -37,6 +37,6 @@ class Position
 	{
 		return Position( a.x - b.x, a.y - b.y, a.z - b.z );
 	}
-}
+};
 
 #endif //_POSITION_H_

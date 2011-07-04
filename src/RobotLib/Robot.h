@@ -4,6 +4,7 @@
 #include "Types.h"
 #include "Joint.h"
 #include "RobotPort.h"
+#include "Position.h"
 
 class Robot
 {
@@ -51,6 +52,18 @@ class Robot
 		  
             _robotPort->sendCommand( "SP " + dataToString(speed) + " L 0");
         }
+        
+        void moveTo(Position positionToMoveTo, float64 a, float64 b)
+		{
+		  robotPort->sendCommand
+		  ( 
+			"MP " + dataToString(positionToMoveTo.x) + 
+			" "   + dataToString(positionToMoveTo.y) + 
+			" "   + dataToString(positionToMoveTo.z) +
+			" "   + dataToString(a) + 
+			" "   + dataToString(b) 
+		  );
+		}
 };
 
 #endif // ROBOT_H

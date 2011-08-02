@@ -39,21 +39,21 @@ class Keyboard
       _keyboardMapping["g"] = Position(xStartPosition- 1*xOffset,340, 55);
       _keyboardMapping["a"] = Position(xStartPosition- 2*xOffset,340, 55);
       _keyboardMapping["h"] = Position(xStartPosition- 3*xOffset,340, 55);
-      _keyboardMapping["c"] = Position(xStartPosition- 4*xOffset,340, 55);
-      _keyboardMapping["d"] = Position(xStartPosition- 5*xOffset,340, 55);
-      _keyboardMapping["e"] = Position(xStartPosition- 6*xOffset,340, 55);
+      _keyboardMapping["c1"] = Position(xStartPosition- 4*xOffset,340, 55);
+      _keyboardMapping["d1"] = Position(xStartPosition- 5*xOffset,340, 55);
+      _keyboardMapping["e1"] = Position(xStartPosition- 6*xOffset,340, 55);
       _keyboardMapping["f1"]= Position(xStartPosition- 7*xOffset,340, 55);
       _keyboardMapping["g1"]= Position(xStartPosition- 8*xOffset,340, 55);
       _keyboardMapping["a1"]= Position(xStartPosition- 9*xOffset,340, 55);
       _keyboardMapping["h1"]= Position(xStartPosition- 10*xOffset,340, 55);
-      _keyboardMapping["c1"]= Position(xStartPosition- 11*xOffset,340, 55);
-      _keyboardMapping["d1"]= Position(xStartPosition- 12*xOffset,340, 55);
-      _keyboardMapping["e1"]= Position(xStartPosition- 13*xOffset,340, 55);
+      _keyboardMapping["c2"]= Position(xStartPosition- 11*xOffset,340, 55);
+      _keyboardMapping["d2"]= Position(xStartPosition- 12*xOffset,340, 55);
+      _keyboardMapping["e2"]= Position(xStartPosition- 13*xOffset,340, 55);
       _keyboardMapping["f2"]= Position(xStartPosition- 14*xOffset,340, 55);
       _keyboardMapping["g2"]= Position(xStartPosition- 15*xOffset,340, 55);
       _keyboardMapping["a2"]= Position(xStartPosition- 16*xOffset,340, 55);
       _keyboardMapping["h2"]= Position(xStartPosition- 17*xOffset,340, 55);
-      _keyboardMapping["c2"]= Position(xStartPosition- 18*xOffset,340, 55);
+      _keyboardMapping["c3"]= Position(xStartPosition- 18*xOffset,340, 55);
       _keyboardMapping["f#"]= Position(-192.75,356,66);
       _keyboardMapping["g#"]= Position(-172.36,356,66);
       _keyboardMapping["a#"]= Position(-152.78,356,66);
@@ -87,15 +87,20 @@ class Keyboard
             Position targetPosition = it->second;
             _robot->moveTo(targetPosition - _keyPressOffset, _angleA, _angleB);
             _robot->moveTo(targetPosition + _keyPressOffset, _angleA, _angleB);
-             usleep( timeInMiliseconds);
+            _robot->getPort()->sendCommand("TI " + dataToString(timeInMiliseconds / 100 ));
+            // usleep( timeInMiliseconds);
             _robot->moveTo(targetPosition, _angleA, _angleB);
       }
-
-
     }
-	
+
+    void playPause( float64 timeInMiliseconds = 500)
+    {
+        usleep( timeInMiliseconds);
+    }
+
     void switchOn()
     {
+        _robot->moveRelative(Position(0.0, 0.0, 50.0));
         _robot->moveTo(Position(45.66, 410.25, 65.10), _angleA, _angleB);
         _robot->moveTo(Position(45.66, 410.25, 55.10), _angleA, _angleB);
         _robot->moveTo(Position(49.46, 416.83, 55.10), _angleA, _angleB);

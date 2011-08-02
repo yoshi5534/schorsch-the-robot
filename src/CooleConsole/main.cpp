@@ -54,38 +54,64 @@ int main(int argc, char *argv[])
 
 
     Robot robot("/dev/ttyS0", 750000);
+    robot.getPort()->setLiveCommandMode(false);
+    robot.speed(15);
+    //robot.moveTo(Position(392,-7,246),90,180);
+    //robot.moveTo(Position(392,10,246),90,180);//145,170);
+
+    //robot.getPort()->executeQuedCommands();
+    //return 0;
+
+    //for(int i = 0; i < 5; ++i)
+    /*{
+        //robot.getPort()->sendCommand("SP 30,H,0");
+        //robot.getPort()->sendCommandAndLog("RN 5");
+
+        //robot.getPort()->sendCommand("SP 30,H,1");
+        robot.getPort()->sendCommand("DW 180,0,0");
+        robot.getPort()->sendCommand("DW 0,180,0");
+        robot.getPort()->sendCommand("DW -180,0,0");
+        robot.getPort()->sendCommand("DW 0,-180,0");
+
+        //robot.getPort()->sendCommand("SP 30,H,0");
+        robot.getPort()->sendCommand("DW 180,0,0");
+        robot.getPort()->sendCommand("DW 0,180,0");
+        robot.getPort()->sendCommand("DW -180,0,0");
+        robot.getPort()->sendCommand("DW 0,-180,0");
+    }*/
     Keyboard keyboard(&robot);
-
+    //robot.getPort()->SendLineAndReadLineAndLog("WH");
     keyboard.switchOn();
-        keyboard.play("c1");
-        keyboard.play("d1");
-        keyboard.play("e1");
-        keyboard.play("f1");
-        keyboard.play("g1");
-        keyboard.play("g1");
-        keyboard.play("a1");
-        keyboard.play("a1");
-        keyboard.play("a1");
-        keyboard.play("a1");
-        keyboard.play("g1");
-        keyboard.play("a1");
-       keyboard.play("a1");
-        keyboard.play("a1");
-        keyboard.play("a1");
-        keyboard.play("g1");
-       keyboard.play("f1");
-        keyboard.play("f1");
-        keyboard.play("f1");
-            keyboard.play("f1");
-            keyboard.play("e1");
-            keyboard.play("e1");
-            keyboard.play("d1");
-            keyboard.play("d1");
-            keyboard.play("d1");
-            keyboard.play("d1");
-            keyboard.play("c1");
+/*
+    keyboard.play("c1", 250);
+    keyboard.play("d1", 250);
+    keyboard.play("e1", 250);
+    keyboard.play("f1", 250);
+    keyboard.play("g1", 500);
+    keyboard.play("g1", 500);
+    keyboard.play("a1", 250);
+    keyboard.play("a1", 250);
+    keyboard.play("a1", 250);
+    keyboard.play("a1", 250);
+    keyboard.play("g1",1000);
+    keyboard.play("a1", 250);
+    keyboard.play("a1", 250);
+    keyboard.play("a1", 250);
+    keyboard.play("a1", 250);
+    keyboard.play("g1",1000);
+    keyboard.play("f1", 250);
+    keyboard.play("f1", 250);
+    keyboard.play("f1", 250);
+    keyboard.play("f1", 250);
+    keyboard.play("e1", 500);
+    keyboard.play("e1", 500);
+    keyboard.play("d1", 250);
+    keyboard.play("d1", 250);
+    keyboard.play("d1", 250);
+    keyboard.play("d1", 250);
+    keyboard.play("c1",1000);
 
-
+*/
     //    keyboard.play("f");
     //    keyboard.play("g");
     //    keyboard.play("a");
@@ -123,5 +149,6 @@ int main(int argc, char *argv[])
 //
     keyboard.switchOff();
 
+    robot.getPort()->executeQuedCommands();
     return 0;
 }

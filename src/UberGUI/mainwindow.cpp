@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     mRobot.getPort()->sendCommandAndLog("SP 20");
     mRobot.getPort()->setCommandDelay(500000);
+    mRobot.getPort()->setLiveCommandMode(true);
 
     mMovingLeft = false;
     bInDrawingMode = false;
@@ -159,8 +160,19 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             bInDrawingMode = true;
             mRobot.getPort()->sendCommandAndLog("PD 1,+0.32,-404.75,+69.13,+220.54,+179.01,R,A,O");
             mRobot.getPort()->sendCommandAndLog("MO 1");
+            mRobot.getPort()->setLiveCommandMode(false);
         }
     }
+
+        if(event->key() == Qt::Key_A)
+        {
+            if(bInDrawingMode)
+            {
+                mRobot.moveTo(Position(10.32,-404.75,69.13),0.0,90.0);
+                mRobot.getPort()->executeQuedCommands();
+            }
+        }
+
 //        mRobot.sendCommandAndLog("IC 1");
 //
 //        //jaja is hässlich, will nur net jedesmal

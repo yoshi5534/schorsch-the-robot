@@ -77,11 +77,57 @@ class RobotPort
        }
 
    public:
-       void SendLineAndReadLineAndLog( std::string command )
+       std::string SendAndReceive( std::string command, bool doLog = true, bool receive = true)
        {
+           // TODO: assure thread safety
+
+           if(doLog)
+                HelperMethods::log( "Sending: " + command );
+
            sendLine( command );
-           std::string str(_port->readLine(256).data());
-           HelperMethods::log( str );
+           if(receive)
+           {
+               char receivedChar = 'a';
+               std::string terminator = "\x0D";
+               std::string str = "";
+               int failCounter = 300; // wait max for 3 seconds
+               char lastTerminatorChar = terminator[terminator.size()-1];
+
+               while( true )
+               {
+                    qint64 result = _port->read(&receivedChar, 1);
+                    if(result != 0)
+                    {
+                        failCounter--;
+
+                        if(failCounter <= 0)
+                        {
+                            std::stringstream sstrTemp;
+                            sstrTemp << result;
+
+                            throw(std::runtime_error(("Result " + sstrTemp.str() + " was returned by serial port too often. Timeout hit!").c_str()));
+                        }
+                        usleep(10000);
+                    }
+
+                    str.append(&receivedChar,1);
+                    if(receivedChar == lastTerminatorChar) // to save time we are just comparing the string when the last char of the terminator string is fetched
+                    {
+                        if(str.substr(str.length()-terminator.length()).compare(terminator) == 0)
+                        {
+                            break;
+                        }
+                    }
+               }
+
+               str = str.substr(0, str.length()-terminator.length()); // chop the terminator
+
+               if(doLog)
+                    HelperMethods::log( "Receiving: " + str );
+
+               return str;
+           }
+           return "";
        }
 
     public:

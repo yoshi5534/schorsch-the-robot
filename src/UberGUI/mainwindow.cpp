@@ -56,7 +56,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     if(event->key() == Qt::Key_I)
     {
         ui->lblOut->setText("Initializing home position: +207.43,-14.00,+338.59,+134.44,+178.84,R,A,O");
-        mRobot.getPort()->sendCommandAndLog("PD 1,+207.43,-14.00,+338.59,+134.44,+178.84,R,A,O");
+        mRobot.getPort()->sendCommandAndLog("PD 1,+207.43,-14.00,+338.59,+36.88,+178.84,R,A,O");
     }
 
     if(event->key() == Qt::Key_R)

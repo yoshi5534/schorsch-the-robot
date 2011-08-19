@@ -16,11 +16,11 @@
 class RobotPort
 {
     private:
-        uint64 _delay;
         std::string _deviceName;
         QextSerialPort*  _port;
         std::list< std::string > _commandList;
         bool _liveCommandModus;
+        uint64 _delay;
 
         void deletePort()
         {
@@ -77,7 +77,7 @@ class RobotPort
        }
 
    public:
-       std::string SendAndReceive( std::string command, bool doLog = true, bool receive = true)
+       std::string sendAndReceive( std::string command, bool doLog = true, bool receive = true)
        {
            // TODO: assure thread safety
 
@@ -196,7 +196,7 @@ class RobotPort
                 currentLine += *it;
 
                 sendLineAndLog(currentLine);
-                usleep(100000);
+                usleep(150000);
                 lineNumber++;
              }
             sendLineAndLog(dataToString(lineNumber) + " ED");

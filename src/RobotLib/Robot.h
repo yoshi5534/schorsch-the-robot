@@ -74,6 +74,11 @@ class Robot
                         ","   + dataToString(positionToMoveTo.z)
                   );
                 }
+
+        void wait(float64 timeInMiliseconds)
+        {
+            _robotPort->sendCommand("TI " + dataToString(static_cast< uint16 >(timeInMiliseconds / 10) ));
+        }
 };
 
 #endif // ROBOT_H

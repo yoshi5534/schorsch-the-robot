@@ -79,6 +79,12 @@ class Robot
         {
             _robotPort->sendCommand("TI " + dataToString(static_cast< uint16 >(timeInMiliseconds / 10) ));
         }
+
+        void goHome()
+        {
+           _robotPort->sendCommand("PD 1,+207.43,-14.00,+338.59,+36.88,+178.84,R,A,O");
+           _robotPort->sendCommand("MO 1");
+        }
 };
 
 #endif // ROBOT_H

@@ -19,12 +19,11 @@ class Keyboard
 	float64 _angleA;
 	float64 _angleB;
 	Position _keyPressOffset;
-	
+        float64 _timePerBeat;
 
-	
   public:
   
-    Keyboard( Robot* robot )
+    Keyboard( Robot* robot, float64 timePerBeat = 250.0 )
     {
       if( robot == NULL )
       {
@@ -71,13 +70,14 @@ class Keyboard
       _angleA = 45.0;
       _angleB = 180.0;
       _keyPressOffset = Position( 0, 0, -15);
-
+      _timePerBeat = timePerBeat;
     }    
    
-    void play( std::string note, float64 timeInMiliseconds = 500)
+    void play( std::string note, float64 noteFraction) const
     {
+      float64 timeInMiliseconds = noteFraction * _timePerBeat;
       //is note playable?
-      std::map< std::string, Position >::iterator it = _keyboardMapping.find(note);
+      std::map< std::string, Position >::const_iterator it = _keyboardMapping.find(note);
       if( it ==  _keyboardMapping.end() )
       {
             throw std::invalid_argument("Keyboard::play " + note + " is not an valid node");
@@ -87,32 +87,36 @@ class Keyboard
             Position targetPosition = it->second;
             _robot->moveTo(targetPosition - _keyPressOffset, _angleA, _angleB);
             _robot->moveTo(targetPosition + _keyPressOffset, _angleA, _angleB);
-            _robot->getPort()->sendCommand("TI " + dataToString(timeInMiliseconds / 100 ));
-            // usleep( timeInMiliseconds);
-            _robot->moveTo(targetPosition, _angleA, _angleB);
+            _robot->wait(timeInMiliseconds);
+            _robot->moveTo(targetPosition - _keyPressOffset,  _angleA, _angleB);
       }
     }
 
-    void playPause( float64 timeInMiliseconds = 500)
+    void playPause( float64 noteFraction) const
     {
-        usleep( timeInMiliseconds);
+        float64 timeInMiliseconds = noteFraction * _timePerBeat;
+        _robot->wait(timeInMiliseconds);
     }
 
-    void switchOn()
+    void switchOn() const
     {
         _robot->moveRelative(Position(0.0, 0.0, 50.0));
         _robot->moveTo(Position(45.66, 410.25, 65.10), _angleA, _angleB);
+        _robot->wait(50);
         _robot->moveTo(Position(45.66, 410.25, 55.10), _angleA, _angleB);
         _robot->moveTo(Position(49.46, 416.83, 55.10), _angleA, _angleB);
+        _robot->wait(50);
         _robot->moveTo(Position(45.66, 410.25, 65.10), _angleA, _angleB);
     }
 
-    void switchOff()
+    void switchOff() const
     {
 
         _robot->moveTo(Position(60.78, 436.51, 90.41), _angleA, _angleB);
+        _robot->wait(50);
         _robot->moveTo(Position(60.78, 436.51, 52.73), _angleA, _angleB);
         _robot->moveTo(Position(54.55, 423.76, 52.73), _angleA, _angleB);
+        _robot->wait(50);
         _robot->moveTo(Position(60.78, 436.51, 63.41), _angleA, _angleB);
     }
 

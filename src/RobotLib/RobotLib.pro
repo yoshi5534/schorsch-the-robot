@@ -13,5 +13,7 @@ HEADERS += Robot.h \
     Joint.h \
     RobotPort.h \
     Position.h \
-    Keyboard.h
-OTHER_FILES += libRobotLib.a
+    Keyboard.h \
+    Music.h
+OTHER_FILES += libRobotLib.a \
+    libRobotLib.a

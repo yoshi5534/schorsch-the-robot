@@ -10,7 +10,8 @@ template< typename ValueType >
 static std::string dataToString( const ValueType& inputValue )
 {
  std::ostringstream stream;
- stream.precision(5);
+ stream.precision(2);
+ stream.setf(std::ios::fixed,std::ios::floatfield);
 
  stream << inputValue;
 

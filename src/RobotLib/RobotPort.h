@@ -76,58 +76,66 @@ class RobotPort
            sendLine( command );
        }
 
+       std::string readLine()
+       {          
+           std::string terminator = "\x0D";
+           std::string resultString = "";
+           int32 failCounter = 300; // wait max for 3 seconds
+           char lastTerminatorChar = terminator[terminator.size()-1];
+
+           while( true )
+           {
+                char receivedChar;
+                qint64 result = _port->read(&receivedChar, 1);
+                if(result != 0)
+                {
+                    failCounter--;
+                    if(failCounter <= 0)
+                    {
+                        std::stringstream stringStream;
+                        stringStream << result;
+
+                        throw(std::runtime_error(("RobotPort::read() result " + stringStream.str() + " was returned by serial port too often. Timeout hit!").c_str()));
+                    }
+                    usleep(10000);
+                }
+                resultString.append(&receivedChar,1);
+
+                // to save time we are just comparing the string when the last char of the terminator string is fetched
+                if(receivedChar == lastTerminatorChar)
+                {
+                    if(resultString.substr(resultString.length()-terminator.length()).compare(terminator) == 0)
+                    {
+                        break;
+                    }
+                }
+           }
+           // chop the terminator
+           resultString = resultString.substr(0, resultString.length()-terminator.length());
+           return resultString;
+       }
+
    public:
-       std::string sendAndReceive( std::string command, bool doLog = true, bool receive = true)
+       void sendAndReceive( std::string command, std::string *reply = NULL, bool doLog = true)
        {
            // TODO: assure thread safety
-
            if(doLog)
+           {
                 HelperMethods::log( "Sending: " + command );
+           }
 
            sendLine( command );
-           if(receive)
+           if(reply != NULL)
            {
-               char receivedChar = 'a';
-               std::string terminator = "\x0D";
-               std::string str = "";
-               int failCounter = 300; // wait max for 3 seconds
-               char lastTerminatorChar = terminator[terminator.size()-1];
-
-               while( true )
-               {
-                    qint64 result = _port->read(&receivedChar, 1);
-                    if(result != 0)
-                    {
-                        failCounter--;
-
-                        if(failCounter <= 0)
-                        {
-                            std::stringstream sstrTemp;
-                            sstrTemp << result;
-
-                            throw(std::runtime_error(("Result " + sstrTemp.str() + " was returned by serial port too often. Timeout hit!").c_str()));
-                        }
-                        usleep(10000);
-                    }
-
-                    str.append(&receivedChar,1);
-                    if(receivedChar == lastTerminatorChar) // to save time we are just comparing the string when the last char of the terminator string is fetched
-                    {
-                        if(str.substr(str.length()-terminator.length()).compare(terminator) == 0)
-                        {
-                            break;
-                        }
-                    }
-               }
-
-               str = str.substr(0, str.length()-terminator.length()); // chop the terminator
+               std::string resultString = readLine();
+               *reply = resultString;
 
                if(doLog)
-                    HelperMethods::log( "Receiving: " + str );
-
-               return str;
+               {
+                    HelperMethods::log( "Receiving: " + resultString );
+               }
            }
-           return "";
+           return;
        }
 
     public:
@@ -161,7 +169,7 @@ class RobotPort
             else
             {
                sendLine(command);
-               usleep(_delay);
+               //usleep(_delay);
             }
         }
 
@@ -185,8 +193,6 @@ class RobotPort
         {
 
             sendLineAndLog("N 1");
-            //usleep(_delay);
-            //sendLineAndLog("NW");
             uint64 lineNumber = 1;
             for( std::list<std::string>::iterator it = _commandList.begin(); it != _commandList.end(); it++ )
             {
@@ -195,9 +201,28 @@ class RobotPort
                 currentLine += " ";
                 currentLine += *it;
 
-                sendLineAndLog(currentLine);
-                usleep(150000);
-                lineNumber++;
+                //Method1 send and wait
+                {
+                    sendLineAndLog(currentLine);
+                    lineNumber++;
+                    usleep(150000);
+                }
+
+                //Method2 send and compare  (slow due to compare but cool)
+//                {
+//                    sendLineAndLog(currentLine);
+//                    sendLine("STR " + dataToString(lineNumber));
+//                    std::string resultLine = readLine();
+//
+//                    if( currentLine != resultLine)
+//                    {   //ohoh line send failed we should resend this line
+//                        it--;
+//                    }
+//                    else
+//                    { //sending sucedeed progress with next comand
+//                        lineNumber++;
+//                    }
+//                }
              }
             sendLineAndLog(dataToString(lineNumber) + " ED");
             usleep(_delay);

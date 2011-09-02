@@ -14,20 +14,53 @@
 int main(int argc, char *argv[])
 {
     Robot robot("/dev/ttyS0", 750000);
-    robot.getPort()->setLiveCommandMode(false);
-    robot.speed(25);
 
-    robot.grip.flowOpen();
-    robot.grip.flowClose();
-    robot.grip.flowOpen();
-    robot.grip.flowClose();
-    robot.grip.flowOpen();
-    robot.grip.flowClose();
-    robot.grip.flowOpen();
-    robot.grip.flowClose();
+//    {
+//        robot.getPort()->setLiveCommandMode(true);
+//        robot.speed(25);
+//        Keyboard keyboard(&robot);
+//        Music::kleineNachtmusik(keyboard);
+//    }
+
+//    {
+//        robot.getPort()->setLiveCommandMode(false);
+//        robot.speed(25);
+//        Keyboard keyboard(&robot);
+//        Music::kleineNachtmusik(keyboard);
+//        robot.getPort()->executeQuedCommands();
+//    }
+//
+//    return 0;
+
+//    robot.grip.flowOpen();
+//    robot.grip.flowClose();
+//    robot.grip.flowOpen();
+//    robot.grip.flowClose();
+//    robot.grip.flowOpen();
+//    robot.grip.flowClose();
+//    robot.grip.flowOpen();
+//    robot.grip.flowClose();
 
 
+    //robot.getPort()->executeQuedCommands();
+
+
+    //robot.getPort()->setLiveCommandMode(false);
+//    robot.speed(25);
+//    robot.grip.flowOpen();
+    robot.grip.flowClose();
+//    robot.grip.flowOpen();
+//    robot.grip.flowClose();
+//    robot.grip.flowOpen();
+//    robot.grip.flowClose();
+//    robot.grip.flowOpen();
+//    robot.grip.flowClose();
     robot.getPort()->executeQuedCommands();
+
+    //std::string reply ="";
+    //robot.getPort()->sendAndReceive("STR 2");
+    //robot.getPort()->sendAndReceive("STR 1",&reply,true);
+    //std::cout << "reply = " << reply << std::endl;
     return 0;
 
     //robot.getPort()->sendCommand("MO 4");

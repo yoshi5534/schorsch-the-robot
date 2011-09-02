@@ -21,17 +21,6 @@ class Joint
     
   public:
   
-    Joint( RobotPort* robotPort, std::string jointNumber )
-    {
-      if( robotPort == NULL )
-      {
-        throw std::invalid_argument( "Joint::Joint robot is NULL" );
-      }
-      
-      _robotPort = robotPort;
-      _jointNumberAsString = jointNumber;
-    }
-    
     Joint( RobotPort* robotPort, uint8 jointNumber )
     {
       if( robotPort == NULL )

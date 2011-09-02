@@ -3,6 +3,7 @@
 
 #include "Types.h"
 #include "Joint.h"
+#include "Grip.h"
 #include "RobotPort.h"
 #include "Position.h"
 
@@ -17,6 +18,7 @@ class Robot
         Joint E;
         Joint P;
         Joint R;
+        Grip grip;
 	  
         Robot
         ( 
@@ -28,6 +30,7 @@ class Robot
                   , E( _robotPort, 2)
                   , P( _robotPort, 4)
                   , R( _robotPort, 5)
+                  , grip( _robotPort, 1)
         {
           speed(12);
         }

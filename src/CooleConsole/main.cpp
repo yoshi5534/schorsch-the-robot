@@ -17,16 +17,34 @@ int main(int argc, char *argv[])
     robot.getPort()->setLiveCommandMode(false);
     robot.speed(25);
 
+    robot.grip.flowOpen();
+    robot.grip.flowClose();
+    robot.grip.flowOpen();
+    robot.grip.flowClose();
+    robot.grip.flowOpen();
+    robot.grip.flowClose();
+    robot.grip.flowOpen();
+    robot.grip.flowClose();
+
+
+    robot.getPort()->executeQuedCommands();
+    return 0;
+
+    //robot.getPort()->sendCommand("MO 4");
+    //robot.goHome();
+    //robot.getPort()->executeQuedCommands();
+    //return 0;
+
     Keyboard keyboard(&robot);
     keyboard.switchOn();
     //Music::mario( keyboard );
-    Music::alleMeineEntchen( keyboard );
+    //Music::alleMeineEntchen( keyboard );
     //Music::fuerElise( keyboard );
     //Music::tetris(keyboard);
     //Music::weAreTheChampions(keyboard);
     //Music::deutschlandlied(keyboard);
     //Music::missionImpossible(keyboard);
-    //Music::kleineNachtmusik(keyboard);
+    Music::kleineNachtmusik(keyboard);
     //Music::haenschenklein(keyboard);
 
     keyboard.switchOff();

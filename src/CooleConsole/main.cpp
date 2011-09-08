@@ -9,44 +9,49 @@
 #include "../RobotLib/Robot.h"
 #include "../RobotLib/Keyboard.h"
 #include "../RobotLib/Music.h"
+#include "../RobotLib/Matrix.h"
+#include "../RobotLib/Vector.h"
+#include "../RobotLib/Text.h"
+#include "../RobotLib/PlaneToCoordinateSystem.h"
+#include "../RobotLib/Where.h"
 
 
 int main(int argc, char *argv[])
 {
-    Robot robot("/dev/ttyS0", 750000);
+//     Robot robot("/dev/ttyS0", 750000);
 
 //    {
 //        robot.getPort()->setLiveCommandMode(true);
+// //        robot.speed(25);
+// ///       Keyboard keyboard(&robot);
+// //        Music::kleineNachtmusik(keyboard);
+// //    }
+// 
+// //    {
+//        robot.getPort()->setLiveCommandMode(false);
 //        robot.speed(25);
-///       Keyboard keyboard(&robot);
-//        Music::kleineNachtmusik(keyboard);
-//    }
-
-//    {
-       robot.getPort()->setLiveCommandMode(false);
-       robot.speed(25);
-        Keyboard keyboard(&robot);
-	keyboard.switchOn();
-	  keyboard.switchOff();
-//        Keyboard keyboard(&robot);
-//        Music::kleineNachtmusik(keyboard);
-//        robot.getPort()->executeQuedCommands();
-//    }
-//
-//    return 0;
-
-   robot.grip.flowOpen();
-    robot.grip.flowClose();
+//         Keyboard keyboard(&robot);
+// 	keyboard.switchOn();
+// 	  keyboard.switchOff();
+// //        Keyboard keyboard(&robot);
+// //        Music::kleineNachtmusik(keyboard);
+// //        robot.getPort()->executeQuedCommands();
+// //    }
+// //
+// //    return 0;
+// 
 //    robot.grip.flowOpen();
-//    robot.grip.flowClose();
-//    robot.grip.flowOpen();
-//    robot.grip.flowClose();
-//    robot.grip.flowOpen();
-//    robot.grip.flowClose();
-
-
-    robot.getPort()->executeQuedCommands();
-    return 0;
+//     robot.grip.flowClose();
+// //    robot.grip.flowOpen();
+// //    robot.grip.flowClose();
+// //    robot.grip.flowOpen();
+// //    robot.grip.flowClose();
+// //    robot.grip.flowOpen();
+// //    robot.grip.flowClose();
+// 
+// 
+//     robot.getPort()->executeQuedCommands();
+//     return 0;
 
 
     //robot.getPort()->setLiveCommandMode(false);
@@ -87,5 +92,24 @@ int main(int argc, char *argv[])
     //keyboard.switchOff();
 
     //robot.getPort()->executeQuedCommands();
+
+    Robot robot("/dev/ttyS0", 750000);
+    robot.getPort()->setLiveCommandMode(true);
+    Where where(&robot);
+    
+
+    //Vector firstBasePoint	( 1, 1, 1);
+    //Vector secondBasePoint	( 1, 1, 1);
+    //Vector thirdBasePoint	( 1, 1, 1);
+
+    //Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(firstBasePoint, secondBasePoint, thirdBasePoint);
+    
+    //Text::processString(&robot, "abc", coordinateSystem);
+    
+    
+    //robot.getPort()->executeQuedCommands();
+    
+    
+    
     return 0;
 }

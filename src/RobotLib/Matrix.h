@@ -10,9 +10,9 @@ class Matrix
 {
   public: 
     float64 x1;
-    float64 y1;	// / x1 x2 x3 \
+    float64 y1;	// | x1 x2 x3 |
     float64 z1;	// | y1 y2 y3 | 
-    float64 x2;	// \ z1 z2 z3 /
+    float64 x2;	// | z1 z2 z3 |
     float64 y2;
     float64 z2;
     float64 x3;
@@ -46,19 +46,19 @@ class Matrix
 	  this->z3 = z3; 
 	}
 	
-	Matrix operator+( const Matrix& other )
+	Matrix operator+( const Matrix& otherMatrix )
 	{
-		return Matrix( 	this->x1 + other.x1, this->y1 + other.y1, this->z1 + other.z1,
-				this->x2 + other.x2, this->y2 + other.y2, this->z2 + other.z2, 
-				this->x3 + other.x3, this->y3 + other.y3, this->z3 + other.z3 
+		return Matrix( 	this->x1 + otherMatrix.x1, this->y1 + otherMatrix.y1, this->z1 + otherMatrix.z1,
+				this->x2 + otherMatrix.x2, this->y2 + otherMatrix.y2, this->z2 + otherMatrix.z2, 
+				this->x3 + otherMatrix.x3, this->y3 + otherMatrix.y3, this->z3 + otherMatrix.z3 
 			     );
 	}
 
-	Matrix operator-( const Matrix& other )
+	Matrix operator-( const Matrix& otherMatrix )
 	{
-		return Matrix( 	this->x1 - other.x1, this->y1 - other.y1, this->z1 - other.z1,
-				this->x2 - other.x2, this->y2 - other.y2, this->z2 - other.z2 ,
-				this->x3 - other.x3, this->y3 - other.y3, this->z3 - other.z3 
+		return Matrix( 	this->x1 - otherMatrix.x1, this->y1 - otherMatrix.y1, this->z1 - otherMatrix.z1,
+				this->x2 - otherMatrix.x2, this->y2 - otherMatrix.y2, this->z2 - otherMatrix.z2,
+				this->x3 - otherMatrix.x3, this->y3 - otherMatrix.y3, this->z3 - otherMatrix.z3 
 			    );
 	}
 	

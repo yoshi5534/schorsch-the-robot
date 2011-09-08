@@ -18,13 +18,16 @@ int main(int argc, char *argv[])
 //    {
 //        robot.getPort()->setLiveCommandMode(true);
 //        robot.speed(25);
-//        Keyboard keyboard(&robot);
+///       Keyboard keyboard(&robot);
 //        Music::kleineNachtmusik(keyboard);
 //    }
 
 //    {
-//        robot.getPort()->setLiveCommandMode(false);
-//        robot.speed(25);
+       robot.getPort()->setLiveCommandMode(false);
+       robot.speed(25);
+        Keyboard keyboard(&robot);
+	keyboard.switchOn();
+	  keyboard.switchOff();
 //        Keyboard keyboard(&robot);
 //        Music::kleineNachtmusik(keyboard);
 //        robot.getPort()->executeQuedCommands();
@@ -32,22 +35,7 @@ int main(int argc, char *argv[])
 //
 //    return 0;
 
-//    robot.grip.flowOpen();
-//    robot.grip.flowClose();
-//    robot.grip.flowOpen();
-//    robot.grip.flowClose();
-//    robot.grip.flowOpen();
-//    robot.grip.flowClose();
-//    robot.grip.flowOpen();
-//    robot.grip.flowClose();
-
-
-    //robot.getPort()->executeQuedCommands();
-
-
-    //robot.getPort()->setLiveCommandMode(false);
-//    robot.speed(25);
-//    robot.grip.flowOpen();
+   robot.grip.flowOpen();
     robot.grip.flowClose();
 //    robot.grip.flowOpen();
 //    robot.grip.flowClose();
@@ -55,21 +43,37 @@ int main(int argc, char *argv[])
 //    robot.grip.flowClose();
 //    robot.grip.flowOpen();
 //    robot.grip.flowClose();
+
+
     robot.getPort()->executeQuedCommands();
+    return 0;
+
+
+    //robot.getPort()->setLiveCommandMode(false);
+//    robot.speed(25);
+   // robot.grip.flowOpen();
+    //robot.grip.flowClose();
+//    robot.grip.flowOpen();
+//    robot.grip.flowClose();
+//    robot.grip.flowOpen();
+//    robot.grip.flowClose();
+//    robot.grip.flowOpen();
+//    robot.grip.flowClose();
+   // robot.getPort()->executeQuedCommands();
 
     //std::string reply ="";
     //robot.getPort()->sendAndReceive("STR 2");
     //robot.getPort()->sendAndReceive("STR 1",&reply,true);
     //std::cout << "reply = " << reply << std::endl;
-    return 0;
+    //return 0;
 
     //robot.getPort()->sendCommand("MO 4");
     //robot.goHome();
     //robot.getPort()->executeQuedCommands();
     //return 0;
 
-    Keyboard keyboard(&robot);
-    keyboard.switchOn();
+    //Keyboard keyboard(&robot);
+    //keyboard.switchOn();
     //Music::mario( keyboard );
     //Music::alleMeineEntchen( keyboard );
     //Music::fuerElise( keyboard );
@@ -77,11 +81,11 @@ int main(int argc, char *argv[])
     //Music::weAreTheChampions(keyboard);
     //Music::deutschlandlied(keyboard);
     //Music::missionImpossible(keyboard);
-    Music::kleineNachtmusik(keyboard);
+    //Music::kleineNachtmusik(keyboard);
     //Music::haenschenklein(keyboard);
 
-    keyboard.switchOff();
+    //keyboard.switchOff();
 
-    robot.getPort()->executeQuedCommands();
+    //robot.getPort()->executeQuedCommands();
     return 0;
 }

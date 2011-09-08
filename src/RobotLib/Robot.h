@@ -5,7 +5,7 @@
 #include "Joint.h"
 #include "Grip.h"
 #include "RobotPort.h"
-#include "Position.h"
+#include "Vector.h"
 
 class Robot
 {
@@ -56,7 +56,7 @@ class Robot
             _robotPort->sendCommand( "SP " + dataToString(speed));
         }
         
-        void moveTo(Position positionToMoveTo, float64 a, float64 b)
+        void moveTo(Vector positionToMoveTo, float64 a, float64 b)
 		{
                   _robotPort->sendCommand
 		  ( 
@@ -68,7 +68,7 @@ class Robot
 		  );
 		}
 
-        void moveRelative(Position positionToMoveTo)
+        void moveRelative(Vector positionToMoveTo)
                 {
                   _robotPort->sendCommand
                   (

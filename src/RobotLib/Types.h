@@ -15,3 +15,4 @@ typedef float		float32;
 typedef double		float64;
   
 #endif // _TYPES_H_
+ 

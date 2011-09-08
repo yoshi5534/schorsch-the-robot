@@ -5,6 +5,18 @@
  #include <iostream>
 
  
+ template< typename ValueType >
+static ValueType stringToData( const std::string& inputString )
+{
+ std::stringstream stream;
+ stream << inputString;
+ 
+ ValueType value;
+ stream >> value;
+ return value;
+}
+ 
+ 
 
 template< typename ValueType >
 static std::string dataToString( const ValueType& inputValue )

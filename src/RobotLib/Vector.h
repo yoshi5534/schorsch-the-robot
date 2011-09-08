@@ -1,5 +1,5 @@
-#ifndef _POSITION_H_
-#define _POSITION_H_
+#ifndef _VECTOR_H_
+#define _VECTOR_H_
 
 
 #include "Types.h"
@@ -28,15 +28,15 @@ class Vector
 	  this->z = z; 
 	}
 	
-	friend Vector operator+( const Vector& a, const Vector& b )
+	Vector operator+( const Vector& other )
 	{
-		return Vector( a.x + b.x, a.y + b.y, a.z + b.z );
+		return Vector( this->x + other.x, this->y + other.y, this->z + other.z );
 	}
 
-	friend Vector operator-( const Vector& a, const Vector& b )
+	Vector operator-( const Vector& other )
 	{
-		return Vector( a.x - b.x, a.y - b.y, a.z - b.z );
+		return Vector( this->x - other.x, this->y - other.y, this->z - other.z );
 	}
 };
 
-#endif //_POSITION_H_
+#endif //_VECTOR_H_

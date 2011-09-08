@@ -116,7 +116,7 @@ class RobotPort
        }
 
    public:
-       void sendAndReceive( std::string command, std::string *reply = NULL, bool doLog = true)
+       std::string sendAndReceive( std::string command, bool doLog = true)
        {
            // TODO: assure thread safety
            if(doLog)
@@ -125,17 +125,15 @@ class RobotPort
            }
 
            sendLine( command );
-           if(reply != NULL)
-           {
-               std::string resultString = readLine();
-               *reply = resultString;
 
-               if(doLog)
-               {
-                    HelperMethods::log( "Receiving: " + resultString );
-               }
+           std::string resultString = readLine();
+
+           if(doLog)
+           {
+               HelperMethods::log( "Receiving: " + resultString );
            }
-           return;
+
+           return resultString;
        }
 
     public:

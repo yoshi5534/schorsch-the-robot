@@ -12,8 +12,12 @@ public:
     {
       Vector normalizedFirstTempVector  =  (firstVector  - baseVector).getNormalized();
       Vector normalizedSecondTempVector =  (secondVector - baseVector).getNormalized();
-      Vector crossProduct = normalizedFirstTempVector.crossProduct( normalizedSecondTempVector);
-      Vector correctedSecondVector = crossProduct.crossProduct(firstVector);
+      Vector crossProduct = (normalizedSecondTempVector.crossProduct( normalizedFirstTempVector)).getNormalized();
+      //Vector crossProduct = (normalizedFirstTempVector.crossProduct( normalizedSecondTempVector)).getNormalized();
+      Vector correctedSecondVector = crossProduct.crossProduct(normalizedFirstTempVector).getNormalized();
+      //Vector correctedSecondVector = normalizedFirstTempVector.crossProduct(crossProduct).getNormalized();
+      normalizedFirstTempVector = normalizedFirstTempVector * -1;
+      correctedSecondVector = correctedSecondVector * -1;
       Matrix matrix( normalizedFirstTempVector.x, normalizedFirstTempVector.y, normalizedFirstTempVector.z,
 		     correctedSecondVector.x, correctedSecondVector.y, correctedSecondVector.z,
 		     crossProduct.x, crossProduct.y, crossProduct.z );

@@ -27,12 +27,12 @@ class Grip
 
     void open()
     {
-        _robotPort->sendCommandAndLog("GO " + _gripNumberAsString );
+        _robotPort->sendCommand("GO " + _gripNumberAsString );
     }
 
     void close()
     {
-        _robotPort->sendCommandAndLog("GC " + _gripNumberAsString );
+        _robotPort->sendCommand("GC " + _gripNumberAsString );
     }
 
     void flowOpen()

@@ -95,18 +95,29 @@ int main(int argc, char *argv[])
 
     Robot robot("/dev/ttyS0", 750000);
     robot.getPort()->setLiveCommandMode(true);
-    Where where(&robot);
+    //Where where(&robot);
+    Vector firstBasePoint	(-50,600,680);//( where.x, where.y, where.z);
     
+    //Where where2(&robot);    
+    Vector secondBasePoint	(-50,600,400);//( where2.x, where2.y, where2.z);
+    
+    //Where where3(&robot);   
+    Vector thirdBasePoint	(430,600,400);//( where3.x, where3.y, where3.z);
 
-    //Vector firstBasePoint	( 1, 1, 1);
-    //Vector secondBasePoint	( 1, 1, 1);
-    //Vector thirdBasePoint	( 1, 1, 1);
-
-    //Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(firstBasePoint, secondBasePoint, thirdBasePoint);
+    Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(thirdBasePoint, secondBasePoint, firstBasePoint);
     
-    //Text::processString(&robot, "abc", coordinateSystem);
+    Vector target = coordinateSystem * Vector(1,0,0);
+     
+    float64 AngleA = 80;
+    float64 AngleB = 80;
     
+    //Text::processString(&robot, "abc", coordinateSystem, firstBasePoint);
     
+//    robot.moveTo(firstBasePoint,AngleA,AngleB);
+ //   robot.moveTo(secondBasePoint,AngleA,AngleB);
+ //   robot.moveTo(thirdBasePoint,AngleA,AngleB);
+    //Text::processString(&robot, "abcdefghi", coordinateSystem, firstBasePoint);
+    Text::processString(&robot, "pqrstuvw", coordinateSystem, firstBasePoint);
     //robot.getPort()->executeQuedCommands();
     
     

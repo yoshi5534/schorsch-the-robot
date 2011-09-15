@@ -41,7 +41,7 @@ class Joint
     void moveRelative( float64 value)
     {
         checkRange(value);
-        _robotPort->sendCommandAndLog("DJ 0, " + dataToString<int64>(value) );
+        _robotPort->sendCommand("DJ 0, " + dataToString<int64>(value) );
     }
     
     float64 where()

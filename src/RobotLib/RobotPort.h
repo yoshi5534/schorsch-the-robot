@@ -159,6 +159,7 @@ class RobotPort
 
         void sendCommand( std::string command )
         {
+	    HelperMethods::log( command );
             if( _liveCommandModus == false)
             {
                  //store the camands and do not execute them now
@@ -171,12 +172,6 @@ class RobotPort
             }
         }
 
-        void sendCommandAndLog( std::string command )
-        {
-            HelperMethods::log( command );
-            sendCommand( command );
-        }
-
         void setCommandDelay(int delay)
         {
             _delay = delay;
@@ -184,7 +179,7 @@ class RobotPort
 
         void setLiveCommandMode(bool newMode)
         {
-            _liveCommandModus = newMode;
+	  _liveCommandModus = newMode;
         }
 
         void executeQuedCommands()

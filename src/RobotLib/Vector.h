@@ -33,12 +33,21 @@ class Vector
 	{
 		return Vector( this->x + otherVector.x, this->y + otherVector.y, this->z + otherVector.z );
 	}
-
+	
 	Vector operator-( const Vector& otherVector ) const
 	{
 		return Vector( this->x - otherVector.x, this->y - otherVector.y, this->z - otherVector.z );
 	}
 	
+	Vector operator*( const Vector& otherVector ) const
+	{
+		return Vector( this->x * otherVector.x, this->y * otherVector.y, this->z * otherVector.z );
+	}
+	
+	Vector operator*( const float64 scalingFactor) const
+	{
+		return Vector( this->x * scalingFactor, this->y * scalingFactor, this->z * scalingFactor );
+	}	
 	Vector crossProduct(const Vector& otherVector) const
 	{
 		return Vector( 	(this->y * otherVector.z) - (this->z * otherVector.y),

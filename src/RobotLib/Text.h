@@ -6,18 +6,44 @@
 #include "Matrix.h"
 #include "Robot.h"
 #include <string>
+#include <limits>
 
 class Text
 {
     public:
-      static void processString(Robot* robot, std::string stringToParse, Matrix targetCoordinateSystem, Vector translationVector)
+      static void writeText
+      ( 	
+	Robot* robot, 
+	std::string stringToParse,
+	Matrix targetCoordinateSystem, 
+	Vector originOfCoordinateSystem, 
+	float64 textSizeInMilimeter
+      )
+      {
+	writeTextWithWordWrap( robot, stringToParse, targetCoordinateSystem, originOfCoordinateSystem, textSizeInMilimeter, std::numeric_limits< uint64>::max());
+      }
+      
+      static void writeTextWithWordWrap
+      ( 
+	Robot* robot, 
+	std::string stringToParse, 
+	Matrix targetCoordinateSystem, 
+	Vector originOfCoordinateSystem, 
+	float64 textSizeInMillimeter,
+	uint64 countOfCharactersPerLine
+      )
       {
 	  float64 AngleA = 80;
 	  float64 AngleB = 80;
+	  Vector characterTranslationVector(1.3,0,0);
+	  
+	  Vector lineTranslationVector(0,-2.5,0);
+	  uint64 currentLine = 0;
+	  
+	  Vector currentTranslationVector = originOfCoordinateSystem;
 	  
 	  for(size_t index = 0; index < stringToParse.length(); index++)
 	  {
-	      Vector spaceVector(40.5*index, 0, 0);
 	      std::list<Vector> sourceCoordinateMoveList;
 	      switch(stringToParse[index])
 	      {
@@ -47,16 +73,25 @@ class Text
 		case 'x': sourceCoordinateMoveList = x(); break;
 		case 'y': sourceCoordinateMoveList = y(); break;
 		case 'z': sourceCoordinateMoveList = z(); break;
+		case ' ': sourceCoordinateMoveList = space(); break;
 		default: sourceCoordinateMoveList = square(); break;
 	      }
 	      
+	      //do we need an newline?
+	      if( index > (countOfCharactersPerLine * (currentLine + 1)) - 1)
+	      {
+		  currentLine++;
+		  currentTranslationVector = originOfCoordinateSystem + targetCoordinateSystem * (lineTranslationVector * currentLine * textSizeInMillimeter); 
+	      }	 
+	      
+	      currentTranslationVector += targetCoordinateSystem * (characterTranslationVector * textSizeInMillimeter);
+	      
 	      for(std::list<Vector>::iterator it = sourceCoordinateMoveList.begin(); it != sourceCoordinateMoveList.end(); it++)
 	      {
-		  Vector sourceVector = (*it)*20.0;
-		  Vector sourceVectorInTargetCoordinateSystem = targetCoordinateSystem * sourceVector;
-		  Vector spaceOffsetOfCurrentCharacter = targetCoordinateSystem * spaceVector; 
-		  Vector targetVector = sourceVectorInTargetCoordinateSystem + spaceOffsetOfCurrentCharacter +  translationVector;
+		  Vector sourceVector = (*it)*textSizeInMillimeter; // Text size in mm
+		  Vector sourceVectorInTargetCoordinateSystem = targetCoordinateSystem * sourceVector;		  
 		  
+		  Vector targetVector = sourceVectorInTargetCoordinateSystem + currentTranslationVector;		  
 		  robot->moveTo(targetVector, AngleA, AngleB);
 
 	      }	      
@@ -184,29 +219,29 @@ private:
     static std::list<Vector> i()
     {
         std::list<Vector> list;
-        list.push_back( Vector( 0.0, 1.0, 1.0) );
-	list.push_back( Vector( 0.0, 1.0, 0.0) );
-	list.push_back( Vector( 0.0, 0.0, 0.0) );
-	list.push_back( Vector( 0.0, 0.0, 1.0) );
-	list.push_back( Vector( 0.0, 2.0, 1.0) );
-	list.push_back( Vector( 0.0, 2.0, 0.0) );
-	list.push_back( Vector( 0.0, 1.8, 0.0) );
-	list.push_back( Vector( 0.0, 1.8, 1.0) );
+        list.push_back( Vector( 0.4, 1.0, 1.0) );
+	list.push_back( Vector( 0.4, 1.0, 0.0) );
+	list.push_back( Vector( 0.4, 0.0, 0.0) );
+	list.push_back( Vector( 0.4, 0.0, 1.0) );
+	list.push_back( Vector( 0.4, 2.0, 1.0) );
+	list.push_back( Vector( 0.4, 2.0, 0.0) );
+	list.push_back( Vector( 0.4, 1.8, 0.0) );
+	list.push_back( Vector( 0.4, 1.8, 1.0) );
         return list;
     }
 
     static std::list<Vector> j()
     {
         std::list<Vector> list;
-        list.push_back( Vector( 1.0, 1.0, 1.0) );
-	list.push_back( Vector( 1.0, 1.0, 0.0) );
-	list.push_back( Vector( 1.0,-1.0, 0.0) );
-	list.push_back( Vector( 0.0,-1.0, 0.0) );
-	list.push_back( Vector( 1.0,-1.0, 1.0) );
-	list.push_back( Vector( 1.0, 2.0, 1.0) );
-	list.push_back( Vector( 1.0, 2.0, 0.0) );
-	list.push_back( Vector( 1.0, 1.8, 0.0) );
-	list.push_back( Vector( 1.0, 1.8, 1.0) );
+        list.push_back( Vector( 0.6, 1.0, 1.0) );
+	list.push_back( Vector( 0.6, 1.0, 0.0) );
+	list.push_back( Vector( 0.6,-1.0, 0.0) );
+	list.push_back( Vector( 0.3,-1.0, 0.0) );
+	list.push_back( Vector( 0.6,-1.0, 1.0) );
+	list.push_back( Vector( 0.6, 2.0, 1.0) );
+	list.push_back( Vector( 0.6, 2.0, 0.0) );
+	list.push_back( Vector( 0.6, 1.8, 0.0) );
+	list.push_back( Vector( 0.6, 1.8, 1.0) );
         return list;
     }
 
@@ -218,19 +253,20 @@ private:
 	list.push_back( Vector( 0.0, 0.0, 0.0) );
 	list.push_back( Vector( 0.0, 0.0, 1.0) );
 	list.push_back( Vector( 1.0, 1.0, 1.0) );
-	list.push_back( Vector( 0.5, 0.0, 0.0) );
-	list.push_back( Vector( 0.0, 1.0, 0.0) );
-	list.push_back( Vector( 0.0, 1.0, 1.0) );
+	list.push_back( Vector( 1.0, 1.0, 0.0) );
+	list.push_back( Vector( 0.0, 0.5, 0.0) );
+	list.push_back( Vector( 1.0, 0.0, 0.0) );
+	list.push_back( Vector( 1.0, 0.0, 1.0) );
         return list;
     }
 
     static std::list<Vector> l()
     {
         std::list<Vector> list;
-        list.push_back( Vector( 0.0, 2.0, 1.0) );
-	list.push_back( Vector( 0.0, 2.0, 0.0) );
-	list.push_back( Vector( 0.2, 0.0, 0.0) );	
-	list.push_back( Vector( 0.2, 0.0, 1.0) );
+        list.push_back( Vector( 0.4, 2.0, 1.0) );
+	list.push_back( Vector( 0.4, 2.0, 0.0) );
+	list.push_back( Vector( 0.6, 0.0, 0.0) );	
+	list.push_back( Vector( 0.6, 0.0, 1.0) );
         return list;
     }
 
@@ -243,14 +279,14 @@ private:
 	list.push_back( Vector( 0.0, 0.0, 1.0) );
 	list.push_back( Vector( 0.0, 1.0, 1.0) );
 	list.push_back( Vector( 0.0, 1.0, 0.0) );
+	list.push_back( Vector( 0.5, 1.0, 0.0) );
+	list.push_back( Vector( 0.5, 0.0, 0.0) );
+	list.push_back( Vector( 0.5, 0.0, 1.0) );
+	list.push_back( Vector( 0.5, 1.0, 1.0) );	
+	list.push_back( Vector( 0.5, 1.0, 0.0) );
 	list.push_back( Vector( 1.0, 1.0, 0.0) );
 	list.push_back( Vector( 1.0, 0.0, 0.0) );
 	list.push_back( Vector( 1.0, 0.0, 1.0) );
-	list.push_back( Vector( 1.0, 1.0, 1.0) );	
-	list.push_back( Vector( 1.0, 1.0, 0.0) );
-	list.push_back( Vector( 2.0, 1.0, 0.0) );
-	list.push_back( Vector( 2.0, 0.0, 0.0) );
-	list.push_back( Vector( 2.0, 0.0, 1.0) );
 	return list;
     }
 
@@ -337,14 +373,14 @@ private:
     static std::list<Vector> t()
     {
         std::list<Vector> list;
-        list.push_back( Vector( 0.0, 0.0, 1.0) );
-	list.push_back( Vector( 0.0, 0.0, 0.0) );
-	list.push_back( Vector( 0.0, 2.0, 0.0) );
-	list.push_back( Vector( 0.0, 2.0, 1.0) );
-	list.push_back( Vector( -0.2, 1.0, 1.0) );
-	list.push_back( Vector( -0.2, 1.0, 0.0) );
-	list.push_back( Vector( 0.2, 1.0, 0.0) );
+        list.push_back( Vector( 0.4, 0.0, 1.0) );
+	list.push_back( Vector( 0.4, 0.0, 0.0) );
+	list.push_back( Vector( 0.4, 2.0, 0.0) );
+	list.push_back( Vector( 0.4, 2.0, 1.0) );
 	list.push_back( Vector( 0.2, 1.0, 1.0) );
+	list.push_back( Vector( 0.2, 1.0, 0.0) );
+	list.push_back( Vector( 0.6, 1.0, 0.0) );
+	list.push_back( Vector( 0.6, 1.0, 1.0) );
         return list;
     }
 
@@ -376,45 +412,73 @@ private:
         std::list<Vector> list;
         list.push_back( Vector( 0.0, 1.0, 1.0) );
 	list.push_back( Vector( 0.0, 1.0, 0.0) );
-	list.push_back( Vector( 0.5, 0.0, 0.0) );
+	list.push_back( Vector( 0.25, 0.0, 0.0) );
+	list.push_back( Vector( 0.5, 1.0, 0.0) );
+	list.push_back( Vector( 0.75, 0.0, 0.0) );
 	list.push_back( Vector( 1.0, 1.0, 0.0) );
-	list.push_back( Vector( 1.5, 0.0, 0.0) );
-	list.push_back( Vector( 2.0, 1.0, 0.0) );
-	list.push_back( Vector( 2.0, 1.0, 1.0) );
+	list.push_back( Vector( 1.0, 1.0, 1.0) );
         return list;
     }
 
     static std::list<Vector> x()
     {
         std::list<Vector> list;
-        list.push_back( Vector( .0, .0, .0) );
+        list.push_back( Vector( 0.0, 1.0, 1.0) );
+	list.push_back( Vector( 0.0, 1.0, 0.0) );
+	list.push_back( Vector( 1.0, 0.0, 0.0) );
+	list.push_back( Vector( 1.0, 0.0, 1.0) );
+	list.push_back( Vector( 0.0, 0.0, 1.0) );
+	list.push_back( Vector( 0.0, 0.0, 0.0) );
+	list.push_back( Vector( 1.0, 1.0, 0.0) );
+	list.push_back( Vector( 1.0, 1.0, 1.0) );
         return list;
     }
 
     static std::list<Vector> y()
     {
         std::list<Vector> list;
-        list.push_back( Vector( .0, .0, .0) );
+	list.push_back( Vector( 0.0, 1.0, 1.0) );
+	list.push_back( Vector( 0.0, 1.0, 0.0) );
+	list.push_back( Vector( 0.0, 0.0, 0.0) );
+	list.push_back( Vector( 1.0, 0.0, 0.0) );
+	list.push_back( Vector( 1.0, 0.0, 1.0) );
+	list.push_back( Vector( 0.0,-1.0, 1.0) );
+	list.push_back( Vector( 0.0,-1.0, 0.0) );
+	list.push_back( Vector( 1.0,-1.0, 0.0) );
+	list.push_back( Vector( 1.0, 1.0, 0.0) );		
+	list.push_back( Vector( 1.0, 1.0, 1.0) );
         return list;
     }
 
     static std::list<Vector> z()
     {
         std::list<Vector> list;
-        list.push_back( Vector( .0, .0, .0) );
+        list.push_back( Vector( 0.0, 1.0, 1.0) );
+	list.push_back( Vector( 0.0, 1.0, 0.0) );
+	list.push_back( Vector( 1.0, 1.0, 0.0) );
+	list.push_back( Vector( 0.0, 0.0, 0.0) );
+	list.push_back( Vector( 1.0, 0.0, 0.0) );
+	list.push_back( Vector( 1.0, 0.0, 1.0) );
         return list;
     }
-
-     
+    
+    static std::list<Vector> space()
+    {
+        std::list<Vector> list;
+        list.push_back( Vector( 1.0, 0.0, 1.0) );
+        return list;
+    }
+    
     static std::list<Vector> square()
     {
 	 std::list<Vector> list;
 	 list.push_back( Vector( 1.0, 0.0, 1.0) );
 	 list.push_back( Vector( 1.0, 0.0, 0.0) );
 	 list.push_back( Vector( 0.0, 0.0, 0.0) );
-	 list.push_back( Vector( 0.0, 1.0, 0.0) );
-	 list.push_back( Vector( 1.0, 1.0, 0.0) );
-	 list.push_back( Vector( 1.0, 1.0, 1.0) );
+	 list.push_back( Vector( 0.0, 2.0, 0.0) );
+	 list.push_back( Vector( 1.0, 2.0, 0.0) );
+	 list.push_back( Vector( 1.0, 0.0, 0.0) );
+	 list.push_back( Vector( 1.0, 0.0, 1.0) );
 	 return list;
     }
 };

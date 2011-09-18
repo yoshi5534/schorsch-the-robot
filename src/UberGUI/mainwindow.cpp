@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    mRobot.getPort()->sendCommandAndLog("SP 20");
+    mRobot.getPort()->sendCommand("SP 20");
     mRobot.getPort()->setCommandDelay(500000);
     mRobot.getPort()->setLiveCommandMode(true);
 
@@ -56,19 +56,19 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     if(event->key() == Qt::Key_I)
     {
         ui->lblOut->setText("Initializing home position: +207.43,-14.00,+338.59,+134.44,+178.84,R,A,O");
-        mRobot.getPort()->sendCommandAndLog("PD 1,+207.43,-14.00,+338.59,+36.88,+178.84,R,A,O");
+        mRobot.getPort()->sendCommand("PD 1,+207.43,-14.00,+338.59,+36.88,+178.84,R,A,O");
     }
 
     if(event->key() == Qt::Key_R)
     {
         ui->lblOut->setText("Shut the fark up!");
-        mRobot.getPort()->sendCommandAndLog("RS");
+        mRobot.getPort()->sendCommand("RS");
     }
 
     if(event->key() == Qt::Key_H)
     {
         ui->lblOut->setText("Screw you guys, I'm going home");
-        mRobot.getPort()->sendCommandAndLog("MO 1");
+        mRobot.getPort()->sendCommand("MO 1");
     }
 
     if(event->key() == Qt::Key_Left)
@@ -76,11 +76,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         if(!bInDrawingMode)
         {
             ui->lblOut->setText("LEFT");
-            mRobot.getPort()->sendCommandAndLog("DJ 1,2");
+            mRobot.getPort()->sendCommand("DJ 1,2");
         }
         else
         {
-            mRobot.getPort()->sendCommandAndLog("DS -10,0,0");
+            mRobot.getPort()->sendCommand("DS -10,0,0");
         }
     }
 
@@ -89,11 +89,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         if(!bInDrawingMode)
         {
             ui->lblOut->setText("RIGHT");
-            mRobot.getPort()->sendCommandAndLog("DJ 1,-2");
+            mRobot.getPort()->sendCommand("DJ 1,-2");
         }
         else
         {
-            mRobot.getPort()->sendCommandAndLog("DS 10,0,0");
+            mRobot.getPort()->sendCommand("DS 10,0,0");
         }
     }
 
@@ -105,7 +105,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
         else
         {
-            mRobot.getPort()->sendCommandAndLog("DS 0,0,-20");
+            mRobot.getPort()->sendCommand("DS 0,0,-20");
         }
     }
 
@@ -117,7 +117,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
         else
         {
-            mRobot.getPort()->sendCommandAndLog("DS 0,0,20");
+            mRobot.getPort()->sendCommand("DS 0,0,20");
         }
     }
 
@@ -129,7 +129,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
         else
         {
-            mRobot.getPort()->sendCommandAndLog("DS 0,10,0");
+            mRobot.getPort()->sendCommand("DS 0,10,0");
         }
     }
 
@@ -141,7 +141,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
         else
         {
-            mRobot.getPort()->sendCommandAndLog("DS 0,-10,0");
+            mRobot.getPort()->sendCommand("DS 0,-10,0");
         }
     }
 
@@ -151,15 +151,15 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         {
             ui->lblOut->setText("Switching to normal mode");
             bInDrawingMode = false;
-            mRobot.getPort()->sendCommandAndLog("PD 1,+207.43,-14.00,+338.59,+134.44,+178.84,R,A,O");
-            mRobot.getPort()->sendCommandAndLog("MO 1");
+            mRobot.getPort()->sendCommand("PD 1,+207.43,-14.00,+338.59,+134.44,+178.84,R,A,O");
+            mRobot.getPort()->sendCommand("MO 1");
         }
         else
         {
             ui->lblOut->setText("Switching to drawing mode");
             bInDrawingMode = true;
-            mRobot.getPort()->sendCommandAndLog("PD 1,+0.32,-404.75,+69.13,+220.54,+179.01,R,A,O");
-            mRobot.getPort()->sendCommandAndLog("MO 1");
+            mRobot.getPort()->sendCommand("PD 1,+0.32,-404.75,+69.13,+220.54,+179.01,R,A,O");
+            mRobot.getPort()->sendCommand("MO 1");
             mRobot.getPort()->setLiveCommandMode(false);
         }
     }
@@ -168,7 +168,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         {
             if(bInDrawingMode)
             {
-                mRobot.moveTo(Position(10.32,-404.75,69.13),0.0,90.0);
+                mRobot.moveTo(Vector(10.32,-404.75,69.13),0.0,90.0);
                 mRobot.getPort()->executeQuedCommands();
             }
         }

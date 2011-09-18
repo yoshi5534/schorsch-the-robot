@@ -14,7 +14,7 @@ class Text
       static void writeText
       ( 	
 	Robot* robot, 
-	std::string stringToParse,
+	const std::string stringToParse,
 	Matrix targetCoordinateSystem, 
 	Vector originOfCoordinateSystem, 
 	float64 textSizeInMilimeter
@@ -26,7 +26,7 @@ class Text
       static void writeTextWithWordWrap
       ( 
 	Robot* robot, 
-	std::string stringToParse, 
+	const std::string stringToParse, 
 	Matrix targetCoordinateSystem, 
 	Vector originOfCoordinateSystem, 
 	float64 textSizeInMillimeter,

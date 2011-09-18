@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
     //robot.getPort()->executeQuedCommands();
 
     Robot robot("/dev/ttyS0", 750000);
-    robot.getPort()->setLiveCommandMode(true);
+    robot.getPort()->setLiveCommandMode(false);
     //Where where(&robot);
     Vector yPoint	(-50,600,680);//( where.x, where.y, where.z);
     
@@ -117,8 +117,24 @@ int main(int argc, char *argv[])
  //   robot.moveTo(secondBasePoint,AngleA,AngleB);
  //   robot.moveTo(thirdBasePoint,AngleA,AngleB);
     //Text::processString(&robot, "abcdefghi", coordinateSystem, firstBasePoint);
-    Text::processString(&robot, "pqrstuvw", coordinateSystem, yPoint);
-    //robot.getPort()->executeQuedCommands();
+   // Text::processString(&robot, "abcdefghijk", coordinateSystem, yPoint);  
+    //Text::processString(&robot, "pqrAßstuvwxyz", coordinateSystem, yPoint);
+    //Text::writeTextWithWordWrap(&robot, "Aßxyz", coordinateSystem, yPoint);
+    
+      Text::writeTextWithWordWrap
+      ( 
+	&robot, 
+	"the quick brown fox jumps over the lazy dog", 
+	coordinateSystem, 
+	yPoint, 
+	20.0,
+	10
+      );  
+    
+    
+    
+    
+    robot.getPort()->executeQuedCommands();
     
     
     

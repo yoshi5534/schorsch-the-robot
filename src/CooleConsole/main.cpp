@@ -95,15 +95,18 @@ int main(int argc, char *argv[])
 
     Robot robot("/dev/ttyS0", 750000);
     robot.getPort()->setLiveCommandMode(false);
-    //Where where(&robot);
-    Vector yPoint	(-50,600,680);//( where.x, where.y, where.z);
+    Where where(&robot);
+    Vector yPoint	( where.x, where.y, where.z);
+    //Vector yPoint	(-50,600,680);//( where.x, where.y, where.z);
+       
+    Where where2(&robot);    
+    Vector basePoint	( where2.x, where2.y, where2.z);
+    //Vector basePoint	(-50,600,400);//( where2.x, where2.y, where2.z);
     
-    //Where where2(&robot);    
-    Vector basePoint	(-50,600,400);//( where2.x, where2.y, where2.z);
+    Where where3(&robot);   
+    Vector xPoint	( where3.x, where3.y, where3.z);
+    //Vector xPoint	(430,600,400);//( where3.x, where3.y, where3.z);
     
-    //Where where3(&robot);   
-    Vector xPoint	(430,600,400);//( where3.x, where3.y, where3.z);
-
     Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint);
     
     Vector target = coordinateSystem * Vector(1,0,0);

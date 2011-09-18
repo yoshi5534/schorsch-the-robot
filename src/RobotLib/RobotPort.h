@@ -168,7 +168,7 @@ class RobotPort
             else
             {
                sendLine(command);
-               //usleep(_delay);
+               usleep(_delay);
             }
         }
 

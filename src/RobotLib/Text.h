@@ -82,6 +82,10 @@ class Text
 	      {
 		  currentLine++;
 		  currentTranslationVector = originOfCoordinateSystem + targetCoordinateSystem * (lineTranslationVector * currentLine * textSizeInMillimeter); 
+		  if(stringToParse[index] == ' ')
+		  {
+		      continue; // no spaces at the begin of a line
+		  }
 	      }	 
 	      
 	      currentTranslationVector += targetCoordinateSystem * (characterTranslationVector * textSizeInMillimeter);

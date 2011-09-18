@@ -48,6 +48,43 @@ class Vector
 	{
 		return Vector( this->x * scalingFactor, this->y * scalingFactor, this->z * scalingFactor );
 	}	
+	
+	Vector& operator+=( const Vector& otherVector )
+	{
+	      this->x += otherVector.x;
+	      this->y += otherVector.y;
+	      this->z += otherVector.z;
+	      
+	      return *this;
+	}
+	
+	Vector operator-=( const Vector& otherVector )
+	{
+	      this->x -= otherVector.x;
+	      this->y -= otherVector.y;
+	      this->z -= otherVector.z;
+	      
+	      return *this;
+	}
+	
+	Vector operator*=( const Vector& otherVector )
+	{
+	      this->x *= otherVector.x;
+	      this->y *= otherVector.y;
+	      this->z *= otherVector.z;
+	      
+	      return *this;
+	}
+	
+	Vector operator*=( const float64 scalingFactor)
+	{
+	      this->x *= scalingFactor;
+	      this->y *= scalingFactor;
+	      this->z *= scalingFactor;
+	      
+	      return *this;
+	}
+	
 	Vector crossProduct(const Vector& otherVector) const
 	{
 		return Vector( 	(this->y * otherVector.z) - (this->z * otherVector.y),

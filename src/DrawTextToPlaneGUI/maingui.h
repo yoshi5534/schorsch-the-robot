@@ -26,6 +26,14 @@ public slots:
     void defineYVector();
     void defineXVector();
     void defineBaseVector(); 
+    void loadConfiguration();
+    void saveConfiguration();
+    void moveToBaseVector();
+    void moveToXVector();
+    void moveToYVector();    
+    void cleanBoard();
+    void resetRobot();
+    void abortTransmission();
 
 };
 

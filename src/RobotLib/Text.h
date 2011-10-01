@@ -17,10 +17,12 @@ class Text
 	const std::string stringToParse,
 	Matrix targetCoordinateSystem, 
 	Vector originOfCoordinateSystem, 
+	float64 angleA,
+	float64 angleB,
 	float64 textSizeInMilimeter
       )
       {
-	writeTextWithWordWrap( robot, stringToParse, targetCoordinateSystem, originOfCoordinateSystem, textSizeInMilimeter, std::numeric_limits< uint64>::max());
+	writeTextWithWordWrap( robot, stringToParse, targetCoordinateSystem, originOfCoordinateSystem, angleA, angleB, textSizeInMilimeter, std::numeric_limits< uint64>::max());
       }
       
       static void writeTextWithWordWrap
@@ -29,12 +31,12 @@ class Text
 	const std::string stringToParse, 
 	Matrix targetCoordinateSystem, 
 	Vector originOfCoordinateSystem, 
+	float64 angleA,
+	float64 angleB,
 	float64 textSizeInMillimeter,
 	uint64 countOfCharactersPerLine
       )
       {
-	  float64 AngleA = 80;
-	  float64 AngleB = 80;
 	  Vector characterTranslationVector(1.3,0,0);
 	  
 	  Vector lineTranslationVector(0,-2.5,0);
@@ -74,11 +76,12 @@ class Text
 		case 'y': sourceCoordinateMoveList = y(); break;
 		case 'z': sourceCoordinateMoveList = z(); break;
 		case ' ': sourceCoordinateMoveList = space(); break;
+		case '\n': break;
 		default: sourceCoordinateMoveList = square(); break;
 	      }
 	      
 	      //do we need an newline?
-	      if( index > (countOfCharactersPerLine * (currentLine + 1)) - 1)
+	      if( index > (countOfCharactersPerLine * (currentLine + 1)) - 1 || stringToParse[index] == '\n')
 	      {
 		  currentLine++;
 		  currentTranslationVector = originOfCoordinateSystem + targetCoordinateSystem * (lineTranslationVector * currentLine * textSizeInMillimeter); 
@@ -86,6 +89,9 @@ class Text
 		  {
 		      continue; // no spaces at the begin of a line
 		  }
+		
+		  //add an artificaial offest to not draw an line between the last character of the current line and the first character of the next line
+		  sourceCoordinateMoveList.push_front( Vector( 0.0, 0.0, 5.0));
 	      }	 
 	      
 	      currentTranslationVector += targetCoordinateSystem * (characterTranslationVector * textSizeInMillimeter);
@@ -96,7 +102,7 @@ class Text
 		  Vector sourceVectorInTargetCoordinateSystem = targetCoordinateSystem * sourceVector;		  
 		  
 		  Vector targetVector = sourceVectorInTargetCoordinateSystem + currentTranslationVector;		  
-		  robot->moveTo(targetVector, AngleA, AngleB);
+		  robot->moveTo(targetVector, angleA, angleB);
 
 	      }	      
 	  }

@@ -21,6 +21,7 @@ class RobotPort
         std::list< std::string > _commandList;
         bool _liveCommandModus;
         uint64 _delay;
+	bool abortTransmission;
 
         void deletePort()
         {
@@ -147,6 +148,7 @@ class RobotPort
         : _deviceName( deviceName )
         , _delay (delay)
         , _liveCommandModus( liveCommandModus )
+	, abortTransmission(false)
         {
             //open port
             openPort();            
@@ -181,7 +183,17 @@ class RobotPort
         {
 	  _liveCommandModus = newMode;
         }
-
+        
+        bool getLiveCommandMode()
+        {
+	  return _liveCommandModus;
+        }
+        
+        void abortDataTransmission()
+	{
+	  abortTransmission = true;
+	}
+        
         void executeQuedCommands()
         {
 
@@ -189,6 +201,12 @@ class RobotPort
             uint64 lineNumber = 1;
             for( std::list<std::string>::iterator it = _commandList.begin(); it != _commandList.end(); it++ )
             {
+		if(abortTransmission)
+		{
+		  abortTransmission = false;
+		  return;
+		}
+		
                 std::string currentLine = "";
                 currentLine += dataToString(lineNumber);
                 currentLine += " ";
@@ -217,6 +235,7 @@ class RobotPort
 //                    }
 //                }
              }
+            _commandList.clear();
             sendLineAndLog(dataToString(lineNumber) + " ED");
             usleep(_delay);
             sendLineAndLog("RN 1");

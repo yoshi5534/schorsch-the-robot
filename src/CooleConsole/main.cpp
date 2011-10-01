@@ -130,6 +130,8 @@ int main(int argc, char *argv[])
 	"the quick brown fox jumps over the lazy dog", 
 	coordinateSystem, 
 	yPoint, 
+	AngleA,
+	AngleB,
 	20.0,
 	10
       );  

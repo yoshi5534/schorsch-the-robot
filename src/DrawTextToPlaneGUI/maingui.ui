@@ -281,6 +281,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="btnHome">
+        <property name="text">
+         <string>Go Home</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="btnCleanBoard">
         <property name="text">
          <string>Clean Board</string>
@@ -364,8 +371,8 @@
      <y>72</y>
     </hint>
     <hint type="destinationlabel">
-     <x>412</x>
-     <y>473</y>
+     <x>346</x>
+     <y>472</y>
     </hint>
    </hints>
   </connection>
@@ -396,8 +403,8 @@
      <y>461</y>
     </hint>
     <hint type="destinationlabel">
-     <x>229</x>
-     <y>454</y>
+     <x>173</x>
+     <y>464</y>
     </hint>
    </hints>
   </connection>
@@ -428,8 +435,8 @@
      <y>113</y>
     </hint>
     <hint type="destinationlabel">
-     <x>363</x>
-     <y>489</y>
+     <x>175</x>
+     <y>462</y>
     </hint>
    </hints>
   </connection>
@@ -444,8 +451,8 @@
      <y>111</y>
     </hint>
     <hint type="destinationlabel">
-     <x>422</x>
-     <y>506</y>
+     <x>372</x>
+     <y>490</y>
     </hint>
    </hints>
   </connection>
@@ -460,8 +467,8 @@
      <y>110</y>
     </hint>
     <hint type="destinationlabel">
-     <x>528</x>
-     <y>490</y>
+     <x>467</x>
+     <y>509</y>
     </hint>
    </hints>
   </connection>
@@ -472,8 +479,8 @@
    <slot>resetRobot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>504</x>
-     <y>481</y>
+     <x>450</x>
+     <y>493</y>
     </hint>
     <hint type="destinationlabel">
      <x>585</x>
@@ -488,12 +495,44 @@
    <slot>abortTransmission()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>565</x>
-     <y>476</y>
+     <x>514</x>
+     <y>493</y>
     </hint>
     <hint type="destinationlabel">
      <x>692</x>
      <y>507</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCleanBoard</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>cleanBoard()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>683</x>
+     <y>489</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>676</x>
+     <y>497</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnHome</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>goHome()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>549</x>
+     <y>484</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>544</x>
+     <y>499</y>
     </hint>
    </hints>
   </connection>
@@ -511,5 +550,6 @@
   <slot>cleanBoard()</slot>
   <slot>resetRobot()</slot>
   <slot>abortTransmission()</slot>
+  <slot>goHome()</slot>
  </slots>
 </ui>

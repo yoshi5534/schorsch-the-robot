@@ -96,6 +96,7 @@ void mainGUI::writeText()
 				10
 				);     
     
+    this->robot->goHome();
     this->robot->getPort()->executeQuedCommands();
 }
 
@@ -187,7 +188,37 @@ void mainGUI::loadConfiguration()
 
 void mainGUI::cleanBoard()
 {
-  
+    Vector yPoint	( ui->leYVectorX   ->text().toDouble(), ui->leYVectorY   ->text().toDouble(), 	ui->leYVectorZ   ->text().toDouble());
+    Vector basePoint	( ui->leBaseVectorX->text().toDouble(), ui->leBaseVectorY->text().toDouble(), 	ui->leBaseVectorZ->text().toDouble());
+    Vector xPoint	( ui->leXVectorX   ->text().toDouble(), ui->leXVectorY   ->text().toDouble(), 	ui->leXVectorZ   ->text().toDouble());
+    
+    Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint);
+    Vector target = coordinateSystem * Vector(1,0,0);
+    
+    QStringList linesOfText = ui->txtEditTextToWrite->toPlainText().split("\n");
+    uint64 longestLine = 0;
+    QString currentLine;
+    foreach( currentLine, linesOfText)
+    {
+      if( currentLine.size() > longestLine )
+      {
+	longestLine = currentLine.size();
+      }
+    }
+     
+    Text::cleanBoard( 
+		  this->robot, 
+		  coordinateSystem, 
+		  yPoint, 
+		  ui->leAngleA->text().toDouble() + 180,				
+		  ui->leAngleB->text().toDouble(),
+		  20.0,
+		  longestLine + 1,
+		  linesOfText.size() + 1
+		);     
+
+    this->robot->goHome();
+    this->robot->getPort()->executeQuedCommands();
 }
 
 void mainGUI::resetRobot()
@@ -198,4 +229,10 @@ void mainGUI::resetRobot()
 void mainGUI::abortTransmission()
 {
    this->robot->getPort()->abortDataTransmission();
+}
+
+void mainGUI::goHome()
+{
+  this->robot->goHome();
+  this->robot->getPort()->executeQuedCommands();    
 }

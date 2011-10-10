@@ -34,6 +34,7 @@ public slots:
     void cleanBoard();
     void resetRobot();
     void abortTransmission();
+    void goHome();
 
 };
 

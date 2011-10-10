@@ -107,6 +107,37 @@ class Text
 	      }	      
 	  }
       }
+      
+      static void cleanBoard
+      ( 	
+	Robot* robot, 
+	Matrix targetCoordinateSystem, 
+	Vector originOfCoordinateSystem, 
+	float64 angleA,
+	float64 angleB,
+	float64 textSizeInMillimeter,
+	uint64 countOfCharactersPerLine,
+	uint64 countOfLines
+      )
+      {
+	  Vector characterTranslationVector(1.3,0,0);
+	  
+	  Vector lineTranslationVector(0,-2.5,0);
+	  uint64 currentLine = 0;
+	  
+	  Vector currentTranslationVector = originOfCoordinateSystem;
+	  
+	  for(uint64 currentLine = 0; currentLine <= countOfLines; currentLine++)
+	  {
+	    Vector startOfLine = originOfCoordinateSystem + targetCoordinateSystem * (lineTranslationVector * currentLine * textSizeInMillimeter); 
+	    Vector endOfLine =  startOfLine + (characterTranslationVector * textSizeInMillimeter) * countOfCharactersPerLine;
+	    
+	    robot->moveTo(startOfLine, angleA, angleB); 
+	    robot->moveTo(endOfLine  , angleA, angleB);
+	    robot->moveTo(startOfLine, angleA, angleB); 
+	  }
+      }
+      
 
 //     std::list<Vector> a()
 //     {

@@ -45,6 +45,15 @@ class Text
 	  Vector currentTranslationVector = originOfCoordinateSystem;
 // 	  robot->moveTo(originOfCoordinateSystem+(targetCoordinateSystem*Vector(0.0,0.0,10)*textSizeInMillimeter), angleA, angleB);
 	  
+	  
+	  
+	  /////////////////
+	  robot->moveLinearTo(originOfCoordinateSystem + (targetCoordinateSystem * Vector(1,2,0) ), angleA, angleB);
+	  robot->moveLinearTo(originOfCoordinateSystem + (targetCoordinateSystem * Vector(1,1,0) ), angleA, angleB);
+		  
+	  return;
+	  ////////////////////
+	  
 	  for(size_t index = 0; index < stringToParse.length(); index++)
 	  {
 	      std::list<Vector> sourceCoordinateMoveList;
@@ -76,16 +85,16 @@ class Text
 		case 'x': sourceCoordinateMoveList = x(); break;
 		case 'y': sourceCoordinateMoveList = y(); break;
 		case 'z': sourceCoordinateMoveList = z(); break;
-		case '0': sourceCoordinateMoveList = null(); break;
-		case '1': sourceCoordinateMoveList = one(); break;
-		case '2': sourceCoordinateMoveList = two(); break;
+		case '0': sourceCoordinateMoveList = zero (); break;
+		case '1': sourceCoordinateMoveList = one  (); break;
+		case '2': sourceCoordinateMoveList = two  (); break;
 		case '3': sourceCoordinateMoveList = three(); break;
-		case '4': sourceCoordinateMoveList = four(); break;
-		case '5': sourceCoordinateMoveList = five(); break;
-		case '6': sourceCoordinateMoveList = six(); break;
+		case '4': sourceCoordinateMoveList = four (); break;
+		case '5': sourceCoordinateMoveList = five (); break;
+		case '6': sourceCoordinateMoveList = six  (); break;
 		case '7': sourceCoordinateMoveList = seven(); break;
 		case '8': sourceCoordinateMoveList = eight(); break;
-		case '9': sourceCoordinateMoveList = nine(); break;
+		case '9': sourceCoordinateMoveList = nine (); break;
 		case ' ': sourceCoordinateMoveList = space(); break;
 		case '\n': break;
 		default: sourceCoordinateMoveList = square(); break;
@@ -579,7 +588,8 @@ private:
 	  list.push_back( Vector( 0.0, 2.0, 1.0) );
 	  list.push_back( Vector( 0.0, 2.0, 0.0) );
 	  list.push_back( Vector( 0.0, 1.0, 0.0) );
-	  list.push_back( Vector( 0.0, 1.0, 1.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 1.0) );
 	  list.push_back( Vector( 1.0, 2.0, 1.0) );
 	  list.push_back( Vector( 1.0, 2.0, 0.0) );
 	  list.push_back( Vector( 1.0, 0.0, 0.0) );
@@ -606,6 +616,7 @@ private:
 	  std::list<Vector> list;
 	  list.push_back( Vector( 0.0, 2.0, 1.0) );
 	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
 	  list.push_back( Vector( 1.0, 0.0, 0.0) );
 	  list.push_back( Vector( 1.0, 1.0, 0.0) );
 	  list.push_back( Vector( 0.0, 1.0, 0.0) );
@@ -641,7 +652,7 @@ private:
 	  return list;
     }
     
-    static std::list<Vector> nine()#
+    static std::list<Vector> nine()
     {
 	  std::list<Vector> list;
 	  list.push_back( Vector( 1.0, 1.0, 1.0) );

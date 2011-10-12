@@ -43,6 +43,7 @@ class Text
 	  uint64 currentLine = 0;
 	  
 	  Vector currentTranslationVector = originOfCoordinateSystem;
+// 	  robot->moveTo(originOfCoordinateSystem+(targetCoordinateSystem*Vector(0.0,0.0,10)*textSizeInMillimeter), angleA, angleB);
 	  
 	  for(size_t index = 0; index < stringToParse.length(); index++)
 	  {
@@ -101,7 +102,7 @@ class Text
 		  }
 		
 		  //add an artificaial offest to not draw an line between the last character of the current line and the first character of the next line
-		  sourceCoordinateMoveList.push_front( Vector( 0.0, 0.0, 5.0));
+		  sourceCoordinateMoveList.push_front(  /*targetCoordinateSystem **/ Vector( 0.0, 0.0, 5.0));
 	      }	 
 	      
 	      currentTranslationVector += targetCoordinateSystem * (characterTranslationVector * textSizeInMillimeter);
@@ -112,11 +113,42 @@ class Text
 		  Vector sourceVectorInTargetCoordinateSystem = targetCoordinateSystem * sourceVector;		  
 		  
 		  Vector targetVector = sourceVectorInTargetCoordinateSystem + currentTranslationVector;		  
-		  robot->moveTo(targetVector, angleA, angleB);
-
+		  robot->moveLinearTo(targetVector, angleA, angleB);
 	      }	      
 	  }
+// 	  robot->moveTo(originOfCoordinateSystem+(targetCoordinateSystem*Vector(0.0,0.0,10)*textSizeInMillimeter), angleA, angleB);
       }
+      
+      static void cleanBoard
+      ( 	
+	Robot* robot, 
+	Matrix targetCoordinateSystem, 
+	Vector originOfCoordinateSystem, 
+	float64 angleA,
+	float64 angleB,
+	float64 textSizeInMillimeter,
+	uint64 countOfCharactersPerLine,
+	uint64 countOfLines
+      )
+      {
+	  Vector characterTranslationVector(1.3,0,0);
+	  
+	  Vector lineTranslationVector(0,-2.5,0);
+	  uint64 currentLine = 0;
+	  
+	  Vector currentTranslationVector = originOfCoordinateSystem;
+	  
+	  for(uint64 currentLine = 0; currentLine <= countOfLines; currentLine++)
+	  {
+	    Vector startOfLine = originOfCoordinateSystem + targetCoordinateSystem * (lineTranslationVector * currentLine * textSizeInMillimeter); 
+	    Vector endOfLine =  startOfLine + (characterTranslationVector * textSizeInMillimeter) * countOfCharactersPerLine;
+	    
+	    robot->moveLinearTo(startOfLine, angleA, angleB); 
+	    robot->moveLinearTo(endOfLine  , angleA, angleB);
+	    robot->moveLinearTo(startOfLine, angleA, angleB); 
+	  }
+      }
+      
 
 //     std::list<Vector> a()
 //     {

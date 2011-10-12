@@ -76,6 +76,16 @@ class Text
 		case 'x': sourceCoordinateMoveList = x(); break;
 		case 'y': sourceCoordinateMoveList = y(); break;
 		case 'z': sourceCoordinateMoveList = z(); break;
+		case '0': sourceCoordinateMoveList = null(); break;
+		case '1': sourceCoordinateMoveList = one(); break;
+		case '2': sourceCoordinateMoveList = two(); break;
+		case '3': sourceCoordinateMoveList = three(); break;
+		case '4': sourceCoordinateMoveList = four(); break;
+		case '5': sourceCoordinateMoveList = five(); break;
+		case '6': sourceCoordinateMoveList = six(); break;
+		case '7': sourceCoordinateMoveList = seven(); break;
+		case '8': sourceCoordinateMoveList = eight(); break;
+		case '9': sourceCoordinateMoveList = nine(); break;
 		case ' ': sourceCoordinateMoveList = space(); break;
 		case '\n': break;
 		default: sourceCoordinateMoveList = square(); break;
@@ -245,17 +255,17 @@ private:
 
     static std::list<Vector> h()
     {
-        std::list<Vector> list;
-        list.push_back( Vector( 0.0, 2.0, 1.0) );
-	list.push_back( Vector( 0.0, 2.0, 0.0) );
-	list.push_back( Vector( 0.0, 0.0, 0.0) );
-	list.push_back( Vector( 0.0, 0.0, 1.0) );
-	list.push_back( Vector( 0.0, 1.0, 1.0) );
-	list.push_back( Vector( 0.0, 1.0, 0.0) );
-	list.push_back( Vector( 1.0, 1.0, 0.0) );
-	list.push_back( Vector( 1.0, 0.0, 0.0) );
-	list.push_back( Vector( 0.0, 1.0, 1.0) );
-        return list;
+	  std::list<Vector> list;
+	  list.push_back( Vector( 0.0, 2.0, 1.0) );
+	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 1.0) );
+	  list.push_back( Vector( 0.0, 1.0, 1.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 1.0) );
+      return list;
     }
 
     static std::list<Vector> i()
@@ -440,69 +450,211 @@ private:
 
     static std::list<Vector> v()
     {
-        std::list<Vector> list;
-        list.push_back( Vector( 0.0, 1.0, 1.0) );
-	list.push_back( Vector( 0.0, 1.0, 0.0) );
-	list.push_back( Vector( 0.5, 0.0, 0.0) );
-	list.push_back( Vector( 1.0, 1.0, 0.0) );
-	list.push_back( Vector( 1.0, 1.0, 1.0) );
-        return list;
+	  std::list<Vector> list;
+	  list.push_back( Vector( 0.0, 1.0, 1.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 0.5, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 1.0) );
+	  return list;
     }
 
     static std::list<Vector> w()
     {
-        std::list<Vector> list;
-        list.push_back( Vector( 0.0, 1.0, 1.0) );
-	list.push_back( Vector( 0.0, 1.0, 0.0) );
-	list.push_back( Vector( 0.25, 0.0, 0.0) );
-	list.push_back( Vector( 0.5, 1.0, 0.0) );
-	list.push_back( Vector( 0.75, 0.0, 0.0) );
-	list.push_back( Vector( 1.0, 1.0, 0.0) );
-	list.push_back( Vector( 1.0, 1.0, 1.0) );
-        return list;
+      std::list<Vector> list;
+      list.push_back( Vector( 0.0, 1.0, 1.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 0.25, 0.0, 0.0) );
+	  list.push_back( Vector( 0.5, 1.0, 0.0) );
+	  list.push_back( Vector( 0.75, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 1.0) );
+      return list;
     }
 
     static std::list<Vector> x()
     {
-        std::list<Vector> list;
-        list.push_back( Vector( 0.0, 1.0, 1.0) );
-	list.push_back( Vector( 0.0, 1.0, 0.0) );
-	list.push_back( Vector( 1.0, 0.0, 0.0) );
-	list.push_back( Vector( 1.0, 0.0, 1.0) );
-	list.push_back( Vector( 0.0, 0.0, 1.0) );
-	list.push_back( Vector( 0.0, 0.0, 0.0) );
-	list.push_back( Vector( 1.0, 1.0, 0.0) );
-	list.push_back( Vector( 1.0, 1.0, 1.0) );
-        return list;
+      std::list<Vector> list;
+      list.push_back( Vector( 0.0, 1.0, 1.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 1.0) );
+	  list.push_back( Vector( 0.0, 0.0, 1.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 1.0) );
+	  return list;
     }
 
     static std::list<Vector> y()
     {
-        std::list<Vector> list;
-	list.push_back( Vector( 0.0, 1.0, 1.0) );
-	list.push_back( Vector( 0.0, 1.0, 0.0) );
-	list.push_back( Vector( 0.0, 0.0, 0.0) );
-	list.push_back( Vector( 1.0, 0.0, 0.0) );
-	list.push_back( Vector( 1.0, 0.0, 1.0) );
-	list.push_back( Vector( 0.0,-1.0, 1.0) );
-	list.push_back( Vector( 0.0,-1.0, 0.0) );
-	list.push_back( Vector( 1.0,-1.0, 0.0) );
-	list.push_back( Vector( 1.0, 1.0, 0.0) );		
-	list.push_back( Vector( 1.0, 1.0, 1.0) );
-        return list;
+      std::list<Vector> list;
+	  list.push_back( Vector( 0.0, 1.0, 1.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 1.0) );
+	  list.push_back( Vector( 0.0,-1.0, 1.0) );
+	  list.push_back( Vector( 0.0,-1.0, 0.0) );
+	  list.push_back( Vector( 1.0,-1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );		
+	  list.push_back( Vector( 1.0, 1.0, 1.0) );
+      return list;
     }
 
     static std::list<Vector> z()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.0, 1.0, 1.0) );
-	list.push_back( Vector( 0.0, 1.0, 0.0) );
-	list.push_back( Vector( 1.0, 1.0, 0.0) );
-	list.push_back( Vector( 0.0, 0.0, 0.0) );
-	list.push_back( Vector( 1.0, 0.0, 0.0) );
-	list.push_back( Vector( 1.0, 0.0, 1.0) );
+		list.push_back( Vector( 0.0, 1.0, 0.0) );
+		list.push_back( Vector( 1.0, 1.0, 0.0) );
+		list.push_back( Vector( 0.0, 0.0, 0.0) );
+		list.push_back( Vector( 1.0, 0.0, 0.0) );
+		list.push_back( Vector( 1.0, 0.0, 1.0) );
         return list;
     }
+    
+    static std::list<Vector> zero()
+    {
+	  std::list<Vector> list;
+	  list.push_back( Vector( 1.0, 0.0, 1.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 1.0) );
+	  list.push_back( Vector( 0.5, 1.5, 1.0) );
+	  list.push_back( Vector( 0.5, 1.5, 0.0) );
+	  list.push_back( Vector( 0.5, 0.5, 0.0) );
+	  list.push_back( Vector( 0.5, 0.5, 1.0) );
+	  return list;
+    }
+    
+    static std::list<Vector> one()
+    {
+	  std::list<Vector> list;
+	  list.push_back( Vector( 0.5, 1.5, 1.0) );
+	  list.push_back( Vector( 0.5, 1.5, 0.0) );
+	  list.push_back( Vector( 1.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 1.0) );
+	  return list;
+    }
+    
+    static std::list<Vector> two()
+    {
+	  std::list<Vector> list;
+	  list.push_back( Vector( 0.0, 1.5, 1.0) );
+	  list.push_back( Vector( 0.0, 1.5, 0.0) );
+	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 1.0) );
+	  return list;
+    }
+    
+    static std::list<Vector> three()
+    {
+	  std::list<Vector> list;
+	  list.push_back( Vector( 0.0, 2.0, 1.0) );
+	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 1.0) );
+	  list.push_back( Vector( 0.0, 1.0, 1.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 1.0) );
+	  return list;
+    }
+    
+    static std::list<Vector> four()
+    {
+	  std::list<Vector> list;
+	  list.push_back( Vector( 0.0, 2.0, 1.0) );
+	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 0.0, 1.0, 1.0) );
+	  list.push_back( Vector( 1.0, 2.0, 1.0) );
+	  list.push_back( Vector( 1.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 1.0) );
+	  return list;
+    }
+    
+    static std::list<Vector> five()
+    {
+	  std::list<Vector> list;
+	  list.push_back( Vector( 1.0, 2.0, 1.0) );
+	  list.push_back( Vector( 1.0, 2.0, 0.0) );
+	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 1.0) );
+	  return list;
+    }
+    
+    static std::list<Vector> six()
+    {
+	  std::list<Vector> list;
+	  list.push_back( Vector( 0.0, 2.0, 1.0) );
+	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 0.0, 1.0, 1.0) );
+	  return list;
+    }
+    
+    static std::list<Vector> seven()
+    {
+	  std::list<Vector> list;
+	  list.push_back( Vector( 0.0, 2.0, 1.0) );
+	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 2.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 1.0) );
+	  return list;
+    }
+    
+    static std::list<Vector> eight()
+    {
+	  std::list<Vector> list;
+	  list.push_back( Vector( 1.0, 2.0, 1.0) );
+	  list.push_back( Vector( 1.0, 2.0, 0.0) );
+	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 2.0, 1.0) );
+	  return list;
+    }
+    
+    static std::list<Vector> nine()#
+    {
+	  std::list<Vector> list;
+	  list.push_back( Vector( 1.0, 1.0, 1.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 0.0, 1.0, 0.0) );
+	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 1.0) );
+	  return list;
+    }
+    
     
     static std::list<Vector> space()
     {
@@ -513,15 +665,15 @@ private:
     
     static std::list<Vector> square()
     {
-	 std::list<Vector> list;
-	 list.push_back( Vector( 1.0, 0.0, 1.0) );
-	 list.push_back( Vector( 1.0, 0.0, 0.0) );
-	 list.push_back( Vector( 0.0, 0.0, 0.0) );
-	 list.push_back( Vector( 0.0, 2.0, 0.0) );
-	 list.push_back( Vector( 1.0, 2.0, 0.0) );
-	 list.push_back( Vector( 1.0, 0.0, 0.0) );
-	 list.push_back( Vector( 1.0, 0.0, 1.0) );
-	 return list;
+	  std::list<Vector> list;
+	  list.push_back( Vector( 1.0, 0.0, 1.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
+	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 2.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 0.0) );
+	  list.push_back( Vector( 1.0, 0.0, 1.0) );
+	  return list;
     }
 };
 #endif // TEXT_H

@@ -82,7 +82,7 @@ void mainGUI::writeText()
     Vector basePoint	( ui->leBaseVectorX->text().toDouble(), ui->leBaseVectorY->text().toDouble(), 	ui->leBaseVectorZ->text().toDouble());
     Vector xPoint	( ui->leXVectorX->text().toDouble(), 	ui->leXVectorY->text().toDouble(), 	ui->leXVectorZ->text().toDouble());
     
-    Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint);
+    Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint, ui->checkBoxInvertX->isChecked(), ui->checkBoxInvertY->isChecked(), ui->checkBoxInvertZ->isChecked());
     Vector target = coordinateSystem * Vector(1,0,0);
      
     Text::writeTextWithWordWrap( 
@@ -102,7 +102,8 @@ void mainGUI::writeText()
 
 void mainGUI::moveToBaseVector()
 {
-    this->robot->moveTo(Vector(	ui->leBaseVectorX->text().toDouble(),
+    this->robot->goHome();
+    this->robot->moveLinearTo(Vector(	ui->leBaseVectorX->text().toDouble(),
 				ui->leBaseVectorY->text().toDouble(),
 				ui->leBaseVectorZ->text().toDouble()), 
 				ui->leAngleA->text().toDouble(), 
@@ -112,7 +113,8 @@ void mainGUI::moveToBaseVector()
 
 void mainGUI::moveToXVector()
 {
-     this->robot->moveTo(Vector(ui->leXVectorX->text().toDouble(),
+     this->robot->goHome();
+     this->robot->moveLinearTo(Vector(ui->leXVectorX->text().toDouble(),
 				ui->leXVectorY->text().toDouble(),
 				ui->leXVectorZ->text().toDouble()), 
 				ui->leAngleA->text().toDouble(), 
@@ -123,7 +125,8 @@ void mainGUI::moveToXVector()
 
 void mainGUI::moveToYVector()
 {
-      this->robot->moveTo(Vector( ui->leYVectorX->text().toDouble(),
+      this->robot->goHome();
+      this->robot->moveLinearTo(Vector( ui->leYVectorX->text().toDouble(),
 				  ui->leYVectorY->text().toDouble(),
 				  ui->leYVectorZ->text().toDouble()), 
 				  ui->leAngleA->text().toDouble(), 
@@ -192,7 +195,7 @@ void mainGUI::cleanBoard()
     Vector basePoint	( ui->leBaseVectorX->text().toDouble(), ui->leBaseVectorY->text().toDouble(), 	ui->leBaseVectorZ->text().toDouble());
     Vector xPoint	( ui->leXVectorX   ->text().toDouble(), ui->leXVectorY   ->text().toDouble(), 	ui->leXVectorZ   ->text().toDouble());
     
-    Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint);
+    Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint, ui->checkBoxInvertX->isChecked(), ui->checkBoxInvertY->isChecked(), ui->checkBoxInvertZ->isChecked());
     Vector target = coordinateSystem * Vector(1,0,0);
     
     QStringList linesOfText = ui->txtEditTextToWrite->toPlainText().split("\n");
@@ -206,7 +209,7 @@ void mainGUI::cleanBoard()
       }
     }
      
-    Text::cleanBoard( 
+    Text::cleanBoard(  
 		  this->robot, 
 		  coordinateSystem, 
 		  yPoint, 
@@ -223,7 +226,7 @@ void mainGUI::cleanBoard()
 
 void mainGUI::resetRobot()
 {
-   this->robot->reset();
+  this->robot->reset();
 }
 
 void mainGUI::abortTransmission()

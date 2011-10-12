@@ -57,16 +57,39 @@ class Robot
         }
         
         void moveTo(Vector positionToMoveTo, float64 a, float64 b)
-		{
-                  _robotPort->sendCommand
-		  ( 
-			"MP " + dataToString(positionToMoveTo.x) + 
-                        ","   + dataToString(positionToMoveTo.y) +
-                        ","   + dataToString(positionToMoveTo.z) +
-                        ","   + dataToString(a) +
-                        ","   + dataToString(b)
-		  );
-		}
+	{
+	  _robotPort->sendCommand
+	  ( 
+		"MP " + dataToString(positionToMoveTo.x) + 
+		","   + dataToString(positionToMoveTo.y) +
+		","   + dataToString(positionToMoveTo.z) +
+		","   + dataToString(a) +
+		","   + dataToString(b)
+	  );
+	}
+	
+	void moveLinearTo(Vector positionToMoveTo, float64 a, float64 b)
+	{
+	  moveTo(positionToMoveTo, a, b);
+	  return;
+	  
+	  _robotPort->sendCommand
+	  ( 
+		std::string("MPB ") + 
+		std::string("300, ") + //speed in mm per second (0 to 32765)
+		std::string("0, "  ) + //timer
+		std::string("0, "  ) + //output 1
+		std::string("0, "  ) + //output 2
+		std::string("0, "  ) + //input 1
+		std::string("0, "  ) + //input 2
+		std::string("1, "  ) + //interpolation			
+		std::string(""     ) + dataToString(positionToMoveTo.x) + 
+		std::string(", "   ) + dataToString(positionToMoveTo.y) +
+		std::string(", "   ) + dataToString(positionToMoveTo.z) +
+		std::string(", "   ) + dataToString(a) +
+		std::string(", "   ) + dataToString(b)
+	  );
+	}
 
         void moveRelative(Vector positionToMoveTo)
                 {

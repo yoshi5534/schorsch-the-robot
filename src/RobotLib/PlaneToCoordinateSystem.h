@@ -12,24 +12,28 @@ public:
     {
       Vector normalizedXVector =  xVector.getNormalized();
       Vector normalizedYVector =  yVector.getNormalized();
-      Vector normalizedZVector;
-      Vector correctedXVector;
       
-      normalizedZVector = (normalizedXVector.crossProduct( normalizedYVector)).getNormalized();
+      Vector normalizedZVector = (normalizedXVector.crossProduct( normalizedYVector)).getNormalized();
       //we are not sure if xVector and yVector are orthogonal to each other so we define an new helper vector which is orthogonal
-      correctedXVector = normalizedYVector.crossProduct(normalizedZVector).getNormalized();
+      Vector correctedYVector = normalizedZVector.crossProduct(normalizedXVector).getNormalized() ;
 
       if(invertX)
-	correctedXVector *= -1;
+      {
+	normalizedXVector *= -1;
+      }
       
       if(invertY)
-	normalizedYVector *= -1;
+      {
+	correctedYVector *= -1;
+      }
       
       if(invertZ)
+      {
 	normalizedZVector *= -1;
+      }
       
-      Matrix matrix( correctedXVector .x, correctedXVector .y, correctedXVector .z,
-		     normalizedYVector.x, normalizedYVector.y, normalizedYVector.z,
+      Matrix matrix( normalizedXVector.x, normalizedXVector.y, normalizedXVector.z,
+		     correctedYVector .x, correctedYVector .y, correctedYVector .z,
 		     normalizedZVector.x, normalizedZVector.y, normalizedZVector.z);
       
       return matrix;      

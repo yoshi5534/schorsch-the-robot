@@ -199,41 +199,38 @@
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QGroupBox" name="groupBox">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
           <property name="title">
            <string>Tool Settings</string>
           </property>
-          <widget class="QWidget" name="">
-           <layout class="QFormLayout" name="formLayout">
-            <item row="0" column="0">
-             <widget class="QLabel" name="angleALabel">
-              <property name="text">
-               <string>Angle A</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="leAngleA"/>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="angleBLabel">
-              <property name="text">
-               <string>Angle B</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLineEdit" name="leAngleB"/>
-            </item>
-           </layout>
-          </widget>
-          <zorder>groupBox_2</zorder>
-          <zorder>groupBox_2</zorder>
+          <layout class="QFormLayout" name="formLayout_2">
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::ExpandingFieldsGrow</enum>
+           </property>
+           <item row="0" column="0">
+            <layout class="QFormLayout" name="formLayout">
+             <item row="0" column="0">
+              <widget class="QLabel" name="angleALabel">
+               <property name="text">
+                <string>Angle A</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="leAngleA"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="angleBLabel">
+               <property name="text">
+                <string>Angle B</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="leAngleB"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
           <zorder>dial</zorder>
          </widget>
         </item>
@@ -318,6 +315,9 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
+            <widget class="QListView" name="listView"/>
+           </item>
+           <item>
             <widget class="QLabel" name="label">
              <property name="text">
               <string>TextLabel</string>
@@ -335,9 +335,6 @@
             </widget>
            </item>
           </layout>
-         </item>
-         <item>
-          <widget class="QListView" name="listView"/>
          </item>
         </layout>
        </widget>

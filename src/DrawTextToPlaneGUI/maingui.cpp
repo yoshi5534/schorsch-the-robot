@@ -8,6 +8,8 @@
 #include "../RobotLib/Text.h"
 #include "../RobotLib/PlaneToCoordinateSystem.h"
 #include "../RobotLib/Where.h"
+
+
 mainGUI::mainGUI(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::mainGUI)
@@ -22,8 +24,10 @@ mainGUI::mainGUI(QWidget *parent) :
     ui->leYVectorX->setValidator(new QDoubleValidator(this));
     ui->leYVectorY->setValidator(new QDoubleValidator(this));
     ui->leYVectorZ->setValidator(new QDoubleValidator(this));
-    ui->leAngleA->setValidator(new QDoubleValidator(this));
-    ui->leAngleB->setValidator(new QDoubleValidator(this));
+    ui->leAngleMarkerA->setValidator(new QDoubleValidator(this));
+    ui->leAngleMarkerB->setValidator(new QDoubleValidator(this));
+    ui->leAngleEraserA->setValidator(new QDoubleValidator(this));
+    ui->leAngleEraserB->setValidator(new QDoubleValidator(this));
     
     this->robot = new Robot("/dev/ttyS0", 750000);
     this->robot->getPort()->setLiveCommandMode(false);
@@ -75,6 +79,21 @@ void mainGUI::defineBaseVector()
     ui->leBaseVectorY->setText(QString::number(where.y));
     ui->leBaseVectorZ->setText(QString::number(where.z));  
 }
+
+ void mainGUI::defineMarker()
+ {
+    Where where(robot);
+    ui->leAngleMarkerA->setText(QString::number(where.a));
+    ui->leAngleMarkerB->setText(QString::number(where.b));
+}
+ 
+ 
+void mainGUI::defineEraser()
+{
+    Where where(robot);
+    ui->leAngleEraserA->setText(QString::number(where.a));
+    ui->leAngleEraserB->setText(QString::number(where.b));
+}
     
 void mainGUI::writeText()
 {  
@@ -82,7 +101,7 @@ void mainGUI::writeText()
     Vector basePoint	( ui->leBaseVectorX->text().toDouble(), ui->leBaseVectorY->text().toDouble(), 	ui->leBaseVectorZ->text().toDouble());
     Vector xPoint	( ui->leXVectorX->text().toDouble(), 	ui->leXVectorY->text().toDouble(), 	ui->leXVectorZ->text().toDouble());
     
-    Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint);
+    Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint, ui->checkBoxInvertX->isChecked(), ui->checkBoxInvertY->isChecked(), ui->checkBoxInvertZ->isChecked());
     Vector target = coordinateSystem * Vector(1,0,0);
      
     Text::writeTextWithWordWrap( 
@@ -90,43 +109,47 @@ void mainGUI::writeText()
 				std::string(ui->txtEditTextToWrite->toPlainText().toStdString()), 
 				coordinateSystem, 
 				yPoint, 
-				ui->leAngleA->text().toDouble(),				
-				ui->leAngleB->text().toDouble(),
+				ui->leAngleMarkerA->text().toDouble(),
+				ui->leAngleMarkerB->text().toDouble(),
 				20.0,
-				10
+				25
 				);     
     
+    this->robot->goHome();
     this->robot->getPort()->executeQuedCommands();
 }
 
 void mainGUI::moveToBaseVector()
 {
-    this->robot->moveTo(Vector(	ui->leBaseVectorX->text().toDouble(),
+    //this->robot->goHome();
+    this->robot->moveLinearTo(Vector(	ui->leBaseVectorX->text().toDouble(),
 				ui->leBaseVectorY->text().toDouble(),
 				ui->leBaseVectorZ->text().toDouble()), 
-				ui->leAngleA->text().toDouble(), 
-				ui->leAngleB->text().toDouble());
+				ui->leAngleMarkerA->text().toDouble(), 
+				ui->leAngleMarkerB->text().toDouble());
     this->robot->getPort()->executeQuedCommands();    
 }
 
 void mainGUI::moveToXVector()
 {
-     this->robot->moveTo(Vector(ui->leXVectorX->text().toDouble(),
+     //this->robot->goHome();
+     this->robot->moveLinearTo(Vector(ui->leXVectorX->text().toDouble(),
 				ui->leXVectorY->text().toDouble(),
 				ui->leXVectorZ->text().toDouble()), 
-				ui->leAngleA->text().toDouble(), 
-				ui->leAngleB->text().toDouble()); 
+				ui->leAngleMarkerA->text().toDouble(), 
+				ui->leAngleMarkerB->text().toDouble()); 
      this->robot->getPort()->executeQuedCommands();     
 }
 
 
 void mainGUI::moveToYVector()
 {
-      this->robot->moveTo(Vector( ui->leYVectorX->text().toDouble(),
+      //this->robot->goHome();
+      this->robot->moveLinearTo(Vector( ui->leYVectorX->text().toDouble(),
 				  ui->leYVectorY->text().toDouble(),
 				  ui->leYVectorZ->text().toDouble()), 
-				  ui->leAngleA->text().toDouble(), 
-				  ui->leAngleB->text().toDouble());
+				  ui->leAngleMarkerA->text().toDouble(), 
+				  ui->leAngleMarkerB->text().toDouble());
      this->robot->getPort()->executeQuedCommands();
   
 }
@@ -148,8 +171,14 @@ void mainGUI::saveConfiguration()
 	    << std::endl << ui->leXVectorX->text().toDouble() 
 	    << std::endl << ui->leXVectorY->text().toDouble() 
 	    << std::endl << ui->leXVectorZ->text().toDouble()
-	    << std::endl << ui->leAngleA->text().toDouble()
-	    << std::endl << ui->leAngleB->text().toDouble(); 
+	    << std::endl << ui->leAngleMarkerA->text().toDouble()
+	    << std::endl << ui->leAngleMarkerB->text().toDouble()
+	    << std::endl << ui->leAngleEraserA->text().toDouble()
+	    << std::endl << ui->leAngleEraserB->text().toDouble()
+	    << std::endl << ui->speedSpinBox->text().toStdString()
+	    << std::endl << ui->checkBoxInvertX->isChecked()
+	    << std::endl << ui->checkBoxInvertY->isChecked()
+	    << std::endl << ui->checkBoxInvertZ->isChecked();    
   }
 	  
     stream.close();  
@@ -180,22 +209,100 @@ void mainGUI::loadConfiguration()
     stream >> value;
     ui->leXVectorZ->setText(QString::fromStdString(value));
     stream >> value;
-    ui->leAngleA->setText(QString::fromStdString(value));
+    ui->leAngleMarkerA->setText(QString::fromStdString(value));
     stream >> value;
-    ui->leAngleB->setText(QString::fromStdString(value));	                               
+    ui->leAngleMarkerB->setText(QString::fromStdString(value));	
+    stream >> value;
+    ui->leAngleEraserA->setText(QString::fromStdString(value));
+    stream >> value;
+    ui->leAngleEraserB->setText(QString::fromStdString(value));
+    stream >> value;
+    ui->speedSpinBox->setValue(stringToData<int32>(value));
+    stream >> value;
+    if(value == "1")
+    {
+      ui->checkBoxInvertX->setChecked( true );
+    }
+    else
+    {
+      ui->checkBoxInvertX->setChecked( false );
+    }
+    stream >> value;
+    if(value == "1")
+    {
+      ui->checkBoxInvertY->setChecked( true );
+    }
+    else
+    {
+      ui->checkBoxInvertY->setChecked( false );
+    }
+    stream >> value;
+    if(value == "1")
+    {
+      ui->checkBoxInvertZ->setChecked( true );
+    }
+    else
+    {
+      ui->checkBoxInvertZ->setChecked( false );
+    }
 }
 
 void mainGUI::cleanBoard()
 {
-  
+    Vector yPoint	( ui->leYVectorX   ->text().toDouble(), ui->leYVectorY   ->text().toDouble(), 	ui->leYVectorZ   ->text().toDouble());
+    Vector basePoint	( ui->leBaseVectorX->text().toDouble(), ui->leBaseVectorY->text().toDouble(), 	ui->leBaseVectorZ->text().toDouble());
+    Vector xPoint	( ui->leXVectorX   ->text().toDouble(), ui->leXVectorY   ->text().toDouble(), 	ui->leXVectorZ   ->text().toDouble());
+    
+    Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint, ui->checkBoxInvertX->isChecked(), ui->checkBoxInvertY->isChecked(), ui->checkBoxInvertZ->isChecked());
+    Vector target = coordinateSystem * Vector(1,0,0);
+    
+    QStringList linesOfText = ui->txtEditTextToWrite->toPlainText().split("\n");
+    uint64 longestLine = 0;
+    QString currentLine;
+    foreach( currentLine, linesOfText)
+    {
+      if( currentLine.size() > longestLine )
+      {
+	longestLine = currentLine.size();
+      }
+    }
+     
+    Text::cleanBoard(
+		  this->robot, 
+		  coordinateSystem, 
+		  yPoint,   
+		  //ui->leAngleEraserA->text().toDouble(),
+		  //ui->leAngleEraserB->text().toDouble(),
+		  60.0,
+		  60.0,
+		  20.0,
+		  60.0,
+		  20.0,
+		  longestLine,
+		  linesOfText.size()
+		);     
+
+    this->robot->goHome();
+    this->robot->getPort()->executeQuedCommands();
 }
 
 void mainGUI::resetRobot()
 {
-   this->robot->reset();
+  this->robot->reset();
 }
 
 void mainGUI::abortTransmission()
 {
    this->robot->getPort()->abortDataTransmission();
+}
+
+void mainGUI::goHome()
+{
+  this->robot->goHome();
+  this->robot->getPort()->executeQuedCommands();    
+}
+
+void mainGUI::speedChanged(int newSpeed)
+{
+  this->robot->speed(newSpeed);
 }

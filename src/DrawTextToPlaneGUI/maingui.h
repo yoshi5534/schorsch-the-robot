@@ -25,7 +25,9 @@ public slots:
     void writeText();   
     void defineYVector();
     void defineXVector();
-    void defineBaseVector(); 
+    void defineBaseVector();
+    void defineMarker();
+    void defineEraser();
     void loadConfiguration();
     void saveConfiguration();
     void moveToBaseVector();
@@ -34,7 +36,8 @@ public slots:
     void cleanBoard();
     void resetRobot();
     void abortTransmission();
-
+    void goHome();
+    void speedChanged(int);
 };
 
 #endif // MAINGUI_H

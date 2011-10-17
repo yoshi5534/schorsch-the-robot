@@ -10,6 +10,27 @@
 
 class Text
 {
+    private:
+       static Vector getSavePositionOfCurrentCharacter
+      (
+	Matrix boardCoordinateSystem,
+	Vector originOfBoardCoordinateSystem,
+	Vector lineTranslationVector,
+        Vector characterTranslationVector,
+        Vector savePositionOffestVector,
+	float64 textSizeInMillimeter,
+        uint64 currentLine,
+	uint64 currentCharacterInLine
+      )
+      {
+	 //before we move to the next line we will add some room between the marker and the board
+	Vector currentLineVector = lineTranslationVector * currentLine;
+	Vector currentCharacterInLineVector = characterTranslationVector * currentCharacterInLine;
+	
+	Vector savePositionOfCurrentCharacterVector = boardCoordinateSystem * ((currentLineVector + currentCharacterInLineVector + savePositionOffestVector) * textSizeInMillimeter) + originOfBoardCoordinateSystem;
+	return savePositionOfCurrentCharacterVector;
+      }
+      
     public:
       static void writeText
       ( 	
@@ -25,114 +46,220 @@ class Text
 	writeTextWithWordWrap( robot, stringToParse, targetCoordinateSystem, originOfCoordinateSystem, angleA, angleB, textSizeInMilimeter, std::numeric_limits< uint64>::max());
       }
       
+      
       static void writeTextWithWordWrap
       ( 
 	Robot* robot, 
 	const std::string stringToParse, 
-	Matrix targetCoordinateSystem, 
-	Vector originOfCoordinateSystem, 
+	Matrix boardCoordinateSystem, 
+	Vector originOfBoardCoordinateSystem, 
 	float64 angleA,
 	float64 angleB,
 	float64 textSizeInMillimeter,
 	uint64 countOfCharactersPerLine
       )
       {
-	  Vector characterTranslationVector(1.3,0,0);
-	  
 	  Vector lineTranslationVector(0,-2.5,0);
-	  uint64 currentLine = 0;
+	  Vector characterTranslationVector(1.3,0,0);	  
+	  Vector savePositionOffestVector(0,0,7);
 	  
-	  Vector currentTranslationVector = originOfCoordinateSystem;
+	  uint64 currentLine = 1;
+	  uint64 currentCharacterInLine = 0;	  
+	  Vector originOfCurrentLineVector = lineTranslationVector;
 	  
-	  for(size_t index = 0; index < stringToParse.length(); index++)
 	  {
-	      std::list<Vector> sourceCoordinateMoveList;
-	      switch(stringToParse[index])
+	    Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem, 
+											    originOfBoardCoordinateSystem, 
+											    lineTranslationVector, 
+											    characterTranslationVector,
+											    savePositionOffestVector,
+											    textSizeInMillimeter,
+											    currentLine, 
+											    currentCharacterInLine);
+	      robot->moveTo( savePositionOfCurrentCharacterVector, angleA, angleB );
+	  }
+	  
+	  
+	  for(size_t currentCharacterIndex = 0; currentCharacterIndex < stringToParse.length(); currentCharacterIndex++)
+	  {
+	      currentCharacterInLine++;
+	      std::list<Vector> characterMoveList;
+	      switch(stringToParse[currentCharacterIndex])
 	      {
-		case 'a': sourceCoordinateMoveList = a(); break;
-		case 'b': sourceCoordinateMoveList = b(); break;
-		case 'c': sourceCoordinateMoveList = c(); break;
-		case 'd': sourceCoordinateMoveList = d(); break;
-		case 'e': sourceCoordinateMoveList = e(); break;
-		case 'f': sourceCoordinateMoveList = f(); break;
-		case 'g': sourceCoordinateMoveList = g(); break;
-		case 'h': sourceCoordinateMoveList = h(); break;
-		case 'i': sourceCoordinateMoveList = i(); break;
-		case 'j': sourceCoordinateMoveList = j(); break;
-		case 'k': sourceCoordinateMoveList = k(); break;
-		case 'l': sourceCoordinateMoveList = l(); break;
-		case 'm': sourceCoordinateMoveList = m(); break;
-		case 'n': sourceCoordinateMoveList = n(); break;
-		case 'o': sourceCoordinateMoveList = o(); break;
-		case 'p': sourceCoordinateMoveList = p(); break;
-		case 'q': sourceCoordinateMoveList = q(); break;
-		case 'r': sourceCoordinateMoveList = r(); break;
-		case 's': sourceCoordinateMoveList = s(); break;
-		case 't': sourceCoordinateMoveList = t(); break;
-		case 'u': sourceCoordinateMoveList = u(); break;
-		case 'v': sourceCoordinateMoveList = v(); break;
-		case 'w': sourceCoordinateMoveList = w(); break;
-		case 'x': sourceCoordinateMoveList = x(); break;
-		case 'y': sourceCoordinateMoveList = y(); break;
-		case 'z': sourceCoordinateMoveList = z(); break;
-		case '0': sourceCoordinateMoveList = null(); break;
-		case '1': sourceCoordinateMoveList = one(); break;
-		case '2': sourceCoordinateMoveList = two(); break;
-		case '3': sourceCoordinateMoveList = three(); break;
-		case '4': sourceCoordinateMoveList = four(); break;
-		case '5': sourceCoordinateMoveList = five(); break;
-		case '6': sourceCoordinateMoveList = six(); break;
-		case '7': sourceCoordinateMoveList = seven(); break;
-		case '8': sourceCoordinateMoveList = eight(); break;
-		case '9': sourceCoordinateMoveList = nine(); break;
-		case ' ': sourceCoordinateMoveList = space(); break;
-		case '+': sourceCoordinateMoveList = plus(); break;
-		case '-': sourceCoordinateMoveList = minus(); break;
-		case '/': sourceCoordinateMoveList = slash(); break;
-		case '*': sourceCoordinateMoveList = asterisk(); break;
-		case '?': sourceCoordinateMoveList = questionmark(); break;
-		case '!': sourceCoordinateMoveList = exclamationmark(); break;
-		case '\'':sourceCoordinateMoveList = singlequotationmark(); break;
-		case '"': sourceCoordinateMoveList = doublequotationmark(); break;
-		case ':': sourceCoordinateMoveList = colon(); break;
-		case ';': sourceCoordinateMoveList = semicolon(); break;
-		case '=': sourceCoordinateMoveList = equal(); break;
-		case '>': sourceCoordinateMoveList = greater(); break;
-		case '<': sourceCoordinateMoveList = smaller(); break;
-		case '(': sourceCoordinateMoveList = openbracket(); break;
-		case ')': sourceCoordinateMoveList = closedbracket(); break;
-		case '|': sourceCoordinateMoveList = pipe(); break;
+		case 'a': characterMoveList = a(); break;
+		case 'b': characterMoveList = b(); break;
+		case 'c': characterMoveList = c(); break;
+		case 'd': characterMoveList = d(); break;
+		case 'e': characterMoveList = e(); break;
+		case 'f': characterMoveList = f(); break;
+		case 'g': characterMoveList = g(); break;
+		case 'h': characterMoveList = h(); break;
+		case 'i': characterMoveList = i(); break;
+		case 'j': characterMoveList = j(); break;
+		case 'k': characterMoveList = k(); break;
+		case 'l': characterMoveList = l(); break;
+		case 'm': characterMoveList = m(); break;
+		case 'n': characterMoveList = n(); break;
+		case 'o': characterMoveList = o(); break;
+		case 'p': characterMoveList = p(); break;
+		case 'q': characterMoveList = q(); break;
+		case 'r': characterMoveList = r(); break;
+		case 's': characterMoveList = s(); break;
+		case 't': characterMoveList = t(); break;
+		case 'u': characterMoveList = u(); break;
+		case 'v': characterMoveList = v(); break;
+		case 'w': characterMoveList = w(); break;
+		case 'x': characterMoveList = x(); break;
+		case 'y': characterMoveList = y(); break;
+		case 'z': characterMoveList = z(); break;
+		case '0': characterMoveList = zero (); break;
+		case '1': characterMoveList = one  (); break;
+		case '2': characterMoveList = two  (); break;
+		case '3': characterMoveList = three(); break;
+		case '4': characterMoveList = four (); break;
+		case '5': characterMoveList = five (); break;
+		case '6': characterMoveList = six  (); break;
+		case '7': characterMoveList = seven(); break;
+		case '8': characterMoveList = eight(); break;
+		case '9': characterMoveList = nine (); break;
+		case '+': characterMoveList = plus(); break;
+		case '-': characterMoveList = minus(); break;
+		case '/': characterMoveList = slash(); break;
+		case '*': characterMoveList = asterisk(); break;
+		case '?': characterMoveList = questionmark(); break;
+		case '!': characterMoveList = exclamationmark(); break;
+		case '\'':characterMoveList = singlequotationmark(); break;
+		case '"': characterMoveList = doublequotationmark(); break;
+		case ':': characterMoveList = colon(); break;
+		case ';': characterMoveList = semicolon(); break;
+		case '=': characterMoveList = equal(); break;
+		case '>': characterMoveList = greater(); break;
+		case '<': characterMoveList = smaller(); break;
+		case '(': characterMoveList = openbracket(); break;
+		case ')': characterMoveList = closedbracket(); break;
+		case '|': characterMoveList = pipe(); break;
+		case ' ': characterMoveList = space(); break;		
 		case '\n': break;
-		default: sourceCoordinateMoveList = square(); break;
+		default: characterMoveList = square(); break;
 	      }
 	      
 	      //do we need an newline?
-	      if( index > (countOfCharactersPerLine * (currentLine + 1)) - 1 || stringToParse[index] == '\n')
+	      if( currentCharacterInLine == countOfCharactersPerLine || stringToParse[currentCharacterIndex] == '\n')
 	      {
+		 //before we move to the next line we will add some room between the marker and the board
+		 { 
+		    Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem, 
+												    originOfBoardCoordinateSystem, 
+												    lineTranslationVector, 
+												    characterTranslationVector,
+												    savePositionOffestVector,
+												    textSizeInMillimeter,
+												    currentLine, 
+												    currentCharacterInLine);
+		    robot->moveTo( savePositionOfCurrentCharacterVector, angleA, angleB );
+		}
+		  
+		  
+		  currentCharacterInLine = 0;
 		  currentLine++;
-		  currentTranslationVector = originOfCoordinateSystem + targetCoordinateSystem * (lineTranslationVector * currentLine * textSizeInMillimeter); 
-		  if(stringToParse[index] == ' ')
-		  {
-		      continue; // no spaces at the begin of a line
-		  }
-		
-		  //add an artificaial offest to not draw an line between the last character of the current line and the first character of the next line
-		  sourceCoordinateMoveList.push_front( Vector( 0.0, 0.0, 5.0));
+		  originOfCurrentLineVector = lineTranslationVector * currentLine; 
 	      }	 
 	      
-	      currentTranslationVector += targetCoordinateSystem * (characterTranslationVector * textSizeInMillimeter);
+	      Vector originOfCurrentCharacterVector = originOfCurrentLineVector + (characterTranslationVector * currentCharacterInLine);
 	      
-	      for(std::list<Vector>::iterator it = sourceCoordinateMoveList.begin(); it != sourceCoordinateMoveList.end(); it++)
+	      for(std::list<Vector>::iterator it = characterMoveList.begin(); it != characterMoveList.end(); it++)
 	      {
-		  Vector sourceVector = (*it)*textSizeInMillimeter; // Text size in mm
-		  Vector sourceVectorInTargetCoordinateSystem = targetCoordinateSystem * sourceVector;		  
-		  
-		  Vector targetVector = sourceVectorInTargetCoordinateSystem + currentTranslationVector;		  
-		  robot->moveTo(targetVector, angleA, angleB);
-
+		  Vector targetVector = originOfCurrentCharacterVector + (*it);		  
+		  robot->moveLinearTo(boardCoordinateSystem * (targetVector * textSizeInMillimeter) + originOfBoardCoordinateSystem, angleA, angleB);
 	      }	      
 	  }
+   
+	  //before we end the text drawing we will add some room between the marker and the board because the next statement might lead to an collision with the board	
+	  {
+	    Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem, 
+											    originOfBoardCoordinateSystem, 
+											    lineTranslationVector, 
+											    characterTranslationVector,
+											    savePositionOffestVector,
+											    textSizeInMillimeter,
+											    currentLine, 
+											    currentCharacterInLine);
+	    robot->moveTo( savePositionOfCurrentCharacterVector, angleA, angleB );
+	  }
+	
+	  
+	  
+      }  
+      
+      
+
+      static void cleanBoard
+      ( 	
+	Robot* robot, 
+	Matrix boardCoordinateSystem, 
+	Vector originOfBoardCoordinateSystem, 
+	float64 angleABegin,
+	float64 angleAEnd,
+	float64 angleBBegin,
+	float64 angleBEnd,
+	float64 textSizeInMillimeter,
+	uint64 countOfCharactersPerLine,
+	uint64 countOfLines
+      )
+      {
+	  Vector lineTranslationVector(0,-2.5,0);
+	  Vector characterTranslationVector(1.3,0,0);	  
+	  Vector savePositionOffestVector(0,0,7);
+	  Vector eraserOffset(0,2.5,0);
+	  
+	  
+	  //calculate angle increments
+	  float64 angleAIncrementPerCharacter 	= (angleAEnd - angleABegin) / static_cast< float64 >(countOfCharactersPerLine);
+	  float64 angleBIncrementPerLine 	= (angleBEnd - angleBBegin) / static_cast< float64 >(countOfLines);
+	  
+	  uint64 currentLine = 0;	  
+	  
+	  Vector currentTranslationVector = originOfBoardCoordinateSystem;
+	  
+	  for(uint64 currentLine = 0; currentLine <= countOfLines; currentLine++)
+	  {
+	    Vector startOfLine = originOfBoardCoordinateSystem + boardCoordinateSystem * (((lineTranslationVector * currentLine) + eraserOffset) * textSizeInMillimeter); 
+	    Vector endOfLine =  startOfLine + (characterTranslationVector * textSizeInMillimeter) * countOfCharactersPerLine;
+	    	
+	    float64 angleAEndOfLine 	= angleABegin +  static_cast< float64 >(countOfCharactersPerLine) * angleAIncrementPerCharacter;
+	    float64 angleBCurrentLine 	= angleBBegin +  static_cast< float64 >(currentLine) 		  * angleBIncrementPerLine;
+	    
+	   {
+	    Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem, 
+											    originOfBoardCoordinateSystem, 
+											    lineTranslationVector, 
+											    characterTranslationVector,
+											    savePositionOffestVector,
+											    textSizeInMillimeter,
+											    currentLine, 
+											    0);
+	      robot->moveTo( savePositionOfCurrentCharacterVector, angleABegin, angleBCurrentLine );
+	   }
+	  
+	    
+	    robot->moveLinearTo(startOfLine, angleABegin	, angleBCurrentLine); 
+	    robot->moveLinearTo(endOfLine  , angleAEndOfLine	, angleBCurrentLine);
+	    robot->moveLinearTo(startOfLine, angleABegin	, angleBCurrentLine);
+	    
+	   {
+	    Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem, 
+											    originOfBoardCoordinateSystem, 
+											    lineTranslationVector, 
+											    characterTranslationVector,
+											    savePositionOffestVector,
+											    textSizeInMillimeter,
+											    currentLine, 
+											    0);
+	      robot->moveTo( savePositionOfCurrentCharacterVector, angleABegin, angleBCurrentLine );
+	   }
+	  }
       }
+      
 
 //     std::list<Vector> a()
 //     {
@@ -563,7 +690,8 @@ private:
 	  list.push_back( Vector( 0.0, 2.0, 1.0) );
 	  list.push_back( Vector( 0.0, 2.0, 0.0) );
 	  list.push_back( Vector( 0.0, 1.0, 0.0) );
-	  list.push_back( Vector( 0.0, 1.0, 1.0) );
+	  list.push_back( Vector( 1.0, 1.0, 0.0) );
+	  list.push_back( Vector( 1.0, 1.0, 1.0) );
 	  list.push_back( Vector( 1.0, 2.0, 1.0) );
 	  list.push_back( Vector( 1.0, 2.0, 0.0) );
 	  list.push_back( Vector( 1.0, 0.0, 0.0) );
@@ -590,6 +718,7 @@ private:
 	  std::list<Vector> list;
 	  list.push_back( Vector( 0.0, 2.0, 1.0) );
 	  list.push_back( Vector( 0.0, 2.0, 0.0) );
+	  list.push_back( Vector( 0.0, 0.0, 0.0) );
 	  list.push_back( Vector( 1.0, 0.0, 0.0) );
 	  list.push_back( Vector( 1.0, 1.0, 0.0) );
 	  list.push_back( Vector( 0.0, 1.0, 0.0) );
@@ -623,7 +752,7 @@ private:
 	  list.push_back( Vector( 1.0, 2.0, 0.0) );
 	  list.push_back( Vector( 1.0, 2.0, 1.0) );
 	  return list;
-    }  
+    }
     
     static std::list<Vector> nine()
     {
@@ -637,7 +766,8 @@ private:
 	  list.push_back( Vector( 0.0, 0.0, 0.0) );
 	  list.push_back( Vector( 0.0, 0.0, 1.0) );
 	  return list;
-    }   
+    }
+ 
     
     static std::list<Vector> plus()
     {
@@ -653,7 +783,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> minus()
+    static std::list<Vector> minus()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.0, 0.5, 1.0) );
@@ -663,7 +793,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> slash()
+    static std::list<Vector> slash()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.3, 0.0, 1.0) );
@@ -673,7 +803,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> asterisk()
+    static std::list<Vector> asterisk()
     {
         std::list<Vector> list;
 		list.push_back( Vector( 0.5, 1.0, 1.0) );
@@ -691,7 +821,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> questionmark()
+    static std::list<Vector> questionmark()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.0, 2.0, 1.0) );
@@ -708,7 +838,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> exclamationmark()
+    static std::list<Vector> exclamationmark()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.5, 2.0, 1.0) );
@@ -721,7 +851,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> singlequotationmark()
+    static std::list<Vector> singlequotationmark()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.5, 2.0, 1.0) );
@@ -731,7 +861,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> doublequotationmark()
+    static std::list<Vector> doublequotationmark()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.4, 2.0, 1.0) );
@@ -745,7 +875,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> colon()
+    static std::list<Vector> colon()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.5, 0.7, 1.0) );
@@ -759,7 +889,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> semicolon()
+    static std::list<Vector> semicolon()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.5, 0.7, 1.0) );
@@ -773,7 +903,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> equal()
+    static std::list<Vector> equal()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.0, 0.8, 1.0) );
@@ -787,7 +917,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> greater()
+    static std::list<Vector> greater()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.0, 0.2, 1.0) );
@@ -798,7 +928,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> smaller()
+    static std::list<Vector> smaller()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.0, 1.8, 1.0) );
@@ -809,7 +939,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> openbracket()
+    static std::list<Vector> openbracket()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.4, 0.0, 1.0) );
@@ -820,7 +950,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> closedbracket()
+    static std::list<Vector> closedbracket()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.6, 0.0, 1.0) );
@@ -831,7 +961,7 @@ private:
         return list;
     }
     
-	static std::list<Vector> pipe()
+    static std::list<Vector> pipe()
     {
         std::list<Vector> list;
         list.push_back( Vector( 0.5, 2.0, 1.0) );
@@ -846,7 +976,7 @@ private:
         std::list<Vector> list;
         list.push_back( Vector( 1.0, 0.0, 1.0) );
         return list;
-    }   
+    }
     
     static std::list<Vector> square()
     {
@@ -859,6 +989,6 @@ private:
 	  list.push_back( Vector( 1.0, 0.0, 0.0) );
 	  list.push_back( Vector( 1.0, 0.0, 1.0) );
 	  return list;
-    }    
+    }
 };
 #endif // TEXT_H

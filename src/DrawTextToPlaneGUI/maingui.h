@@ -2,6 +2,8 @@
 #define MAINGUI_H
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QFileSystemModel>
 #include "../RobotLib/Robot.h"
 
 namespace Ui {
@@ -38,6 +40,8 @@ public slots:
     void abortTransmission();
     void goHome();
     void speedChanged(int);
+    void selectScheduleDirectory();
+    void scheduleDirectoryLineEditFinished();
 };
 
 #endif // MAINGUI_H

@@ -307,3 +307,31 @@ void mainGUI::speedChanged(int newSpeed)
 {
   this->robot->speed(newSpeed);
 }
+
+void mainGUI::selectScheduleDirectory()
+{
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::Directory);
+
+    if (dialog.exec())
+    {
+	this->ui->scheduleDirectoryLineEdit->setText(dialog.directory().path());
+	scheduleDirectoryLineEditFinished();
+    }    
+}
+
+void mainGUI::scheduleDirectoryLineEditFinished()
+{
+    QFileSystemModel *model = new QFileSystemModel;
+    model->setFilter(QDir::Files);
+    model->setRootPath(this->ui->scheduleDirectoryLineEdit->text());
+    QStringList filters;
+    filters << "*.h";
+    model->setNameFilters ( filters );
+    model->setNameFilterDisables(false);
+
+    this->ui->scheduleFileListView->setModel(model);
+    this->ui->scheduleFileListView->setRootIndex(model->index(this->ui->scheduleDirectoryLineEdit->text()));
+
+}
+

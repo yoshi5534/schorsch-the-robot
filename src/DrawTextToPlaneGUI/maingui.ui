@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>780</width>
+    <width>777</width>
     <height>785</height>
    </rect>
   </property>
@@ -383,60 +383,79 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
-       <widget class="QGroupBox" name="groupBox_3">
+       <widget class="QGroupBox" name="groupBoxManual">
         <property name="title">
-         <string>GroupBox</string>
+         <string>Manual</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_6">
          <item>
-          <widget class="QRadioButton" name="radioButton">
+          <widget class="QTextEdit" name="txtEditTextToWrite"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnHome">
            <property name="text">
-            <string>RadioButton</string>
+            <string>Go Home</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QTextEdit" name="txtEditTextToWrite"/>
+          <widget class="QPushButton" name="btnCleanBoard">
+           <property name="text">
+            <string>Clean Board</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnWrite">
+           <property name="text">
+            <string>Write</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
       </item>
       <item>
-       <widget class="QGroupBox" name="groupBox_4">
+       <widget class="QGroupBox" name="groupBoxAutomatic">
         <property name="title">
-         <string>GroupBox</string>
+         <string>Automatic</string>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_7">
          <item>
-          <widget class="QRadioButton" name="radioButton_2">
-           <property name="text">
-            <string>RadioButton</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <widget class="QListView" name="listView"/>
-           </item>
-           <item>
-            <widget class="QLabel" name="label">
+            <widget class="QLabel" name="scheduleDirectoryLabel">
              <property name="text">
-              <string>TextLabel</string>
+              <string>Schedule Directory:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit"/>
+            <widget class="QLineEdit" name="scheduleDirectoryLineEdit"/>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="scheduleDirectoryPushButton">
              <property name="text">
-              <string>PushButton</string>
+              <string>...</string>
              </property>
             </widget>
            </item>
           </layout>
+         </item>
+         <item>
+          <widget class="QListView" name="scheduleFileListView"/>
          </item>
         </layout>
        </widget>
@@ -490,27 +509,6 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QPushButton" name="btnHome">
-        <property name="text">
-         <string>Go Home</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btnCleanBoard">
-        <property name="text">
-         <string>Clean Board</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btnWrite">
-        <property name="text">
-         <string>Write</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
    </layout>
@@ -520,7 +518,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>780</width>
+     <width>777</width>
      <height>21</height>
     </rect>
    </property>
@@ -545,8 +543,8 @@
    <slot>writeText()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>774</x>
-     <y>744</y>
+     <x>379</x>
+     <y>692</y>
     </hint>
     <hint type="destinationlabel">
      <x>140</x>
@@ -561,7 +559,7 @@
    <slot>defineYVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>186</x>
+     <x>185</x>
      <y>88</y>
     </hint>
     <hint type="destinationlabel">
@@ -577,7 +575,7 @@
    <slot>defineBaseVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>379</x>
+     <x>378</x>
      <y>88</y>
     </hint>
     <hint type="destinationlabel">
@@ -593,7 +591,7 @@
    <slot>defineXVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>573</x>
+     <x>570</x>
      <y>88</y>
     </hint>
     <hint type="destinationlabel">
@@ -641,7 +639,7 @@
    <slot>moveToYVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>186</x>
+     <x>185</x>
      <y>116</y>
     </hint>
     <hint type="destinationlabel">
@@ -657,7 +655,7 @@
    <slot>moveToBaseVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>379</x>
+     <x>378</x>
      <y>116</y>
     </hint>
     <hint type="destinationlabel">
@@ -673,7 +671,7 @@
    <slot>moveToXVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>573</x>
+     <x>570</x>
      <y>116</y>
     </hint>
     <hint type="destinationlabel">
@@ -689,7 +687,7 @@
    <slot>resetRobot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>456</x>
+     <x>707</x>
      <y>744</y>
     </hint>
     <hint type="destinationlabel">
@@ -705,7 +703,7 @@
    <slot>abortTransmission()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>520</x>
+     <x>771</x>
      <y>744</y>
     </hint>
     <hint type="destinationlabel">
@@ -721,8 +719,8 @@
    <slot>cleanBoard()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>713</x>
-     <y>744</y>
+     <x>379</x>
+     <y>664</y>
     </hint>
     <hint type="destinationlabel">
      <x>676</x>
@@ -737,8 +735,8 @@
    <slot>goHome()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>607</x>
-     <y>744</y>
+     <x>379</x>
+     <y>636</y>
     </hint>
     <hint type="destinationlabel">
      <x>544</x>
@@ -794,6 +792,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>scheduleDirectoryPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>selectScheduleDirectory()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>751</x>
+     <y>477</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>596</x>
+     <y>758</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>scheduleDirectoryLineEdit</sender>
+   <signal>editingFinished()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>scheduleDirectoryLineEditFinished()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>536</x>
+     <y>474</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>404</x>
+     <y>762</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>writeText()</slot>
@@ -812,5 +842,7 @@
   <slot>speedChanged(int)</slot>
   <slot>defineMarker()</slot>
   <slot>defineEraser()</slot>
+  <slot>selectScheduleDirectory()</slot>
+  <slot>scheduleDirectoryLineEditFinished()</slot>
  </slots>
 </ui>

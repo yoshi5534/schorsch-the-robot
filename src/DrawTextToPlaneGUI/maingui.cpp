@@ -273,13 +273,14 @@ void mainGUI::cleanBoard()
 		  yPoint,   
 		  //ui->leAngleEraserA->text().toDouble(),
 		  //ui->leAngleEraserB->text().toDouble(),
+		  20.0,
+		  60.0,
 		  60.0,
 		  60.0,
 		  20.0,
-		  60.0,
-		  20.0,
-		  longestLine,
-		  linesOfText.size()
+		  25,
+		  linesOfText.size(),
+		  longestLine + 2
 		);     
 
     this->robot->goHome();

@@ -191,10 +191,10 @@ class Text
 	uint64 countOfLines
       )
       {
-	  Vector lineTranslationVector(0,5,0);
-	  //Vector lineTranslationVector(0,-2.5,0);
+	  Vector lineTranslationVector(0,-2.5,0);
 	  Vector characterTranslationVector(1.3,0,0);	  
 	  Vector savePositionOffestVector(0,0,7);
+	  Vector eraserOffset(0,2.5,0);
 	  
 	  
 	  //calculate angle increments
@@ -207,7 +207,7 @@ class Text
 	  
 	  for(uint64 currentLine = 0; currentLine <= countOfLines; currentLine++)
 	  {
-	    Vector startOfLine = originOfBoardCoordinateSystem + boardCoordinateSystem * (lineTranslationVector * currentLine * textSizeInMillimeter); 
+	    Vector startOfLine = originOfBoardCoordinateSystem + boardCoordinateSystem * (((lineTranslationVector * currentLine) + eraserOffset) * textSizeInMillimeter); 
 	    Vector endOfLine =  startOfLine + (characterTranslationVector * textSizeInMillimeter) * countOfCharactersPerLine;
 	    	
 	    float64 angleAEndOfLine 	= angleABegin +  static_cast< float64 >(countOfCharactersPerLine) * angleAIncrementPerCharacter;

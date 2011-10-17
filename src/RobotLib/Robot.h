@@ -108,7 +108,8 @@ class Robot
 
         void goHome()
         {
-           _robotPort->sendCommand("PD 1,+207.43,-14.00,+338.59,+36.88,+178.84,R,A,O");
+           //_robotPort->sendCommand("PD 1,+207.43,-14.00,+338.59,+36.88,+178.84,R,A,O");
+           _robotPort->sendCommand("PD 1,+275,0,110,32.58,+180,R,A,O");
            _robotPort->sendCommand("MO 1");
         }
         

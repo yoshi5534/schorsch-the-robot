@@ -182,18 +182,26 @@ class Text
 	Robot* robot, 
 	Matrix boardCoordinateSystem, 
 	Vector originOfBoardCoordinateSystem, 
-	float64 angleA,
-	float64 angleB,
+	float64 angleABegin,
+	float64 angleAEnd,
+	float64 angleBBegin,
+	float64 angleBEnd,
 	float64 textSizeInMillimeter,
 	uint64 countOfCharactersPerLine,
 	uint64 countOfLines
       )
       {
-	  Vector lineTranslationVector(0,-2.5,0);
+	  Vector lineTranslationVector(0,5,0);
+	  //Vector lineTranslationVector(0,-2.5,0);
 	  Vector characterTranslationVector(1.3,0,0);	  
 	  Vector savePositionOffestVector(0,0,7);
 	  
-	  uint64 currentLine = 0;
+	  
+	  //calculate angle increments
+	  float64 angleAIncrementPerCharacter 	= (angleAEnd - angleABegin) / static_cast< float64 >(countOfCharactersPerLine);
+	  float64 angleBIncrementPerLine 	= (angleBEnd - angleBBegin) / static_cast< float64 >(countOfLines);
+	  
+	  uint64 currentLine = 0;	  
 	  
 	  Vector currentTranslationVector = originOfBoardCoordinateSystem;
 	  
@@ -201,7 +209,10 @@ class Text
 	  {
 	    Vector startOfLine = originOfBoardCoordinateSystem + boardCoordinateSystem * (lineTranslationVector * currentLine * textSizeInMillimeter); 
 	    Vector endOfLine =  startOfLine + (characterTranslationVector * textSizeInMillimeter) * countOfCharactersPerLine;
-	    	    
+	    	
+	    float64 angleAEndOfLine 	= angleABegin +  static_cast< float64 >(countOfCharactersPerLine) * angleAIncrementPerCharacter;
+	    float64 angleBCurrentLine 	= angleBBegin +  static_cast< float64 >(currentLine) 		  * angleBIncrementPerLine;
+	    
 	   {
 	    Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem, 
 											    originOfBoardCoordinateSystem, 
@@ -211,13 +222,13 @@ class Text
 											    textSizeInMillimeter,
 											    currentLine, 
 											    0);
-	      robot->moveTo( savePositionOfCurrentCharacterVector, angleA, angleB );
+	      robot->moveTo( savePositionOfCurrentCharacterVector, angleABegin, angleBCurrentLine );
 	   }
 	  
 	    
-	    robot->moveLinearTo(startOfLine, angleA, angleB); 
-	    robot->moveLinearTo(endOfLine  , angleA, angleB);
-	    robot->moveLinearTo(startOfLine, angleA, angleB);
+	    robot->moveLinearTo(startOfLine, angleABegin	, angleBCurrentLine); 
+	    robot->moveLinearTo(endOfLine  , angleAEndOfLine	, angleBCurrentLine);
+	    robot->moveLinearTo(startOfLine, angleABegin	, angleBCurrentLine);
 	    
 	   {
 	    Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem, 
@@ -228,7 +239,7 @@ class Text
 											    textSizeInMillimeter,
 											    currentLine, 
 											    0);
-	      robot->moveTo( savePositionOfCurrentCharacterVector, angleA, angleB );
+	      robot->moveTo( savePositionOfCurrentCharacterVector, angleABegin, angleBCurrentLine );
 	   }
 	  }
       }

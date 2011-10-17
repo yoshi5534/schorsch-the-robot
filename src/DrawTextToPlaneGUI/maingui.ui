@@ -52,7 +52,7 @@
               <string/>
              </property>
              <property name="text">
-              <string>9</string>
+              <string/>
              </property>
             </widget>
            </item>
@@ -75,6 +75,19 @@
               <string>Move To</string>
              </property>
             </widget>
+           </item>
+           <item row="5" column="1">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
            </item>
           </layout>
          </item>
@@ -133,6 +146,19 @@
              </property>
             </widget>
            </item>
+           <item row="5" column="1">
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
           </layout>
          </item>
         </layout>
@@ -190,6 +216,19 @@
              </property>
             </widget>
            </item>
+           <item row="5" column="1">
+            <spacer name="verticalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
           </layout>
          </item>
         </layout>
@@ -198,78 +237,141 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QGroupBox" name="groupBox">
+         <widget class="QGroupBox" name="groupBoxMarker">
           <property name="title">
-           <string>Tool Settings</string>
+           <string>Marker Settings</string>
           </property>
           <layout class="QFormLayout" name="formLayout_2">
-           <property name="fieldGrowthPolicy">
-            <enum>QFormLayout::ExpandingFieldsGrow</enum>
-           </property>
            <item row="0" column="0">
             <layout class="QFormLayout" name="formLayout">
-             <item row="0" column="0">
-              <widget class="QLabel" name="angleALabel">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::ExpandingFieldsGrow</enum>
+             </property>
+             <item row="1" column="0">
+              <widget class="QLabel" name="angleAMarkerLabel">
                <property name="text">
                 <string>Angle A</string>
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QLineEdit" name="leAngleA"/>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="leAngleMarkerA"/>
              </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="angleBLabel">
+             <item row="2" column="0">
+              <widget class="QLabel" name="angleBMarkerLabel">
                <property name="text">
                 <string>Angle B</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="QLineEdit" name="leAngleB"/>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="leAngleMarkerB"/>
+             </item>
+             <item row="3" column="1">
+              <widget class="QPushButton" name="defineMarkerButton">
+               <property name="text">
+                <string>Define</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
           </layout>
-          <zorder>dial</zorder>
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="groupBox_2">
+         <widget class="QGroupBox" name="groupBoxEraser">
           <property name="title">
-           <string>GroupBox</string>
+           <string>Eraser Settings</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_8">
-           <item>
-            <widget class="QDial" name="dial">
-             <property name="maximum">
-              <number>30</number>
+          <layout class="QFormLayout" name="formLayout_3">
+           <item row="0" column="0">
+            <layout class="QFormLayout" name="formLayout_4">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::ExpandingFieldsGrow</enum>
              </property>
-             <property name="value">
-              <number>12</number>
-             </property>
-            </widget>
+             <item row="1" column="0">
+              <widget class="QLabel" name="angleAEraserLabel">
+               <property name="text">
+                <string>Angle A</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="leAngleEraserA"/>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="angleBEraserLabel">
+               <property name="text">
+                <string>Angle B</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="leAngleEraserB"/>
+             </item>
+             <item row="3" column="1">
+              <widget class="QPushButton" name="defineEraserButton">
+               <property name="text">
+                <string>Define</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
-           <item>
-            <widget class="QCheckBox" name="checkBoxInvertX">
-             <property name="text">
-              <string>Invert X-Axis</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="checkBoxInvertY">
-             <property name="text">
-              <string>Invert Y-Axis</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="checkBoxInvertZ">
-             <property name="text">
-              <string>Invert Z-Axis</string>
-             </property>
-            </widget>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBoxCoordinatSystem">
+          <property name="title">
+           <string>Coordinat System</string>
+          </property>
+          <layout class="QFormLayout" name="formLayout_5">
+           <item row="0" column="0">
+            <layout class="QFormLayout" name="formLayout_6">
+             <item row="0" column="0">
+              <widget class="QLabel" name="labelSpeed">
+               <property name="text">
+                <string>Speed</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QSpinBox" name="speedSpinBox">
+               <property name="minimum">
+                <number>1</number>
+               </property>
+               <property name="maximum">
+                <number>30</number>
+               </property>
+               <property name="value">
+                <number>15</number>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QCheckBox" name="checkBoxInvertX">
+               <property name="text">
+                <string>Invert X-Axis</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QCheckBox" name="checkBoxInvertY">
+               <property name="text">
+                <string>Invert Y-Axis</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QCheckBox" name="checkBoxInvertZ">
+               <property name="text">
+                <string>Invert Z-Axis</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
@@ -644,6 +746,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>defineMarkerButton</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>defineMarker()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>688</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>370</x>
+     <y>733</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defineEraserButton</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>defineEraser()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>675</x>
+     <y>265</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>348</x>
+     <y>753</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>writeText()</slot>
@@ -659,5 +793,8 @@
   <slot>resetRobot()</slot>
   <slot>abortTransmission()</slot>
   <slot>goHome()</slot>
+  <slot>speedChanged(int)</slot>
+  <slot>defineMarker()</slot>
+  <slot>defineEraser()</slot>
  </slots>
 </ui>

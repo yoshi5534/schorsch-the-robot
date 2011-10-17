@@ -95,6 +95,9 @@ int main(int argc, char *argv[])
 
     Robot robot("/dev/ttyS0", 750000);
     robot.getPort()->setLiveCommandMode(false);
+    //robot.goHome();
+    //robot.getPort()->executeQuedCommands();
+    //return 0;
     Where where(&robot);
     Vector yPoint	( where.x, where.y, where.z);
     //Vector yPoint	(-50,600,680);//( where.x, where.y, where.z);

@@ -267,12 +267,16 @@ void mainGUI::cleanBoard()
       }
     }
      
-    Text::cleanBoard(  
+    Text::cleanBoard(
 		  this->robot, 
 		  coordinateSystem, 
-		  yPoint, 
-		  ui->leAngleEraserA->text().toDouble(),
-		  ui->leAngleEraserB->text().toDouble(),
+		  yPoint,   
+		  //ui->leAngleEraserA->text().toDouble(),
+		  //ui->leAngleEraserB->text().toDouble(),
+		  60.0,
+		  60.0,
+		  20.0,
+		  60.0,
 		  20.0,
 		  longestLine,
 		  linesOfText.size()

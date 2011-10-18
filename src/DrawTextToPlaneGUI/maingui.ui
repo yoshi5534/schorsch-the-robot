@@ -390,6 +390,9 @@
         <property name="checkable">
          <bool>true</bool>
         </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
         <layout class="QVBoxLayout" name="verticalLayout_6">
          <item>
           <widget class="QTextEdit" name="txtEditTextToWrite"/>
@@ -445,7 +448,7 @@
            <item>
             <widget class="QLineEdit" name="scheduleDirectoryLineEdit">
              <property name="text">
-              <string>/home/oswald/projekt/schorsch-the-robot/src/RobotLib</string>
+              <string>/home/oswald/projekt/schorsch-the-robot/text/LangeNachtDerWissenschaften-2011-10-22/</string>
              </property>
             </widget>
            </item>
@@ -485,6 +488,9 @@
           <layout class="QHBoxLayout" name="horizontalLayout_6">
            <item>
             <widget class="QPushButton" name="automaticStartPushButton">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
              <property name="text">
               <string>Start</string>
              </property>
@@ -492,6 +498,9 @@
            </item>
            <item>
             <widget class="QPushButton" name="automaticStopPushButton">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
               <string>Stop</string>
              </property>
@@ -598,7 +607,7 @@
    <slot>writeText()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>379</x>
+     <x>247</x>
      <y>692</y>
     </hint>
     <hint type="destinationlabel">
@@ -774,7 +783,7 @@
    <slot>cleanBoard()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>379</x>
+     <x>247</x>
      <y>664</y>
     </hint>
     <hint type="destinationlabel">
@@ -790,7 +799,7 @@
    <slot>goHome()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>379</x>
+     <x>247</x>
      <y>636</y>
     </hint>
     <hint type="destinationlabel">
@@ -886,8 +895,8 @@
    <slot>automaticStart()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>558</x>
-     <y>649</y>
+     <x>323</x>
+     <y>691</y>
     </hint>
     <hint type="destinationlabel">
      <x>418</x>
@@ -902,12 +911,44 @@
    <slot>automaticStop()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>597</x>
-     <y>682</y>
+     <x>382</x>
+     <y>691</y>
     </hint>
     <hint type="destinationlabel">
      <x>607</x>
      <y>738</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>groupBoxManual</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>mainGUI</receiver>
+   <slot>manualGroupToggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>108</x>
+     <y>445</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>163</x>
+     <y>738</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>groupBoxAutomatic</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>mainGUI</receiver>
+   <slot>automaticGroupToggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>479</x>
+     <y>457</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>438</x>
+     <y>709</y>
     </hint>
    </hints>
   </connection>
@@ -933,5 +974,7 @@
   <slot>scheduleDirectoryLineEditFinished()</slot>
   <slot>automaticStart()</slot>
   <slot>automaticStop()</slot>
+  <slot>manualGroupToggled(bool)</slot>
+  <slot>automaticGroupToggled(bool)</slot>
  </slots>
 </ui>

@@ -1,4 +1,10 @@
 #include <fstream>
+#include <complex>
+
+#include <QFileDialog>
+#include <QFileSystemModel>
+#include <QMessageBox>
+#include <QTimer>
 
 #include "maingui.h"
 #include "ui_maingui.h"
@@ -31,6 +37,7 @@ mainGUI::mainGUI(QWidget *parent) :
 
     this->robot = new Robot("/dev/ttyS0", 750000);
     this->robot->getPort()->setLiveCommandMode(false);
+    this->automaticLastFilePrinted = QTime::currentTime();
 }
 
 mainGUI::~mainGUI()
@@ -58,7 +65,7 @@ void mainGUI::changeEvent(QEvent *e)
 
 void mainGUI::defineYVector()
 {
-    Where where(robot);
+    Where where = robot->whereIsRobot();
     ui->leYVectorX->setText(QString::number(where.x));
     ui->leYVectorY->setText(QString::number(where.y));
     ui->leYVectorZ->setText(QString::number(where.z));
@@ -66,7 +73,7 @@ void mainGUI::defineYVector()
 
 void mainGUI::defineXVector()
 {
-    Where where(robot);
+    Where where = robot->whereIsRobot();
     ui->leXVectorX->setText(QString::number(where.x));
     ui->leXVectorY->setText(QString::number(where.y));
     ui->leXVectorZ->setText(QString::number(where.z));
@@ -74,7 +81,7 @@ void mainGUI::defineXVector()
 
 void mainGUI::defineBaseVector()
 {
-    Where where(robot);
+    Where where = robot->whereIsRobot();
     ui->leBaseVectorX->setText(QString::number(where.x));
     ui->leBaseVectorY->setText(QString::number(where.y));
     ui->leBaseVectorZ->setText(QString::number(where.z));
@@ -82,7 +89,7 @@ void mainGUI::defineBaseVector()
 
 void mainGUI::defineMarker()
 {
-    Where where(robot);
+    Where where = robot->whereIsRobot();
     ui->leAngleMarkerA->setText(QString::number(where.a));
     ui->leAngleMarkerB->setText(QString::number(where.b));
 }
@@ -90,33 +97,9 @@ void mainGUI::defineMarker()
 
 void mainGUI::defineEraser()
 {
-    Where where(robot);
+    Where where = robot->whereIsRobot();
     ui->leAngleEraserA->setText(QString::number(where.a));
     ui->leAngleEraserB->setText(QString::number(where.b));
-}
-
-void mainGUI::writeText()
-{
-    Vector yPoint	( ui->leYVectorX->text().toDouble(), 	ui->leYVectorY->text().toDouble(), 	ui->leYVectorZ->text().toDouble());
-    Vector basePoint	( ui->leBaseVectorX->text().toDouble(), ui->leBaseVectorY->text().toDouble(), 	ui->leBaseVectorZ->text().toDouble());
-    Vector xPoint	( ui->leXVectorX->text().toDouble(), 	ui->leXVectorY->text().toDouble(), 	ui->leXVectorZ->text().toDouble());
-
-    Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint, ui->checkBoxInvertX->isChecked(), ui->checkBoxInvertY->isChecked(), ui->checkBoxInvertZ->isChecked());
-    Vector target = coordinateSystem * Vector(1,0,0);
-
-    Text::writeTextWithWordWrap(
-        this->robot,
-        std::string(ui->txtEditTextToWrite->toPlainText().toStdString()),
-        coordinateSystem,
-        yPoint,
-        ui->leAngleMarkerA->text().toDouble(),
-        ui->leAngleMarkerB->text().toDouble(),
-        20.0,
-        25
-    );
-
-    this->robot->goHome();
-    this->robot->getPort()->executeQuedCommands();
 }
 
 void mainGUI::moveToBaseVector()
@@ -247,7 +230,43 @@ void mainGUI::loadConfiguration()
     }
 }
 
+void mainGUI::writeText()
+{
+    writeText(ui->txtEditTextToWrite->toPlainText());
+    this->robot->goHome();
+    this->robot->getPort()->executeQuedCommands();
+}
+
+void mainGUI::writeText(QString content)
+{
+    Vector yPoint	( ui->leYVectorX->text().toDouble(), 	ui->leYVectorY->text().toDouble(), 	ui->leYVectorZ->text().toDouble());
+    Vector basePoint	( ui->leBaseVectorX->text().toDouble(), ui->leBaseVectorY->text().toDouble(), 	ui->leBaseVectorZ->text().toDouble());
+    Vector xPoint	( ui->leXVectorX->text().toDouble(), 	ui->leXVectorY->text().toDouble(), 	ui->leXVectorZ->text().toDouble());
+
+    Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint, ui->checkBoxInvertX->isChecked(), ui->checkBoxInvertY->isChecked(), ui->checkBoxInvertZ->isChecked());
+    Vector target = coordinateSystem * Vector(1,0,0);
+
+    Text::writeTextWithWordWrap(
+        this->robot,
+        std::string(content.toStdString()),
+        coordinateSystem,
+        yPoint,
+        ui->leAngleMarkerA->text().toDouble(),
+        ui->leAngleMarkerB->text().toDouble(),
+        20.0,
+        25
+    );
+}
+
+
 void mainGUI::cleanBoard()
+{
+    cleanBoard(ui->txtEditTextToWrite->toPlainText());
+    this->robot->goHome();
+    this->robot->getPort()->executeQuedCommands();
+}
+
+void mainGUI::cleanBoard(QString content)
 {
     Vector yPoint	( ui->leYVectorX   ->text().toDouble(), ui->leYVectorY   ->text().toDouble(), 	ui->leYVectorZ   ->text().toDouble());
     Vector basePoint	( ui->leBaseVectorX->text().toDouble(), ui->leBaseVectorY->text().toDouble(), 	ui->leBaseVectorZ->text().toDouble());
@@ -256,7 +275,7 @@ void mainGUI::cleanBoard()
     Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint, ui->checkBoxInvertX->isChecked(), ui->checkBoxInvertY->isChecked(), ui->checkBoxInvertZ->isChecked());
     Vector target = coordinateSystem * Vector(1,0,0);
 
-    QStringList linesOfText = ui->txtEditTextToWrite->toPlainText().split("\n");
+    QStringList linesOfText = content.split("\n");
     uint64 longestLine = 0;
     QString currentLine;
     foreach( currentLine, linesOfText)
@@ -282,9 +301,6 @@ void mainGUI::cleanBoard()
         linesOfText.size(),
         longestLine + 2
     );
-
-    this->robot->goHome();
-    this->robot->getPort()->executeQuedCommands();
 }
 
 void mainGUI::resetRobot()
@@ -327,62 +343,159 @@ void mainGUI::scheduleDirectoryLineEditFinished()
     model->setFilter(QDir::Files);
     model->setRootPath(this->ui->scheduleDirectoryLineEdit->text());
     QStringList filters;
-    filters << "*.h";
+    filters << "*.txt";
     model->setNameFilters ( filters );
     model->setNameFilterDisables(false);
 
     this->ui->scheduleFileListView->setModel(model);
     this->ui->scheduleFileListView->setRootIndex(model->index(this->ui->scheduleDirectoryLineEdit->text()));
-    
-    
-    
-    int rowCount = model->rowCount();
-    int columnCount = model->columnCount();
-    
-    //delete model; //according to the setModel documentation in QAbstractItemView 
-    
+
+//     int rowCount = model->rowCount();
+//     if( rowCount > 0 )
+//     {
+//       this->ui->automaticStartPushButton->setEnabled(false);
+//       this->ui->automaticStopPushButton->setEnabled(false);
+//     }
 }
 
 void mainGUI::automaticStart()
 {
- QFileSystemModel* model = dynamic_cast< QFileSystemModel* >(this->ui->scheduleFileListView->model());
-    QModelIndex parentIndex = model->index(this->ui->scheduleDirectoryLineEdit->text());
-    int rowCount = model->rowCount(parentIndex);
-    for (int i=0; i<rowCount; i++)
-    {
-        QModelIndex modelIndex = model->index(i, 0, parentIndex);
-        if ( modelIndex.isValid() )
-        {
-            this->ui->scheduleFileListView->selectionModel()->select( modelIndex, QItemSelectionModel::Select );
-        }
-        QFileInfo fileInfo = model->fileInfo(modelIndex);
-        QString currentFilePath = fileInfo.absoluteFilePath();
+    this->ui->automaticStartPushButton->setEnabled(false);
+    this->ui->automaticStopPushButton->setEnabled(true);
 
-        QString text = model->data(modelIndex, Qt::DisplayRole).toString();
-
-        std::cout << currentFilePath.toStdString() << " : " << text.toStdString() << std::endl;
-        //sleep( 2 );
-
-        QFile file(currentFilePath);
-        if (!file.open(QFile::ReadOnly | QFile::Text))
-        {
-            QMessageBox::warning(this, "Log Reader", "Cannot read file %1:\n%2"
-                                 ,currentFilePath
-                                 ,file.errorString());
-            break;
-        }
-
-        QTextStream in(&file);
-
-        this->ui->automaticTextEdit->setPlainText(in.readAll());
-        file.close();
-        sleep(1);
-
-    }
+    connect(&automaticTimer, SIGNAL(timeout()), this, SLOT(automaticTimerElapsed()));
+    automaticTimer.start(1000);
 }
 
 void mainGUI::automaticStop()
 {
-  
+    this->ui->automaticStartPushButton->setEnabled(true);
+    this->ui->automaticStopPushButton->setEnabled(false);
+
+    disconnect(&automaticTimer, SIGNAL(timeout()), this, SLOT(automaticTimerElapsed()));
 }
 
+
+void mainGUI::automaticTimerElapsed()
+{
+    //stop timer
+    automaticTimer.stop();
+
+    //if robot is in home position wait for completion
+    if ( robotIsAtHomePossition(1) )
+    {
+        //Find next file
+        QString nextFile = automaticFindAndSelectNextFileWhichShouldBePrinted(QTime::currentTime());
+
+        //if we need an new file
+        if ( nextFile != "" )
+        {
+	    this->robot->goHome();
+	  
+            //whipe old contend
+            cleanBoard(this->ui->automaticTextEdit->toPlainText());
+
+            //load  contend
+            this->ui->automaticTextEdit->setText( loadFileContent(nextFile) );
+
+            //draw contend
+            writeText(this->ui->automaticTextEdit->toPlainText());
+	    
+	    this->robot->goHome();
+            this->robot->getPort()->executeQuedCommands();
+        }
+    }
+
+    //restart timer
+    automaticTimer.start();
+}
+
+QString mainGUI::loadFileContent(QString currentFilePath)
+{
+    QFile file(currentFilePath);
+    if (!file.open(QFile::ReadOnly | QFile::Text))
+    {
+        QMessageBox::warning(this, "Log Reader", "Cannot read file %1:\n%2"
+                             ,currentFilePath
+                             ,file.errorString());
+        return "";
+    }
+
+    QTextStream textStream(&file);
+    QString fileConntend = textStream.readAll();
+
+    file.close();
+
+    return fileConntend;
+}
+
+QString mainGUI::automaticFindAndSelectNextFileWhichShouldBePrinted(QTime currentTime)
+{
+    QFileSystemModel* model = dynamic_cast< QFileSystemModel* >(this->ui->scheduleFileListView->model());
+    QModelIndex parentIndex = model->index(this->ui->scheduleDirectoryLineEdit->text());
+    int rowCount = model->rowCount(parentIndex);
+    for (int i=0; i < rowCount; i++)
+    {
+        QModelIndex modelIndex = model->index(i, 0, parentIndex);
+        if ( modelIndex.isValid() )
+        {
+
+            QFileInfo fileInfo = model->fileInfo(modelIndex);
+            QString currentFilePath = fileInfo.absoluteFilePath();
+            QString currentFileBaseName = fileInfo.baseName();
+
+            QTime fileTime = QTime::fromString(currentFileBaseName);
+            if ( currentTime > fileTime )
+            {
+                if ( fileTime > automaticLastFilePrinted )
+                {
+                    this->ui->scheduleFileListView->selectionModel()->setCurrentIndex( modelIndex, QItemSelectionModel::ClearAndSelect );
+                    automaticLastFilePrinted = fileTime;
+                    return currentFilePath;
+                }
+            }
+        }
+    }
+
+    return "";
+}
+
+bool mainGUI::robotIsAtHomePossition(float64 allowedDelta)
+{
+    Where currentLocation = robot->whereIsRobot();
+    Where robotHome = robot->whereIsHome();
+
+    float64 deltaX = std::abs(currentLocation.x - robotHome.x);
+    float64 deltaY = std::abs(currentLocation.y - robotHome.y);
+    float64 deltaZ = std::abs(currentLocation.z - robotHome.z);
+    float64 deltaA = std::abs(currentLocation.a - robotHome.a);
+    float64 deltaB = std::abs(currentLocation.b - robotHome.b);
+
+    if ( deltaX <= allowedDelta &&
+            deltaY <= allowedDelta &&
+            deltaZ <= allowedDelta &&
+            deltaA <= allowedDelta &&
+            deltaB <= allowedDelta)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+void mainGUI::automaticGroupToggled(bool checked)
+{
+  ui->groupBoxManual->setChecked( !checked );
+}
+
+void mainGUI::manualGroupToggled(bool checked)
+{
+  ui->groupBoxAutomatic->setChecked( !checked );
+  if( checked )
+  {
+    //this->ui->automaticStartPushButton->setEnabled(false);
+    //this->ui->automaticStopPushButton->setEnabled(false);
+
+    disconnect(&automaticTimer, SIGNAL(timeout()), this, SLOT(automaticTimerElapsed()));
+  }
+}

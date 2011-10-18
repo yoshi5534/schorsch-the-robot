@@ -13,7 +13,7 @@
 #include "../RobotLib/Vector.h"
 #include "../RobotLib/Text.h"
 #include "../RobotLib/PlaneToCoordinateSystem.h"
-#include "../RobotLib/Where.h"
+//#include "../RobotLib/Where.h"
 
 
 int main(int argc, char *argv[])
@@ -98,15 +98,15 @@ int main(int argc, char *argv[])
     //robot.goHome();
     //robot.getPort()->executeQuedCommands();
     //return 0;
-    Where where(&robot);
+    Where where= robot.whereIsRobot(); 
     Vector yPoint	( where.x, where.y, where.z);
     //Vector yPoint	(-50,600,680);//( where.x, where.y, where.z);
        
-    Where where2(&robot);    
+    Where where2= robot.whereIsRobot();   
     Vector basePoint	( where2.x, where2.y, where2.z);
     //Vector basePoint	(-50,600,400);//( where2.x, where2.y, where2.z);
     
-    Where where3(&robot);   
+    Where where3 = robot.whereIsRobot();  
     Vector xPoint	( where3.x, where3.y, where3.z);
     //Vector xPoint	(430,600,400);//( where3.x, where3.y, where3.z);
     

@@ -2,9 +2,8 @@
 #define MAINGUI_H
 
 #include <QMainWindow>
-#include <QFileDialog>
-#include <QFileSystemModel>
-#include <QMessageBox>
+#include <QTimer>
+#include <QTime>
 #include "../RobotLib/Robot.h"
 
 namespace Ui {
@@ -23,9 +22,17 @@ protected:
 private:
     Ui::mainGUI *ui;
     Robot *robot;
+    QTimer automaticTimer;
+    QString loadFileContent(QString currentFilePathss);
+    QString automaticFindAndSelectNextFileWhichShouldBePrinted(QTime currentTime);
+    bool robotIsAtHomePossition(float64 allowedDelta);
+    QTime automaticLastFilePrinted;
 
 public slots:
     void writeText();
+    void writeText(QString content);
+    void cleanBoard();
+    void cleanBoard(QString content);
     void defineYVector();
     void defineXVector();
     void defineBaseVector();
@@ -36,7 +43,6 @@ public slots:
     void moveToBaseVector();
     void moveToXVector();
     void moveToYVector();
-    void cleanBoard();
     void resetRobot();
     void abortTransmission();
     void goHome();
@@ -45,6 +51,9 @@ public slots:
     void scheduleDirectoryLineEditFinished();
     void automaticStart();
     void automaticStop();
+    void automaticTimerElapsed();
+    void automaticGroupToggled(bool checked);
+    void manualGroupToggled(bool checked);
 };
 
 #endif // MAINGUI_H

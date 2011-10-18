@@ -4,10 +4,11 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QFileSystemModel>
+#include <QMessageBox>
 #include "../RobotLib/Robot.h"
 
 namespace Ui {
-    class mainGUI;
+class mainGUI;
 }
 
 class mainGUI : public QMainWindow {
@@ -24,7 +25,7 @@ private:
     Robot *robot;
 
 public slots:
-    void writeText();   
+    void writeText();
     void defineYVector();
     void defineXVector();
     void defineBaseVector();
@@ -34,7 +35,7 @@ public slots:
     void saveConfiguration();
     void moveToBaseVector();
     void moveToXVector();
-    void moveToYVector();    
+    void moveToYVector();
     void cleanBoard();
     void resetRobot();
     void abortTransmission();
@@ -42,6 +43,8 @@ public slots:
     void speedChanged(int);
     void selectScheduleDirectory();
     void scheduleDirectoryLineEditFinished();
+    void automaticStart();
+    void automaticStop();
 };
 
 #endif // MAINGUI_H

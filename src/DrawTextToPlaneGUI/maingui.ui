@@ -430,9 +430,9 @@
          <bool>true</bool>
         </property>
         <property name="checked">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_7">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
@@ -443,7 +443,11 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="scheduleDirectoryLineEdit"/>
+            <widget class="QLineEdit" name="scheduleDirectoryLineEdit">
+             <property name="text">
+              <string>/home/oswald/projekt/schorsch-the-robot/src/RobotLib</string>
+             </property>
+            </widget>
            </item>
            <item>
             <widget class="QPushButton" name="scheduleDirectoryPushButton">
@@ -455,7 +459,58 @@
           </layout>
          </item>
          <item>
-          <widget class="QListView" name="scheduleFileListView"/>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QListView" name="scheduleFileListView"/>
+           </item>
+           <item>
+            <widget class="QTextEdit" name="automaticTextEdit">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="lineWrapMode">
+              <enum>QTextEdit::NoWrap</enum>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="acceptRichText">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QPushButton" name="automaticStartPushButton">
+             <property name="text">
+              <string>Start</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="automaticStopPushButton">
+             <property name="text">
+              <string>Stop</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </item>
         </layout>
        </widget>
@@ -824,6 +879,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>automaticStartPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>automaticStart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>558</x>
+     <y>649</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>418</x>
+     <y>743</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>automaticStopPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>automaticStop()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>597</x>
+     <y>682</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>607</x>
+     <y>738</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>writeText()</slot>
@@ -844,5 +931,7 @@
   <slot>defineEraser()</slot>
   <slot>selectScheduleDirectory()</slot>
   <slot>scheduleDirectoryLineEditFinished()</slot>
+  <slot>automaticStart()</slot>
+  <slot>automaticStop()</slot>
  </slots>
 </ui>

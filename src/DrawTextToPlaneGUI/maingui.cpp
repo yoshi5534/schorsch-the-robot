@@ -11,8 +11,8 @@
 
 
 mainGUI::mainGUI(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::mainGUI)
+        QMainWindow(parent),
+        ui(new Ui::mainGUI)
 {
     ui->setupUi(this);
     ui->leBaseVectorX->setValidator(new QDoubleValidator(this));
@@ -28,17 +28,17 @@ mainGUI::mainGUI(QWidget *parent) :
     ui->leAngleMarkerB->setValidator(new QDoubleValidator(this));
     ui->leAngleEraserA->setValidator(new QDoubleValidator(this));
     ui->leAngleEraserB->setValidator(new QDoubleValidator(this));
-    
+
     this->robot = new Robot("/dev/ttyS0", 750000);
     this->robot->getPort()->setLiveCommandMode(false);
 }
 
 mainGUI::~mainGUI()
 {
-    if(this->robot != NULL)
-    { 
-      delete this->robot;
-      this->robot = NULL;      
+    if (this->robot != NULL)
+    {
+        delete this->robot;
+        this->robot = NULL;
     }
 
     delete ui;
@@ -69,7 +69,7 @@ void mainGUI::defineXVector()
     Where where(robot);
     ui->leXVectorX->setText(QString::number(where.x));
     ui->leXVectorY->setText(QString::number(where.y));
-    ui->leXVectorZ->setText(QString::number(where.z)); 
+    ui->leXVectorZ->setText(QString::number(where.z));
 }
 
 void mainGUI::defineBaseVector()
@@ -77,44 +77,44 @@ void mainGUI::defineBaseVector()
     Where where(robot);
     ui->leBaseVectorX->setText(QString::number(where.x));
     ui->leBaseVectorY->setText(QString::number(where.y));
-    ui->leBaseVectorZ->setText(QString::number(where.z));  
+    ui->leBaseVectorZ->setText(QString::number(where.z));
 }
 
- void mainGUI::defineMarker()
- {
+void mainGUI::defineMarker()
+{
     Where where(robot);
     ui->leAngleMarkerA->setText(QString::number(where.a));
     ui->leAngleMarkerB->setText(QString::number(where.b));
 }
- 
- 
+
+
 void mainGUI::defineEraser()
 {
     Where where(robot);
     ui->leAngleEraserA->setText(QString::number(where.a));
     ui->leAngleEraserB->setText(QString::number(where.b));
 }
-    
+
 void mainGUI::writeText()
-{  
+{
     Vector yPoint	( ui->leYVectorX->text().toDouble(), 	ui->leYVectorY->text().toDouble(), 	ui->leYVectorZ->text().toDouble());
     Vector basePoint	( ui->leBaseVectorX->text().toDouble(), ui->leBaseVectorY->text().toDouble(), 	ui->leBaseVectorZ->text().toDouble());
     Vector xPoint	( ui->leXVectorX->text().toDouble(), 	ui->leXVectorY->text().toDouble(), 	ui->leXVectorZ->text().toDouble());
-    
+
     Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint, ui->checkBoxInvertX->isChecked(), ui->checkBoxInvertY->isChecked(), ui->checkBoxInvertZ->isChecked());
     Vector target = coordinateSystem * Vector(1,0,0);
-     
-    Text::writeTextWithWordWrap( 
-				this->robot, 
-				std::string(ui->txtEditTextToWrite->toPlainText().toStdString()), 
-				coordinateSystem, 
-				yPoint, 
-				ui->leAngleMarkerA->text().toDouble(),
-				ui->leAngleMarkerB->text().toDouble(),
-				20.0,
-				25
-				);     
-    
+
+    Text::writeTextWithWordWrap(
+        this->robot,
+        std::string(ui->txtEditTextToWrite->toPlainText().toStdString()),
+        coordinateSystem,
+        yPoint,
+        ui->leAngleMarkerA->text().toDouble(),
+        ui->leAngleMarkerB->text().toDouble(),
+        20.0,
+        25
+    );
+
     this->robot->goHome();
     this->robot->getPort()->executeQuedCommands();
 }
@@ -123,73 +123,73 @@ void mainGUI::moveToBaseVector()
 {
     //this->robot->goHome();
     this->robot->moveLinearTo(Vector(	ui->leBaseVectorX->text().toDouble(),
-				ui->leBaseVectorY->text().toDouble(),
-				ui->leBaseVectorZ->text().toDouble()), 
-				ui->leAngleMarkerA->text().toDouble(), 
-				ui->leAngleMarkerB->text().toDouble());
-    this->robot->getPort()->executeQuedCommands();    
+                                      ui->leBaseVectorY->text().toDouble(),
+                                      ui->leBaseVectorZ->text().toDouble()),
+                              ui->leAngleMarkerA->text().toDouble(),
+                              ui->leAngleMarkerB->text().toDouble());
+    this->robot->getPort()->executeQuedCommands();
 }
 
 void mainGUI::moveToXVector()
 {
-     //this->robot->goHome();
-     this->robot->moveLinearTo(Vector(ui->leXVectorX->text().toDouble(),
-				ui->leXVectorY->text().toDouble(),
-				ui->leXVectorZ->text().toDouble()), 
-				ui->leAngleMarkerA->text().toDouble(), 
-				ui->leAngleMarkerB->text().toDouble()); 
-     this->robot->getPort()->executeQuedCommands();     
+    //this->robot->goHome();
+    this->robot->moveLinearTo(Vector(ui->leXVectorX->text().toDouble(),
+                                     ui->leXVectorY->text().toDouble(),
+                                     ui->leXVectorZ->text().toDouble()),
+                              ui->leAngleMarkerA->text().toDouble(),
+                              ui->leAngleMarkerB->text().toDouble());
+    this->robot->getPort()->executeQuedCommands();
 }
 
 
 void mainGUI::moveToYVector()
 {
-      //this->robot->goHome();
-      this->robot->moveLinearTo(Vector( ui->leYVectorX->text().toDouble(),
-				  ui->leYVectorY->text().toDouble(),
-				  ui->leYVectorZ->text().toDouble()), 
-				  ui->leAngleMarkerA->text().toDouble(), 
-				  ui->leAngleMarkerB->text().toDouble());
-     this->robot->getPort()->executeQuedCommands();
-  
+    //this->robot->goHome();
+    this->robot->moveLinearTo(Vector( ui->leYVectorX->text().toDouble(),
+                                      ui->leYVectorY->text().toDouble(),
+                                      ui->leYVectorZ->text().toDouble()),
+                              ui->leAngleMarkerA->text().toDouble(),
+                              ui->leAngleMarkerB->text().toDouble());
+    this->robot->getPort()->executeQuedCommands();
+
 }
 
 
 void mainGUI::saveConfiguration()
 {
-  std::ofstream stream;
-  stream.open("DrawTextToPlaneGUI.config");
-  
-  if( stream )
-  {	
-    stream  	      	 << ui->leYVectorX->text().toDouble() 
-	    << std::endl << ui->leYVectorY->text().toDouble() 
-	    << std::endl << ui->leYVectorZ->text().toDouble()
-	    << std::endl << ui->leBaseVectorX->text().toDouble()
-	    << std::endl << ui->leBaseVectorY->text().toDouble() 
-	    << std::endl << ui->leBaseVectorZ->text().toDouble()
-	    << std::endl << ui->leXVectorX->text().toDouble() 
-	    << std::endl << ui->leXVectorY->text().toDouble() 
-	    << std::endl << ui->leXVectorZ->text().toDouble()
-	    << std::endl << ui->leAngleMarkerA->text().toDouble()
-	    << std::endl << ui->leAngleMarkerB->text().toDouble()
-	    << std::endl << ui->leAngleEraserA->text().toDouble()
-	    << std::endl << ui->leAngleEraserB->text().toDouble()
-	    << std::endl << ui->speedSpinBox->text().toStdString()
-	    << std::endl << ui->checkBoxInvertX->isChecked()
-	    << std::endl << ui->checkBoxInvertY->isChecked()
-	    << std::endl << ui->checkBoxInvertZ->isChecked();    
-  }
-	  
-    stream.close();  
+    std::ofstream stream;
+    stream.open("DrawTextToPlaneGUI.config");
+
+    if ( stream )
+    {
+        stream  	      	 << ui->leYVectorX->text().toDouble()
+        << std::endl << ui->leYVectorY->text().toDouble()
+        << std::endl << ui->leYVectorZ->text().toDouble()
+        << std::endl << ui->leBaseVectorX->text().toDouble()
+        << std::endl << ui->leBaseVectorY->text().toDouble()
+        << std::endl << ui->leBaseVectorZ->text().toDouble()
+        << std::endl << ui->leXVectorX->text().toDouble()
+        << std::endl << ui->leXVectorY->text().toDouble()
+        << std::endl << ui->leXVectorZ->text().toDouble()
+        << std::endl << ui->leAngleMarkerA->text().toDouble()
+        << std::endl << ui->leAngleMarkerB->text().toDouble()
+        << std::endl << ui->leAngleEraserA->text().toDouble()
+        << std::endl << ui->leAngleEraserB->text().toDouble()
+        << std::endl << ui->speedSpinBox->text().toStdString()
+        << std::endl << ui->checkBoxInvertX->isChecked()
+        << std::endl << ui->checkBoxInvertY->isChecked()
+        << std::endl << ui->checkBoxInvertZ->isChecked();
+    }
+
+    stream.close();
 }
 
 void mainGUI::loadConfiguration()
 {
-   std::ifstream stream;
-   stream.open("DrawTextToPlaneGUI.config");
-   std::string value;
-  
+    std::ifstream stream;
+    stream.open("DrawTextToPlaneGUI.config");
+    std::string value;
+
     stream >> value;
     ui->leYVectorX->setText(QString::fromStdString(value));
     stream >> value;
@@ -211,7 +211,7 @@ void mainGUI::loadConfiguration()
     stream >> value;
     ui->leAngleMarkerA->setText(QString::fromStdString(value));
     stream >> value;
-    ui->leAngleMarkerB->setText(QString::fromStdString(value));	
+    ui->leAngleMarkerB->setText(QString::fromStdString(value));
     stream >> value;
     ui->leAngleEraserA->setText(QString::fromStdString(value));
     stream >> value;
@@ -219,31 +219,31 @@ void mainGUI::loadConfiguration()
     stream >> value;
     ui->speedSpinBox->setValue(stringToData<int32>(value));
     stream >> value;
-    if(value == "1")
+    if (value == "1")
     {
-      ui->checkBoxInvertX->setChecked( true );
+        ui->checkBoxInvertX->setChecked( true );
     }
     else
     {
-      ui->checkBoxInvertX->setChecked( false );
+        ui->checkBoxInvertX->setChecked( false );
     }
     stream >> value;
-    if(value == "1")
+    if (value == "1")
     {
-      ui->checkBoxInvertY->setChecked( true );
+        ui->checkBoxInvertY->setChecked( true );
     }
     else
     {
-      ui->checkBoxInvertY->setChecked( false );
+        ui->checkBoxInvertY->setChecked( false );
     }
     stream >> value;
-    if(value == "1")
+    if (value == "1")
     {
-      ui->checkBoxInvertZ->setChecked( true );
+        ui->checkBoxInvertZ->setChecked( true );
     }
     else
     {
-      ui->checkBoxInvertZ->setChecked( false );
+        ui->checkBoxInvertZ->setChecked( false );
     }
 }
 
@@ -252,36 +252,36 @@ void mainGUI::cleanBoard()
     Vector yPoint	( ui->leYVectorX   ->text().toDouble(), ui->leYVectorY   ->text().toDouble(), 	ui->leYVectorZ   ->text().toDouble());
     Vector basePoint	( ui->leBaseVectorX->text().toDouble(), ui->leBaseVectorY->text().toDouble(), 	ui->leBaseVectorZ->text().toDouble());
     Vector xPoint	( ui->leXVectorX   ->text().toDouble(), ui->leXVectorY   ->text().toDouble(), 	ui->leXVectorZ   ->text().toDouble());
-    
+
     Matrix coordinateSystem = PlaneToCoodinateSystem::toCoordinateSystem(xPoint-basePoint, yPoint-basePoint, ui->checkBoxInvertX->isChecked(), ui->checkBoxInvertY->isChecked(), ui->checkBoxInvertZ->isChecked());
     Vector target = coordinateSystem * Vector(1,0,0);
-    
+
     QStringList linesOfText = ui->txtEditTextToWrite->toPlainText().split("\n");
     uint64 longestLine = 0;
     QString currentLine;
     foreach( currentLine, linesOfText)
     {
-      if( currentLine.size() > longestLine )
-      {
-	longestLine = currentLine.size();
-      }
+        if ( currentLine.size() > longestLine )
+        {
+            longestLine = currentLine.size();
+        }
     }
-     
+
     Text::cleanBoard(
-		  this->robot, 
-		  coordinateSystem, 
-		  yPoint,   
-		  //ui->leAngleEraserA->text().toDouble(),
-		  //ui->leAngleEraserB->text().toDouble(),
-		  20.0,
-		  60.0,
-		  60.0,
-		  60.0,
-		  20.0,
-		  25,
-		  linesOfText.size(),
-		  longestLine + 2
-		);     
+        this->robot,
+        coordinateSystem,
+        yPoint,
+        //ui->leAngleEraserA->text().toDouble(),
+        //ui->leAngleEraserB->text().toDouble(),
+        20.0,
+        60.0,
+        60.0,
+        60.0,
+        20.0,
+        25,
+        linesOfText.size(),
+        longestLine + 2
+    );
 
     this->robot->goHome();
     this->robot->getPort()->executeQuedCommands();
@@ -289,35 +289,36 @@ void mainGUI::cleanBoard()
 
 void mainGUI::resetRobot()
 {
-  this->robot->reset();
+    this->robot->reset();
 }
 
 void mainGUI::abortTransmission()
 {
-   this->robot->getPort()->abortDataTransmission();
+    this->robot->getPort()->abortDataTransmission();
 }
 
 void mainGUI::goHome()
 {
-  this->robot->goHome();
-  this->robot->getPort()->executeQuedCommands();    
+    this->robot->goHome();
+    this->robot->getPort()->executeQuedCommands();
 }
 
 void mainGUI::speedChanged(int newSpeed)
 {
-  this->robot->speed(newSpeed);
+    this->robot->speed(newSpeed);
 }
 
 void mainGUI::selectScheduleDirectory()
 {
     QFileDialog dialog(this);
     dialog.setFileMode(QFileDialog::Directory);
+    dialog.setDirectory(this->ui->scheduleDirectoryLineEdit->text());
 
     if (dialog.exec())
     {
-	this->ui->scheduleDirectoryLineEdit->setText(dialog.directory().path());
-	scheduleDirectoryLineEditFinished();
-    }    
+        this->ui->scheduleDirectoryLineEdit->setText(dialog.directory().path());
+        scheduleDirectoryLineEditFinished();
+    }
 }
 
 void mainGUI::scheduleDirectoryLineEditFinished()
@@ -332,6 +333,56 @@ void mainGUI::scheduleDirectoryLineEditFinished()
 
     this->ui->scheduleFileListView->setModel(model);
     this->ui->scheduleFileListView->setRootIndex(model->index(this->ui->scheduleDirectoryLineEdit->text()));
+    
+    
+    
+    int rowCount = model->rowCount();
+    int columnCount = model->columnCount();
+    
+    //delete model; //according to the setModel documentation in QAbstractItemView 
+    
+}
 
+void mainGUI::automaticStart()
+{
+ QFileSystemModel* model = dynamic_cast< QFileSystemModel* >(this->ui->scheduleFileListView->model());
+    QModelIndex parentIndex = model->index(this->ui->scheduleDirectoryLineEdit->text());
+    int rowCount = model->rowCount(parentIndex);
+    for (int i=0; i<rowCount; i++)
+    {
+        QModelIndex modelIndex = model->index(i, 0, parentIndex);
+        if ( modelIndex.isValid() )
+        {
+            this->ui->scheduleFileListView->selectionModel()->select( modelIndex, QItemSelectionModel::Select );
+        }
+        QFileInfo fileInfo = model->fileInfo(modelIndex);
+        QString currentFilePath = fileInfo.absoluteFilePath();
+
+        QString text = model->data(modelIndex, Qt::DisplayRole).toString();
+
+        std::cout << currentFilePath.toStdString() << " : " << text.toStdString() << std::endl;
+        //sleep( 2 );
+
+        QFile file(currentFilePath);
+        if (!file.open(QFile::ReadOnly | QFile::Text))
+        {
+            QMessageBox::warning(this, "Log Reader", "Cannot read file %1:\n%2"
+                                 ,currentFilePath
+                                 ,file.errorString());
+            break;
+        }
+
+        QTextStream in(&file);
+
+        this->ui->automaticTextEdit->setPlainText(in.readAll());
+        file.close();
+        sleep(1);
+
+    }
+}
+
+void mainGUI::automaticStop()
+{
+  
 }
 

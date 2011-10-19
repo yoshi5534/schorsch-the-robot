@@ -434,29 +434,32 @@
          <bool>false</bool>
         </property>
         <layout class="QFormLayout" name="formLayout_3">
-         <item row="1" column="0">
-          <widget class="QPushButton" name="btnHome">
-           <property name="text">
-            <string>Go Home</string>
-           </property>
-          </widget>
+         <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::ExpandingFieldsGrow</enum>
+         </property>
+         <item row="0" column="0" colspan="2">
+          <widget class="QTextEdit" name="txtEditTextToWrite"/>
          </item>
-         <item row="2" column="0">
+         <item row="2" column="1">
           <widget class="QPushButton" name="btnCleanBoard">
            <property name="text">
             <string>Clean Board</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
+         <item row="3" column="1">
+          <widget class="QPushButton" name="btnHome">
+           <property name="text">
+            <string>Go Home</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
           <widget class="QPushButton" name="btnWrite">
            <property name="text">
             <string>Write</string>
            </property>
           </widget>
-         </item>
-         <item row="0" column="0" colspan="2">
-          <widget class="QTextEdit" name="txtEditTextToWrite"/>
          </item>
         </layout>
        </widget>
@@ -488,7 +491,7 @@
            <item>
             <widget class="QLineEdit" name="scheduleDirectoryLineEdit">
              <property name="text">
-              <string>/home/oswald/projekt/schorsch-the-robot/text/LangeNachtDerWissenschaften-2011-10-22/</string>
+              <string/>
              </property>
             </widget>
            </item>

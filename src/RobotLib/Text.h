@@ -61,7 +61,7 @@ class Text
       {
 	  Vector lineTranslationVector(0,-2.5,0);
 	  Vector characterTranslationVector(1.3,0,0);	  
-	  Vector savePositionOffestVector(0,0,8);
+	  Vector savePositionOffestVector(0,0,6);
 	  
 	  uint64 currentLine = 1;
 	  uint64 currentCharacterInLine = 0;	  
@@ -169,9 +169,9 @@ class Text
 	      
 	      for(std::list<Vector>::iterator it = characterMoveList.begin(); it != characterMoveList.end(); it++)
 	      {
-		  Vector targetVector = originOfCurrentCharacterVector + (*it);		  
+		  Vector targetVector = originOfCurrentCharacterVector + (*it);		
 		  robot->moveLinearTo(boardCoordinateSystem * (targetVector * textSizeInMillimeter) + originOfBoardCoordinateSystem, angleA, angleB);
-	      }	      
+	      }  
 	  }
    
 	  //before we end the text drawing we will add some room between the marker and the board because the next statement might lead to an collision with the board	
@@ -212,7 +212,7 @@ class Text
 	  Vector lineTranslationVector(0,-2.5,0);
 	  Vector characterTranslationVector(1.3,0,0);	  
 	  Vector savePositionOffestVector(0,0,8);
-	  Vector eraserOffset(1,6,1.5);
+	  Vector eraserOffset(-1,6,1.5);
 	  
 	  
 	  //calculate angle increments
@@ -226,7 +226,7 @@ class Text
 	  for(uint64 currentLine = 0; currentLine <= countOfLines; currentLine++)
 	  {
 	    Vector startOfLine = originOfBoardCoordinateSystem + boardCoordinateSystem * (((lineTranslationVector * currentLine) + eraserOffset) * textSizeInMillimeter); 
-	    Vector endOfLine =  startOfLine + (characterTranslationVector * textSizeInMillimeter) * countOfCharactersInLongestLine;
+	    Vector endOfLine =  startOfLine + boardCoordinateSystem * ((characterTranslationVector * textSizeInMillimeter) * countOfCharactersInLongestLine);
 	    	
 	    float64 angleAEndOfLine 	= angleABegin +  static_cast< float64 >(countOfCharactersInLongestLine) * angleAIncrementPerCharacter;
 	    float64 angleBCurrentLine 	= angleBBegin +  static_cast< float64 >(currentLine) 		  	* angleBIncrementPerLine;

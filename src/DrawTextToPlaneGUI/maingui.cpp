@@ -319,13 +319,13 @@ void mainGUI::cleanBoard(QString content)
         //ui->leAngleEraserA->text().toDouble(),
         //ui->leAngleEraserB->text().toDouble(),
         ui->leAngleEraserABegin->text().toDouble(),//20.0,
-        ui->leAngleEraserBBegin->text().toDouble(),//60.0,
-        ui->leAngleEraserAEnd->text().toDouble(),  //60.0,
+        ui->leAngleEraserAEnd->text().toDouble(),//60.0,
+        ui->leAngleEraserBBegin->text().toDouble(),  //60.0,
         ui->leAngleEraserBEnd->text().toDouble(),  //60.0,
         20.0,
         25,
         linesOfText.size(),
-        longestLine + 2
+        longestLine + 3
     );
 }
 
@@ -471,7 +471,8 @@ QString mainGUI::automaticFindAndSelectNextFileWhichShouldBePrinted(QTime curren
             QString currentFilePath = fileInfo.absoluteFilePath();
             QString currentFileBaseName = fileInfo.baseName();
 
-            QTime fileTime = QTime::fromString(currentFileBaseName);
+	    QStringList seperatedBaseNameList = currentFileBaseName.split("-");
+            QTime fileTime = QTime::fromString(seperatedBaseNameList.first());
             if ( currentTime > fileTime )
             {
                 if ( fileTime > automaticLastFilePrinted )

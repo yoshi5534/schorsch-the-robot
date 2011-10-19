@@ -37,7 +37,8 @@ public slots:
     void defineXVector();
     void defineBaseVector();
     void defineMarker();
-    void defineEraser();
+    void defineEraserBegin();
+    void defineEraserEnd();
     void loadConfiguration();
     void saveConfiguration();
     void moveToBaseVector();

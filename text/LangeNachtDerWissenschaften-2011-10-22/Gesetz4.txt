@@ -1,0 +1,2 @@
+3. Gesetz der Robotik:
+Ein Roboter muss seine eigene Existenz schützen, so lange dieses sein Handeln nicht dem nullten, ersten oder zweiten Gesetz widerspricht. 

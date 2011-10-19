@@ -1,0 +1,2 @@
+1. Gesetz der Robotik:
+Ein Roboter darf keinen Menschen verletzen oder durch Untätigkeit zu Schaden kommen lassen, außer er verstieße damit gegen das nullte Gesetz. 

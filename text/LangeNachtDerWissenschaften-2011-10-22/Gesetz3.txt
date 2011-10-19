@@ -1,0 +1,2 @@
+2. Gesetz der Robotik:
+Ein Roboter muss den Befehlen der Menschen gehorchen – es sei denn, solche Befehle stehen im Widerspruch zum nullten oder ersten Gesetz. 

@@ -149,99 +149,110 @@ void mainGUI::moveToYVector()
 
 void mainGUI::saveConfiguration()
 {
-    std::ofstream stream;
-    stream.open("DrawTextToPlaneGUI.config");
+    QString absoluteFilePath = QFileDialog::getSaveFileName();
+    if( absoluteFilePath != QString() )
+    {  
+      std::ofstream stream;
+      stream.open(absoluteFilePath.toStdString().c_str());
 
-    if ( stream )
-    {
-        stream 	     << ui->leYVectorX->text().toDouble()
-        << std::endl << ui->leYVectorY->text().toDouble()
-        << std::endl << ui->leYVectorZ->text().toDouble()
-        << std::endl << ui->leBaseVectorX->text().toDouble()
-        << std::endl << ui->leBaseVectorY->text().toDouble()
-        << std::endl << ui->leBaseVectorZ->text().toDouble()
-        << std::endl << ui->leXVectorX->text().toDouble()
-        << std::endl << ui->leXVectorY->text().toDouble()
-        << std::endl << ui->leXVectorZ->text().toDouble()
-        << std::endl << ui->leAngleMarkerA->text().toDouble()
-        << std::endl << ui->leAngleMarkerB->text().toDouble()
-        << std::endl << ui->leAngleEraserABegin->text().toDouble()
-        << std::endl << ui->leAngleEraserBBegin->text().toDouble()
-        << std::endl << ui->leAngleEraserAEnd->text().toDouble()
-        << std::endl << ui->leAngleEraserBEnd->text().toDouble()
-        << std::endl << ui->speedSpinBox->text().toStdString()
-        << std::endl << ui->checkBoxInvertX->isChecked()
-        << std::endl << ui->checkBoxInvertY->isChecked()
-        << std::endl << ui->checkBoxInvertZ->isChecked();
-    }
+      if ( stream )
+      {
+	  stream 	     << ui->leYVectorX->text().toDouble()
+	  << std::endl << ui->leYVectorY->text().toDouble()
+	  << std::endl << ui->leYVectorZ->text().toDouble()
+	  << std::endl << ui->leBaseVectorX->text().toDouble()
+	  << std::endl << ui->leBaseVectorY->text().toDouble()
+	  << std::endl << ui->leBaseVectorZ->text().toDouble()
+	  << std::endl << ui->leXVectorX->text().toDouble()
+	  << std::endl << ui->leXVectorY->text().toDouble()
+	  << std::endl << ui->leXVectorZ->text().toDouble()
+	  << std::endl << ui->leAngleMarkerA->text().toDouble()
+	  << std::endl << ui->leAngleMarkerB->text().toDouble()
+	  << std::endl << ui->leAngleEraserABegin->text().toDouble()
+	  << std::endl << ui->leAngleEraserBBegin->text().toDouble()
+	  << std::endl << ui->leAngleEraserAEnd->text().toDouble()
+	  << std::endl << ui->leAngleEraserBEnd->text().toDouble()
+	  << std::endl << ui->speedSpinBox->text().toStdString()
+	  << std::endl << ui->checkBoxInvertX->isChecked()
+	  << std::endl << ui->checkBoxInvertY->isChecked()
+	  << std::endl << ui->checkBoxInvertZ->isChecked()
+	  << std::endl << ui->scheduleDirectoryLineEdit->text().toStdString();
+      }
 
-    stream.close();
+      stream.close();
+  }
 }
 
 void mainGUI::loadConfiguration()
 {
-    std::ifstream stream;
-    stream.open("DrawTextToPlaneGUI.config");
-    std::string value;
+    QString absoluteFilePath = QFileDialog::getOpenFileName();
+    if( absoluteFilePath != QString() )
+    {  
+      std::ifstream stream;
+      stream.open(absoluteFilePath.toStdString().c_str());
+      std::string value;
 
-    stream >> value;
-    ui->leYVectorX->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leYVectorY->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leYVectorZ->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leBaseVectorX->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leBaseVectorY->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leBaseVectorZ->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leXVectorX->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leXVectorY->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leXVectorZ->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leAngleMarkerA->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leAngleMarkerB->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leAngleEraserABegin->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leAngleEraserBBegin->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leAngleEraserAEnd->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->leAngleEraserBEnd->setText(QString::fromStdString(value));
-    stream >> value;
-    ui->speedSpinBox->setValue(stringToData<int32>(value));
-    stream >> value;
-    if (value == "1")
-    {
-        ui->checkBoxInvertX->setChecked( true );
-    }
-    else
-    {
-        ui->checkBoxInvertX->setChecked( false );
-    }
-    stream >> value;
-    if (value == "1")
-    {
-        ui->checkBoxInvertY->setChecked( true );
-    }
-    else
-    {
-        ui->checkBoxInvertY->setChecked( false );
-    }
-    stream >> value;
-    if (value == "1")
-    {
-        ui->checkBoxInvertZ->setChecked( true );
-    }
-    else
-    {
-        ui->checkBoxInvertZ->setChecked( false );
+      stream >> value;
+      ui->leYVectorX->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leYVectorY->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leYVectorZ->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leBaseVectorX->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leBaseVectorY->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leBaseVectorZ->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leXVectorX->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leXVectorY->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leXVectorZ->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leAngleMarkerA->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leAngleMarkerB->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leAngleEraserABegin->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leAngleEraserBBegin->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leAngleEraserAEnd->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->leAngleEraserBEnd->setText(QString::fromStdString(value));
+      stream >> value;
+      ui->speedSpinBox->setValue(stringToData<int32>(value));
+      stream >> value;
+      if (value == "1")
+      {
+	  ui->checkBoxInvertX->setChecked( true );
+      }
+      else
+      {
+	  ui->checkBoxInvertX->setChecked( false );
+      }
+      stream >> value;
+      if (value == "1")
+      {
+	  ui->checkBoxInvertY->setChecked( true );
+      }
+      else
+      {
+	  ui->checkBoxInvertY->setChecked( false );
+      }
+      stream >> value;
+      if (value == "1")
+      {
+	  ui->checkBoxInvertZ->setChecked( true );
+      }
+      else
+      {
+	  ui->checkBoxInvertZ->setChecked( false );
+      }
+      stream >> value;
+      ui->scheduleDirectoryLineEdit->setText(QString::fromStdString(value));
     }
 }
 
@@ -427,6 +438,7 @@ void mainGUI::automaticTimerElapsed()
 
 QString mainGUI::loadFileContent(QString currentFilePath)
 {
+  
     QFile file(currentFilePath);
     if (!file.open(QFile::ReadOnly | QFile::Text))
     {

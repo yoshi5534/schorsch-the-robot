@@ -212,7 +212,7 @@ class Text
 	  Vector lineTranslationVector(0,-2.5,0);
 	  Vector characterTranslationVector(1.3,0,0);	  
 	  Vector savePositionOffestVector(0,0,8);
-	  Vector eraserOffset(2,6,2);
+	  Vector eraserOffset(1,6,1.5);
 	  
 	  
 	  //calculate angle increments

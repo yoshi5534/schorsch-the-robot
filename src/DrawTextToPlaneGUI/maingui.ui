@@ -6,17 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>777</width>
-    <height>785</height>
+    <width>862</width>
+    <height>622</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Funny Fun FUI Fo Fun Fobot</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_9">
+   <layout class="QVBoxLayout" name="verticalLayout_5">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
       <item>
        <widget class="QGroupBox" name="gbYVector">
         <property name="title">
@@ -172,36 +172,6 @@
         <layout class="QGridLayout" name="gridLayout_6">
          <item row="0" column="0">
           <layout class="QGridLayout" name="gridLayout">
-           <item row="2" column="0">
-            <widget class="QLabel" name="lblx">
-             <property name="text">
-              <string>X</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="lbly">
-             <property name="text">
-              <string>Y</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="lblz">
-             <property name="text">
-              <string>Z</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="leXVectorX"/>
-           </item>
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="leXVectorY"/>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="leXVectorZ"/>
-           </item>
            <item row="0" column="1">
             <widget class="QPushButton" name="btnDefineVectorX">
              <property name="text">
@@ -215,6 +185,36 @@
               <string>Move To</string>
              </property>
             </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="lblx">
+             <property name="text">
+              <string>X</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="leXVectorX"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="lbly">
+             <property name="text">
+              <string>Y</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="leXVectorY"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="lblz">
+             <property name="text">
+              <string>Z</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="leXVectorZ"/>
            </item>
            <item row="5" column="1">
             <spacer name="verticalSpacer_3">
@@ -235,39 +235,36 @@
        </widget>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
+       <layout class="QFormLayout" name="formLayout">
+        <item row="0" column="0">
          <widget class="QGroupBox" name="groupBoxMarker">
           <property name="title">
            <string>Marker Settings</string>
           </property>
-          <layout class="QFormLayout" name="formLayout_2">
-           <item row="0" column="0">
-            <layout class="QFormLayout" name="formLayout">
-             <property name="fieldGrowthPolicy">
-              <enum>QFormLayout::ExpandingFieldsGrow</enum>
-             </property>
-             <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <layout class="QFormLayout" name="formLayout_2">
+             <item row="0" column="0">
               <widget class="QLabel" name="angleAMarkerLabel">
                <property name="text">
                 <string>Angle A</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
+             <item row="0" column="1">
               <widget class="QLineEdit" name="leAngleMarkerA"/>
              </item>
-             <item row="2" column="0">
+             <item row="1" column="0">
               <widget class="QLabel" name="angleBMarkerLabel">
                <property name="text">
                 <string>Angle B</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="1">
+             <item row="1" column="1">
               <widget class="QLineEdit" name="leAngleMarkerB"/>
              </item>
-             <item row="3" column="1">
+             <item row="2" column="1">
               <widget class="QPushButton" name="defineMarkerButton">
                <property name="text">
                 <string>Define</string>
@@ -279,50 +276,7 @@
           </layout>
          </widget>
         </item>
-        <item>
-         <widget class="QGroupBox" name="groupBoxEraser">
-          <property name="title">
-           <string>Eraser Settings</string>
-          </property>
-          <layout class="QFormLayout" name="formLayout_3">
-           <item row="0" column="0">
-            <layout class="QFormLayout" name="formLayout_4">
-             <property name="fieldGrowthPolicy">
-              <enum>QFormLayout::ExpandingFieldsGrow</enum>
-             </property>
-             <item row="1" column="0">
-              <widget class="QLabel" name="angleAEraserLabel">
-               <property name="text">
-                <string>Angle A</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QLineEdit" name="leAngleEraserA"/>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="angleBEraserLabel">
-               <property name="text">
-                <string>Angle B</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLineEdit" name="leAngleEraserB"/>
-             </item>
-             <item row="3" column="1">
-              <widget class="QPushButton" name="defineEraserButton">
-               <property name="text">
-                <string>Define</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
+        <item row="0" column="1">
          <widget class="QGroupBox" name="groupBoxCoordinatSystem">
           <property name="title">
            <string>Coordinat System</string>
@@ -376,6 +330,92 @@
           </layout>
          </widget>
         </item>
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="groupBoxEraserBegin">
+          <property name="title">
+           <string>Eraser Settings Begin</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QFormLayout" name="formLayout_4">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::ExpandingFieldsGrow</enum>
+             </property>
+             <item row="1" column="0">
+              <widget class="QLabel" name="angleAEraserLabelBegin">
+               <property name="text">
+                <string>Angle A</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="leAngleEraserABegin"/>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="angleBEraserLabelBegin">
+               <property name="text">
+                <string>Angle B</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="leAngleEraserBBegin"/>
+             </item>
+             <item row="3" column="1">
+              <widget class="QPushButton" name="defineEraserButtonBegin">
+               <property name="text">
+                <string>Define</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="groupBoxEraserEnd">
+          <property name="title">
+           <string>Eraser Settings End</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <layout class="QFormLayout" name="formLayout_8">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::ExpandingFieldsGrow</enum>
+             </property>
+             <item row="1" column="0">
+              <widget class="QLabel" name="angleAEraserLabelEnd">
+               <property name="text">
+                <string>Angle A</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="leAngleEraserAEnd"/>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="angleBEraserLabelEnd">
+               <property name="text">
+                <string>Angle B</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="leAngleEraserBEnd"/>
+             </item>
+             <item row="3" column="1">
+              <widget class="QPushButton" name="defineEraserButtonEnd">
+               <property name="text">
+                <string>Define</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
        </layout>
       </item>
      </layout>
@@ -393,30 +433,30 @@
         <property name="checked">
          <bool>false</bool>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_6">
-         <item>
-          <widget class="QTextEdit" name="txtEditTextToWrite"/>
-         </item>
-         <item>
+        <layout class="QFormLayout" name="formLayout_3">
+         <item row="1" column="0">
           <widget class="QPushButton" name="btnHome">
            <property name="text">
             <string>Go Home</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="2" column="0">
           <widget class="QPushButton" name="btnCleanBoard">
            <property name="text">
             <string>Clean Board</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="3" column="0">
           <widget class="QPushButton" name="btnWrite">
            <property name="text">
             <string>Write</string>
            </property>
           </widget>
+         </item>
+         <item row="0" column="0" colspan="2">
+          <widget class="QTextEdit" name="txtEditTextToWrite"/>
          </item>
         </layout>
        </widget>
@@ -582,7 +622,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>777</width>
+     <width>862</width>
      <height>21</height>
     </rect>
    </property>
@@ -607,8 +647,8 @@
    <slot>writeText()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>247</x>
-     <y>692</y>
+     <x>113</x>
+     <y>529</y>
     </hint>
     <hint type="destinationlabel">
      <x>140</x>
@@ -623,7 +663,7 @@
    <slot>defineYVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>185</x>
+     <x>144</x>
      <y>88</y>
     </hint>
     <hint type="destinationlabel">
@@ -639,7 +679,7 @@
    <slot>defineBaseVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>378</x>
+     <x>296</x>
      <y>88</y>
     </hint>
     <hint type="destinationlabel">
@@ -655,7 +695,7 @@
    <slot>defineXVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>570</x>
+     <x>448</x>
      <y>88</y>
     </hint>
     <hint type="destinationlabel">
@@ -671,8 +711,8 @@
    <slot>loadConfiguration()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>61</x>
-     <y>730</y>
+     <x>67</x>
+     <y>567</y>
     </hint>
     <hint type="destinationlabel">
      <x>173</x>
@@ -687,8 +727,8 @@
    <slot>saveConfiguration()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>89</x>
-     <y>758</y>
+     <x>95</x>
+     <y>595</y>
     </hint>
     <hint type="destinationlabel">
      <x>202</x>
@@ -703,7 +743,7 @@
    <slot>moveToYVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>185</x>
+     <x>144</x>
      <y>116</y>
     </hint>
     <hint type="destinationlabel">
@@ -719,7 +759,7 @@
    <slot>moveToBaseVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>378</x>
+     <x>296</x>
      <y>116</y>
     </hint>
     <hint type="destinationlabel">
@@ -735,7 +775,7 @@
    <slot>moveToXVector()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>570</x>
+     <x>448</x>
      <y>116</y>
     </hint>
     <hint type="destinationlabel">
@@ -751,8 +791,8 @@
    <slot>resetRobot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>707</x>
-     <y>744</y>
+     <x>792</x>
+     <y>581</y>
     </hint>
     <hint type="destinationlabel">
      <x>585</x>
@@ -767,8 +807,8 @@
    <slot>abortTransmission()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>771</x>
-     <y>744</y>
+     <x>856</x>
+     <y>581</y>
     </hint>
     <hint type="destinationlabel">
      <x>692</x>
@@ -783,8 +823,8 @@
    <slot>cleanBoard()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>247</x>
-     <y>664</y>
+     <x>113</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
      <x>676</x>
@@ -799,8 +839,8 @@
    <slot>goHome()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>247</x>
-     <y>636</y>
+     <x>113</x>
+     <y>473</y>
     </hint>
     <hint type="destinationlabel">
      <x>544</x>
@@ -815,28 +855,28 @@
    <slot>defineMarker()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>688</x>
-     <y>136</y>
+     <x>587</x>
+     <y>143</y>
     </hint>
     <hint type="destinationlabel">
      <x>370</x>
-     <y>733</y>
+     <y>621</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>defineEraserButton</sender>
+   <sender>defineEraserButtonBegin</sender>
    <signal>clicked()</signal>
    <receiver>mainGUI</receiver>
    <slot>defineEraser()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>675</x>
-     <y>265</y>
+     <x>587</x>
+     <y>292</y>
     </hint>
     <hint type="destinationlabel">
      <x>348</x>
-     <y>753</y>
+     <y>621</y>
     </hint>
    </hints>
   </connection>
@@ -847,12 +887,12 @@
    <slot>speedChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>723</x>
-     <y>323</y>
+     <x>815</x>
+     <y>88</y>
     </hint>
     <hint type="destinationlabel">
      <x>225</x>
-     <y>720</y>
+     <y>621</y>
     </hint>
    </hints>
   </connection>
@@ -863,12 +903,12 @@
    <slot>selectScheduleDirectory()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>751</x>
-     <y>477</y>
+     <x>848</x>
+     <y>362</y>
     </hint>
     <hint type="destinationlabel">
      <x>596</x>
-     <y>758</y>
+     <y>621</y>
     </hint>
    </hints>
   </connection>
@@ -879,12 +919,12 @@
    <slot>scheduleDirectoryLineEditFinished()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>536</x>
-     <y>474</y>
+     <x>806</x>
+     <y>361</y>
     </hint>
     <hint type="destinationlabel">
      <x>404</x>
-     <y>762</y>
+     <y>621</y>
     </hint>
    </hints>
   </connection>
@@ -895,12 +935,12 @@
    <slot>automaticStart()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>323</x>
-     <y>691</y>
+     <x>389</x>
+     <y>528</y>
     </hint>
     <hint type="destinationlabel">
      <x>418</x>
-     <y>743</y>
+     <y>621</y>
     </hint>
    </hints>
   </connection>
@@ -911,12 +951,12 @@
    <slot>automaticStop()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>382</x>
-     <y>691</y>
+     <x>448</x>
+     <y>528</y>
     </hint>
     <hint type="destinationlabel">
      <x>607</x>
-     <y>738</y>
+     <y>621</y>
     </hint>
    </hints>
   </connection>
@@ -932,7 +972,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>163</x>
-     <y>738</y>
+     <y>621</y>
     </hint>
    </hints>
   </connection>
@@ -948,7 +988,39 @@
     </hint>
     <hint type="destinationlabel">
      <x>438</x>
-     <y>709</y>
+     <y>621</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defineEraserButtonEnd</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>defineEraserEnd()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>753</x>
+     <y>286</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>617</x>
+     <y>621</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defineEraserButtonBegin</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>defineEraserBegin()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>606</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>631</x>
+     <y>585</y>
     </hint>
    </hints>
   </connection>
@@ -969,12 +1041,13 @@
   <slot>goHome()</slot>
   <slot>speedChanged(int)</slot>
   <slot>defineMarker()</slot>
-  <slot>defineEraser()</slot>
+  <slot>defineEraserBegin()</slot>
   <slot>selectScheduleDirectory()</slot>
   <slot>scheduleDirectoryLineEditFinished()</slot>
   <slot>automaticStart()</slot>
   <slot>automaticStop()</slot>
   <slot>manualGroupToggled(bool)</slot>
   <slot>automaticGroupToggled(bool)</slot>
+  <slot>defineEraserEnd()</slot>
  </slots>
 </ui>

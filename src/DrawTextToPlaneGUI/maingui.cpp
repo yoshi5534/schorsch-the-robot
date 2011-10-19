@@ -32,8 +32,10 @@ mainGUI::mainGUI(QWidget *parent) :
     ui->leYVectorZ->setValidator(new QDoubleValidator(this));
     ui->leAngleMarkerA->setValidator(new QDoubleValidator(this));
     ui->leAngleMarkerB->setValidator(new QDoubleValidator(this));
-    ui->leAngleEraserA->setValidator(new QDoubleValidator(this));
-    ui->leAngleEraserB->setValidator(new QDoubleValidator(this));
+    ui->leAngleEraserABegin->setValidator(new QDoubleValidator(this));
+    ui->leAngleEraserBBegin->setValidator(new QDoubleValidator(this));
+    ui->leAngleEraserAEnd->setValidator(new QDoubleValidator(this));
+    ui->leAngleEraserBEnd->setValidator(new QDoubleValidator(this));
 
     this->robot = new Robot("/dev/ttyS0", 750000);
     this->robot->getPort()->setLiveCommandMode(false);
@@ -95,21 +97,28 @@ void mainGUI::defineMarker()
 }
 
 
-void mainGUI::defineEraser()
+void mainGUI::defineEraserBegin()
 {
     Where where = robot->whereIsRobot();
-    ui->leAngleEraserA->setText(QString::number(where.a));
-    ui->leAngleEraserB->setText(QString::number(where.b));
+    ui->leAngleEraserABegin->setText(QString::number(where.a));
+    ui->leAngleEraserBBegin->setText(QString::number(where.b));
+}
+
+void mainGUI::defineEraserEnd()
+{
+    Where where = robot->whereIsRobot();
+    ui->leAngleEraserAEnd->setText(QString::number(where.a));
+    ui->leAngleEraserBEnd->setText(QString::number(where.b));
 }
 
 void mainGUI::moveToBaseVector()
 {
     //this->robot->goHome();
-    this->robot->moveLinearTo(Vector(	ui->leBaseVectorX->text().toDouble(),
+    this->robot->moveLinearTo(Vector( ui->leBaseVectorX->text().toDouble(),
                                       ui->leBaseVectorY->text().toDouble(),
                                       ui->leBaseVectorZ->text().toDouble()),
-                              ui->leAngleMarkerA->text().toDouble(),
-                              ui->leAngleMarkerB->text().toDouble());
+				      ui->leAngleMarkerA->text().toDouble(),
+				      ui->leAngleMarkerB->text().toDouble());
     this->robot->getPort()->executeQuedCommands();
 }
 
@@ -119,8 +128,8 @@ void mainGUI::moveToXVector()
     this->robot->moveLinearTo(Vector(ui->leXVectorX->text().toDouble(),
                                      ui->leXVectorY->text().toDouble(),
                                      ui->leXVectorZ->text().toDouble()),
-                              ui->leAngleMarkerA->text().toDouble(),
-                              ui->leAngleMarkerB->text().toDouble());
+				     ui->leAngleMarkerA->text().toDouble(),
+				     ui->leAngleMarkerB->text().toDouble());
     this->robot->getPort()->executeQuedCommands();
 }
 
@@ -131,8 +140,8 @@ void mainGUI::moveToYVector()
     this->robot->moveLinearTo(Vector( ui->leYVectorX->text().toDouble(),
                                       ui->leYVectorY->text().toDouble(),
                                       ui->leYVectorZ->text().toDouble()),
-                              ui->leAngleMarkerA->text().toDouble(),
-                              ui->leAngleMarkerB->text().toDouble());
+				      ui->leAngleMarkerA->text().toDouble(),
+				      ui->leAngleMarkerB->text().toDouble());
     this->robot->getPort()->executeQuedCommands();
 
 }
@@ -145,7 +154,7 @@ void mainGUI::saveConfiguration()
 
     if ( stream )
     {
-        stream  	      	 << ui->leYVectorX->text().toDouble()
+        stream 	     << ui->leYVectorX->text().toDouble()
         << std::endl << ui->leYVectorY->text().toDouble()
         << std::endl << ui->leYVectorZ->text().toDouble()
         << std::endl << ui->leBaseVectorX->text().toDouble()
@@ -156,8 +165,10 @@ void mainGUI::saveConfiguration()
         << std::endl << ui->leXVectorZ->text().toDouble()
         << std::endl << ui->leAngleMarkerA->text().toDouble()
         << std::endl << ui->leAngleMarkerB->text().toDouble()
-        << std::endl << ui->leAngleEraserA->text().toDouble()
-        << std::endl << ui->leAngleEraserB->text().toDouble()
+        << std::endl << ui->leAngleEraserABegin->text().toDouble()
+        << std::endl << ui->leAngleEraserBBegin->text().toDouble()
+        << std::endl << ui->leAngleEraserAEnd->text().toDouble()
+        << std::endl << ui->leAngleEraserBEnd->text().toDouble()
         << std::endl << ui->speedSpinBox->text().toStdString()
         << std::endl << ui->checkBoxInvertX->isChecked()
         << std::endl << ui->checkBoxInvertY->isChecked()
@@ -196,9 +207,13 @@ void mainGUI::loadConfiguration()
     stream >> value;
     ui->leAngleMarkerB->setText(QString::fromStdString(value));
     stream >> value;
-    ui->leAngleEraserA->setText(QString::fromStdString(value));
+    ui->leAngleEraserABegin->setText(QString::fromStdString(value));
     stream >> value;
-    ui->leAngleEraserB->setText(QString::fromStdString(value));
+    ui->leAngleEraserBBegin->setText(QString::fromStdString(value));
+    stream >> value;
+    ui->leAngleEraserAEnd->setText(QString::fromStdString(value));
+    stream >> value;
+    ui->leAngleEraserBEnd->setText(QString::fromStdString(value));
     stream >> value;
     ui->speedSpinBox->setValue(stringToData<int32>(value));
     stream >> value;
@@ -292,10 +307,10 @@ void mainGUI::cleanBoard(QString content)
         yPoint,
         //ui->leAngleEraserA->text().toDouble(),
         //ui->leAngleEraserB->text().toDouble(),
-        20.0,
-        60.0,
-        60.0,
-        60.0,
+        ui->leAngleEraserABegin->text().toDouble(),//20.0,
+        ui->leAngleEraserBBegin->text().toDouble(),//60.0,
+        ui->leAngleEraserAEnd->text().toDouble(),  //60.0,
+        ui->leAngleEraserBEnd->text().toDouble(),  //60.0,
         20.0,
         25,
         linesOfText.size(),
@@ -390,8 +405,8 @@ void mainGUI::automaticTimerElapsed()
         //if we need an new file
         if ( nextFile != "" )
         {
-	    this->robot->goHome();
-	  
+            this->robot->goHome();
+
             //whipe old contend
             cleanBoard(this->ui->automaticTextEdit->toPlainText());
 
@@ -400,8 +415,8 @@ void mainGUI::automaticTimerElapsed()
 
             //draw contend
             writeText(this->ui->automaticTextEdit->toPlainText());
-	    
-	    this->robot->goHome();
+
+            this->robot->goHome();
             this->robot->getPort()->executeQuedCommands();
         }
     }
@@ -485,17 +500,17 @@ bool mainGUI::robotIsAtHomePossition(float64 allowedDelta)
 
 void mainGUI::automaticGroupToggled(bool checked)
 {
-  ui->groupBoxManual->setChecked( !checked );
+    ui->groupBoxManual->setChecked( !checked );
 }
 
 void mainGUI::manualGroupToggled(bool checked)
 {
-  ui->groupBoxAutomatic->setChecked( !checked );
-  if( checked )
-  {
-    //this->ui->automaticStartPushButton->setEnabled(false);
-    //this->ui->automaticStopPushButton->setEnabled(false);
+    ui->groupBoxAutomatic->setChecked( !checked );
+    if ( checked )
+    {
+        //this->ui->automaticStartPushButton->setEnabled(false);
+        //this->ui->automaticStopPushButton->setEnabled(false);
 
-    disconnect(&automaticTimer, SIGNAL(timeout()), this, SLOT(automaticTimerElapsed()));
-  }
+        disconnect(&automaticTimer, SIGNAL(timeout()), this, SLOT(automaticTimerElapsed()));
+    }
 }

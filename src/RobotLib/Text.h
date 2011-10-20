@@ -31,6 +31,47 @@ private:
         return savePositionOfCurrentCharacterVector;
     }
 
+
+    //ok this is an hack but we need it.
+    //if we are finished writing and not at the end of the linebreaks
+    //we will draw space cahracters until we hit the end of the line
+    //we need this because otherwise the robot might stop because he wold colide wit himself
+    static void doSpaceHoppingToSavePositonInCurrentLine
+    (
+        Robot* robot,
+        Matrix boardCoordinateSystem,
+        Vector originOfBoardCoordinateSystem,
+        Vector lineTranslationVector,
+        Vector characterTranslationVector,
+        Vector savePositionOffestVector,
+        float64 textSizeInMillimeter,
+        uint64 currentLine,
+        uint64 countOfCharactersPerLine,
+        uint64 currentCharacterInLineOrginLine,
+        float64 angleA,
+        float64 angleB
+    )
+    {
+        for ( uint64 currentCharacterInLine = currentCharacterInLineOrginLine; currentCharacterInLine > 0; currentCharacterInLine--)
+        {
+            Vector originOfCurrentLineVector = lineTranslationVector * currentLine;
+            Vector originOfCurrentCharacterVector = originOfCurrentLineVector + (characterTranslationVector * currentCharacterInLine);
+	    Vector currentCharacterButInAirVector = originOfCurrentCharacterVector + Vector( 0,0,1);
+            robot->moveLinearTo(boardCoordinateSystem * (currentCharacterButInAirVector * textSizeInMillimeter) + originOfBoardCoordinateSystem, angleA, angleB);
+        }
+
+        Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem,
+                originOfBoardCoordinateSystem,
+                lineTranslationVector,
+                characterTranslationVector,
+                savePositionOffestVector,
+                textSizeInMillimeter,
+                currentLine,
+                0);
+        robot->moveTo( savePositionOfCurrentCharacterVector, angleA, angleB );
+
+    }
+
 public:
     static void writeText
     (
@@ -272,18 +313,24 @@ public:
             //do we need an newline?
             if ( currentCharacterInLine == countOfCharactersPerLine || stringToParse[currentCharacterIndex] == '\n')
             {
-                //before we move to the next line we will add some room between the marker and the board
-                {
-                    Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem,
-                            originOfBoardCoordinateSystem,
-                            lineTranslationVector,
-                            characterTranslationVector,
-                            savePositionOffestVector,
-                            textSizeInMillimeter,
-                            currentLine,
-                            currentCharacterInLine);
-                    robot->moveTo( savePositionOfCurrentCharacterVector, angleA, angleB );
-                }
+                //before we end the text drawing we will add some room between the marker and the board because the next statement might lead to an collision with the board
+		doSpaceHoppingToSavePositonInCurrentLine
+		(
+		    robot,
+		    boardCoordinateSystem,
+		    originOfBoardCoordinateSystem,
+		    lineTranslationVector,
+		    characterTranslationVector,
+		    savePositionOffestVector,
+		    textSizeInMillimeter,
+		    currentLine,
+		    countOfCharactersPerLine,
+		    currentCharacterInLine,
+		    angleA,
+		    angleB
+		);
+                
+                
 
 
                 currentCharacterInLine = 0;
@@ -303,94 +350,98 @@ public:
         }
 
         //before we end the text drawing we will add some room between the marker and the board because the next statement might lead to an collision with the board
+        doSpaceHoppingToSavePositonInCurrentLine
+        (
+            robot,
+            boardCoordinateSystem,
+            originOfBoardCoordinateSystem,
+            lineTranslationVector,
+            characterTranslationVector,
+            savePositionOffestVector,
+            textSizeInMillimeter,
+            currentLine,
+            countOfCharactersPerLine,
+            currentCharacterInLine,
+            angleA,
+            angleB
+        );
+    }
+    static void cleanBoard
+    (
+        Robot* robot,
+        //const std::string stringToParse,
+        Matrix boardCoordinateSystem,
+        Vector originOfBoardCoordinateSystem,
+        float64 angleABegin,
+        float64 angleAEnd,
+        float64 angleBBegin,
+        float64 angleBEnd,
+        float64 textSizeInMillimeter,
+        uint64 countOfCharactersPerLine,
+        uint64 countOfLines,
+        uint64 countOfCharactersInLongestLine
+    )
+    {
+        Vector lineTranslationVector(0,-2.5,0);
+        Vector characterTranslationVector(1.3,0,0);
+        Vector savePositionOffestVector(0,0,8);
+        Vector eraserOffset(-2,6,1.5);
+
+        //if we introduced artificial linebreaks we have to emulate them
+        if ( countOfCharactersInLongestLine > countOfCharactersPerLine)
         {
-            Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem,
-                    originOfBoardCoordinateSystem,
-                    lineTranslationVector,
-                    characterTranslationVector,
-                    savePositionOffestVector,
-                    textSizeInMillimeter,
-                    currentLine,
-                    currentCharacterInLine);
-            robot->moveTo( savePositionOfCurrentCharacterVector, angleA, angleB );
+            countOfCharactersInLongestLine = countOfCharactersPerLine;
+        }
+
+        //we add an some additional chars to get shure everything is whiped
+        countOfCharactersInLongestLine = countOfCharactersInLongestLine + 6;
+
+        //calculate angle increments
+        float64 angleAIncrementPerCharacter 	= (angleAEnd - angleABegin) / static_cast< float64 >(countOfCharactersPerLine);
+        float64 angleBIncrementPerLine 	= (angleBEnd - angleBBegin) / static_cast< float64 >(countOfLines);
+
+        uint64 currentLine = 0;
+
+        Vector currentTranslationVector = originOfBoardCoordinateSystem;
+
+        for (uint64 currentLine = 0; currentLine <= countOfLines; currentLine++)
+        {
+            Vector startOfLine = originOfBoardCoordinateSystem + boardCoordinateSystem * (((lineTranslationVector * currentLine) + eraserOffset) * textSizeInMillimeter);
+            Vector endOfLine =  startOfLine + boardCoordinateSystem * ((characterTranslationVector * textSizeInMillimeter) * countOfCharactersInLongestLine);
+
+            float64 angleAEndOfLine 	= angleABegin +  static_cast< float64 >(countOfCharactersInLongestLine) * angleAIncrementPerCharacter;
+            float64 angleBCurrentLine 	= angleBBegin +  static_cast< float64 >(currentLine) 		  	* angleBIncrementPerLine;
+
+            {
+                Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem,
+                        originOfBoardCoordinateSystem,
+                        lineTranslationVector,
+                        characterTranslationVector,
+                        savePositionOffestVector,
+                        textSizeInMillimeter,
+                        currentLine,
+                        0);
+                robot->moveTo( savePositionOfCurrentCharacterVector, angleABegin, angleBCurrentLine );
+            }
+
+
+            robot->moveLinearTo(startOfLine, angleABegin	, angleBCurrentLine);
+            robot->moveLinearTo(endOfLine  , angleAEndOfLine	, angleBCurrentLine);
+            robot->moveLinearTo(startOfLine, angleABegin	, angleBCurrentLine);
+
+            {
+                Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem,
+                        originOfBoardCoordinateSystem,
+                        lineTranslationVector,
+                        characterTranslationVector,
+                        savePositionOffestVector,
+                        textSizeInMillimeter,
+                        currentLine,
+                        0);
+                robot->moveTo( savePositionOfCurrentCharacterVector, angleABegin, angleBCurrentLine );
+            }
         }
     }
-      static void cleanBoard
-      ( 	
-	Robot* robot, 
-	//const std::string stringToParse,
-	Matrix boardCoordinateSystem, 
-	Vector originOfBoardCoordinateSystem, 
-	float64 angleABegin,
-	float64 angleAEnd,
-	float64 angleBBegin,
-	float64 angleBEnd,
-	float64 textSizeInMillimeter,
-	uint64 countOfCharactersPerLine,
-	uint64 countOfLines,
-	uint64 countOfCharactersInLongestLine
-      )
-      {
-	  Vector lineTranslationVector(0,-2.5,0);
-	  Vector characterTranslationVector(1.3,0,0);	  
-	  Vector savePositionOffestVector(0,0,8);
-	  Vector eraserOffset(-2,6,1.5);
-	  
-	  //if we introduced artificial linebreaks we have to emulate them
-	  if ( countOfCharactersInLongestLine > countOfCharactersPerLine)
-	  {
-	      countOfCharactersInLongestLine = countOfCharactersPerLine;
-	  }
-	  
-	  //we add an some additional chars to get shure everything is whiped
-	  countOfCharactersInLongestLine = countOfCharactersInLongestLine + 6;
-  
-	  //calculate angle increments
-	  float64 angleAIncrementPerCharacter 	= (angleAEnd - angleABegin) / static_cast< float64 >(countOfCharactersPerLine);
-	  float64 angleBIncrementPerLine 	= (angleBEnd - angleBBegin) / static_cast< float64 >(countOfLines);
-	  
-	  uint64 currentLine = 0;	  
-	  
-	  Vector currentTranslationVector = originOfBoardCoordinateSystem;
-	  
-	  for(uint64 currentLine = 0; currentLine <= countOfLines; currentLine++)
-	  {
-	    Vector startOfLine = originOfBoardCoordinateSystem + boardCoordinateSystem * (((lineTranslationVector * currentLine) + eraserOffset) * textSizeInMillimeter); 
-	    Vector endOfLine =  startOfLine + boardCoordinateSystem * ((characterTranslationVector * textSizeInMillimeter) * countOfCharactersInLongestLine);
-	    	
-	    float64 angleAEndOfLine 	= angleABegin +  static_cast< float64 >(countOfCharactersInLongestLine) * angleAIncrementPerCharacter;
-	    float64 angleBCurrentLine 	= angleBBegin +  static_cast< float64 >(currentLine) 		  	* angleBIncrementPerLine;
-	    
-	   {
-	    Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem, 
-											    originOfBoardCoordinateSystem, 
-											    lineTranslationVector, 
-											    characterTranslationVector,
-											    savePositionOffestVector,
-											    textSizeInMillimeter,
-											    currentLine, 
-											    0);
-	      robot->moveTo( savePositionOfCurrentCharacterVector, angleABegin, angleBCurrentLine );
-	   }
-	  
-	    
-	    robot->moveLinearTo(startOfLine, angleABegin	, angleBCurrentLine); 
-	    robot->moveLinearTo(endOfLine  , angleAEndOfLine	, angleBCurrentLine);
-	    robot->moveLinearTo(startOfLine, angleABegin	, angleBCurrentLine);
-	    
-	   {
-	    Vector savePositionOfCurrentCharacterVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem, 
-											    originOfBoardCoordinateSystem, 
-											    lineTranslationVector, 
-											    characterTranslationVector,
-											    savePositionOffestVector,
-											    textSizeInMillimeter,
-											    currentLine, 
-											    0);
-	      robot->moveTo( savePositionOfCurrentCharacterVector, angleABegin, angleBCurrentLine );
-	   }
-	  }
-      }
 
 
 //     static void cleanBoard
@@ -413,61 +464,61 @@ public:
 //         Vector characterTranslationVector(1.3,0,0);
 //         Vector savePositionOffestVector(0,0,8);
 //         Vector eraserOffset(-2,6,1.5);
-// 
+//
 //         //if we introduced artificial linebreaks we have to emulate them
 //         if ( countOfCharactersInLongestLine > countOfCharactersPerLine)
 //         {
 //             countOfCharactersInLongestLine = countOfCharactersPerLine;
 //         }
-//         
+//
 //        //we add an some additional chars to get shure everything is whiped
 //        countOfCharactersInLongestLine = countOfCharactersInLongestLine + 3;
-// 
+//
 //         //calculate angle increments
 //         float64 angleAIncrementPerCharacter 	= (angleAEnd - angleABegin) / static_cast< float64 >(countOfCharactersPerLine);
 //         float64 angleBIncrementPerLine 	= (angleBEnd - angleBBegin) / static_cast< float64 >(countOfLines);
-// 
+//
 //         uint64 currentLine = 0;
-// 
+//
 //         Vector currentTranslationVector = originOfBoardCoordinateSystem;
-// 
+//
 //         for (uint64 currentLine = 0; currentLine < countOfLines; currentLine++)
 //         {
 //             Vector startOfLine 	= originOfBoardCoordinateSystem + boardCoordinateSystem * (((lineTranslationVector * currentLine) + eraserOffset) * textSizeInMillimeter);
 //             //Vector centerOfLine =  startOfLine + boardCoordinateSystem * ((characterTranslationVector * textSizeInMillimeter) * (countOfCharactersInLongestLine / 2));
 //             Vector endOfLine 	=  startOfLine + boardCoordinateSystem * ((characterTranslationVector * textSizeInMillimeter) * countOfCharactersInLongestLine);
 // 	    Vector originOfCurrentLineVector = lineTranslationVector * currentLine;
-// 	    
+//
 //             //float64 angleACenterOfLine1 = angleABegin + (static_cast< float64 >(countOfCharactersInLongestLine) * 0.3) * angleAIncrementPerCharacter;
 //             //float64 angleACenterOfLine2	= angleABegin + (static_cast< float64 >(countOfCharactersInLongestLine) * 0.6) * angleAIncrementPerCharacter;
 //             float64 angleAEndOfLine 	= angleABegin +  static_cast< float64 >(countOfCharactersInLongestLine) * angleAIncrementPerCharacter;
 //             float64 angleBCurrentLine 	= angleBBegin +  static_cast< float64 >(currentLine) 		  	* angleBIncrementPerLine;
-// 
-// 
+//
+//
 //             Vector savePositionOfCurrentLineBeginVector = getSavePositionOfCurrentCharacter(boardCoordinateSystem, originOfBoardCoordinateSystem, lineTranslationVector, characterTranslationVector, savePositionOffestVector, textSizeInMillimeter, currentLine, 0);
 //             Vector savePositionOfCurrentLineEndVector   = getSavePositionOfCurrentCharacter(boardCoordinateSystem, originOfBoardCoordinateSystem, lineTranslationVector, characterTranslationVector, savePositionOffestVector, textSizeInMillimeter, currentLine, countOfCharactersInLongestLine);
-// 
+//
 //             robot->moveTo( savePositionOfCurrentLineBeginVector, angleABegin, angleBCurrentLine );
 //             robot->moveLinearTo(startOfLine, angleABegin, angleBCurrentLine);
-// 
+//
 //             for (size_t currentCharacterInLine = 0; currentCharacterInLine < countOfCharactersInLongestLine; currentCharacterInLine++)
 //             {
-// 		
+//
 //                	Vector startOfLineToCurrentCharacterVector = characterTranslationVector * currentCharacterInLine;
 // 		Vector startOfLineToCurrentCharacterUpVector = startOfLineToCurrentCharacterVector + Vector(0.0, 1.0, 0.0);
 // 		Vector startOfLineToCurrentCharacterDownVector = startOfLineToCurrentCharacterVector + Vector(0.0, -2.0, 0.0);
-// 		
+//
 //                 float64 angleACurrentCharacter = angleABegin + static_cast< float64 >(currentCharacterInLine) * angleAIncrementPerCharacter;
-// 
+//
 // 		Vector currentCharacterUp   =  startOfLine + boardCoordinateSystem * (startOfLineToCurrentCharacterUpVector   * textSizeInMillimeter);
 // 		Vector currentCharacterDown =  startOfLine + boardCoordinateSystem * (startOfLineToCurrentCharacterDownVector * textSizeInMillimeter);
-// 		
+//
 // 		robot->moveLinearTo(currentCharacterUp  , angleACurrentCharacter, angleBCurrentLine);
 //                 robot->moveLinearTo(currentCharacterDown, angleACurrentCharacter, angleBCurrentLine);
-// 		
+//
 //                 currentCharacterInLine++;
 //             }
-// 
+//
 //             robot->moveLinearTo(endOfLine, 	angleAEndOfLine, 	angleBCurrentLine);
 //             robot->moveTo( savePositionOfCurrentLineEndVector, angleAEnd, angleBCurrentLine );
 //         }

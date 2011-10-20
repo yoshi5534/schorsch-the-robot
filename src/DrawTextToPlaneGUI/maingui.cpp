@@ -527,3 +527,14 @@ void mainGUI::manualGroupToggled(bool checked)
         disconnect(&automaticTimer, SIGNAL(timeout()), this, SLOT(automaticTimerElapsed()));
     }
 }
+
+void mainGUI::manualLoadTextClicked()
+{
+    QString fileName = QFileDialog::getOpenFileName();
+  
+    if (fileName != QString())
+    {
+      QString fileContent = loadFileContent(fileName);   
+      this->ui->txtEditTextToWrite->setText(fileContent);
+   }
+}

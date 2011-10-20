@@ -55,6 +55,7 @@ public slots:
     void automaticTimerElapsed();
     void automaticGroupToggled(bool checked);
     void manualGroupToggled(bool checked);
+    void manualLoadTextClicked();
 };
 
 #endif // MAINGUI_H

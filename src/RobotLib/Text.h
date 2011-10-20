@@ -204,6 +204,15 @@ public:
             case 'z':
                 characterMoveList = z();
                 break;
+// 	    case 'ä':
+//                 characterMoveList = aUmlaut();
+//                 break;
+//             case 'ö':
+//                 characterMoveList = oUmlaut();
+//                 break;
+//             case 'ü':
+//                 characterMoveList = uUmlaut();
+//                 break;
             case '0':
                 characterMoveList = zero ();
                 break;
@@ -385,7 +394,7 @@ public:
         Vector lineTranslationVector(0,-2.5,0);
         Vector characterTranslationVector(1.3,0,0);
         Vector savePositionOffestVector(0,0,8);
-        Vector eraserOffset(-2,6,1.5);
+        Vector eraserOffset(-2,6,4.0);
 
         //if we introduced artificial linebreaks we have to emulate them
         if ( countOfCharactersInLongestLine > countOfCharactersPerLine)
@@ -888,6 +897,75 @@ private:
         list.push_back( Vector( 1.0, 0.0, 1.0) );
         return list;
     }
+    
+    static std::list<Vector> aUmlaut()
+    {
+        std::list<Vector> list;
+        list.push_back( Vector( 1.0, 0.0, 1.0) );
+        list.push_back( Vector( 1.0, 0.0, 0.0) );
+        list.push_back( Vector( 0.0, 0.0, 0.0) );
+        list.push_back( Vector( 0.0, 1.0, 0.0) );
+        list.push_back( Vector( 1.0, 1.0, 0.0) );
+        list.push_back( Vector( 1.0,-0.2, 0.0) );
+        list.push_back( Vector( 1.0,-0.2, 1.0) );
+	
+	list.push_back( Vector( 0.2, 1.7, 1.0) );
+	list.push_back( Vector( 0.2, 1.7, 0.0) );
+	list.push_back( Vector( 0.2, 1.2, 0.0) );
+	list.push_back( Vector( 0.2, 1.2, 1.0) );
+	
+	list.push_back( Vector( 0.7, 1.7, 1.0) );
+	list.push_back( Vector( 0.7, 1.7, 0.0) );
+	list.push_back( Vector( 0.7, 1.2, 0.0) );
+	list.push_back( Vector( 0.7, 1.2, 1.0) );
+	
+        return list;
+    }
+
+    static std::list<Vector> oUmlaut()
+    {
+        std::list<Vector> list;
+        list.push_back( Vector( 0.0, 1.0, 1.0) );
+        list.push_back( Vector( 0.0, 1.0, 0.0) );
+        list.push_back( Vector( 0.0, 0.0, 0.0) );
+        list.push_back( Vector( 1.0, 0.0, 0.0) );
+        list.push_back( Vector( 1.0, 1.0, 0.0) );
+        list.push_back( Vector( 0.0, 1.0, 0.0) );
+        list.push_back( Vector( 0.0, 1.0, 1.0) );
+	
+	list.push_back( Vector( 0.2, 1.7, 1.0) );
+	list.push_back( Vector( 0.2, 1.7, 0.0) );
+	list.push_back( Vector( 0.2, 1.2, 0.0) );
+	list.push_back( Vector( 0.2, 1.2, 1.0) );
+	
+	list.push_back( Vector( 0.7, 1.7, 1.0) );
+	list.push_back( Vector( 0.7, 1.7, 0.0) );
+	list.push_back( Vector( 0.7, 1.2, 0.0) );
+	list.push_back( Vector( 0.7, 1.2, 1.0) );
+        return list;
+    }
+    static std::list<Vector> uUmlaut()
+    {
+        std::list<Vector> list;
+        list.push_back( Vector( 0.0, 1.0, 1.0) );
+        list.push_back( Vector( 0.0, 1.0, 0.0) );
+        list.push_back( Vector( 0.0, 0.0, 0.0) );
+        list.push_back( Vector( 1.0, 0.0, 0.0) );
+        list.push_back( Vector( 1.0, 1.0, 0.0) );
+        list.push_back( Vector( 1.0, 1.0, 1.0) );
+	
+	list.push_back( Vector( 0.2, 1.7, 1.0) );
+	list.push_back( Vector( 0.2, 1.7, 0.0) );
+	list.push_back( Vector( 0.2, 1.2, 0.0) );
+	list.push_back( Vector( 0.2, 1.2, 1.0) );
+	
+	list.push_back( Vector( 0.7, 1.7, 1.0) );
+	list.push_back( Vector( 0.7, 1.7, 0.0) );
+	list.push_back( Vector( 0.7, 1.2, 0.0) );
+	list.push_back( Vector( 0.7, 1.2, 1.0) );
+        return list;
+    }
+    
 
     static std::list<Vector> zero()
     {

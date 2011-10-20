@@ -216,7 +216,7 @@ class RobotPort
                 {
                     sendLineAndLog(currentLine);
                     lineNumber++;
-                    usleep(150000);
+                    usleep(200000);
                 }
 
                 //Method2 send and compare  (slow due to compare but cool)

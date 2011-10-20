@@ -280,7 +280,7 @@ void mainGUI::writeText(QString content)
         ui->leAngleMarkerA->text().toDouble(),
         ui->leAngleMarkerB->text().toDouble(),
         20.0,
-        25
+        22
     );
 }
 
@@ -323,9 +323,9 @@ void mainGUI::cleanBoard(QString content)
         ui->leAngleEraserBBegin->text().toDouble(),  //60.0,
         ui->leAngleEraserBEnd->text().toDouble(),  //60.0,
         20.0,
-        25,
+        22,
         linesOfText.size(),
-        longestLine + 3
+        longestLine
     );
 }
 

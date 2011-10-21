@@ -393,8 +393,8 @@ public:
     {
         Vector lineTranslationVector(0,-2.5,0);
         Vector characterTranslationVector(1.3,0,0);
-        Vector savePositionOffestVector(0,0,8);
-        Vector eraserOffset(-2,6,4.0);
+        Vector savePositionOffestVector(0,0,8.5);
+        Vector eraserOffset(-3,10,4.0);
 
         //if we introduced artificial linebreaks we have to emulate them
         if ( countOfCharactersInLongestLine > countOfCharactersPerLine)
@@ -403,7 +403,7 @@ public:
         }
 
         //we add an some additional chars to get shure everything is whiped
-        countOfCharactersInLongestLine = countOfCharactersInLongestLine + 6;
+        countOfCharactersInLongestLine = countOfCharactersInLongestLine + 7;
 
         //calculate angle increments
         float64 angleAIncrementPerCharacter 	= (angleAEnd - angleABegin) / static_cast< float64 >(countOfCharactersPerLine);

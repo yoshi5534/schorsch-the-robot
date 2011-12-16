@@ -8,4 +8,5 @@ project (Robot_SOLUTION)
 add_subdirectory (RobotLib)
 add_subdirectory (CooleConsole)
 add_subdirectory (DrawTextToPlaneGUI)
+add_subdirectory (OhEsWeihnachtetSehr)
 

@@ -105,7 +105,7 @@ public:
         Vector savePositionOffestVector(0,0,6);
 
         uint64 currentLine = 1;
-        uint64 currentCharacterInLine = 0;
+        uint64 currentCharacterInLine = 1;
         Vector originOfCurrentLineVector = lineTranslationVector;
 
         {
@@ -391,6 +391,14 @@ public:
         uint64 countOfCharactersInLongestLine
     )
     {
+      //##### Hack (only six whipes are ok
+      if( countOfLines > 6 )
+      {
+	countOfLines = 6;
+      }
+      //#####
+      
+      
         Vector lineTranslationVector(0,-2.5,0);
         Vector characterTranslationVector(1.3,0,0);
         Vector savePositionOffestVector(0,0,8.5);
@@ -413,7 +421,7 @@ public:
 
         Vector currentTranslationVector = originOfBoardCoordinateSystem;
 
-        for (uint64 currentLine = 0; currentLine <= countOfLines; currentLine++)
+        for (uint64 currentLine = 0; currentLine < countOfLines; currentLine++)
         {
             Vector startOfLine = originOfBoardCoordinateSystem + boardCoordinateSystem * (((lineTranslationVector * currentLine) + eraserOffset) * textSizeInMillimeter);
             Vector endOfLine =  startOfLine + boardCoordinateSystem * ((characterTranslationVector * textSizeInMillimeter) * countOfCharactersInLongestLine);
@@ -1016,13 +1024,11 @@ private:
         list.push_back( Vector( 0.0, 2.0, 1.0) );
         list.push_back( Vector( 0.0, 2.0, 0.0) );
         list.push_back( Vector( 1.0, 2.0, 0.0) );
+        list.push_back( Vector( 1.0, 1.0, 0.0) );
+        list.push_back( Vector( 0.0, 1.0, 0.0) );
+        list.push_back( Vector( 1.0, 1.0, .0) );
         list.push_back( Vector( 1.0, 0.0, 0.0) );
         list.push_back( Vector( 0.0, 0.0, 0.0) );
-        list.push_back( Vector( 0.0, 0.0, 1.0) );
-        list.push_back( Vector( 0.0, 1.0, 1.0) );
-        list.push_back( Vector( 0.0, 1.0, 0.0) );
-        list.push_back( Vector( 1.0, 1.0, 0.0) );
-        list.push_back( Vector( 1.0, 1.0, 1.0) );
         return list;
     }
 

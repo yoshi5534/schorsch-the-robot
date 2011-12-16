@@ -1,7 +1,7 @@
 #ifndef _TYPES_H_
 #define _TYPES_H_
 
-#include "/usr/include/sys/types.h"
+#include "/usr/include/linux/types.h"
 
 typedef int8_t		int8;
 typedef int16_t		int16;

@@ -5,6 +5,7 @@
 #include <QtCore/QCoreApplication>
 #include "../qextserialport/src/qextserialport.h"
 #include "../qextserialport/src/qextserialenumerator.h"
+#include "HelperMethods.h"
 #include <QList>
 #include <QtDebug>
 #include <stdexcept>
@@ -193,12 +194,17 @@ class RobotPort
 	{
 	  abortTransmission = true;
 	}
-        
-        void executeQuedCommands()
-        {
-
-            sendLineAndLog("N 1");
-            uint64 lineNumber = 1;
+	
+	void executeProgram(int32 programNumber)
+	{
+            sendLineAndLog("RN ,," + dataToString<int32>(programNumber) );	  
+	}
+     
+        void sendQuedCommands(int32 programNumber = 1)
+	{
+	   sendLineAndLog("N" + dataToString<int32>(programNumber) );
+	  
+           uint64 lineNumber = 1;
             for( std::list<std::string>::iterator it = _commandList.begin(); it != _commandList.end(); it++ )
             {
 		if(abortTransmission)
@@ -236,9 +242,15 @@ class RobotPort
 //                }
              }
             _commandList.clear();
-            sendLineAndLog(dataToString(lineNumber) + " ED");
+            sendLineAndLog(dataToString(lineNumber) + " ED");	  
+	}
+	
+        void executeQuedCommands()
+        {
+            sendQuedCommands();
+ 
             usleep(_delay);
-            sendLineAndLog("RN 1");
+            sendLineAndLog("RN ,,1");
         }
 };
 

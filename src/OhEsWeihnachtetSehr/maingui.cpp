@@ -107,23 +107,29 @@ void mainGUI::uploadProgram()
     this->robot->goHome();    
     this->robot->getPort()->sendQuedCommands(4); 
     
-    // gucken
+    // gucken      
+    float angle = 45.0/180.0*3.14; 
+    Matrix rotate(cos(angle),-sin(angle),0, sin(angle),cos(angle),0,0,0,1);
+    float angle10 = 45.0/180.0*3.14; 
+    Matrix rotate10(cos(angle10),-sin(angle10),0, sin(angle10),cos(angle10),0,0,0,1);
+    float anglem10 = 45.0/180.0*3.14; 
+    Matrix rotatem10(cos(anglem10),-sin(anglem10),0, sin(anglem10),cos(anglem10),0,0,0,1);  
     robot->speed(25);
-    this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
-    this->robot->moveLinearTo(Vector(-58, 802, 729), -50,91);
+//     this->robot->moveLinearTo(rotate*Vector(705, -53, 372), 48,118);
+    this->robot->moveLinearTo(rotate*Vector(-58, 802, 729), -50,91);
     this->robot->wait(100);
     robot->speed(20);
-    this->robot->moveLinearTo(Vector(-55, 756, 521), -51,113);
-    this->robot->moveLinearTo(Vector(-31, 431, 200), -51,164);
+    this->robot->moveLinearTo(rotate*Vector(-55, 756, 521), -51,113);
+    this->robot->moveLinearTo(rotate*Vector(-31, 431, 200), -51,164);
     this->robot->wait(50);
     robot->speed(13);
-    this->robot->moveLinearTo(Vector(-88,422, 200 ),-58 ,164);
-    this->robot->moveLinearTo(Vector(41, 430, 200), -41,164);
-    this->robot->moveLinearTo(Vector(-88,422, 200 ),-58 ,164);
-    this->robot->moveLinearTo(Vector(-31, 431, 200), -51,164);
+    this->robot->moveLinearTo(rotate*Vector(-88,422, 200 ),-58 ,164);
+    this->robot->moveLinearTo(rotate*Vector(41, 430, 200), -41,164);
+    this->robot->moveLinearTo(rotate*Vector(-88,422, 200 ),-58 ,164);
+    this->robot->moveLinearTo(rotate*Vector(-31, 431, 200), -51,164);
     robot->speed(10);
     robot->speed(18);
-    this->robot->goHome();  
+    this->robot->goHome(); 
     this->robot->getPort()->sendQuedCommands(5);
     
     // attakieren

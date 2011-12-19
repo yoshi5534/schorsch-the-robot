@@ -7,7 +7,7 @@
 #include <QTimer>
 
 #include "maingui.h"
-#include "ui_maingui.h"
+#include "../../cmake/build/OhEsWeihnachtetSehr/ui_maingui.h"
 
 #include "../RobotLib/Matrix.h"
 #include "../RobotLib/Vector.h"
@@ -50,8 +50,9 @@ void mainGUI::changeEvent(QEvent *e)
     }
 }
 
-void mainGUI::yesClicked()
+void mainGUI::uploadProgram()
 {
+  // Ja sagen
     robot->speed(30);
     this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
     this->robot->moveLinearTo(Vector(710, -7, 1033), 39,57);
@@ -59,11 +60,10 @@ void mainGUI::yesClicked()
     this->robot->moveLinearTo(Vector(710, -7, 1033), 39,57);
     this->robot->moveLinearTo(Vector(412, -4, -143), 39,181);    
     this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
-    this->robot->goHome();   
-    this->robot->getPort()->executeQuedCommands();    
-}
-void mainGUI::noClicked()
-{
+    this->robot->goHome();       
+    this->robot->getPort()->sendQuedCommands(1);
+    
+    // nein sagen
     robot->speed(30);
     this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
     this->robot->moveLinearTo(Vector(490, -510, 372), 90,118);
@@ -71,10 +71,9 @@ void mainGUI::noClicked()
     this->robot->moveLinearTo(Vector(490, -510, 372), 90,118);
     this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
     this->robot->goHome();   
-    this->robot->getPort()->executeQuedCommands();    
-}
-void mainGUI::toolWeakClicked()
-{
+    this->robot->getPort()->sendQuedCommands(2);
+    
+    // leicht hämmern
     robot->speed(25);
     this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
     this->robot->moveLinearTo(Vector(400, 651, 577), -14,93);
@@ -86,25 +85,29 @@ void mainGUI::toolWeakClicked()
     this->robot->moveLinearTo(Vector(400, 651, 577), -14,93);
     this->robot->wait(300);
     this->robot->goHome();   
-    this->robot->getPort()->executeQuedCommands(); 
-}
-void mainGUI::toolStrongClicked()
-{
-    robot->speed(25);
+    this->robot->getPort()->sendQuedCommands(3);   
+    
+    // stark hämmern
+    robot->speed(25); 
     this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
-    this->robot->moveLinearTo(Vector(400, 651, 577), -14,93);
-    this->robot->wait(200);
-//     this->robot->moveLinearTo(Vector(5, 8, 1343), -14, -4);
-    this->robot->moveLinearTo(Vector(-266, -387, 277), -11, -156);
+//     this->robot->moveLinearTo(Vector(400, 651, 577), -14,93);
+    this->robot->moveLinearTo(Vector(400, 934, 577), -21,93);
+    this->robot->wait(100);
+//     this->robot->getPort()->sendCommand("MJ 0,0,-114,-100,0");
+    this->robot->getPort()->sendCommand("MJ 0,-79,-47,-91,0");
+    this->robot->wait(100);    
+    robot->speed(30);         
+//     this->robot->getPort()->sendCommand("MJ 0,0,114,100,0");   
+     this->robot->getPort()->sendCommand("MJ 0,79,47,91,0");
+// 
     this->robot->wait(200);
     this->robot->moveLinearTo(Vector(400, 651, 577), -14,93);
     robot->speed(30);
     this->robot->wait(300);
-    this->robot->goHome();  
-    this->robot->getPort()->executeQuedCommands();  
-}
-void mainGUI::lookToDoorClicked()
-{
+    this->robot->goHome();    
+    this->robot->getPort()->sendQuedCommands(4); 
+    
+    // gucken
     robot->speed(25);
     this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
     this->robot->moveLinearTo(Vector(-58, 802, 729), -50,91);
@@ -120,11 +123,10 @@ void mainGUI::lookToDoorClicked()
     this->robot->moveLinearTo(Vector(-31, 431, 200), -51,164);
     robot->speed(10);
     robot->speed(18);
-    this->robot->goHome();   
-    this->robot->getPort()->executeQuedCommands();     
-}
-void mainGUI::attackClicked()
-{
+    this->robot->goHome();  
+    this->robot->getPort()->sendQuedCommands(5);
+    
+    // attakieren
     robot->speed(18);
     this->robot->moveLinearTo(Vector(368, 668, 569), -17,94);
     this->robot->moveLinearTo(Vector(368, 654, 569), -15,94);
@@ -142,11 +144,10 @@ void mainGUI::attackClicked()
     this->robot->wait(50);
     robot->speed(18);
     this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
-    this->robot->goHome();   
-    this->robot->getPort()->executeQuedCommands();  
-}
-void mainGUI::obeisanceClicked()
-{
+    this->robot->goHome();       
+    this->robot->getPort()->sendQuedCommands(6);   
+    
+    // verbeugen
     robot->speed(20);
     this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
     this->robot->moveLinearTo(Vector(730, -54, 671), 48,94);
@@ -157,7 +158,37 @@ void mainGUI::obeisanceClicked()
     robot->speed(20);
     this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
     this->robot->goHome();   
-    this->robot->getPort()->executeQuedCommands();   
+    this->robot->getPort()->sendQuedCommands(7);        
+    
+}
+
+void mainGUI::yesClicked()
+{
+  robot->getPort()->executeProgram(1);    
+}
+void mainGUI::noClicked()
+{
+  robot->getPort()->executeProgram(2); 
+}
+void mainGUI::toolWeakClicked()
+{
+  robot->getPort()->executeProgram(3); 
+}
+void mainGUI::toolStrongClicked()
+{
+  robot->getPort()->executeProgram(4);   
+}
+void mainGUI::lookToDoorClicked()
+{
+  robot->getPort()->executeProgram(5);      
+}
+void mainGUI::attackClicked()
+{
+  robot->getPort()->executeProgram(6);      
+}
+void mainGUI::obeisanceClicked()
+{
+  robot->getPort()->executeProgram(7);  
 }
 
 void mainGUI::saveConfiguration()

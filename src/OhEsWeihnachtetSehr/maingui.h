@@ -40,6 +40,7 @@ public slots:
     void lookToDoorClicked();
     void attackClicked();
     void obeisanceClicked();
+    void uploadProgram();
 
     
 };

@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainGUI</class>
+ <widget class="QMainWindow" name="mainGUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>441</width>
+    <height>531</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>OhEsWeihnachtetSehr</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="btnHome">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>420</y>
+      <width>83</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Go Home</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnLoadConfiguration">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>420</y>
+      <width>144</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Load Configuration</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSaveConfiguration">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>447</y>
+      <width>144</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Save Configuration</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAbortTransmission">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>450</y>
+      <width>60</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Abort</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnNo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>158</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Schorsch sagt &quot;Nein&quot;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnYes">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>141</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Schorsch sagt &quot;Ja&quot;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnObeisance">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>330</y>
+      <width>99</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Verbeugen</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnToolWeak">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>241</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Leicht mit dem Hammer schlagen</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnToolStrong">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>140</y>
+      <width>341</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Wie ein Verückter mit derm Hammer eindreschen</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAttack">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>260</y>
+      <width>99</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Angreifen</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnLookToDoor">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>230</y>
+      <width>121</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Zur Tür schauen</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnUpload">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>450</y>
+      <width>121</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Upload Program</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>441</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>btnYes</tabstop>
+  <tabstop>btnNo</tabstop>
+  <tabstop>btnObeisance</tabstop>
+  <tabstop>btnToolWeak</tabstop>
+  <tabstop>btnToolStrong</tabstop>
+  <tabstop>btnLookToDoor</tabstop>
+  <tabstop>btnAttack</tabstop>
+  <tabstop>btnLoadConfiguration</tabstop>
+  <tabstop>btnSaveConfiguration</tabstop>
+  <tabstop>btnHome</tabstop>
+  <tabstop>btnAbortTransmission</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btnLoadConfiguration</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>loadConfiguration()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>87</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>218</x>
+     <y>413</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnSaveConfiguration</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>saveConfiguration()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>115</x>
+     <y>497</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>214</x>
+     <y>432</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnAbortTransmission</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>abortTransmission()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>259</x>
+     <y>500</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>440</x>
+     <y>449</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnHome</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>goHome()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>282</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>440</x>
+     <y>418</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnYes</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>yesClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>99</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>222</x>
+     <y>47</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnNo</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>noClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>126</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>238</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnToolWeak</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>toolWeakClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>198</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>372</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnToolStrong</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>toolStrongClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>221</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>394</x>
+     <y>179</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnLookToDoor</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>lookToDoorClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>269</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>160</x>
+     <y>271</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnAttack</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>attackClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>99</x>
+     <y>303</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>165</x>
+     <y>301</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnObeisance</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>obeisanceClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>76</x>
+     <y>362</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>137</x>
+     <y>364</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnUpload</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>uploadProgram()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>367</x>
+     <y>487</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>378</x>
+     <y>468</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>writeText()</slot>
+  <slot>defineYVector()</slot>
+  <slot>defineXVector()</slot>
+  <slot>defineBaseVector()</slot>
+  <slot>loadConfiguration()</slot>
+  <slot>saveConfiguration()</slot>
+  <slot>moveToYVector()</slot>
+  <slot>moveToBaseVector()</slot>
+  <slot>moveToXVector()</slot>
+  <slot>cleanBoard()</slot>
+  <slot>resetRobot()</slot>
+  <slot>abortTransmission()</slot>
+  <slot>goHome()</slot>
+  <slot>speedChanged(int)</slot>
+  <slot>defineMarker()</slot>
+  <slot>defineEraserBegin()</slot>
+  <slot>selectScheduleDirectory()</slot>
+  <slot>scheduleDirectoryLineEditFinished()</slot>
+  <slot>automaticStart()</slot>
+  <slot>automaticStop()</slot>
+  <slot>manualGroupToggled(bool)</slot>
+  <slot>automaticGroupToggled(bool)</slot>
+  <slot>defineEraserEnd()</slot>
+  <slot>manualLoadTextClicked()</slot>
+  <slot>yesClicked()</slot>
+  <slot>noClicked()</slot>
+  <slot>toolWeakClicked()</slot>
+  <slot>toolStrongClicked()</slot>
+  <slot>lookToDoorClicked()</slot>
+  <slot>attackClicked()</slot>
+  <slot>obeisanceClicked()</slot>
+  <slot>uploadProgram()</slot>
+ </slots>
+</ui>

@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_XDIALOGPROVIDER2_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_XDIALOGPROVIDER2_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/beans/NamedValue.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+namespace com { namespace sun { namespace star { namespace uno { class XInterface; } } } }
+#include "com/sun/star/awt/XDialogProvider.hdl"
+namespace com { namespace sun { namespace star { namespace awt { class XDialog; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace awt {
+
+class SAL_NO_VTABLE XDialogProvider2 : public ::com::sun::star::awt::XDialogProvider
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::XDialog > SAL_CALL createDialogWithHandler( const ::rtl::OUString& URL, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& xHandler ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::XDialog > SAL_CALL createDialogWithArguments( const ::rtl::OUString& URL, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::NamedValue >& Arguments ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XDialogProvider2 >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_XDIALOGPROVIDER2_HDL

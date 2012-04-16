@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_XSCRIPTEVENTSATTACHER_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_XSCRIPTEVENTSATTACHER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/ServiceNotRegisteredException.hdl"
+#include "com/sun/star/script/CannotCreateAdapterException.hdl"
+#include "com/sun/star/beans/IntrospectionException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+namespace com { namespace sun { namespace star { namespace script { class XScriptListener; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace script {
+
+class SAL_NO_VTABLE XScriptEventsAttacher : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL attachEvents( const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > >& Objects, const ::com::sun::star::uno::Reference< ::com::sun::star::script::XScriptListener >& xListener, const ::com::sun::star::uno::Any& Helper ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::beans::IntrospectionException, ::com::sun::star::script::CannotCreateAdapterException, ::com::sun::star::lang::ServiceNotRegisteredException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::script::XScriptEventsAttacher >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_XSCRIPTEVENTSATTACHER_HDL

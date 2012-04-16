@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_SETUP_OSTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_SETUP_OSTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace setup {
+
+enum OSType
+{
+    OSType_INVALID = 0,
+    OSType_WIN = 1,
+    OSType_OS2 = 2,
+    OSType_MAC = 3,
+    OSType_UNIX_SOLS = 4,
+    OSType_UNIX_SOLI = 5,
+    OSType_UNIX_LINUX = 6,
+    OSType_UNIX_HP = 7,
+    OSType_UNIX_SCO = 8,
+    OSType_UNIX_SOLSG = 9,
+    OSType_UNIX_SOLIG = 10,
+    OSType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::setup::OSType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SETUP_OSTYPE_HDL

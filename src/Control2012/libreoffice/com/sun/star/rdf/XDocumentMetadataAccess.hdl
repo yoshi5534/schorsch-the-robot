@@ -1,0 +1,59 @@
+#ifndef INCLUDED_COM_SUN_STAR_RDF_XDOCUMENTMETADATAACCESS_HDL
+#define INCLUDED_COM_SUN_STAR_RDF_XDOCUMENTMETADATAACCESS_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/WrappedTargetException.hdl"
+#include "com/sun/star/container/NoSuchElementException.hdl"
+namespace com { namespace sun { namespace star { namespace embed { class XStorage; } } } }
+#include "com/sun/star/io/IOException.hdl"
+#include "com/sun/star/container/ElementExistException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+namespace com { namespace sun { namespace star { namespace io { class XInputStream; } } } }
+#include "com/sun/star/rdf/XURI.hdl"
+#include "com/sun/star/rdf/ParseException.hdl"
+#include "com/sun/star/beans/StringPair.hdl"
+#include "com/sun/star/datatransfer/UnsupportedFlavorException.hdl"
+#include "com/sun/star/beans/PropertyValue.hdl"
+namespace com { namespace sun { namespace star { namespace rdf { class XMetadatable; } } } }
+namespace com { namespace sun { namespace star { namespace task { class XInteractionHandler; } } } }
+#include "com/sun/star/rdf/XRepositorySupplier.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace rdf {
+
+class SAL_NO_VTABLE XDocumentMetadataAccess : public ::com::sun::star::rdf::XURI, public ::com::sun::star::rdf::XRepositorySupplier
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XMetadatable > SAL_CALL getElementByMetadataReference( const ::com::sun::star::beans::StringPair& MetadataReference ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XMetadatable > SAL_CALL getElementByURI( const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& URI ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI > > SAL_CALL getMetadataGraphsWithType( const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& Type ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI > SAL_CALL addMetadataFile( const ::rtl::OUString& FileName, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI > >& Types ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::container::ElementExistException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI > SAL_CALL importMetadataFile( ::sal_Int16 Format, const ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream >& InStream, const ::rtl::OUString& FileName, const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& BaseURI, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI > >& Types ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::datatransfer::UnsupportedFlavorException, ::com::sun::star::container::ElementExistException, ::com::sun::star::rdf::ParseException, ::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeMetadataFile( const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& GraphName ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addContentOrStylesFile( const ::rtl::OUString& FileName ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::container::ElementExistException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeContentOrStylesFile( const ::rtl::OUString& FileName ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL loadMetadataFromStorage( const ::com::sun::star::uno::Reference< ::com::sun::star::embed::XStorage >& Storage, const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& BaseURI, const ::com::sun::star::uno::Reference< ::com::sun::star::task::XInteractionHandler >& InteractionHandler ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL storeMetadataToStorage( const ::com::sun::star::uno::Reference< ::com::sun::star::embed::XStorage >& Storage ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL loadMetadataFromMedium( const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& Medium ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL storeMetadataToMedium( const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& Medium ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XDocumentMetadataAccess >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_RDF_XDOCUMENTMETADATAACCESS_HDL

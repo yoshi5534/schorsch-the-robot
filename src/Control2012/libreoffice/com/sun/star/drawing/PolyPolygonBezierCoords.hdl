@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_POLYPOLYGONBEZIERCOORDS_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_POLYPOLYGONBEZIERCOORDS_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/drawing/FlagSequenceSequence.hdl"
+#include "com/sun/star/drawing/PointSequenceSequence.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct PolyPolygonBezierCoords {
+    inline PolyPolygonBezierCoords() SAL_THROW(());
+
+    inline PolyPolygonBezierCoords(const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< ::com::sun::star::awt::Point > >& Coordinates_, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< ::com::sun::star::drawing::PolygonFlags > >& Flags_) SAL_THROW(());
+
+    ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< ::com::sun::star::awt::Point > > Coordinates;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< ::com::sun::star::drawing::PolygonFlags > > Flags;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::PolyPolygonBezierCoords* );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_POLYPOLYGONBEZIERCOORDS_HDL

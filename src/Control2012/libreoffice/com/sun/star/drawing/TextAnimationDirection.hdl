@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_TEXTANIMATIONDIRECTION_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_TEXTANIMATIONDIRECTION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum TextAnimationDirection
+{
+    TextAnimationDirection_LEFT = 0,
+    TextAnimationDirection_RIGHT = 1,
+    TextAnimationDirection_UP = 2,
+    TextAnimationDirection_DOWN = 3,
+    TextAnimationDirection_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::TextAnimationDirection* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_TEXTANIMATIONDIRECTION_HDL

@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCANNER_SCANNEREXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_SCANNER_SCANNEREXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/scanner/ScanError.hdl"
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace scanner {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT ScannerException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE ScannerException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE ScannerException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::scanner::ScanError& Error_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE ScannerException(ScannerException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~ScannerException();
+
+    inline CPPU_GCC_DLLPRIVATE ScannerException & operator =(ScannerException const &);
+
+    ::com::sun::star::scanner::ScanError Error CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::scanner::ScannerException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCANNER_SCANNEREXCEPTION_HDL

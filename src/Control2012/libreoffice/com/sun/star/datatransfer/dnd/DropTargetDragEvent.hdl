@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_DATATRANSFER_DND_DROPTARGETDRAGEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_DATATRANSFER_DND_DROPTARGETDRAGEVENT_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace datatransfer { namespace dnd { class XDropTargetDragContext; } } } } }
+#include "com/sun/star/datatransfer/dnd/DropTargetEvent.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace datatransfer { namespace dnd {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct DropTargetDragEvent: public ::com::sun::star::datatransfer::dnd::DropTargetEvent {
+    inline DropTargetDragEvent() SAL_THROW(());
+
+    inline DropTargetDragEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::sal_Int8& Dummy_, const ::com::sun::star::uno::Reference< ::com::sun::star::datatransfer::dnd::XDropTargetDragContext >& Context_, const ::sal_Int8& DropAction_, const ::sal_Int32& LocationX_, const ::sal_Int32& LocationY_, const ::sal_Int8& SourceActions_) SAL_THROW(());
+
+    ::com::sun::star::uno::Reference< ::com::sun::star::datatransfer::dnd::XDropTargetDragContext > Context CPPU_GCC3_ALIGN(::com::sun::star::datatransfer::dnd::DropTargetEvent);
+    ::sal_Int8 DropAction;
+    ::sal_Int32 LocationX;
+    ::sal_Int32 LocationY;
+    ::sal_Int8 SourceActions;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::datatransfer::dnd::DropTargetDragEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_DATATRANSFER_DND_DROPTARGETDRAGEVENT_HDL

@@ -1,0 +1,29 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_CONNECTIONTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_CONNECTIONTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum ConnectionType
+{
+    ConnectionType_AUTO = 0,
+    ConnectionType_LEFT = 1,
+    ConnectionType_TOP = 2,
+    ConnectionType_RIGHT = 3,
+    ConnectionType_BOTTOM = 4,
+    ConnectionType_SPECIAL = 5,
+    ConnectionType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::ConnectionType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_CONNECTIONTYPE_HDL

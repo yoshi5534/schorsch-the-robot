@@ -1,0 +1,37 @@
+#ifndef INCLUDED_COM_SUN_STAR_URI_XURIREFERENCEFACTORY_HDL
+#define INCLUDED_COM_SUN_STAR_URI_XURIREFERENCEFACTORY_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+namespace com { namespace sun { namespace star { namespace uri { class XUriReference; } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uri/RelativeUriExcessParentSegments.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uri {
+
+class SAL_NO_VTABLE XUriReferenceFactory : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::uri::XUriReference > SAL_CALL parse( const ::rtl::OUString& uriReference ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::uri::XUriReference > SAL_CALL makeAbsolute( const ::com::sun::star::uno::Reference< ::com::sun::star::uri::XUriReference >& baseUriReference, const ::com::sun::star::uno::Reference< ::com::sun::star::uri::XUriReference >& uriReference, ::sal_Bool processSpecialBaseSegments, ::com::sun::star::uri::RelativeUriExcessParentSegments excessParentSegments ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::uri::XUriReference > SAL_CALL makeRelative( const ::com::sun::star::uno::Reference< ::com::sun::star::uri::XUriReference >& baseUriReference, const ::com::sun::star::uno::Reference< ::com::sun::star::uri::XUriReference >& uriReference, ::sal_Bool preferAuthorityOverRelativePath, ::sal_Bool preferAbsoluteOverRelativePath, ::sal_Bool encodeRetainedSpecialSegments ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::uri::XUriReferenceFactory >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_URI_XURIREFERENCEFACTORY_HDL

@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_INTERACTIVENETWORKREADEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_INTERACTIVENETWORKREADEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/ucb/InteractiveNetworkException.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT InteractiveNetworkReadException : public ::com::sun::star::ucb::InteractiveNetworkException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE InteractiveNetworkReadException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveNetworkReadException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_, const ::rtl::OUString& Diagnostic_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveNetworkReadException(InteractiveNetworkReadException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~InteractiveNetworkReadException();
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveNetworkReadException & operator =(InteractiveNetworkReadException const &);
+
+    ::rtl::OUString Diagnostic CPPU_GCC3_ALIGN( ::com::sun::star::ucb::InteractiveNetworkException );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::InteractiveNetworkReadException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_INTERACTIVENETWORKREADEXCEPTION_HDL

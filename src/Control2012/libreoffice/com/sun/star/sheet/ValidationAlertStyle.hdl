@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_VALIDATIONALERTSTYLE_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_VALIDATIONALERTSTYLE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+enum ValidationAlertStyle
+{
+    ValidationAlertStyle_STOP = 0,
+    ValidationAlertStyle_WARNING = 1,
+    ValidationAlertStyle_INFO = 2,
+    ValidationAlertStyle_MACRO = 3,
+    ValidationAlertStyle_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::ValidationAlertStyle* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_VALIDATIONALERTSTYLE_HDL

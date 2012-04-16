@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_SHADEMODE_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_SHADEMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum ShadeMode
+{
+    ShadeMode_FLAT = 0,
+    ShadeMode_PHONG = 1,
+    ShadeMode_SMOOTH = 2,
+    ShadeMode_DRAFT = 3,
+    ShadeMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::ShadeMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_SHADEMODE_HDL

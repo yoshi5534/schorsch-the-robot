@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART_CHARTAXISLABELPOSITION_HDL
+#define INCLUDED_COM_SUN_STAR_CHART_CHARTAXISLABELPOSITION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace chart {
+
+enum ChartAxisLabelPosition
+{
+    ChartAxisLabelPosition_NEAR_AXIS = 0,
+    ChartAxisLabelPosition_NEAR_AXIS_OTHER_SIDE = 1,
+    ChartAxisLabelPosition_OUTSIDE_START = 2,
+    ChartAxisLabelPosition_OUTSIDE_END = 3,
+    ChartAxisLabelPosition_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart::ChartAxisLabelPosition* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART_CHARTAXISLABELPOSITION_HDL

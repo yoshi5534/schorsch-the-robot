@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_I18N_XSCRIPTTYPEDETECTOR_HDL
+#define INCLUDED_COM_SUN_STAR_I18N_XSCRIPTTYPEDETECTOR_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace i18n {
+
+class SAL_NO_VTABLE XScriptTypeDetector : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Int32 SAL_CALL beginOfScriptDirection( const ::rtl::OUString& aText, ::sal_Int32 nPos, ::sal_Int16 nScriptDirection ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL endOfScriptDirection( const ::rtl::OUString& aText, ::sal_Int32 nPos, ::sal_Int16 nScriptDirection ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getScriptDirection( const ::rtl::OUString& aText, ::sal_Int32 nPos, ::sal_Int16 nDefaultScriptDirection ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL beginOfCTLScriptType( const ::rtl::OUString& aText, ::sal_Int32 nPos ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL endOfCTLScriptType( const ::rtl::OUString& aText, ::sal_Int32 nPos ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getCTLScriptType( const ::rtl::OUString& aText, ::sal_Int32 nPos ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::i18n::XScriptTypeDetector >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_I18N_XSCRIPTTYPEDETECTOR_HDL

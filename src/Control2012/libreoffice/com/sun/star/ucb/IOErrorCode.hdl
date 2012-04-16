@@ -1,0 +1,59 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_IOERRORCODE_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_IOERRORCODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+enum IOErrorCode
+{
+    IOErrorCode_ABORT = 0,
+    IOErrorCode_ACCESS_DENIED = 1,
+    IOErrorCode_ALREADY_EXISTING = 2,
+    IOErrorCode_BAD_CRC = 3,
+    IOErrorCode_CANT_CREATE = 4,
+    IOErrorCode_CANT_READ = 5,
+    IOErrorCode_CANT_SEEK = 6,
+    IOErrorCode_CANT_TELL = 7,
+    IOErrorCode_CANT_WRITE = 8,
+    IOErrorCode_CURRENT_DIRECTORY = 9,
+    IOErrorCode_DEVICE_NOT_READY = 10,
+    IOErrorCode_DIFFERENT_DEVICES = 11,
+    IOErrorCode_GENERAL = 12,
+    IOErrorCode_INVALID_ACCESS = 13,
+    IOErrorCode_INVALID_CHARACTER = 14,
+    IOErrorCode_INVALID_DEVICE = 15,
+    IOErrorCode_INVALID_LENGTH = 16,
+    IOErrorCode_INVALID_PARAMETER = 17,
+    IOErrorCode_IS_WILDCARD = 18,
+    IOErrorCode_LOCKING_VIOLATION = 19,
+    IOErrorCode_MISPLACED_CHARACTER = 20,
+    IOErrorCode_NAME_TOO_LONG = 21,
+    IOErrorCode_NOT_EXISTING = 22,
+    IOErrorCode_NOT_EXISTING_PATH = 23,
+    IOErrorCode_NOT_SUPPORTED = 24,
+    IOErrorCode_NO_DIRECTORY = 25,
+    IOErrorCode_NO_FILE = 26,
+    IOErrorCode_OUT_OF_DISK_SPACE = 27,
+    IOErrorCode_OUT_OF_FILE_HANDLES = 28,
+    IOErrorCode_OUT_OF_MEMORY = 29,
+    IOErrorCode_PENDING = 30,
+    IOErrorCode_RECURSIVE = 31,
+    IOErrorCode_UNKNOWN = 32,
+    IOErrorCode_WRITE_PROTECTED = 33,
+    IOErrorCode_WRONG_FORMAT = 34,
+    IOErrorCode_WRONG_VERSION = 35,
+    IOErrorCode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::IOErrorCode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_IOERRORCODE_HDL

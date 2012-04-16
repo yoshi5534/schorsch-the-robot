@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_SDBC_SQLWARNING_HDL
+#define INCLUDED_COM_SUN_STAR_SDBC_SQLWARNING_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/sdbc/SQLException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sdbc {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT SQLWarning : public ::com::sun::star::sdbc::SQLException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE SQLWarning() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE SQLWarning(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::rtl::OUString& SQLState_, const ::sal_Int32& ErrorCode_, const ::com::sun::star::uno::Any& NextException_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE SQLWarning(SQLWarning const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~SQLWarning();
+
+    inline CPPU_GCC_DLLPRIVATE SQLWarning & operator =(SQLWarning const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sdbc::SQLWarning* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SDBC_SQLWARNING_HDL

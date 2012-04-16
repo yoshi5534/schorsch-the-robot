@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_CONFIGURATION_INSTALLATIONINCOMPLETEEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_CONFIGURATION_INSTALLATIONINCOMPLETEEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/configuration/CannotLoadConfigurationException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace configuration {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT InstallationIncompleteException : public ::com::sun::star::configuration::CannotLoadConfigurationException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE InstallationIncompleteException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InstallationIncompleteException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InstallationIncompleteException(InstallationIncompleteException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~InstallationIncompleteException();
+
+    inline CPPU_GCC_DLLPRIVATE InstallationIncompleteException & operator =(InstallationIncompleteException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::configuration::InstallationIncompleteException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CONFIGURATION_INSTALLATIONINCOMPLETEEXCEPTION_HDL

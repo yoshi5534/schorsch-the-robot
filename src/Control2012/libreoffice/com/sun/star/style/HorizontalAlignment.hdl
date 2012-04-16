@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_STYLE_HORIZONTALALIGNMENT_HDL
+#define INCLUDED_COM_SUN_STAR_STYLE_HORIZONTALALIGNMENT_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace style {
+
+enum HorizontalAlignment
+{
+    HorizontalAlignment_LEFT = 0,
+    HorizontalAlignment_CENTER = 1,
+    HorizontalAlignment_RIGHT = 2,
+    HorizontalAlignment_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::style::HorizontalAlignment* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_STYLE_HORIZONTALALIGNMENT_HDL

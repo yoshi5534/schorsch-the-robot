@@ -1,0 +1,56 @@
+#ifndef INCLUDED_COM_SUN_STAR_EMBED_XEMBEDDEDOBJECT_HDL
+#define INCLUDED_COM_SUN_STAR_EMBED_XEMBEDDEDOBJECT_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace embed { class XEmbeddedClient; } } } }
+#include "com/sun/star/embed/VerbDescriptor.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/embed/NeedsRunningStateException.hdl"
+#include "com/sun/star/embed/WrongStateException.hdl"
+#include "com/sun/star/embed/UnreachableStateException.hdl"
+#include "com/sun/star/util/XCloseable.hdl"
+#include "com/sun/star/uno/Exception.hdl"
+#include "com/sun/star/embed/XVisualObject.hdl"
+#include "com/sun/star/document/XEventBroadcaster.hdl"
+#include "com/sun/star/embed/XStateChangeBroadcaster.hdl"
+#include "com/sun/star/embed/XClassifiedObject.hdl"
+#include "com/sun/star/embed/XComponentSupplier.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace embed {
+
+class SAL_NO_VTABLE XEmbeddedObject : public ::com::sun::star::embed::XVisualObject, public ::com::sun::star::embed::XClassifiedObject, public ::com::sun::star::embed::XComponentSupplier, public ::com::sun::star::embed::XStateChangeBroadcaster, public ::com::sun::star::document::XEventBroadcaster, public ::com::sun::star::util::XCloseable
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL changeState( ::sal_Int32 nNewState ) throw (::com::sun::star::embed::UnreachableStateException, ::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::Exception, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::sal_Int32 > SAL_CALL getReachableStates(  ) throw (::com::sun::star::embed::NeedsRunningStateException, ::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getCurrentState(  ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL doVerb( ::sal_Int32 nVerbID ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::embed::WrongStateException, ::com::sun::star::embed::UnreachableStateException, ::com::sun::star::uno::Exception, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::embed::VerbDescriptor > SAL_CALL getSupportedVerbs(  ) throw (::com::sun::star::embed::NeedsRunningStateException, ::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setClientSite( const ::com::sun::star::uno::Reference< ::com::sun::star::embed::XEmbeddedClient >& xClient ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::embed::XEmbeddedClient > SAL_CALL getClientSite(  ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL update(  ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::Exception, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setUpdateMode( ::sal_Int32 nMode ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int64 SAL_CALL getStatus( ::sal_Int64 nAspect ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setContainerName( const ::rtl::OUString& sName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::embed::XEmbeddedObject >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_EMBED_XEMBEDDEDOBJECT_HDL

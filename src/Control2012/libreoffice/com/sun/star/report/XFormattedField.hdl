@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_REPORT_XFORMATTEDFIELD_HDL
+#define INCLUDED_COM_SUN_STAR_REPORT_XFORMATTEDFIELD_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/report/XReportControlModel.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace util { class XNumberFormatsSupplier; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace report {
+
+class SAL_NO_VTABLE XFormattedField : public ::com::sun::star::report::XReportControlModel
+{
+public:
+
+    // Attributes
+    virtual ::sal_Int32 SAL_CALL getFormatKey() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFormatKey( ::sal_Int32 _formatkey ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::util::XNumberFormatsSupplier > SAL_CALL getFormatsSupplier() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFormatsSupplier( const ::com::sun::star::uno::Reference< ::com::sun::star::util::XNumberFormatsSupplier >& _formatssupplier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::report::XFormattedField >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_REPORT_XFORMATTEDFIELD_HDL

@@ -1,0 +1,47 @@
+#ifndef INCLUDED_COM_SUN_STAR_SDB_APPLICATION_XCOPYTABLEWIZARD_HDL
+#define INCLUDED_COM_SUN_STAR_SDB_APPLICATION_XCOPYTABLEWIZARD_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace sdb { namespace application { class XCopyTableListener; } } } } }
+#include "com/sun/star/beans/Optional.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/ui/dialogs/XExecutableDialog.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sdb { namespace application {
+
+class SAL_NO_VTABLE XCopyTableWizard : public ::com::sun::star::ui::dialogs::XExecutableDialog
+{
+public:
+
+    // Attributes
+    virtual ::sal_Int16 SAL_CALL getOperation() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setOperation( ::sal_Int16 _operation ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getDestinationTableName() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDestinationTableName( const ::rtl::OUString& _destinationtablename ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::beans::Optional< ::rtl::OUString > SAL_CALL getCreatePrimaryKey() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCreatePrimaryKey( const ::com::sun::star::beans::Optional< ::rtl::OUString >& _createprimarykey ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getUseHeaderLineAsColumnNames() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setUseHeaderLineAsColumnNames( ::sal_Bool _useheaderlineascolumnnames ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual void SAL_CALL addCopyTableListener( const ::com::sun::star::uno::Reference< ::com::sun::star::sdb::application::XCopyTableListener >& Listener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeCopyTableListener( const ::com::sun::star::uno::Reference< ::com::sun::star::sdb::application::XCopyTableListener >& Listener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sdb::application::XCopyTableWizard >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SDB_APPLICATION_XCOPYTABLEWIZARD_HDL

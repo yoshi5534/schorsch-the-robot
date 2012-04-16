@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_REFLECTION_FIELDACCESSMODE_HDL
+#define INCLUDED_COM_SUN_STAR_REFLECTION_FIELDACCESSMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace reflection {
+
+enum FieldAccessMode
+{
+    FieldAccessMode_READWRITE = 0,
+    FieldAccessMode_READONLY = 1,
+    FieldAccessMode_WRITEONLY = 2,
+    FieldAccessMode_CONST = 3,
+    FieldAccessMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::reflection::FieldAccessMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_REFLECTION_FIELDACCESSMODE_HDL

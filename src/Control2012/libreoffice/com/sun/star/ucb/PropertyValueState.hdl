@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_PROPERTYVALUESTATE_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_PROPERTYVALUESTATE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+enum PropertyValueState
+{
+    PropertyValueState_UNPROCESSED = 0,
+    PropertyValueState_PROCESSED = 1,
+    PropertyValueState_INVALID_NAME = 2,
+    PropertyValueState_INVALID_TYPE = 3,
+    PropertyValueState_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::PropertyValueState* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_PROPERTYVALUESTATE_HDL

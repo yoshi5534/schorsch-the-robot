@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_XCELLRANGESQUERY_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_XCELLRANGESQUERY_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/table/CellRangeAddress.hdl"
+#include "com/sun/star/table/CellAddress.hdl"
+namespace com { namespace sun { namespace star { namespace sheet { class XSheetCellRanges; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+class SAL_NO_VTABLE XCellRangesQuery : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XSheetCellRanges > SAL_CALL queryVisibleCells(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XSheetCellRanges > SAL_CALL queryEmptyCells(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XSheetCellRanges > SAL_CALL queryContentCells( ::sal_Int16 nContentFlags ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XSheetCellRanges > SAL_CALL queryFormulaCells( ::sal_Int32 nResultFlags ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XSheetCellRanges > SAL_CALL queryColumnDifferences( const ::com::sun::star::table::CellAddress& aCompare ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XSheetCellRanges > SAL_CALL queryRowDifferences( const ::com::sun::star::table::CellAddress& aCompare ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XSheetCellRanges > SAL_CALL queryIntersection( const ::com::sun::star::table::CellRangeAddress& aRange ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XCellRangesQuery >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_XCELLRANGESQUERY_HDL

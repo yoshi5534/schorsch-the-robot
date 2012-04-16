@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_I18N_CURRENCY_HDL
+#define INCLUDED_COM_SUN_STAR_I18N_CURRENCY_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace i18n {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct Currency {
+    inline Currency() SAL_THROW(());
+
+    inline Currency(const ::rtl::OUString& ID_, const ::rtl::OUString& Symbol_, const ::rtl::OUString& BankSymbol_, const ::rtl::OUString& Name_, const ::sal_Bool& Default_, const ::sal_Bool& UsedInCompatibleFormatCodes_, const ::sal_Int16& DecimalPlaces_) SAL_THROW(());
+
+    ::rtl::OUString ID;
+    ::rtl::OUString Symbol;
+    ::rtl::OUString BankSymbol;
+    ::rtl::OUString Name;
+    ::sal_Bool Default;
+    ::sal_Bool UsedInCompatibleFormatCodes;
+    ::sal_Int16 DecimalPlaces;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::i18n::Currency* );
+
+#endif // INCLUDED_COM_SUN_STAR_I18N_CURRENCY_HDL

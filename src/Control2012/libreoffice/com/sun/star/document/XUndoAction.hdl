@@ -1,0 +1,37 @@
+#ifndef INCLUDED_COM_SUN_STAR_DOCUMENT_XUNDOACTION_HDL
+#define INCLUDED_COM_SUN_STAR_DOCUMENT_XUNDOACTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/document/UndoFailedException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace document {
+
+class SAL_NO_VTABLE XUndoAction : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Attributes
+    virtual ::rtl::OUString SAL_CALL getTitle() throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual void SAL_CALL undo(  ) throw (::com::sun::star::document::UndoFailedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL redo(  ) throw (::com::sun::star::document::UndoFailedException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::document::XUndoAction >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DOCUMENT_XUNDOACTION_HDL

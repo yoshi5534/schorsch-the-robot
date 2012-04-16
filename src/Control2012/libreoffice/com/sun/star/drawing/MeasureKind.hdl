@@ -1,0 +1,25 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_MEASUREKIND_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_MEASUREKIND_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum MeasureKind
+{
+    MeasureKind_STANDARD = 0,
+    MeasureKind_RADIUS = 1,
+    MeasureKind_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::MeasureKind* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_MEASUREKIND_HDL

@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_TABBARBUTTON_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_TABBARBUTTON_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace drawing { namespace framework { class XResourceId; } } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing { namespace framework {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct TabBarButton {
+    inline TabBarButton() SAL_THROW(());
+
+    inline TabBarButton(const ::rtl::OUString& ButtonLabel_, const ::rtl::OUString& HelpText_, const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::framework::XResourceId >& ResourceId_) SAL_THROW(());
+
+    ::rtl::OUString ButtonLabel;
+    ::rtl::OUString HelpText;
+    ::com::sun::star::uno::Reference< ::com::sun::star::drawing::framework::XResourceId > ResourceId;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::framework::TabBarButton* );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_TABBARBUTTON_HDL

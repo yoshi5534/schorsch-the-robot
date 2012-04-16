@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_GIOP_SYSTEMEXCEPTIONREPLYBODY_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_GIOP_SYSTEMEXCEPTIONREPLYBODY_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/CorbaString8.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace giop {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct SystemExceptionReplyBody {
+    inline SystemExceptionReplyBody() SAL_THROW(());
+
+    inline SystemExceptionReplyBody(const ::com::sun::star::corba::CorbaString8& exception_id_, const ::sal_uInt32& minor_code_value_, const ::sal_uInt32& completion_status_) SAL_THROW(());
+
+    ::com::sun::star::corba::CorbaString8 exception_id;
+    ::sal_uInt32 minor_code_value;
+    ::sal_uInt32 completion_status;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::giop::SystemExceptionReplyBody* );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_GIOP_SYSTEMEXCEPTIONREPLYBODY_HDL

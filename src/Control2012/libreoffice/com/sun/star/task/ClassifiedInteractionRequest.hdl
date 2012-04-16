@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_TASK_CLASSIFIEDINTERACTIONREQUEST_HDL
+#define INCLUDED_COM_SUN_STAR_TASK_CLASSIFIEDINTERACTIONREQUEST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/task/InteractionClassification.hdl"
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace task {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT ClassifiedInteractionRequest : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE ClassifiedInteractionRequest() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE ClassifiedInteractionRequest(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE ClassifiedInteractionRequest(ClassifiedInteractionRequest const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~ClassifiedInteractionRequest();
+
+    inline CPPU_GCC_DLLPRIVATE ClassifiedInteractionRequest & operator =(ClassifiedInteractionRequest const &);
+
+    ::com::sun::star::task::InteractionClassification Classification CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::task::ClassifiedInteractionRequest* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TASK_CLASSIFIEDINTERACTIONREQUEST_HDL

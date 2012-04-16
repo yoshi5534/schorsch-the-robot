@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_REMEMBERAUTHENTICATION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_REMEMBERAUTHENTICATION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+enum RememberAuthentication
+{
+    RememberAuthentication_NO = 0,
+    RememberAuthentication_SESSION = 1,
+    RememberAuthentication_PERSISTENT = 2,
+    RememberAuthentication_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::RememberAuthentication* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_REMEMBERAUTHENTICATION_HDL

@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_JAVA_JAVAVMCREATIONFAILUREEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_JAVA_JAVAVMCREATIONFAILUREEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/java/JavaInitializationException.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace java {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT JavaVMCreationFailureException : public ::com::sun::star::java::JavaInitializationException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE JavaVMCreationFailureException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE JavaVMCreationFailureException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::sal_Int32& ErrorCode_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE JavaVMCreationFailureException(JavaVMCreationFailureException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~JavaVMCreationFailureException();
+
+    inline CPPU_GCC_DLLPRIVATE JavaVMCreationFailureException & operator =(JavaVMCreationFailureException const &);
+
+    ::sal_Int32 ErrorCode CPPU_GCC3_ALIGN( ::com::sun::star::java::JavaInitializationException );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::java::JavaVMCreationFailureException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_JAVA_JAVAVMCREATIONFAILUREEXCEPTION_HDL

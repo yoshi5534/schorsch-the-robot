@@ -1,0 +1,42 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_MODULEINFO_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_MODULEINFO_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace uno { class XInterface; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace script {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ModuleInfo {
+    inline ModuleInfo() SAL_THROW(());
+
+    inline ModuleInfo(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& ModuleObject_, const ::sal_Int32& ModuleType_) SAL_THROW(());
+
+    ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > ModuleObject;
+    ::sal_Int32 ModuleType;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::script::ModuleInfo* );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_MODULEINFO_HDL

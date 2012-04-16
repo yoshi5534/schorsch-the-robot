@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_POLYGONFLAGS_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_POLYGONFLAGS_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum PolygonFlags
+{
+    PolygonFlags_NORMAL = 0,
+    PolygonFlags_SMOOTH = 1,
+    PolygonFlags_CONTROL = 2,
+    PolygonFlags_SYMMETRIC = 3,
+    PolygonFlags_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::PolygonFlags* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_POLYGONFLAGS_HDL

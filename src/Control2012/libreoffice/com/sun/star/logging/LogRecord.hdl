@@ -1,0 +1,48 @@
+#ifndef INCLUDED_COM_SUN_STAR_LOGGING_LOGRECORD_HDL
+#define INCLUDED_COM_SUN_STAR_LOGGING_LOGRECORD_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/util/DateTime.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace logging {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct LogRecord {
+    inline LogRecord() SAL_THROW(());
+
+    inline LogRecord(const ::rtl::OUString& LoggerName_, const ::rtl::OUString& SourceClassName_, const ::rtl::OUString& SourceMethodName_, const ::rtl::OUString& Message_, const ::com::sun::star::util::DateTime& LogTime_, const ::sal_Int64& SequenceNumber_, const ::rtl::OUString& ThreadID_, const ::sal_Int32& Level_) SAL_THROW(());
+
+    ::rtl::OUString LoggerName;
+    ::rtl::OUString SourceClassName;
+    ::rtl::OUString SourceMethodName;
+    ::rtl::OUString Message;
+    ::com::sun::star::util::DateTime LogTime;
+    ::sal_Int64 SequenceNumber;
+    ::rtl::OUString ThreadID;
+    ::sal_Int32 Level;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::logging::LogRecord* );
+
+#endif // INCLUDED_COM_SUN_STAR_LOGGING_LOGRECORD_HDL

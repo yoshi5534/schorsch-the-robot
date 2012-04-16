@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_GRAPHIC_XPRIMITIVE2D_HDL
+#define INCLUDED_COM_SUN_STAR_GRAPHIC_XPRIMITIVE2D_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/geometry/RealRectangle2D.hdl"
+#include "com/sun/star/beans/PropertyValue.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+namespace com { namespace sun { namespace star { namespace graphic { class XPrimitive2D; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace graphic {
+
+class SAL_NO_VTABLE XPrimitive2D : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::graphic::XPrimitive2D > > SAL_CALL getDecomposition( const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& aViewParameters ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::geometry::RealRectangle2D SAL_CALL getRange( const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& aViewParameters ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::graphic::XPrimitive2D >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_GRAPHIC_XPRIMITIVE2D_HDL

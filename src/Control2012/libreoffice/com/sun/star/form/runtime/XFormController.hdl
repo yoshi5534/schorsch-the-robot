@@ -1,0 +1,59 @@
+#ifndef INCLUDED_COM_SUN_STAR_FORM_RUNTIME_XFORMCONTROLLER_HDL
+#define INCLUDED_COM_SUN_STAR_FORM_RUNTIME_XFORMCONTROLLER_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace form { namespace runtime { class XFilterController; } } } } }
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+namespace com { namespace sun { namespace star { namespace form { class XFormControllerListener; } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace form { namespace runtime { class XFormControllerContext; } } } } }
+#include "com/sun/star/container/XIndexAccess.hdl"
+namespace com { namespace sun { namespace star { namespace form { namespace runtime { class XFormController; } } } } }
+namespace com { namespace sun { namespace star { namespace form { namespace runtime { class XFormOperations; } } } } }
+#include "com/sun/star/util/XModeSelector.hdl"
+#include "com/sun/star/awt/XTabController.hdl"
+#include "com/sun/star/sdb/XSQLErrorBroadcaster.hdl"
+#include "com/sun/star/container/XChild.hdl"
+#include "com/sun/star/form/XConfirmDeleteBroadcaster.hdl"
+#include "com/sun/star/container/XEnumerationAccess.hdl"
+namespace com { namespace sun { namespace star { namespace awt { class XControl; } } } }
+#include "com/sun/star/form/XDatabaseParameterBroadcaster2.hdl"
+#include "com/sun/star/lang/XComponent.hdl"
+namespace com { namespace sun { namespace star { namespace task { class XInteractionHandler; } } } }
+#include "com/sun/star/util/XModifyBroadcaster.hdl"
+#include "com/sun/star/sdb/XRowSetApproveBroadcaster.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace form { namespace runtime {
+
+class SAL_NO_VTABLE XFormController : public ::com::sun::star::awt::XTabController, public ::com::sun::star::container::XChild, public ::com::sun::star::container::XIndexAccess, public ::com::sun::star::container::XEnumerationAccess, public ::com::sun::star::lang::XComponent, public ::com::sun::star::util::XModifyBroadcaster, public ::com::sun::star::form::XConfirmDeleteBroadcaster, public ::com::sun::star::sdb::XSQLErrorBroadcaster, public ::com::sun::star::sdb::XRowSetApproveBroadcaster, public ::com::sun::star::form::XDatabaseParameterBroadcaster2, public ::com::sun::star::util::XModeSelector
+{
+public:
+
+    // Attributes
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFormOperations > SAL_CALL getFormOperations() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::XControl > SAL_CALL getCurrentControl() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFormControllerContext > SAL_CALL getContext() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setContext( const ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFormControllerContext >& _context ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::task::XInteractionHandler > SAL_CALL getInteractionHandler() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setInteractionHandler( const ::com::sun::star::uno::Reference< ::com::sun::star::task::XInteractionHandler >& _interactionhandler ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual void SAL_CALL addActivateListener( const ::com::sun::star::uno::Reference< ::com::sun::star::form::XFormControllerListener >& _Listener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeActivateListener( const ::com::sun::star::uno::Reference< ::com::sun::star::form::XFormControllerListener >& _Listener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addChildController( const ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFormController >& _ChildController ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFormController >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_FORM_RUNTIME_XFORMCONTROLLER_HDL

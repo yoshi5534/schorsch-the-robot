@@ -1,0 +1,29 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART_CHARTDATACHANGETYPE_HDL
+#define INCLUDED_COM_SUN_STAR_CHART_CHARTDATACHANGETYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace chart {
+
+enum ChartDataChangeType
+{
+    ChartDataChangeType_ALL = 0,
+    ChartDataChangeType_DATA_RANGE = 1,
+    ChartDataChangeType_COLUMN_INSERTED = 2,
+    ChartDataChangeType_ROW_INSERTED = 3,
+    ChartDataChangeType_COLUMN_DELETED = 4,
+    ChartDataChangeType_ROW_DELETED = 5,
+    ChartDataChangeType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart::ChartDataChangeType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART_CHARTDATACHANGETYPE_HDL

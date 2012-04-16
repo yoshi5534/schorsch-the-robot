@@ -1,0 +1,6 @@
+#ifndef INCLUDED_COM_SUN_STAR_SYNC_SYNCTYPE_HPP
+#define INCLUDED_COM_SUN_STAR_SYNC_SYNCTYPE_HPP
+
+#include "com/sun/star/sync/SyncType.hdl"
+
+#endif // INCLUDED_COM_SUN_STAR_SYNC_SYNCTYPE_HPP

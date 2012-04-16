@@ -1,0 +1,35 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_XAREALINKS_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_XAREALINKS_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/table/CellAddress.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/container/XIndexAccess.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+class SAL_NO_VTABLE XAreaLinks : public ::com::sun::star::container::XIndexAccess
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL insertAtPosition( const ::com::sun::star::table::CellAddress& aDestPos, const ::rtl::OUString& aFileName, const ::rtl::OUString& aSourceArea, const ::rtl::OUString& aFilter, const ::rtl::OUString& aFilterOptions ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeByIndex( ::sal_Int32 nIndex ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XAreaLinks >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_XAREALINKS_HDL

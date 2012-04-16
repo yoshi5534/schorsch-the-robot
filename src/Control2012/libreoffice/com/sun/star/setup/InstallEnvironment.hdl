@@ -1,0 +1,68 @@
+#ifndef INCLUDED_COM_SUN_STAR_SETUP_INSTALLENVIRONMENT_HDL
+#define INCLUDED_COM_SUN_STAR_SETUP_INSTALLENVIRONMENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/setup/InstallType.hdl"
+#include "com/sun/star/setup/ModuleState.hdl"
+#include "com/sun/star/setup/OSType.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace setup {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct InstallEnvironment {
+    inline InstallEnvironment() SAL_THROW(());
+
+    inline InstallEnvironment(const ::com::sun::star::setup::OSType& eOSType_, const ::com::sun::star::setup::InstallType& eInstallType_, const ::rtl::OUString& strDestinationPath_, const ::sal_Int32& nClusterSize_, const ::sal_Int32& nDriveSize_, const ::com::sun::star::uno::Sequence< ::sal_Int16 >& seqLanguages_, const ::com::sun::star::uno::Sequence< ::sal_Int16 >& seqSwitchLanguages_, const ::com::sun::star::uno::Sequence< ::com::sun::star::setup::ModuleState >& seqModuleIDList_, const ::rtl::OUString& strUserName_, const ::rtl::OUString& strUserFirstName_, const ::rtl::OUString& strUserId_, const ::rtl::OUString& strCompanyname_, const ::rtl::OUString& strStreet_, const ::rtl::OUString& strCountry_, const ::rtl::OUString& strZip_, const ::rtl::OUString& strCity_, const ::rtl::OUString& strTitle_, const ::rtl::OUString& strPosition_, const ::rtl::OUString& strPhonePriv_, const ::rtl::OUString& strPhoneCompany_, const ::rtl::OUString& strPhoneFax_, const ::rtl::OUString& strEmail_, const ::rtl::OUString& strState_, const ::rtl::OUString& strFatherName_, const ::rtl::OUString& strApartmentNr_) SAL_THROW(());
+
+    ::com::sun::star::setup::OSType eOSType;
+    ::com::sun::star::setup::InstallType eInstallType;
+    ::rtl::OUString strDestinationPath;
+    ::sal_Int32 nClusterSize;
+    ::sal_Int32 nDriveSize;
+    ::com::sun::star::uno::Sequence< ::sal_Int16 > seqLanguages;
+    ::com::sun::star::uno::Sequence< ::sal_Int16 > seqSwitchLanguages;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::setup::ModuleState > seqModuleIDList;
+    ::rtl::OUString strUserName;
+    ::rtl::OUString strUserFirstName;
+    ::rtl::OUString strUserId;
+    ::rtl::OUString strCompanyname;
+    ::rtl::OUString strStreet;
+    ::rtl::OUString strCountry;
+    ::rtl::OUString strZip;
+    ::rtl::OUString strCity;
+    ::rtl::OUString strTitle;
+    ::rtl::OUString strPosition;
+    ::rtl::OUString strPhonePriv;
+    ::rtl::OUString strPhoneCompany;
+    ::rtl::OUString strPhoneFax;
+    ::rtl::OUString strEmail;
+    ::rtl::OUString strState;
+    ::rtl::OUString strFatherName;
+    ::rtl::OUString strApartmentNr;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::setup::InstallEnvironment* );
+
+#endif // INCLUDED_COM_SUN_STAR_SETUP_INSTALLENVIRONMENT_HDL

@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_BEZIERPOINT_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_BEZIERPOINT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/awt/Point.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct BezierPoint {
+    inline BezierPoint() SAL_THROW(());
+
+    inline BezierPoint(const ::com::sun::star::awt::Point& Position_, const ::com::sun::star::awt::Point& ControlPoint1_, const ::com::sun::star::awt::Point& ControlPoint2_) SAL_THROW(());
+
+    ::com::sun::star::awt::Point Position;
+    ::com::sun::star::awt::Point ControlPoint1;
+    ::com::sun::star::awt::Point ControlPoint2;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::BezierPoint* );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_BEZIERPOINT_HDL

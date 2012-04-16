@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_ENHANCEDCUSTOMSHAPETEXTFRAME_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_ENHANCEDCUSTOMSHAPETEXTFRAME_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/drawing/EnhancedCustomShapeParameterPair.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct EnhancedCustomShapeTextFrame {
+    inline EnhancedCustomShapeTextFrame() SAL_THROW(());
+
+    inline EnhancedCustomShapeTextFrame(const ::com::sun::star::drawing::EnhancedCustomShapeParameterPair& TopLeft_, const ::com::sun::star::drawing::EnhancedCustomShapeParameterPair& BottomRight_) SAL_THROW(());
+
+    ::com::sun::star::drawing::EnhancedCustomShapeParameterPair TopLeft;
+    ::com::sun::star::drawing::EnhancedCustomShapeParameterPair BottomRight;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::EnhancedCustomShapeTextFrame* );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_ENHANCEDCUSTOMSHAPETEXTFRAME_HDL

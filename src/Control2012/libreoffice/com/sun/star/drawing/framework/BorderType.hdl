@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_BORDERTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_BORDERTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing { namespace framework {
+
+enum BorderType
+{
+    BorderType_INNER_BORDER = 0,
+    BorderType_OUTER_BORDER = 1,
+    BorderType_TOTAL_BORDER = 2,
+    BorderType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::framework::BorderType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_BORDERTYPE_HDL

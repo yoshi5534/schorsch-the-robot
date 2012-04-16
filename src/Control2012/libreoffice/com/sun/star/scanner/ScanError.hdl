@@ -1,0 +1,29 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCANNER_SCANERROR_HDL
+#define INCLUDED_COM_SUN_STAR_SCANNER_SCANERROR_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace scanner {
+
+enum ScanError
+{
+    ScanError_ScanErrorNone = 0,
+    ScanError_ScannerNotAvailable = 1,
+    ScanError_ScanFailed = 2,
+    ScanError_ScanInProgress = 3,
+    ScanError_ScanCanceled = 4,
+    ScanError_InvalidContext = 5,
+    ScanError_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::scanner::ScanError* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCANNER_SCANERROR_HDL

@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_UTIL_DISKFULLEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_UTIL_DISKFULLEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/util/FileIOException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace util {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT DiskFullException : public ::com::sun::star::util::FileIOException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE DiskFullException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE DiskFullException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE DiskFullException(DiskFullException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~DiskFullException();
+
+    inline CPPU_GCC_DLLPRIVATE DiskFullException & operator =(DiskFullException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::util::DiskFullException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UTIL_DISKFULLEXCEPTION_HDL

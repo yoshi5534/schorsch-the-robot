@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_TEXTADJUST_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_TEXTADJUST_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum TextAdjust
+{
+    TextAdjust_LEFT = 0,
+    TextAdjust_CENTER = 1,
+    TextAdjust_RIGHT = 2,
+    TextAdjust_BLOCK = 3,
+    TextAdjust_STRETCH = 4,
+    TextAdjust_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::TextAdjust* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_TEXTADJUST_HDL

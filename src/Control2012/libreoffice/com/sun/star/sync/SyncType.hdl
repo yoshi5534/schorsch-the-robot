@@ -1,0 +1,20 @@
+#ifndef INCLUDED_COM_SUN_STAR_SYNC_SYNCTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_SYNC_SYNCTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sync { namespace SyncType {
+
+static const ::sal_uInt32 NONE = (sal_uInt32)0U;
+static const ::sal_uInt32 FILE = (sal_uInt32)1U;
+static const ::sal_uInt32 FOLDER = (sal_uInt32)2U;
+static const ::sal_uInt32 VFS_FILE = (sal_uInt32)3U;
+static const ::sal_uInt32 VFS_FOLDER = (sal_uInt32)4U;
+static const ::sal_uInt32 POP3 = (sal_uInt32)5U;
+static const ::sal_uInt32 IMAP = (sal_uInt32)6U;
+
+} } } } }
+
+#endif // INCLUDED_COM_SUN_STAR_SYNC_SYNCTYPE_HDL

@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_CERTIFICATEVALIDATIONREQUEST_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_CERTIFICATEVALIDATIONREQUEST_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace security { class XCertificate; } } } }
+#include "com/sun/star/task/ClassifiedInteractionRequest.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT CertificateValidationRequest : public ::com::sun::star::task::ClassifiedInteractionRequest
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE CertificateValidationRequest() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE CertificateValidationRequest(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_, const ::sal_Int32& CertificateValidity_, const ::com::sun::star::uno::Reference< ::com::sun::star::security::XCertificate >& Certificate_, const ::rtl::OUString& HostName_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE CertificateValidationRequest(CertificateValidationRequest const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~CertificateValidationRequest();
+
+    inline CPPU_GCC_DLLPRIVATE CertificateValidationRequest & operator =(CertificateValidationRequest const &);
+
+    ::sal_Int32 CertificateValidity CPPU_GCC3_ALIGN( ::com::sun::star::task::ClassifiedInteractionRequest );
+    ::com::sun::star::uno::Reference< ::com::sun::star::security::XCertificate > Certificate;
+    ::rtl::OUString HostName;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::CertificateValidationRequest* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_CERTIFICATEVALIDATIONREQUEST_HDL

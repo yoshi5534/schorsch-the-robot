@@ -1,0 +1,20 @@
+#ifndef INCLUDED_COM_SUN_STAR_INSTALLATION_PROTOCOLS_HDL
+#define INCLUDED_COM_SUN_STAR_INSTALLATION_PROTOCOLS_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace installation { namespace protocols {
+
+static const ::sal_Int16 ALL = (sal_Int16)0;
+static const ::sal_Int16 HTTP = (sal_Int16)1;
+static const ::sal_Int16 FTP = (sal_Int16)2;
+static const ::sal_Int16 HTTPS = (sal_Int16)3;
+static const ::sal_Int16 MAIL = (sal_Int16)4;
+static const ::sal_Int16 NEWS = (sal_Int16)5;
+
+} } } } }
+
+#endif // INCLUDED_COM_SUN_STAR_INSTALLATION_PROTOCOLS_HDL

@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_ANIMATIONS_XTRANSITIONFILTER_HDL
+#define INCLUDED_COM_SUN_STAR_ANIMATIONS_XTRANSITIONFILTER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/animations/XAnimate.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace animations {
+
+class SAL_NO_VTABLE XTransitionFilter : public ::com::sun::star::animations::XAnimate
+{
+public:
+
+    // Attributes
+    virtual ::sal_Int16 SAL_CALL getTransition() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setTransition( ::sal_Int16 _transition ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getSubtype() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSubtype( ::sal_Int16 _subtype ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getMode() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setMode( ::sal_Bool _mode ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getDirection() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDirection( ::sal_Bool _direction ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getFadeColor() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFadeColor( ::sal_Int32 _fadecolor ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::animations::XTransitionFilter >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_ANIMATIONS_XTRANSITIONFILTER_HDL

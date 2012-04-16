@@ -1,0 +1,49 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_CONFIGURATIONCHANGEEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_CONFIGURATIONCHANGEEVENT_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace uno { class XInterface; } } } }
+namespace com { namespace sun { namespace star { namespace drawing { namespace framework { class XResourceId; } } } } }
+#include "com/sun/star/lang/EventObject.hdl"
+namespace com { namespace sun { namespace star { namespace drawing { namespace framework { class XConfiguration; } } } } }
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing { namespace framework {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ConfigurationChangeEvent: public ::com::sun::star::lang::EventObject {
+    inline ConfigurationChangeEvent() SAL_THROW(());
+
+    inline ConfigurationChangeEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::rtl::OUString& Type_, const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::framework::XConfiguration >& Configuration_, const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::framework::XResourceId >& ResourceId_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& ResourceObject_, const ::com::sun::star::uno::Any& UserData_) SAL_THROW(());
+
+    ::rtl::OUString Type CPPU_GCC3_ALIGN(::com::sun::star::lang::EventObject);
+    ::com::sun::star::uno::Reference< ::com::sun::star::drawing::framework::XConfiguration > Configuration;
+    ::com::sun::star::uno::Reference< ::com::sun::star::drawing::framework::XResourceId > ResourceId;
+    ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > ResourceObject;
+    ::com::sun::star::uno::Any UserData;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::framework::ConfigurationChangeEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_CONFIGURATIONCHANGEEVENT_HDL

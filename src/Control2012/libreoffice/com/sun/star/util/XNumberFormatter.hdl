@@ -1,0 +1,44 @@
+#ifndef INCLUDED_COM_SUN_STAR_UTIL_XNUMBERFORMATTER_HDL
+#define INCLUDED_COM_SUN_STAR_UTIL_XNUMBERFORMATTER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/util/Color.hdl"
+#include "com/sun/star/util/NotNumericException.hdl"
+namespace com { namespace sun { namespace star { namespace util { class XNumberFormatsSupplier; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace util {
+
+class SAL_NO_VTABLE XNumberFormatter : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL attachNumberFormatsSupplier( const ::com::sun::star::uno::Reference< ::com::sun::star::util::XNumberFormatsSupplier >& xSupplier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::util::XNumberFormatsSupplier > SAL_CALL getNumberFormatsSupplier(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL detectNumberFormat( ::sal_Int32 nKey, const ::rtl::OUString& aString ) throw (::com::sun::star::util::NotNumericException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL convertStringToNumber( ::sal_Int32 nKey, const ::rtl::OUString& aString ) throw (::com::sun::star::util::NotNumericException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL convertNumberToString( ::sal_Int32 nKey, double fValue ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL queryColorForNumber( ::sal_Int32 nKey, double fValue, ::sal_Int32 aDefaultColor ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL formatString( ::sal_Int32 nKey, const ::rtl::OUString& aString ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL queryColorForString( ::sal_Int32 nKey, const ::rtl::OUString& aString, ::sal_Int32 aDefaultColor ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getInputString( ::sal_Int32 nKey, double fValue ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::util::XNumberFormatter >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UTIL_XNUMBERFORMATTER_HDL

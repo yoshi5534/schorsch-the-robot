@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART2_RELATIVEPOSITION_HDL
+#define INCLUDED_COM_SUN_STAR_CHART2_RELATIVEPOSITION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/drawing/Alignment.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace chart2 {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct RelativePosition {
+    inline RelativePosition() SAL_THROW(());
+
+    inline RelativePosition(const double& Primary_, const double& Secondary_, const ::com::sun::star::drawing::Alignment& Anchor_) SAL_THROW(());
+
+    double Primary;
+    double Secondary;
+    ::com::sun::star::drawing::Alignment Anchor;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart2::RelativePosition* );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART2_RELATIVEPOSITION_HDL

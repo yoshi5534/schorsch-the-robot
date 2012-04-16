@@ -1,0 +1,49 @@
+#ifndef INCLUDED_COM_SUN_STAR_MOZILLA_MENUMULTIPLECHANGE_HDL
+#define INCLUDED_COM_SUN_STAR_MOZILLA_MENUMULTIPLECHANGE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace mozilla {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct MenuMultipleChange {
+    inline MenuMultipleChange() SAL_THROW(());
+
+    inline MenuMultipleChange(const ::sal_Int16& ID_, const ::sal_Int16& GroupID_, const ::sal_Int16& PreItemID_, const ::rtl::OUString& ItemText_, const ::sal_Bool& IsVisible_, const ::sal_Bool& IsActive_, const ::sal_Bool& IsCheckable_, const ::sal_Bool& IsChecked_, const ::com::sun::star::uno::Sequence< ::sal_Int8 >& Image_) SAL_THROW(());
+
+    ::sal_Int16 ID;
+    ::sal_Int16 GroupID;
+    ::sal_Int16 PreItemID;
+    ::rtl::OUString ItemText;
+    ::sal_Bool IsVisible;
+    ::sal_Bool IsActive;
+    ::sal_Bool IsCheckable;
+    ::sal_Bool IsChecked;
+    ::com::sun::star::uno::Sequence< ::sal_Int8 > Image;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::mozilla::MenuMultipleChange* );
+
+#endif // INCLUDED_COM_SUN_STAR_MOZILLA_MENUMULTIPLECHANGE_HDL

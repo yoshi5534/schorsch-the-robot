@@ -1,0 +1,42 @@
+#ifndef INCLUDED_COM_SUN_STAR_I18N_DIRECTIONPROPERTY_HDL
+#define INCLUDED_COM_SUN_STAR_I18N_DIRECTIONPROPERTY_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace i18n {
+
+enum DirectionProperty
+{
+    DirectionProperty_LEFT_TO_RIGHT = 0,
+    DirectionProperty_RIGHT_TO_LEFT = 1,
+    DirectionProperty_EUROPEAN_NUMBER = 2,
+    DirectionProperty_EUROPEAN_NUMBER_SEPARATOR = 3,
+    DirectionProperty_EUROPEAN_NUMBER_TERMINATOR = 4,
+    DirectionProperty_ARABIC_NUMBER = 5,
+    DirectionProperty_COMMON_NUMBER_SEPARATOR = 6,
+    DirectionProperty_BLOCK_SEPARATOR = 7,
+    DirectionProperty_SEGMENT_SEPARATOR = 8,
+    DirectionProperty_WHITE_SPACE_NEUTRAL = 9,
+    DirectionProperty_OTHER_NEUTRAL = 10,
+    DirectionProperty_LEFT_TO_RIGHT_EMBEDDING = 11,
+    DirectionProperty_LEFT_TO_RIGHT_OVERRIDE = 12,
+    DirectionProperty_RIGHT_TO_LEFT_ARABIC = 13,
+    DirectionProperty_RIGHT_TO_LEFT_EMBEDDING = 14,
+    DirectionProperty_RIGHT_TO_LEFT_OVERRIDE = 15,
+    DirectionProperty_POP_DIRECTIONAL_FORMAT = 16,
+    DirectionProperty_DIR_NON_SPACING_MARK = 17,
+    DirectionProperty_BOUNDARY_NEUTRAL = 18,
+    DirectionProperty_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::i18n::DirectionProperty* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_I18N_DIRECTIONPROPERTY_HDL

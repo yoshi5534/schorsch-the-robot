@@ -1,0 +1,29 @@
+#ifndef INCLUDED_COM_SUN_STAR_FORM_LISTSOURCETYPE_HDL
+#define INCLUDED_COM_SUN_STAR_FORM_LISTSOURCETYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace form {
+
+enum ListSourceType
+{
+    ListSourceType_VALUELIST = 0,
+    ListSourceType_TABLE = 1,
+    ListSourceType_QUERY = 2,
+    ListSourceType_SQL = 3,
+    ListSourceType_SQLPASSTHROUGH = 4,
+    ListSourceType_TABLEFIELDS = 5,
+    ListSourceType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::form::ListSourceType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_FORM_LISTSOURCETYPE_HDL

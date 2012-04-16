@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART2_XCHARTTYPECONTAINER_HDL
+#define INCLUDED_COM_SUN_STAR_CHART2_XCHARTTYPECONTAINER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/container/NoSuchElementException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+namespace com { namespace sun { namespace star { namespace chart2 { class XChartType; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace chart2 {
+
+class SAL_NO_VTABLE XChartTypeContainer : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL addChartType( const ::com::sun::star::uno::Reference< ::com::sun::star::chart2::XChartType >& aChartType ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeChartType( const ::com::sun::star::uno::Reference< ::com::sun::star::chart2::XChartType >& aChartType ) throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::chart2::XChartType > > SAL_CALL getChartTypes(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setChartTypes( const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::chart2::XChartType > >& aChartTypes ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::chart2::XChartTypeContainer >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART2_XCHARTTYPECONTAINER_HDL

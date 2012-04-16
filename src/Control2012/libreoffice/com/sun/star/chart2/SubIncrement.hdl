@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART2_SUBINCREMENT_HDL
+#define INCLUDED_COM_SUN_STAR_CHART2_SUBINCREMENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Any.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace chart2 {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct SubIncrement {
+    inline SubIncrement() SAL_THROW(());
+
+    inline SubIncrement(const ::com::sun::star::uno::Any& IntervalCount_, const ::com::sun::star::uno::Any& PostEquidistant_) SAL_THROW(());
+
+    ::com::sun::star::uno::Any IntervalCount;
+    ::com::sun::star::uno::Any PostEquidistant;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart2::SubIncrement* );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART2_SUBINCREMENT_HDL

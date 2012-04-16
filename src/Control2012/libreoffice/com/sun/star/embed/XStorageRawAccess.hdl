@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_EMBED_XSTORAGERAWACCESS_HDL
+#define INCLUDED_COM_SUN_STAR_EMBED_XSTORAGERAWACCESS_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/embed/StorageWrappedTargetException.hdl"
+namespace com { namespace sun { namespace star { namespace io { class XInputStream; } } } }
+#include "com/sun/star/packages/NoRawFormatException.hdl"
+#include "com/sun/star/io/IOException.hdl"
+#include "com/sun/star/container/ElementExistException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/packages/NoEncryptionException.hdl"
+#include "com/sun/star/embed/InvalidStorageException.hdl"
+#include "com/sun/star/container/NoSuchElementException.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace embed {
+
+class SAL_NO_VTABLE XStorageRawAccess : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream > SAL_CALL getPlainRawStreamElement( const ::rtl::OUString& sStreamName ) throw (::com::sun::star::embed::InvalidStorageException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::container::NoSuchElementException, ::com::sun::star::io::IOException, ::com::sun::star::embed::StorageWrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream > SAL_CALL getRawEncrStreamElement( const ::rtl::OUString& sStreamName ) throw (::com::sun::star::embed::InvalidStorageException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::packages::NoEncryptionException, ::com::sun::star::container::NoSuchElementException, ::com::sun::star::io::IOException, ::com::sun::star::embed::StorageWrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL insertRawEncrStreamElement( const ::rtl::OUString& sStreamName, const ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream >& xInStream ) throw (::com::sun::star::embed::InvalidStorageException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::packages::NoRawFormatException, ::com::sun::star::container::ElementExistException, ::com::sun::star::io::IOException, ::com::sun::star::embed::StorageWrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::embed::XStorageRawAccess >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_EMBED_XSTORAGERAWACCESS_HDL

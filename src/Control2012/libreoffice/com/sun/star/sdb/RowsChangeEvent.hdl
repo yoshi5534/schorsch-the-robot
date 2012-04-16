@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_SDB_ROWSCHANGEEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_SDB_ROWSCHANGEEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/sdb/RowChangeEvent.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sdb {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct RowsChangeEvent: public ::com::sun::star::sdb::RowChangeEvent {
+    inline RowsChangeEvent() SAL_THROW(());
+
+    inline RowsChangeEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::sal_Int32& Action_, const ::sal_Int32& Rows_, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any >& Bookmarks_) SAL_THROW(());
+
+    ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any > Bookmarks CPPU_GCC3_ALIGN(::com::sun::star::sdb::RowChangeEvent);
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sdb::RowsChangeEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_SDB_ROWSCHANGEEVENT_HDL

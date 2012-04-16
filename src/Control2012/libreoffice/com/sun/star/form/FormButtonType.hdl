@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_FORM_FORMBUTTONTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_FORM_FORMBUTTONTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace form {
+
+enum FormButtonType
+{
+    FormButtonType_PUSH = 0,
+    FormButtonType_SUBMIT = 1,
+    FormButtonType_RESET = 2,
+    FormButtonType_URL = 3,
+    FormButtonType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::form::FormButtonType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_FORM_FORMBUTTONTYPE_HDL

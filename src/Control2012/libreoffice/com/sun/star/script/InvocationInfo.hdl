@@ -1,0 +1,49 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_INVOCATIONINFO_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_INVOCATIONINFO_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/script/MemberType.hdl"
+#include "com/sun/star/reflection/ParamMode.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "com/sun/star/uno/Type.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace script {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct InvocationInfo {
+    inline InvocationInfo() SAL_THROW(());
+
+    inline InvocationInfo(const ::rtl::OUString& aName_, const ::com::sun::star::script::MemberType& eMemberType_, const ::sal_Int16& PropertyAttribute_, const ::com::sun::star::uno::Type& aType_, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Type >& aParamTypes_, const ::com::sun::star::uno::Sequence< ::com::sun::star::reflection::ParamMode >& aParamModes_) SAL_THROW(());
+
+    ::rtl::OUString aName;
+    ::com::sun::star::script::MemberType eMemberType;
+    ::sal_Int16 PropertyAttribute;
+    ::com::sun::star::uno::Type aType;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Type > aParamTypes;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::reflection::ParamMode > aParamModes;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::script::InvocationInfo* );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_INVOCATIONINFO_HDL

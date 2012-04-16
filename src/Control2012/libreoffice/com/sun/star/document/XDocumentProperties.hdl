@@ -1,0 +1,93 @@
+#ifndef INCLUDED_COM_SUN_STAR_DOCUMENT_XDOCUMENTPROPERTIES_HDL
+#define INCLUDED_COM_SUN_STAR_DOCUMENT_XDOCUMENTPROPERTIES_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/WrappedTargetException.hdl"
+#include "com/sun/star/io/WrongFormatException.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/beans/PropertyValue.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/lang/Locale.hdl"
+#include "com/sun/star/io/IOException.hdl"
+namespace com { namespace sun { namespace star { namespace beans { class XPropertyContainer; } } } }
+#include "com/sun/star/beans/NamedValue.hdl"
+#include "com/sun/star/util/DateTime.hdl"
+namespace com { namespace sun { namespace star { namespace embed { class XStorage; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace document {
+
+class SAL_NO_VTABLE XDocumentProperties : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Attributes
+    virtual ::rtl::OUString SAL_CALL getAuthor() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setAuthor( const ::rtl::OUString& _author ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getGenerator() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setGenerator( const ::rtl::OUString& _generator ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::util::DateTime SAL_CALL getCreationDate() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCreationDate( const ::com::sun::star::util::DateTime& _creationdate ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getTitle() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setTitle( const ::rtl::OUString& _title ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getSubject() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSubject( const ::rtl::OUString& _subject ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getDescription() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDescription( const ::rtl::OUString& _description ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getKeywords() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setKeywords( const ::com::sun::star::uno::Sequence< ::rtl::OUString >& _keywords ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::lang::Locale SAL_CALL getLanguage() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLanguage( const ::com::sun::star::lang::Locale& _language ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getModifiedBy() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setModifiedBy( const ::rtl::OUString& _modifiedby ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::util::DateTime SAL_CALL getModificationDate() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setModificationDate( const ::com::sun::star::util::DateTime& _modificationdate ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getPrintedBy() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setPrintedBy( const ::rtl::OUString& _printedby ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::util::DateTime SAL_CALL getPrintDate() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setPrintDate( const ::com::sun::star::util::DateTime& _printdate ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getTemplateName() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setTemplateName( const ::rtl::OUString& _templatename ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getTemplateURL() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setTemplateURL( const ::rtl::OUString& _templateurl ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::util::DateTime SAL_CALL getTemplateDate() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setTemplateDate( const ::com::sun::star::util::DateTime& _templatedate ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getAutoloadURL() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setAutoloadURL( const ::rtl::OUString& _autoloadurl ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getAutoloadSecs() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setAutoloadSecs( ::sal_Int32 _autoloadsecs ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getDefaultTarget() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDefaultTarget( const ::rtl::OUString& _defaulttarget ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::beans::NamedValue > SAL_CALL getDocumentStatistics() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDocumentStatistics( const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::NamedValue >& _documentstatistics ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getEditingCycles() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setEditingCycles( ::sal_Int16 _editingcycles ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getEditingDuration() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setEditingDuration( ::sal_Int32 _editingduration ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual void SAL_CALL resetUserData( const ::rtl::OUString& Author ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::beans::XPropertyContainer > SAL_CALL getUserDefinedProperties(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL loadFromStorage( const ::com::sun::star::uno::Reference< ::com::sun::star::embed::XStorage >& Storage, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& Medium ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::io::WrongFormatException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL loadFromMedium( const ::rtl::OUString& URL, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& Medium ) throw (::com::sun::star::io::WrongFormatException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL storeToStorage( const ::com::sun::star::uno::Reference< ::com::sun::star::embed::XStorage >& Storage, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& Medium ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL storeToMedium( const ::rtl::OUString& URL, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& Medium ) throw (::com::sun::star::lang::WrappedTargetException, ::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::document::XDocumentProperties >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DOCUMENT_XDOCUMENTPROPERTIES_HDL

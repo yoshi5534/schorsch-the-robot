@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_STYLE_TABALIGN_HDL
+#define INCLUDED_COM_SUN_STAR_STYLE_TABALIGN_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace style {
+
+enum TabAlign
+{
+    TabAlign_LEFT = 0,
+    TabAlign_CENTER = 1,
+    TabAlign_RIGHT = 2,
+    TabAlign_DECIMAL = 3,
+    TabAlign_DEFAULT = 4,
+    TabAlign_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::style::TabAlign* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_STYLE_TABALIGN_HDL

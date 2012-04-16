@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_BEANS_OPTIONAL_HDL
+#define INCLUDED_COM_SUN_STAR_BEANS_OPTIONAL_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace beans {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+template< typename typeparam_T > struct Optional {
+    inline Optional() SAL_THROW(());
+
+    inline Optional(const ::sal_Bool& IsPresent_, typeparam_T const & Value_) SAL_THROW(());
+
+    ::sal_Bool IsPresent;
+    typeparam_T Value;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+template< typename typeparam_T > inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::beans::Optional< typeparam_T >* );
+
+#endif // INCLUDED_COM_SUN_STAR_BEANS_OPTIONAL_HDL

@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_I18N_FORBIDDENCHARACTERS_HDL
+#define INCLUDED_COM_SUN_STAR_I18N_FORBIDDENCHARACTERS_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace i18n {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ForbiddenCharacters {
+    inline ForbiddenCharacters() SAL_THROW(());
+
+    inline ForbiddenCharacters(const ::rtl::OUString& beginLine_, const ::rtl::OUString& endLine_) SAL_THROW(());
+
+    ::rtl::OUString beginLine;
+    ::rtl::OUString endLine;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::i18n::ForbiddenCharacters* );
+
+#endif // INCLUDED_COM_SUN_STAR_I18N_FORBIDDENCHARACTERS_HDL

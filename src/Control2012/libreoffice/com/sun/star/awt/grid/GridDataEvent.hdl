@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDDATAEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDDATAEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/EventObject.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace awt { namespace grid {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct GridDataEvent: public ::com::sun::star::lang::EventObject {
+    inline GridDataEvent() SAL_THROW(());
+
+    inline GridDataEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::sal_Int32& FirstColumn_, const ::sal_Int32& LastColumn_, const ::sal_Int32& FirstRow_, const ::sal_Int32& LastRow_) SAL_THROW(());
+
+    ::sal_Int32 FirstColumn CPPU_GCC3_ALIGN(::com::sun::star::lang::EventObject);
+    ::sal_Int32 LastColumn;
+    ::sal_Int32 FirstRow;
+    ::sal_Int32 LastRow;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::awt::grid::GridDataEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDDATAEVENT_HDL

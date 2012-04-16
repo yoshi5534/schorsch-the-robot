@@ -1,0 +1,71 @@
+#ifndef INCLUDED_COM_SUN_STAR_RENDERING_XCANVAS_HDL
+#define INCLUDED_COM_SUN_STAR_RENDERING_XCANVAS_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XBitmap; } } } }
+namespace com { namespace sun { namespace star { namespace rendering { class XTextLayout; } } } }
+#include "com/sun/star/rendering/StringContext.hdl"
+#include "com/sun/star/rendering/FontInfo.hdl"
+#include "com/sun/star/beans/PropertyValue.hdl"
+#include "com/sun/star/rendering/FontRequest.hdl"
+#include "com/sun/star/geometry/Matrix2D.hdl"
+#include "com/sun/star/rendering/Texture.hdl"
+namespace com { namespace sun { namespace star { namespace geometry { class XMapping2D; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/rendering/VolatileContentDestroyedException.hdl"
+#include "com/sun/star/rendering/RenderState.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XCanvasFont; } } } }
+#include "com/sun/star/rendering/StrokeAttributes.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XCachedPrimitive; } } } }
+namespace com { namespace sun { namespace star { namespace rendering { class XPolyPolygon2D; } } } }
+namespace com { namespace sun { namespace star { namespace rendering { class XGraphicDevice; } } } }
+#include "com/sun/star/rendering/ViewState.hdl"
+#include "com/sun/star/geometry/RealPoint2D.hdl"
+#include "com/sun/star/geometry/RealBezierSegment2D.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace rendering {
+
+class SAL_NO_VTABLE XCanvas : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL clear(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL drawPoint( const ::com::sun::star::geometry::RealPoint2D& aPoint, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL drawLine( const ::com::sun::star::geometry::RealPoint2D& aStartPoint, const ::com::sun::star::geometry::RealPoint2D& aEndPoint, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL drawBezier( const ::com::sun::star::geometry::RealBezierSegment2D& aBezierSegment, const ::com::sun::star::geometry::RealPoint2D& aEndPoint, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCachedPrimitive > SAL_CALL drawPolyPolygon( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XPolyPolygon2D >& xPolyPolygon, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCachedPrimitive > SAL_CALL strokePolyPolygon( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XPolyPolygon2D >& xPolyPolygon, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState, const ::com::sun::star::rendering::StrokeAttributes& aStrokeAttributes ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCachedPrimitive > SAL_CALL strokeTexturedPolyPolygon( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XPolyPolygon2D >& xPolyPolygon, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState, const ::com::sun::star::uno::Sequence< ::com::sun::star::rendering::Texture >& aTextures, const ::com::sun::star::rendering::StrokeAttributes& aStrokeAttributes ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::rendering::VolatileContentDestroyedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCachedPrimitive > SAL_CALL strokeTextureMappedPolyPolygon( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XPolyPolygon2D >& xPolyPolygon, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState, const ::com::sun::star::uno::Sequence< ::com::sun::star::rendering::Texture >& aTextures, const ::com::sun::star::uno::Reference< ::com::sun::star::geometry::XMapping2D >& xMapping, const ::com::sun::star::rendering::StrokeAttributes& aStrokeAttributes ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::rendering::VolatileContentDestroyedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XPolyPolygon2D > SAL_CALL queryStrokeShapes( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XPolyPolygon2D >& xPolyPolygon, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState, const ::com::sun::star::rendering::StrokeAttributes& aStrokeAttributes ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCachedPrimitive > SAL_CALL fillPolyPolygon( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XPolyPolygon2D >& xPolyPolygon, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCachedPrimitive > SAL_CALL fillTexturedPolyPolygon( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XPolyPolygon2D >& xPolyPolygon, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState, const ::com::sun::star::uno::Sequence< ::com::sun::star::rendering::Texture >& xTextures ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::rendering::VolatileContentDestroyedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCachedPrimitive > SAL_CALL fillTextureMappedPolyPolygon( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XPolyPolygon2D >& xPolyPolygon, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState, const ::com::sun::star::uno::Sequence< ::com::sun::star::rendering::Texture >& xTextures, const ::com::sun::star::uno::Reference< ::com::sun::star::geometry::XMapping2D >& xMapping ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::rendering::VolatileContentDestroyedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCanvasFont > SAL_CALL createFont( const ::com::sun::star::rendering::FontRequest& aFontRequest, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& aExtraFontProperties, const ::com::sun::star::geometry::Matrix2D& aFontMatrix ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::rendering::FontInfo > SAL_CALL queryAvailableFonts( const ::com::sun::star::rendering::FontInfo& aFilter, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& aFontProperties ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCachedPrimitive > SAL_CALL drawText( const ::com::sun::star::rendering::StringContext& aText, const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCanvasFont >& xFont, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState, ::sal_Int8 nTextDirection ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCachedPrimitive > SAL_CALL drawTextLayout( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XTextLayout >& xLayoutetText, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCachedPrimitive > SAL_CALL drawBitmap( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBitmap >& xBitmap, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::rendering::VolatileContentDestroyedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCachedPrimitive > SAL_CALL drawBitmapModulated( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBitmap >& xBitmap, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::rendering::VolatileContentDestroyedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XGraphicDevice > SAL_CALL getDevice(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCanvas >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_RENDERING_XCANVAS_HDL

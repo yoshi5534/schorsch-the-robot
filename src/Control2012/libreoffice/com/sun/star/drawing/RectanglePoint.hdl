@@ -1,0 +1,32 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_RECTANGLEPOINT_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_RECTANGLEPOINT_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum RectanglePoint
+{
+    RectanglePoint_LEFT_TOP = 0,
+    RectanglePoint_MIDDLE_TOP = 1,
+    RectanglePoint_RIGHT_TOP = 2,
+    RectanglePoint_LEFT_MIDDLE = 3,
+    RectanglePoint_MIDDLE_MIDDLE = 4,
+    RectanglePoint_RIGHT_MIDDLE = 5,
+    RectanglePoint_LEFT_BOTTOM = 6,
+    RectanglePoint_MIDDLE_BOTTOM = 7,
+    RectanglePoint_RIGHT_BOTTOM = 8,
+    RectanglePoint_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::RectanglePoint* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_RECTANGLEPOINT_HDL

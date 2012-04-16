@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTELEMENT_HDL
+#define INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTELEMENT_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace uno { class XInterface; } } } }
+#include "com/sun/star/test/bridge/TestSimple.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace test { namespace bridge {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct TestElement: public ::com::sun::star::test::bridge::TestSimple {
+    inline TestElement() SAL_THROW(());
+
+    inline TestElement(const ::sal_Bool& Bool_, const ::sal_Unicode& Char_, const ::sal_Int8& Byte_, const ::sal_Int16& Short_, const ::sal_uInt16& UShort_, const ::sal_Int32& Long_, const ::sal_uInt32& ULong_, const ::sal_Int64& Hyper_, const ::sal_uInt64& UHyper_, const float& Float_, const double& Double_, const ::com::sun::star::test::bridge::TestEnum& Enum_, const ::rtl::OUString& String_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Interface_, const ::com::sun::star::uno::Any& Any_) SAL_THROW(());
+
+    ::rtl::OUString String CPPU_GCC3_ALIGN(::com::sun::star::test::bridge::TestSimple);
+    ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > Interface;
+    ::com::sun::star::uno::Any Any;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::test::bridge::TestElement* );
+
+#endif // INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTELEMENT_HDL

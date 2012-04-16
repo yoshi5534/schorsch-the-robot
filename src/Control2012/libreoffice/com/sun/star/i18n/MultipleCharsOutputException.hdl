@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_I18N_MULTIPLECHARSOUTPUTEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_I18N_MULTIPLECHARSOUTPUTEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace i18n {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT MultipleCharsOutputException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE MultipleCharsOutputException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE MultipleCharsOutputException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE MultipleCharsOutputException(MultipleCharsOutputException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~MultipleCharsOutputException();
+
+    inline CPPU_GCC_DLLPRIVATE MultipleCharsOutputException & operator =(MultipleCharsOutputException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::i18n::MultipleCharsOutputException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_I18N_MULTIPLECHARSOUTPUTEXCEPTION_HDL

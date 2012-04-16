@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_GIOP_TARGETADDRESS_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_GIOP_TARGETADDRESS_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/CorbaUnion.hdl"
+#include "com/sun/star/corba/iop/TaggedProfile.hdl"
+#include "com/sun/star/corba/giop/IORAddressingInfo.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace giop {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct TargetAddress: public ::com::sun::star::corba::CorbaUnion {
+    inline TargetAddress() SAL_THROW(());
+
+    inline TargetAddress(const ::sal_Int32& dummy_, const ::sal_Int16& nDiscriminator_, const ::com::sun::star::uno::Sequence< ::sal_Int8 >& object_key_, const ::com::sun::star::corba::iop::TaggedProfile& profile_, const ::com::sun::star::corba::giop::IORAddressingInfo& ior_) SAL_THROW(());
+
+    ::sal_Int16 nDiscriminator CPPU_GCC3_ALIGN(::com::sun::star::corba::CorbaUnion);
+    ::com::sun::star::uno::Sequence< ::sal_Int8 > object_key;
+    ::com::sun::star::corba::iop::TaggedProfile profile;
+    ::com::sun::star::corba::giop::IORAddressingInfo ior;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::giop::TargetAddress* );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_GIOP_TARGETADDRESS_HDL

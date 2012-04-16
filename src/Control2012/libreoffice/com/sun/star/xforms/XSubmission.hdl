@@ -1,0 +1,29 @@
+#ifndef INCLUDED_COM_SUN_STAR_XFORMS_XSUBMISSION_HDL
+#define INCLUDED_COM_SUN_STAR_XFORMS_XSUBMISSION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/beans/XPropertySet.hdl"
+#include "com/sun/star/container/XNamed.hdl"
+#include "com/sun/star/form/submission/XSubmission.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace xforms {
+
+class SAL_NO_VTABLE XSubmission : public ::com::sun::star::beans::XPropertySet, public ::com::sun::star::container::XNamed, public ::com::sun::star::form::submission::XSubmission
+{
+public:
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::xforms::XSubmission >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_XFORMS_XSUBMISSION_HDL

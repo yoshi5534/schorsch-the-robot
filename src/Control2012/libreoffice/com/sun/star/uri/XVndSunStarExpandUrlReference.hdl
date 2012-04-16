@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_URI_XVNDSUNSTAREXPANDURLREFERENCE_HDL
+#define INCLUDED_COM_SUN_STAR_URI_XVNDSUNSTAREXPANDURLREFERENCE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uri/XVndSunStarExpandUrl.hdl"
+#include "com/sun/star/uri/XUriReference.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uri {
+
+class SAL_NO_VTABLE XVndSunStarExpandUrlReference : public ::com::sun::star::uri::XUriReference, public ::com::sun::star::uri::XVndSunStarExpandUrl
+{
+public:
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::uri::XVndSunStarExpandUrlReference >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_URI_XVNDSUNSTAREXPANDURLREFERENCE_HDL

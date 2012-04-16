@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_TABLE_CELLADDRESS_HDL
+#define INCLUDED_COM_SUN_STAR_TABLE_CELLADDRESS_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace table {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct CellAddress {
+    inline CellAddress() SAL_THROW(());
+
+    inline CellAddress(const ::sal_Int16& Sheet_, const ::sal_Int32& Column_, const ::sal_Int32& Row_) SAL_THROW(());
+
+    ::sal_Int16 Sheet;
+    ::sal_Int32 Column;
+    ::sal_Int32 Row;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::table::CellAddress* );
+
+#endif // INCLUDED_COM_SUN_STAR_TABLE_CELLADDRESS_HDL

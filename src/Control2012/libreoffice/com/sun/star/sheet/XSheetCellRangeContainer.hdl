@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_XSHEETCELLRANGECONTAINER_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_XSHEETCELLRANGECONTAINER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/container/NoSuchElementException.hdl"
+#include "com/sun/star/sheet/XSheetCellRanges.hdl"
+#include "com/sun/star/table/CellRangeAddress.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+class SAL_NO_VTABLE XSheetCellRangeContainer : public ::com::sun::star::sheet::XSheetCellRanges
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL addRangeAddress( const ::com::sun::star::table::CellRangeAddress& aCellRangeAddress, ::sal_Bool bMergeRanges ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeRangeAddress( const ::com::sun::star::table::CellRangeAddress& aCellRangeAddress ) throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addRangeAddresses( const ::com::sun::star::uno::Sequence< ::com::sun::star::table::CellRangeAddress >& aCellRangeAddresses, ::sal_Bool bMergeRanges ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeRangeAddresses( const ::com::sun::star::uno::Sequence< ::com::sun::star::table::CellRangeAddress >& aCellRangeAddresses ) throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XSheetCellRangeContainer >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_XSHEETCELLRANGECONTAINER_HDL

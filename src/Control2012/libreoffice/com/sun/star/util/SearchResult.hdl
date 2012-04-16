@@ -1,0 +1,42 @@
+#ifndef INCLUDED_COM_SUN_STAR_UTIL_SEARCHRESULT_HDL
+#define INCLUDED_COM_SUN_STAR_UTIL_SEARCHRESULT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace util {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct SearchResult {
+    inline SearchResult() SAL_THROW(());
+
+    inline SearchResult(const ::sal_Int32& subRegExpressions_, const ::com::sun::star::uno::Sequence< ::sal_Int32 >& startOffset_, const ::com::sun::star::uno::Sequence< ::sal_Int32 >& endOffset_) SAL_THROW(());
+
+    ::sal_Int32 subRegExpressions;
+    ::com::sun::star::uno::Sequence< ::sal_Int32 > startOffset;
+    ::com::sun::star::uno::Sequence< ::sal_Int32 > endOffset;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::util::SearchResult* );
+
+#endif // INCLUDED_COM_SUN_STAR_UTIL_SEARCHRESULT_HDL

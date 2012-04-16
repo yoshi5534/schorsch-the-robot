@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_UTIL_SORTFIELDTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_UTIL_SORTFIELDTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace util {
+
+enum SortFieldType
+{
+    SortFieldType_AUTOMATIC = 0,
+    SortFieldType_NUMERIC = 1,
+    SortFieldType_ALPHANUMERIC = 2,
+    SortFieldType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::util::SortFieldType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UTIL_SORTFIELDTYPE_HDL

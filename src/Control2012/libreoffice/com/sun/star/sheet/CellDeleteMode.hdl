@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_CELLDELETEMODE_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_CELLDELETEMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+enum CellDeleteMode
+{
+    CellDeleteMode_NONE = 0,
+    CellDeleteMode_UP = 1,
+    CellDeleteMode_LEFT = 2,
+    CellDeleteMode_ROWS = 3,
+    CellDeleteMode_COLUMNS = 4,
+    CellDeleteMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::CellDeleteMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_CELLDELETEMODE_HDL

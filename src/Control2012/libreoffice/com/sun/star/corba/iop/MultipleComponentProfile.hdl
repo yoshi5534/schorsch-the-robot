@@ -1,0 +1,15 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_IOP_MULTIPLECOMPONENTPROFILE_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_IOP_MULTIPLECOMPONENTPROFILE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/iop/TaggedComponent.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace iop {
+
+typedef ::com::sun::star::uno::Sequence< ::com::sun::star::corba::iop::TaggedComponent > MultipleComponentProfile;
+
+} } } } }
+#endif // INCLUDED_COM_SUN_STAR_CORBA_IOP_MULTIPLECOMPONENTPROFILE_HDL

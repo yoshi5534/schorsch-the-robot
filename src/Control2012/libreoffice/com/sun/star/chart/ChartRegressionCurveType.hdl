@@ -1,0 +1,29 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART_CHARTREGRESSIONCURVETYPE_HDL
+#define INCLUDED_COM_SUN_STAR_CHART_CHARTREGRESSIONCURVETYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace chart {
+
+enum ChartRegressionCurveType
+{
+    ChartRegressionCurveType_NONE = 0,
+    ChartRegressionCurveType_LINEAR = 1,
+    ChartRegressionCurveType_LOGARITHM = 2,
+    ChartRegressionCurveType_EXPONENTIAL = 3,
+    ChartRegressionCurveType_POLYNOMIAL = 4,
+    ChartRegressionCurveType_POWER = 5,
+    ChartRegressionCurveType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart::ChartRegressionCurveType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART_CHARTREGRESSIONCURVETYPE_HDL

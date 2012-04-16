@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_PROVIDER_SCRIPTEXCEPTIONRAISEDEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_PROVIDER_SCRIPTEXCEPTIONRAISEDEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/script/provider/ScriptErrorRaisedException.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace script { namespace provider {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT ScriptExceptionRaisedException : public ::com::sun::star::script::provider::ScriptErrorRaisedException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE ScriptExceptionRaisedException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE ScriptExceptionRaisedException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::rtl::OUString& scriptName_, const ::rtl::OUString& language_, const ::sal_Int32& lineNum_, const ::rtl::OUString& exceptionType_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE ScriptExceptionRaisedException(ScriptExceptionRaisedException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~ScriptExceptionRaisedException();
+
+    inline CPPU_GCC_DLLPRIVATE ScriptExceptionRaisedException & operator =(ScriptExceptionRaisedException const &);
+
+    ::rtl::OUString exceptionType CPPU_GCC3_ALIGN( ::com::sun::star::script::provider::ScriptErrorRaisedException );
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::script::provider::ScriptExceptionRaisedException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_PROVIDER_SCRIPTEXCEPTIONRAISEDEXCEPTION_HDL

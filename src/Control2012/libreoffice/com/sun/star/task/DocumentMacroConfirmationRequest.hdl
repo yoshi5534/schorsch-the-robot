@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_TASK_DOCUMENTMACROCONFIRMATIONREQUEST_HDL
+#define INCLUDED_COM_SUN_STAR_TASK_DOCUMENTMACROCONFIRMATIONREQUEST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/security/DocumentSignatureInformation.hdl"
+namespace com { namespace sun { namespace star { namespace embed { class XStorage; } } } }
+#include "com/sun/star/task/ClassifiedInteractionRequest.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace task {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT DocumentMacroConfirmationRequest : public ::com::sun::star::task::ClassifiedInteractionRequest
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE DocumentMacroConfirmationRequest() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE DocumentMacroConfirmationRequest(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_, const ::rtl::OUString& DocumentURL_, const ::com::sun::star::uno::Reference< ::com::sun::star::embed::XStorage >& DocumentStorage_, const ::rtl::OUString& DocumentVersion_, const ::com::sun::star::uno::Sequence< ::com::sun::star::security::DocumentSignatureInformation >& DocumentSignatureInformation_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE DocumentMacroConfirmationRequest(DocumentMacroConfirmationRequest const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~DocumentMacroConfirmationRequest();
+
+    inline CPPU_GCC_DLLPRIVATE DocumentMacroConfirmationRequest & operator =(DocumentMacroConfirmationRequest const &);
+
+    ::rtl::OUString DocumentURL CPPU_GCC3_ALIGN( ::com::sun::star::task::ClassifiedInteractionRequest );
+    ::com::sun::star::uno::Reference< ::com::sun::star::embed::XStorage > DocumentStorage;
+    ::rtl::OUString DocumentVersion;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::security::DocumentSignatureInformation > DocumentSignatureInformation;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::task::DocumentMacroConfirmationRequest* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TASK_DOCUMENTMACROCONFIRMATIONREQUEST_HDL

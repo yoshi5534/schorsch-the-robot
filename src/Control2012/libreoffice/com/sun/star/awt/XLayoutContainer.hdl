@@ -1,0 +1,49 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_XLAYOUTCONTAINER_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_XLAYOUTCONTAINER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/awt/Rectangle.hdl"
+#include "com/sun/star/awt/MaxChildrenException.hdl"
+#include "com/sun/star/awt/Size.hdl"
+namespace com { namespace sun { namespace star { namespace awt { class XLayoutConstrains; } } } }
+namespace com { namespace sun { namespace star { namespace awt { class XLayoutUnit; } } } }
+#include "com/sun/star/container/XChild.hdl"
+namespace com { namespace sun { namespace star { namespace beans { class XPropertySet; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace awt {
+
+class SAL_NO_VTABLE XLayoutContainer : public ::com::sun::star::container::XChild
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL addChild( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XLayoutConstrains >& Child ) throw (::com::sun::star::awt::MaxChildrenException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeChild( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XLayoutConstrains >& Child ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::awt::XLayoutConstrains > > SAL_CALL getChildren(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::beans::XPropertySet > SAL_CALL getChildProperties( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XLayoutConstrains >& Child ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLayoutUnit( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XLayoutUnit >& Unit ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::XLayoutUnit > SAL_CALL getLayoutUnit(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL allocateArea( const ::com::sun::star::awt::Rectangle& NewArea ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::awt::Size SAL_CALL getRequestedSize(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::awt::Rectangle SAL_CALL getAllocatedArea(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getHeightForWidth( ::sal_Int32 Width ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL hasHeightForWidth(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XLayoutContainer >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_XLAYOUTCONTAINER_HDL

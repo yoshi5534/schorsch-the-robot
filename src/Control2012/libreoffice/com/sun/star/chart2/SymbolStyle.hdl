@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART2_SYMBOLSTYLE_HDL
+#define INCLUDED_COM_SUN_STAR_CHART2_SYMBOLSTYLE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace chart2 {
+
+enum SymbolStyle
+{
+    SymbolStyle_NONE = 0,
+    SymbolStyle_AUTO = 1,
+    SymbolStyle_STANDARD = 2,
+    SymbolStyle_POLYGON = 3,
+    SymbolStyle_GRAPHIC = 4,
+    SymbolStyle_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart2::SymbolStyle* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART2_SYMBOLSTYLE_HDL

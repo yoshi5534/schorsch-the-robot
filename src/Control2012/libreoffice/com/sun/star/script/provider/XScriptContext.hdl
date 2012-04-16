@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_PROVIDER_XSCRIPTCONTEXT_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_PROVIDER_XSCRIPTCONTEXT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace uno { class XComponentContext; } } } }
+namespace com { namespace sun { namespace star { namespace frame { class XDesktop; } } } }
+namespace com { namespace sun { namespace star { namespace document { class XScriptInvocationContext; } } } }
+namespace com { namespace sun { namespace star { namespace frame { class XModel; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace script { namespace provider {
+
+class SAL_NO_VTABLE XScriptContext : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::frame::XModel > SAL_CALL getDocument(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::document::XScriptInvocationContext > SAL_CALL getInvocationContext(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::frame::XDesktop > SAL_CALL getDesktop(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::uno::XComponentContext > SAL_CALL getComponentContext(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::script::provider::XScriptContext >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_PROVIDER_XSCRIPTCONTEXT_HDL

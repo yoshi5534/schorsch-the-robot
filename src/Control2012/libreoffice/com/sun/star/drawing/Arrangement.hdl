@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_ARRANGEMENT_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_ARRANGEMENT_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum Arrangement
+{
+    Arrangement_FRONT = 0,
+    Arrangement_MORE_FRONT = 1,
+    Arrangement_MORE_BACK = 2,
+    Arrangement_BACK = 3,
+    Arrangement_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::Arrangement* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_ARRANGEMENT_HDL

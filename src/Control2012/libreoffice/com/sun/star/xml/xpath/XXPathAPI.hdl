@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_XML_XPATH_XXPATHAPI_HDL
+#define INCLUDED_COM_SUN_STAR_XML_XPATH_XXPATHAPI_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace xml { namespace dom { class XNodeList; } } } } }
+namespace com { namespace sun { namespace star { namespace xml { namespace dom { class XNode; } } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+namespace com { namespace sun { namespace star { namespace xml { namespace xpath { class XXPathExtension; } } } } }
+namespace com { namespace sun { namespace star { namespace xml { namespace xpath { class XXPathObject; } } } } }
+#include "com/sun/star/xml/xpath/XPathException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace xml { namespace xpath {
+
+class SAL_NO_VTABLE XXPathAPI : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL registerNS( const ::rtl::OUString& prefix, const ::rtl::OUString& url ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL unregisterNS( const ::rtl::OUString& prefix, const ::rtl::OUString& url ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL registerExtension( const ::rtl::OUString& serviceName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL registerExtensionInstance( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::xpath::XXPathExtension >& aExtension ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::xpath::XXPathObject > SAL_CALL eval( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& contextNode, const ::rtl::OUString& expr ) throw (::com::sun::star::xml::xpath::XPathException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::xpath::XXPathObject > SAL_CALL evalNS( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& contextNode, const ::rtl::OUString& expr, const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& namespaceNode ) throw (::com::sun::star::xml::xpath::XPathException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNodeList > SAL_CALL selectNodeList( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& contextNode, const ::rtl::OUString& expr ) throw (::com::sun::star::xml::xpath::XPathException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNodeList > SAL_CALL selectNodeListNS( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& contextNode, const ::rtl::OUString& str, const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& namespaceNode ) throw (::com::sun::star::xml::xpath::XPathException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode > SAL_CALL selectSingleNode( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& contextNode, const ::rtl::OUString& expr ) throw (::com::sun::star::xml::xpath::XPathException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode > SAL_CALL selectSingleNodeNS( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& contextNode, const ::rtl::OUString& str, const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& namespaceNode ) throw (::com::sun::star::xml::xpath::XPathException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::xpath::XXPathAPI >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_XML_XPATH_XXPATHAPI_HDL

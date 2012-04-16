@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEXT_TEXTCONTENTANCHORTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_TEXT_TEXTCONTENTANCHORTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace text {
+
+enum TextContentAnchorType
+{
+    TextContentAnchorType_AT_PARAGRAPH = 0,
+    TextContentAnchorType_AS_CHARACTER = 1,
+    TextContentAnchorType_AT_PAGE = 2,
+    TextContentAnchorType_AT_FRAME = 3,
+    TextContentAnchorType_AT_CHARACTER = 4,
+    TextContentAnchorType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::text::TextContentAnchorType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TEXT_TEXTCONTENTANCHORTYPE_HDL

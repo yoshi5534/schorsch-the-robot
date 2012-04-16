@@ -1,0 +1,56 @@
+#ifndef INCLUDED_COM_SUN_STAR_I18N_LOCALEDATAITEM_HDL
+#define INCLUDED_COM_SUN_STAR_I18N_LOCALEDATAITEM_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace i18n {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct LocaleDataItem {
+    inline LocaleDataItem() SAL_THROW(());
+
+    inline LocaleDataItem(const ::rtl::OUString& unoID_, const ::rtl::OUString& dateSeparator_, const ::rtl::OUString& thousandSeparator_, const ::rtl::OUString& decimalSeparator_, const ::rtl::OUString& timeSeparator_, const ::rtl::OUString& time100SecSeparator_, const ::rtl::OUString& listSeparator_, const ::rtl::OUString& quotationStart_, const ::rtl::OUString& quotationEnd_, const ::rtl::OUString& doubleQuotationStart_, const ::rtl::OUString& doubleQuotationEnd_, const ::rtl::OUString& timeAM_, const ::rtl::OUString& timePM_, const ::rtl::OUString& measurementSystem_, const ::rtl::OUString& LongDateDayOfWeekSeparator_, const ::rtl::OUString& LongDateDaySeparator_, const ::rtl::OUString& LongDateMonthSeparator_, const ::rtl::OUString& LongDateYearSeparator_) SAL_THROW(());
+
+    ::rtl::OUString unoID;
+    ::rtl::OUString dateSeparator;
+    ::rtl::OUString thousandSeparator;
+    ::rtl::OUString decimalSeparator;
+    ::rtl::OUString timeSeparator;
+    ::rtl::OUString time100SecSeparator;
+    ::rtl::OUString listSeparator;
+    ::rtl::OUString quotationStart;
+    ::rtl::OUString quotationEnd;
+    ::rtl::OUString doubleQuotationStart;
+    ::rtl::OUString doubleQuotationEnd;
+    ::rtl::OUString timeAM;
+    ::rtl::OUString timePM;
+    ::rtl::OUString measurementSystem;
+    ::rtl::OUString LongDateDayOfWeekSeparator;
+    ::rtl::OUString LongDateDaySeparator;
+    ::rtl::OUString LongDateMonthSeparator;
+    ::rtl::OUString LongDateYearSeparator;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::i18n::LocaleDataItem* );
+
+#endif // INCLUDED_COM_SUN_STAR_I18N_LOCALEDATAITEM_HDL

@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_SMARTTAGS_SMARTTAGRECOGNIZERMODE_HDL
+#define INCLUDED_COM_SUN_STAR_SMARTTAGS_SMARTTAGRECOGNIZERMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace smarttags {
+
+enum SmartTagRecognizerMode
+{
+    SmartTagRecognizerMode_CHAR = 0,
+    SmartTagRecognizerMode_SINGLE_WORD = 1,
+    SmartTagRecognizerMode_PARAGRAPH = 2,
+    SmartTagRecognizerMode_CELL = 3,
+    SmartTagRecognizerMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::smarttags::SmartTagRecognizerMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SMARTTAGS_SMARTTAGRECOGNIZERMODE_HDL

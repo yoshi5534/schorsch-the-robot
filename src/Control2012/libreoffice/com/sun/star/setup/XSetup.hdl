@@ -1,0 +1,56 @@
+#ifndef INCLUDED_COM_SUN_STAR_SETUP_XSETUP_HDL
+#define INCLUDED_COM_SUN_STAR_SETUP_XSETUP_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/setup/InstallEnvironment.hdl"
+#include "com/sun/star/setup/UpdateType.hdl"
+#include "com/sun/star/setup/SizeInfo.hdl"
+#include "com/sun/star/setup/ModuleInfo.hdl"
+#include "com/sun/star/setup/InstallResponse.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/setup/VersionIdentifier.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace setup {
+
+class SAL_NO_VTABLE XSetup : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL isVersionSupported( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::sal_Int16 > SAL_CALL getAvailableLanguages( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::setup::ModuleInfo SAL_CALL getRootModule( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setHiddenModule( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier, const ::rtl::OUString& strModuleID, ::sal_Bool bHidden ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getProductname( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getVendorname( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getDefaultDestinationPath( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::setup::SizeInfo SAL_CALL getStandardSizeValues( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier, const ::com::sun::star::uno::Sequence< ::sal_Int16 >& seqLanguages ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getHelpText( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier, const ::rtl::OUString& strPagename ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getReadmeText( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getLicenseText( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getNativeLocation( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any > SAL_CALL getMirrorList( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::setup::UpdateType SAL_CALL isUpdateAvailable( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier, ::com::sun::star::setup::VersionIdentifier& aNewVerIdentifier ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isModuleAvailable( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier, const ::rtl::OUString& strModuleID ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any > SAL_CALL getActionListForInstall( const ::com::sun::star::setup::VersionIdentifier& aVerIdentifier, const ::com::sun::star::setup::VersionIdentifier& aOldVerIdentifier, const ::com::sun::star::setup::InstallEnvironment& aEnvironment, ::com::sun::star::setup::InstallResponse& aResponse ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::setup::XSetup >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SETUP_XSETUP_HDL

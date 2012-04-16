@@ -1,0 +1,15 @@
+#ifndef INCLUDED_COM_SUN_STAR_SYNC_FILTERDATA_HDL
+#define INCLUDED_COM_SUN_STAR_SYNC_FILTERDATA_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace sync {
+
+typedef ::com::sun::star::uno::Sequence< ::rtl::OUString > FilterData;
+
+} } } }
+#endif // INCLUDED_COM_SUN_STAR_SYNC_FILTERDATA_HDL

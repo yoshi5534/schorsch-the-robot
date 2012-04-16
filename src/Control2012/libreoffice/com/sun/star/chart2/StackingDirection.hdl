@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART2_STACKINGDIRECTION_HDL
+#define INCLUDED_COM_SUN_STAR_CHART2_STACKINGDIRECTION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace chart2 {
+
+enum StackingDirection
+{
+    StackingDirection_NO_STACKING = 0,
+    StackingDirection_Y_STACKING = 1,
+    StackingDirection_Z_STACKING = 2,
+    StackingDirection_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart2::StackingDirection* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART2_STACKINGDIRECTION_HDL

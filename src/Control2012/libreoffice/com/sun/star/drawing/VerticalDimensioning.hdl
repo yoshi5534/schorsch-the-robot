@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_VERTICALDIMENSIONING_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_VERTICALDIMENSIONING_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum VerticalDimensioning
+{
+    VerticalDimensioning_AUTO = 0,
+    VerticalDimensioning_TOP = 1,
+    VerticalDimensioning_CENTERED = 2,
+    VerticalDimensioning_BOTTOM = 3,
+    VerticalDimensioning_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::VerticalDimensioning* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_VERTICALDIMENSIONING_HDL

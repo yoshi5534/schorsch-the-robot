@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_STYLE_PAGESTYLELAYOUT_HDL
+#define INCLUDED_COM_SUN_STAR_STYLE_PAGESTYLELAYOUT_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace style {
+
+enum PageStyleLayout
+{
+    PageStyleLayout_ALL = 0,
+    PageStyleLayout_LEFT = 1,
+    PageStyleLayout_RIGHT = 2,
+    PageStyleLayout_MIRRORED = 3,
+    PageStyleLayout_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::style::PageStyleLayout* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_STYLE_PAGESTYLELAYOUT_HDL

@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_XMESSAGEBOXFACTORY_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_XMESSAGEBOXFACTORY_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/awt/Rectangle.hdl"
+namespace com { namespace sun { namespace star { namespace awt { class XWindowPeer; } } } }
+namespace com { namespace sun { namespace star { namespace awt { class XMessageBox; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace awt {
+
+class SAL_NO_VTABLE XMessageBoxFactory : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::XMessageBox > SAL_CALL createMessageBox( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindowPeer >& aParent, const ::com::sun::star::awt::Rectangle& aPosSize, const ::rtl::OUString& aType, ::sal_Int32 aButtons, const ::rtl::OUString& aTitle, const ::rtl::OUString& aMessage ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XMessageBoxFactory >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_XMESSAGEBOXFACTORY_HDL

@@ -1,0 +1,49 @@
+#ifndef INCLUDED_COM_SUN_STAR_FORM_RUNTIME_XFILTERCONTROLLER_HDL
+#define INCLUDED_COM_SUN_STAR_FORM_RUNTIME_XFILTERCONTROLLER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace awt { class XControl; } } } }
+#include "com/sun/star/lang/IndexOutOfBoundsException.hdl"
+namespace com { namespace sun { namespace star { namespace form { namespace runtime { class XFilterControllerListener; } } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace form { namespace runtime {
+
+class SAL_NO_VTABLE XFilterController : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Attributes
+    virtual ::sal_Int32 SAL_CALL getFilterComponents() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getDisjunctiveTerms() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getActiveTerm() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setActiveTerm( ::sal_Int32 _activeterm ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual void SAL_CALL addFilterControllerListener( const ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFilterControllerListener >& _Listener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeFilterControllerListener( const ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFilterControllerListener >& _Listener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setPredicateExpression( ::sal_Int32 _Component, ::sal_Int32 _Term, const ::rtl::OUString& _PredicateExpression ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::XControl > SAL_CALL getFilterComponent( ::sal_Int32 _Component ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< ::rtl::OUString > > SAL_CALL getPredicateExpressions(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeDisjunctiveTerm( ::sal_Int32 _Term ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL appendEmptyDisjunctiveTerm(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFilterController >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_FORM_RUNTIME_XFILTERCONTROLLER_HDL

@@ -1,0 +1,42 @@
+#ifndef INCLUDED_COM_SUN_STAR_PRESENTATION_PARAGRAPHTARGET_HDL
+#define INCLUDED_COM_SUN_STAR_PRESENTATION_PARAGRAPHTARGET_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace drawing { class XShape; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace presentation {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ParagraphTarget {
+    inline ParagraphTarget() SAL_THROW(());
+
+    inline ParagraphTarget(const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XShape >& Shape_, const ::sal_Int16& Paragraph_) SAL_THROW(());
+
+    ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XShape > Shape;
+    ::sal_Int16 Paragraph;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::presentation::ParagraphTarget* );
+
+#endif // INCLUDED_COM_SUN_STAR_PRESENTATION_PARAGRAPHTARGET_HDL

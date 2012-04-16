@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_TASK_NOMASTEREXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_TASK_NOMASTEREXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/task/PasswordRequestMode.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace task {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT NoMasterException : public ::com::sun::star::uno::RuntimeException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE NoMasterException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NoMasterException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::PasswordRequestMode& Mode_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NoMasterException(NoMasterException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~NoMasterException();
+
+    inline CPPU_GCC_DLLPRIVATE NoMasterException & operator =(NoMasterException const &);
+
+    ::com::sun::star::task::PasswordRequestMode Mode CPPU_GCC3_ALIGN( ::com::sun::star::uno::RuntimeException );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::task::NoMasterException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TASK_NOMASTEREXCEPTION_HDL

@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_COMPLEXREFERENCE_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_COMPLEXREFERENCE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/sheet/SingleReference.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ComplexReference {
+    inline ComplexReference() SAL_THROW(());
+
+    inline ComplexReference(const ::com::sun::star::sheet::SingleReference& Reference1_, const ::com::sun::star::sheet::SingleReference& Reference2_) SAL_THROW(());
+
+    ::com::sun::star::sheet::SingleReference Reference1;
+    ::com::sun::star::sheet::SingleReference Reference2;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::ComplexReference* );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_COMPLEXREFERENCE_HDL

@@ -1,0 +1,25 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_PROJECTIONMODE_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_PROJECTIONMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum ProjectionMode
+{
+    ProjectionMode_PARALLEL = 0,
+    ProjectionMode_PERSPECTIVE = 1,
+    ProjectionMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::ProjectionMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_PROJECTIONMODE_HDL

@@ -1,0 +1,44 @@
+#ifndef INCLUDED_COM_SUN_STAR_SYNC_SYNCELEMENT_HDL
+#define INCLUDED_COM_SUN_STAR_SYNC_SYNCELEMENT_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace sync {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct SyncElement {
+    inline SyncElement() SAL_THROW(());
+
+    inline SyncElement(const ::rtl::OUString& ContentIdentifier_, const ::sal_uInt32& Type_, const ::sal_uInt32& UID_, const ::sal_uInt32& Generation_, const ::sal_uInt32& Event_, const ::sal_uInt32& Action_) SAL_THROW(());
+
+    ::rtl::OUString ContentIdentifier;
+    ::sal_uInt32 Type;
+    ::sal_uInt32 UID;
+    ::sal_uInt32 Generation;
+    ::sal_uInt32 Event;
+    ::sal_uInt32 Action;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sync::SyncElement* );
+
+#endif // INCLUDED_COM_SUN_STAR_SYNC_SYNCELEMENT_HDL

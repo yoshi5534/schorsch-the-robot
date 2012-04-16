@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_XENGINE_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_XENGINE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace script { class XEngineListener; } } } }
+namespace com { namespace sun { namespace star { namespace script { class XLibraryAccess; } } } }
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace script {
+
+class SAL_NO_VTABLE XEngine : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL setRoot( const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& xRoot ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > SAL_CALL getRoot(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLibraryAccess( const ::com::sun::star::uno::Reference< ::com::sun::star::script::XLibraryAccess >& Library ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL compile( const ::rtl::OUString& ModuleName, const ::rtl::OUString& Script, ::sal_Bool CreateDebugInfo ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Any SAL_CALL run( const ::rtl::OUString& aScript, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& xThis, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any >& aArgs ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL runAsync( const ::rtl::OUString& acript, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& xThis, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any >& args, const ::com::sun::star::uno::Reference< ::com::sun::star::script::XEngineListener >& xCallback ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL cancel(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addEngineListener( const ::com::sun::star::uno::Reference< ::com::sun::star::script::XEngineListener >& Listener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeEngineListener( const ::com::sun::star::uno::Reference< ::com::sun::star::script::XEngineListener >& Listener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::script::XEngine >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_XENGINE_HDL

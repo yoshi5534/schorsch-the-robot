@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_HOMOGENMATRIX3_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_HOMOGENMATRIX3_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/drawing/HomogenMatrixLine3.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct HomogenMatrix3 {
+    inline HomogenMatrix3() SAL_THROW(());
+
+    inline HomogenMatrix3(const ::com::sun::star::drawing::HomogenMatrixLine3& Line1_, const ::com::sun::star::drawing::HomogenMatrixLine3& Line2_, const ::com::sun::star::drawing::HomogenMatrixLine3& Line3_) SAL_THROW(());
+
+    ::com::sun::star::drawing::HomogenMatrixLine3 Line1;
+    ::com::sun::star::drawing::HomogenMatrixLine3 Line2;
+    ::com::sun::star::drawing::HomogenMatrixLine3 Line3;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::HomogenMatrix3* );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_HOMOGENMATRIX3_HDL

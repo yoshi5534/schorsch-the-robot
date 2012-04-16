@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART_TIMEINTERVAL_HDL
+#define INCLUDED_COM_SUN_STAR_CHART_TIMEINTERVAL_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace chart {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct TimeInterval {
+    inline TimeInterval() SAL_THROW(());
+
+    inline TimeInterval(const ::sal_Int32& Number_, const ::sal_Int32& TimeUnit_) SAL_THROW(());
+
+    ::sal_Int32 Number;
+    ::sal_Int32 TimeUnit;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart::TimeInterval* );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART_TIMEINTERVAL_HDL

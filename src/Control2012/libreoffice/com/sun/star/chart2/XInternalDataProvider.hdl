@@ -1,0 +1,47 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART2_XINTERNALDATAPROVIDER_HDL
+#define INCLUDED_COM_SUN_STAR_CHART2_XINTERNALDATAPROVIDER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace chart2 { namespace data { class XDataSequence; } } } } }
+#include "com/sun/star/chart2/data/XDataProvider.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace chart2 {
+
+class SAL_NO_VTABLE XInternalDataProvider : public ::com::sun::star::chart2::data::XDataProvider
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL hasDataByRangeRepresentation( const ::rtl::OUString& aRange ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any > SAL_CALL getDataByRangeRepresentation( const ::rtl::OUString& aRange ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDataByRangeRepresentation( const ::rtl::OUString& aRange, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any >& aNewData ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL insertSequence( ::sal_Int32 nAfterIndex ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL deleteSequence( ::sal_Int32 nAtIndex ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL appendSequence(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL insertDataPointForAllSequences( ::sal_Int32 nAfterIndex ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL deleteDataPointForAllSequences( ::sal_Int32 nAtIndex ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL swapDataPointWithNextOneForAllSequences( ::sal_Int32 nAtIndex ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL registerDataSequenceForChanges( const ::com::sun::star::uno::Reference< ::com::sun::star::chart2::data::XDataSequence >& xSeq ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL insertComplexCategoryLevel( ::sal_Int32 nLevel ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL deleteComplexCategoryLevel( ::sal_Int32 nLevel ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::chart2::XInternalDataProvider >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART2_XINTERNALDATAPROVIDER_HDL

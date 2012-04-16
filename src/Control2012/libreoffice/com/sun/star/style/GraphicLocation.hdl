@@ -1,0 +1,35 @@
+#ifndef INCLUDED_COM_SUN_STAR_STYLE_GRAPHICLOCATION_HDL
+#define INCLUDED_COM_SUN_STAR_STYLE_GRAPHICLOCATION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace style {
+
+enum GraphicLocation
+{
+    GraphicLocation_NONE = 0,
+    GraphicLocation_LEFT_TOP = 1,
+    GraphicLocation_MIDDLE_TOP = 2,
+    GraphicLocation_RIGHT_TOP = 3,
+    GraphicLocation_LEFT_MIDDLE = 4,
+    GraphicLocation_MIDDLE_MIDDLE = 5,
+    GraphicLocation_RIGHT_MIDDLE = 6,
+    GraphicLocation_LEFT_BOTTOM = 7,
+    GraphicLocation_MIDDLE_BOTTOM = 8,
+    GraphicLocation_RIGHT_BOTTOM = 9,
+    GraphicLocation_AREA = 10,
+    GraphicLocation_TILED = 11,
+    GraphicLocation_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::style::GraphicLocation* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_STYLE_GRAPHICLOCATION_HDL

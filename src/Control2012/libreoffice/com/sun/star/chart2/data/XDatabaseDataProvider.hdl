@@ -1,0 +1,68 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART2_DATA_XDATABASEDATAPROVIDER_HDL
+#define INCLUDED_COM_SUN_STAR_CHART2_DATA_XDATABASEDATAPROVIDER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/beans/UnknownPropertyException.hdl"
+namespace com { namespace sun { namespace star { namespace sdbc { class XConnection; } } } }
+#include "com/sun/star/lang/XComponent.hdl"
+#include "com/sun/star/sdbc/XRowSet.hdl"
+#include "com/sun/star/chart2/data/XRangeXMLConversion.hdl"
+#include "com/sun/star/beans/XPropertySet.hdl"
+#include "com/sun/star/chart2/data/XDataProvider.hdl"
+#include "com/sun/star/sdbc/XParameters.hdl"
+#include "com/sun/star/lang/XInitialization.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace chart2 { namespace data {
+
+class SAL_NO_VTABLE XDatabaseDataProvider : public ::com::sun::star::chart2::data::XDataProvider, public ::com::sun::star::chart2::data::XRangeXMLConversion, public ::com::sun::star::lang::XInitialization, public ::com::sun::star::lang::XComponent, public ::com::sun::star::beans::XPropertySet, public ::com::sun::star::sdbc::XParameters, public ::com::sun::star::sdbc::XRowSet
+{
+public:
+
+    // Attributes
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getMasterFields() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setMasterFields( const ::com::sun::star::uno::Sequence< ::rtl::OUString >& _masterfields ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getDetailFields() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDetailFields( const ::com::sun::star::uno::Sequence< ::rtl::OUString >& _detailfields ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getCommand() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCommand( const ::rtl::OUString& _command ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getCommandType() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCommandType( ::sal_Int32 _commandtype ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getFilter() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFilter( const ::rtl::OUString& _filter ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getApplyFilter() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setApplyFilter( ::sal_Bool _applyfilter ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getHavingClause() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setHavingClause( const ::rtl::OUString& _havingclause ) throw (::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getGroupBy() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setGroupBy( const ::rtl::OUString& _groupby ) throw (::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getOrder() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setOrder( const ::rtl::OUString& _order ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getEscapeProcessing() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setEscapeProcessing( ::sal_Bool _escapeprocessing ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getRowLimit() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setRowLimit( ::sal_Int32 _rowlimit ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XConnection > SAL_CALL getActiveConnection() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setActiveConnection( const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XConnection >& _activeconnection ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getDataSourceName() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDataSourceName( const ::rtl::OUString& _datasourcename ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::chart2::data::XDatabaseDataProvider >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART2_DATA_XDATABASEDATAPROVIDER_HDL

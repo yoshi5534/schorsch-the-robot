@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_JAVA_JAVAINITIALIZATIONEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_JAVA_JAVAINITIALIZATIONEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/DeploymentException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace java {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT JavaInitializationException : public ::com::sun::star::uno::DeploymentException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE JavaInitializationException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE JavaInitializationException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE JavaInitializationException(JavaInitializationException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~JavaInitializationException();
+
+    inline CPPU_GCC_DLLPRIVATE JavaInitializationException & operator =(JavaInitializationException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::java::JavaInitializationException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_JAVA_JAVAINITIALIZATIONEXCEPTION_HDL

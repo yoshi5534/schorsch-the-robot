@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_CONFIGURATION_INVALIDBOOTSTRAPFILEEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_CONFIGURATION_INVALIDBOOTSTRAPFILEEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/configuration/CannotLoadConfigurationException.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace configuration {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT InvalidBootstrapFileException : public ::com::sun::star::configuration::CannotLoadConfigurationException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE InvalidBootstrapFileException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InvalidBootstrapFileException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::rtl::OUString& BootstrapFileURL_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InvalidBootstrapFileException(InvalidBootstrapFileException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~InvalidBootstrapFileException();
+
+    inline CPPU_GCC_DLLPRIVATE InvalidBootstrapFileException & operator =(InvalidBootstrapFileException const &);
+
+    ::rtl::OUString BootstrapFileURL CPPU_GCC3_ALIGN( ::com::sun::star::configuration::CannotLoadConfigurationException );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::configuration::InvalidBootstrapFileException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CONFIGURATION_INVALIDBOOTSTRAPFILEEXCEPTION_HDL

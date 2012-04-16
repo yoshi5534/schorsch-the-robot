@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDINVALIDMODELEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDINVALIDMODELEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace awt { namespace grid {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT GridInvalidModelException : public ::com::sun::star::uno::RuntimeException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE GridInvalidModelException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE GridInvalidModelException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE GridInvalidModelException(GridInvalidModelException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~GridInvalidModelException();
+
+    inline CPPU_GCC_DLLPRIVATE GridInvalidModelException & operator =(GridInvalidModelException const &);
+
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::awt::grid::GridInvalidModelException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDINVALIDMODELEXCEPTION_HDL

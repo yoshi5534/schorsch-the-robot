@@ -1,0 +1,56 @@
+#ifndef INCLUDED_COM_SUN_STAR_I18N_XCALENDAR_HDL
+#define INCLUDED_COM_SUN_STAR_I18N_XCALENDAR_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/Locale.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/i18n/Calendar.hdl"
+#include "com/sun/star/i18n/CalendarItem.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace i18n {
+
+class SAL_NO_VTABLE XCalendar : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL loadDefaultCalendar( const ::com::sun::star::lang::Locale& rLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL loadCalendar( const ::rtl::OUString& uniqueID, const ::com::sun::star::lang::Locale& rLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::i18n::Calendar SAL_CALL getLoadedCalendar(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getAllCalendars( const ::com::sun::star::lang::Locale& rLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getUniqueID(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDateTime( double nTimeInDays ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getDateTime(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setValue( ::sal_Int16 nCalendarFieldIndex, ::sal_Int16 nValue ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getValue( ::sal_Int16 nCalendarFieldIndex ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isValid(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addValue( ::sal_Int16 nCalendarFieldIndex, ::sal_Int32 nAmount ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getFirstDayOfWeek(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFirstDayOfWeek( ::sal_Int16 nDay ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setMinimumNumberOfDaysForFirstWeek( ::sal_Int16 nDays ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getMinimumNumberOfDaysForFirstWeek(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getNumberOfMonthsInYear(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getNumberOfDaysInWeek(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::i18n::CalendarItem > SAL_CALL getMonths(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::i18n::CalendarItem > SAL_CALL getDays(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getDisplayName( ::sal_Int16 nCalendarDisplayIndex, ::sal_Int16 nIdx, ::sal_Int16 nNameType ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::i18n::XCalendar >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_I18N_XCALENDAR_HDL

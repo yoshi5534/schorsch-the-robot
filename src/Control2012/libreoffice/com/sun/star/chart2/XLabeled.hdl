@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART2_XLABELED_HDL
+#define INCLUDED_COM_SUN_STAR_CHART2_XLABELED_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/drawing/RectanglePoint.hdl"
+namespace com { namespace sun { namespace star { namespace chart2 { class XTitle; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace chart2 {
+
+class SAL_NO_VTABLE XLabeled : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL setLabel( const ::com::sun::star::uno::Reference< ::com::sun::star::chart2::XTitle >& xTitle ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::chart2::XTitle > SAL_CALL getLabel(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setOwnAnchor( ::com::sun::star::drawing::RectanglePoint aAnchorPoint ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::drawing::RectanglePoint SAL_CALL getOwnAnchor(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLabelAnchor( ::com::sun::star::drawing::RectanglePoint aAnchorPoint ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::drawing::RectanglePoint SAL_CALL getLabelAnchor(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setOffset( const ::com::sun::star::uno::Sequence< double >& aOffsetVector ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< double > SAL_CALL getOffset(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::chart2::XLabeled >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART2_XLABELED_HDL

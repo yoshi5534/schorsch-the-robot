@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_FRAME_STATUS_ITEMSTATUS_HDL
+#define INCLUDED_COM_SUN_STAR_FRAME_STATUS_ITEMSTATUS_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Any.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace frame { namespace status {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ItemStatus {
+    inline ItemStatus() SAL_THROW(());
+
+    inline ItemStatus(const ::sal_Int16& State_, const ::com::sun::star::uno::Any& aStateData_) SAL_THROW(());
+
+    ::sal_Int16 State;
+    ::com::sun::star::uno::Any aStateData;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::frame::status::ItemStatus* );
+
+#endif // INCLUDED_COM_SUN_STAR_FRAME_STATUS_ITEMSTATUS_HDL

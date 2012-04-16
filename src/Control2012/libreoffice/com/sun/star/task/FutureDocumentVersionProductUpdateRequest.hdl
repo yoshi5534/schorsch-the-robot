@@ -1,0 +1,37 @@
+#ifndef INCLUDED_COM_SUN_STAR_TASK_FUTUREDOCUMENTVERSIONPRODUCTUPDATEREQUEST_HDL
+#define INCLUDED_COM_SUN_STAR_TASK_FUTUREDOCUMENTVERSIONPRODUCTUPDATEREQUEST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/task/ClassifiedInteractionRequest.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace task {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT FutureDocumentVersionProductUpdateRequest : public ::com::sun::star::task::ClassifiedInteractionRequest
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE FutureDocumentVersionProductUpdateRequest() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE FutureDocumentVersionProductUpdateRequest(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_, const ::rtl::OUString& DocumentURL_, const ::rtl::OUString& DocumentODFVersion_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE FutureDocumentVersionProductUpdateRequest(FutureDocumentVersionProductUpdateRequest const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~FutureDocumentVersionProductUpdateRequest();
+
+    inline CPPU_GCC_DLLPRIVATE FutureDocumentVersionProductUpdateRequest & operator =(FutureDocumentVersionProductUpdateRequest const &);
+
+    ::rtl::OUString DocumentURL CPPU_GCC3_ALIGN( ::com::sun::star::task::ClassifiedInteractionRequest );
+    ::rtl::OUString DocumentODFVersion;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::task::FutureDocumentVersionProductUpdateRequest* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TASK_FUTUREDOCUMENTVERSIONPRODUCTUPDATEREQUEST_HDL

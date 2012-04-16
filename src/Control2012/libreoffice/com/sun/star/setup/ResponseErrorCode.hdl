@@ -1,0 +1,25 @@
+#ifndef INCLUDED_COM_SUN_STAR_SETUP_RESPONSEERRORCODE_HDL
+#define INCLUDED_COM_SUN_STAR_SETUP_RESPONSEERRORCODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace setup {
+
+enum ResponseErrorCode
+{
+    ResponseErrorCode_NOERROR = 0,
+    ResponseErrorCode_NOT_ENOUGH_SPACE = 1,
+    ResponseErrorCode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::setup::ResponseErrorCode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SETUP_RESPONSEERRORCODE_HDL

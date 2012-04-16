@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_DEPLOYMENT_LICENSEEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_DEPLOYMENT_LICENSEEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace deployment {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT LicenseException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE LicenseException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE LicenseException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::rtl::OUString& ExtensionName_, const ::rtl::OUString& Text_, const ::rtl::OUString& AcceptBy_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE LicenseException(LicenseException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~LicenseException();
+
+    inline CPPU_GCC_DLLPRIVATE LicenseException & operator =(LicenseException const &);
+
+    ::rtl::OUString ExtensionName CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+    ::rtl::OUString Text;
+    ::rtl::OUString AcceptBy;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::deployment::LicenseException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DEPLOYMENT_LICENSEEXCEPTION_HDL

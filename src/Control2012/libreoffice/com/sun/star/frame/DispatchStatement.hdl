@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_FRAME_DISPATCHSTATEMENT_HDL
+#define INCLUDED_COM_SUN_STAR_FRAME_DISPATCHSTATEMENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/beans/PropertyValue.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace frame {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct DispatchStatement {
+    inline DispatchStatement() SAL_THROW(());
+
+    inline DispatchStatement(const ::rtl::OUString& aCommand_, const ::rtl::OUString& aTarget_, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& aArgs_, const ::sal_Int32& nFlags_, const ::sal_Bool& bIsComment_) SAL_THROW(());
+
+    ::rtl::OUString aCommand;
+    ::rtl::OUString aTarget;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue > aArgs;
+    ::sal_Int32 nFlags;
+    ::sal_Bool bIsComment;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::frame::DispatchStatement* );
+
+#endif // INCLUDED_COM_SUN_STAR_FRAME_DISPATCHSTATEMENT_HDL

@@ -1,0 +1,52 @@
+#ifndef INCLUDED_COM_SUN_STAR_MAIL_XMAILMESSAGE_HDL
+#define INCLUDED_COM_SUN_STAR_MAIL_XMAILMESSAGE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/mail/MailAttachment.hdl"
+namespace com { namespace sun { namespace star { namespace datatransfer { class XTransferable; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace mail {
+
+class SAL_NO_VTABLE XMailMessage : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Attributes
+    virtual ::rtl::OUString SAL_CALL getSenderName() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getSenderAddress() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getReplyToAddress() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setReplyToAddress( const ::rtl::OUString& _replytoaddress ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getSubject() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSubject( const ::rtl::OUString& _subject ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::datatransfer::XTransferable > SAL_CALL getBody() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setBody( const ::com::sun::star::uno::Reference< ::com::sun::star::datatransfer::XTransferable >& _body ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual void SAL_CALL addRecipient( const ::rtl::OUString& sRecipientAddress ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addCcRecipient( const ::rtl::OUString& sRecipientAddress ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addBccRecipient( const ::rtl::OUString& sRecipientAddress ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getRecipients(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getCcRecipients(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getBccRecipients(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addAttachment( const ::com::sun::star::mail::MailAttachment& aMailAttachment ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::mail::MailAttachment > SAL_CALL getAttachments(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::mail::XMailMessage >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_MAIL_XMAILMESSAGE_HDL

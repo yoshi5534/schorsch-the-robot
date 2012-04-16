@@ -1,0 +1,47 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_LOCK_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_LOCK_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/ucb/LockDepth.hdl"
+#include "com/sun/star/ucb/LockEntry.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct Lock: public ::com::sun::star::ucb::LockEntry {
+    inline Lock() SAL_THROW(());
+
+    inline Lock(const ::com::sun::star::ucb::LockScope& Scope_, const ::com::sun::star::ucb::LockType& Type_, const ::com::sun::star::ucb::LockDepth& Depth_, const ::com::sun::star::uno::Any& Owner_, const ::sal_Int64& Timeout_, const ::com::sun::star::uno::Sequence< ::rtl::OUString >& LockTokens_) SAL_THROW(());
+
+    ::com::sun::star::ucb::LockDepth Depth CPPU_GCC3_ALIGN(::com::sun::star::ucb::LockEntry);
+    ::com::sun::star::uno::Any Owner;
+    ::sal_Int64 Timeout;
+    ::com::sun::star::uno::Sequence< ::rtl::OUString > LockTokens;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::Lock* );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_LOCK_HDL

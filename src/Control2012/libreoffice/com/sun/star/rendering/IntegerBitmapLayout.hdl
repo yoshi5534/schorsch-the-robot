@@ -1,0 +1,48 @@
+#ifndef INCLUDED_COM_SUN_STAR_RENDERING_INTEGERBITMAPLAYOUT_HDL
+#define INCLUDED_COM_SUN_STAR_RENDERING_INTEGERBITMAPLAYOUT_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace rendering { class XBitmapPalette; } } } }
+namespace com { namespace sun { namespace star { namespace rendering { class XIntegerBitmapColorSpace; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace rendering {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct IntegerBitmapLayout {
+    inline IntegerBitmapLayout() SAL_THROW(());
+
+    inline IntegerBitmapLayout(const ::sal_Int32& ScanLines_, const ::sal_Int32& ScanLineBytes_, const ::sal_Int32& ScanLineStride_, const ::sal_Int32& PlaneStride_, const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XIntegerBitmapColorSpace >& ColorSpace_, const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBitmapPalette >& Palette_, const ::sal_Bool& IsMsbFirst_) SAL_THROW(());
+
+    ::sal_Int32 ScanLines;
+    ::sal_Int32 ScanLineBytes;
+    ::sal_Int32 ScanLineStride;
+    ::sal_Int32 PlaneStride;
+    ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XIntegerBitmapColorSpace > ColorSpace;
+    ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBitmapPalette > Palette;
+    ::sal_Bool IsMsbFirst;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::rendering::IntegerBitmapLayout* );
+
+#endif // INCLUDED_COM_SUN_STAR_RENDERING_INTEGERBITMAPLAYOUT_HDL

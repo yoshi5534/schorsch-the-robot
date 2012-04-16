@@ -1,0 +1,61 @@
+#ifndef INCLUDED_COM_SUN_STAR_RDF_XREPOSITORY_HDL
+#define INCLUDED_COM_SUN_STAR_RDF_XREPOSITORY_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/rdf/QueryException.hdl"
+namespace com { namespace sun { namespace star { namespace rdf { class XQuerySelectResult; } } } }
+namespace com { namespace sun { namespace star { namespace rdf { class XNode; } } } }
+namespace com { namespace sun { namespace star { namespace rdf { class XResource; } } } }
+namespace com { namespace sun { namespace star { namespace io { class XInputStream; } } } }
+namespace com { namespace sun { namespace star { namespace container { class XEnumeration; } } } }
+#include "com/sun/star/container/NoSuchElementException.hdl"
+#include "com/sun/star/datatransfer/UnsupportedFlavorException.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/rdf/RepositoryException.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace rdf { class XNamedGraph; } } } }
+#include "com/sun/star/io/IOException.hdl"
+namespace com { namespace sun { namespace star { namespace rdf { class XURI; } } } }
+#include "com/sun/star/rdf/ParseException.hdl"
+namespace com { namespace sun { namespace star { namespace io { class XOutputStream; } } } }
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/container/ElementExistException.hdl"
+namespace com { namespace sun { namespace star { namespace rdf { class XBlankNode; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace rdf {
+
+class SAL_NO_VTABLE XRepository : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XBlankNode > SAL_CALL createBlankNode(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XNamedGraph > SAL_CALL importGraph( ::sal_Int16 Format, const ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream >& InStream, const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& GraphName, const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& BaseURI ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::datatransfer::UnsupportedFlavorException, ::com::sun::star::container::ElementExistException, ::com::sun::star::rdf::ParseException, ::com::sun::star::rdf::RepositoryException, ::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL exportGraph( ::sal_Int16 Format, const ::com::sun::star::uno::Reference< ::com::sun::star::io::XOutputStream >& OutStream, const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& GraphName, const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& BaseURI ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::datatransfer::UnsupportedFlavorException, ::com::sun::star::container::NoSuchElementException, ::com::sun::star::rdf::RepositoryException, ::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI > > SAL_CALL getGraphNames(  ) throw (::com::sun::star::rdf::RepositoryException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XNamedGraph > SAL_CALL getGraph( const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& GraphName ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::rdf::RepositoryException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XNamedGraph > SAL_CALL createGraph( const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& GraphName ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::container::ElementExistException, ::com::sun::star::rdf::RepositoryException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL destroyGraph( const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& GraphName ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::container::NoSuchElementException, ::com::sun::star::rdf::RepositoryException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::container::XEnumeration > SAL_CALL getStatements( const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XResource >& Subject, const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XURI >& Predicate, const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XNode >& Object ) throw (::com::sun::star::rdf::RepositoryException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XQuerySelectResult > SAL_CALL querySelect( const ::rtl::OUString& Query ) throw (::com::sun::star::rdf::QueryException, ::com::sun::star::rdf::RepositoryException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::container::XEnumeration > SAL_CALL queryConstruct( const ::rtl::OUString& Query ) throw (::com::sun::star::rdf::QueryException, ::com::sun::star::rdf::RepositoryException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL queryAsk( const ::rtl::OUString& Query ) throw (::com::sun::star::rdf::QueryException, ::com::sun::star::rdf::RepositoryException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::rdf::XRepository >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_RDF_XREPOSITORY_HDL

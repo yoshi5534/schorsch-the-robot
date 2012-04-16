@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_CELLINSERTMODE_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_CELLINSERTMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+enum CellInsertMode
+{
+    CellInsertMode_NONE = 0,
+    CellInsertMode_DOWN = 1,
+    CellInsertMode_RIGHT = 2,
+    CellInsertMode_ROWS = 3,
+    CellInsertMode_COLUMNS = 4,
+    CellInsertMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::CellInsertMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_CELLINSERTMODE_HDL

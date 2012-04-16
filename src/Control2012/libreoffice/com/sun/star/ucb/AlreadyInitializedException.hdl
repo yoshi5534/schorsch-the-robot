@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_ALREADYINITIALIZEDEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_ALREADYINITIALIZEDEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT AlreadyInitializedException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE AlreadyInitializedException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE AlreadyInitializedException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE AlreadyInitializedException(AlreadyInitializedException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~AlreadyInitializedException();
+
+    inline CPPU_GCC_DLLPRIVATE AlreadyInitializedException & operator =(AlreadyInitializedException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::AlreadyInitializedException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_ALREADYINITIALIZEDEXCEPTION_HDL

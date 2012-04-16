@@ -1,0 +1,44 @@
+#ifndef INCLUDED_COM_SUN_STAR_SYNC_SYNCINFO_HDL
+#define INCLUDED_COM_SUN_STAR_SYNC_SYNCINFO_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/sync/FilterData.hdl"
+#include "com/sun/star/sync/SyncScheme.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sync {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct SyncInfo {
+    inline SyncInfo() SAL_THROW(());
+
+    inline SyncInfo(const ::com::sun::star::sync::SyncScheme& ServerScheme_, const ::com::sun::star::sync::SyncScheme& ClientScheme_, const ::com::sun::star::uno::Sequence< ::rtl::OUString >& SyncFilter_, const ::sal_uInt32& SyncMode_, const ::sal_uInt32& SyncOptions_) SAL_THROW(());
+
+    ::com::sun::star::sync::SyncScheme ServerScheme;
+    ::com::sun::star::sync::SyncScheme ClientScheme;
+    ::com::sun::star::uno::Sequence< ::rtl::OUString > SyncFilter;
+    ::sal_uInt32 SyncMode;
+    ::sal_uInt32 SyncOptions;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sync::SyncInfo* );
+
+#endif // INCLUDED_COM_SUN_STAR_SYNC_SYNCINFO_HDL

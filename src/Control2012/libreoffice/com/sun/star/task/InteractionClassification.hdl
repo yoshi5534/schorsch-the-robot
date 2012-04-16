@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_TASK_INTERACTIONCLASSIFICATION_HDL
+#define INCLUDED_COM_SUN_STAR_TASK_INTERACTIONCLASSIFICATION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace task {
+
+enum InteractionClassification
+{
+    InteractionClassification_ERROR = 0,
+    InteractionClassification_WARNING = 1,
+    InteractionClassification_INFO = 2,
+    InteractionClassification_QUERY = 3,
+    InteractionClassification_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::task::InteractionClassification* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TASK_INTERACTIONCLASSIFICATION_HDL

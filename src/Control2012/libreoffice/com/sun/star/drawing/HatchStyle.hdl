@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_HATCHSTYLE_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_HATCHSTYLE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum HatchStyle
+{
+    HatchStyle_SINGLE = 0,
+    HatchStyle_DOUBLE = 1,
+    HatchStyle_TRIPLE = 2,
+    HatchStyle_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::HatchStyle* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_HATCHSTYLE_HDL

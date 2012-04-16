@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART2_RELATIVESIZE_HDL
+#define INCLUDED_COM_SUN_STAR_CHART2_RELATIVESIZE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace chart2 {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct RelativeSize {
+    inline RelativeSize() SAL_THROW(());
+
+    inline RelativeSize(const double& Primary_, const double& Secondary_) SAL_THROW(());
+
+    double Primary;
+    double Secondary;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart2::RelativeSize* );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART2_RELATIVESIZE_HDL

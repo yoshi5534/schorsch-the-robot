@@ -1,0 +1,15 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_OPAQUEDATA_HPP
+#define INCLUDED_COM_SUN_STAR_CORBA_OPAQUEDATA_HPP
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/OpaqueData.hdl"
+
+#include "com/sun/star/uno/Sequence.hxx"
+#include "com/sun/star/uno/Type.hxx"
+#include "cppu/unotype.hxx"
+#include "osl/mutex.hxx"
+#include "sal/types.h"
+
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_OPAQUEDATA_HPP

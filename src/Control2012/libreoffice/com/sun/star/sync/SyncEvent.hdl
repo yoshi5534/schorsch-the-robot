@@ -1,0 +1,17 @@
+#ifndef INCLUDED_COM_SUN_STAR_SYNC_SYNCEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_SYNC_SYNCEVENT_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sync { namespace SyncEvent {
+
+static const ::sal_uInt32 NONE = (sal_uInt32)0U;
+static const ::sal_uInt32 CREATED = (sal_uInt32)1U;
+static const ::sal_uInt32 DELETED = (sal_uInt32)2U;
+static const ::sal_uInt32 CHANGED = (sal_uInt32)3U;
+
+} } } } }
+
+#endif // INCLUDED_COM_SUN_STAR_SYNC_SYNCEVENT_HDL

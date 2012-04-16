@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_SDB_ROWSETVETOEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_SDB_ROWSETVETOEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/sdbc/SQLException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sdb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT RowSetVetoException : public ::com::sun::star::sdbc::SQLException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE RowSetVetoException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE RowSetVetoException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::rtl::OUString& SQLState_, const ::sal_Int32& ErrorCode_, const ::com::sun::star::uno::Any& NextException_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE RowSetVetoException(RowSetVetoException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~RowSetVetoException();
+
+    inline CPPU_GCC_DLLPRIVATE RowSetVetoException & operator =(RowSetVetoException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sdb::RowSetVetoException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SDB_ROWSETVETOEXCEPTION_HDL

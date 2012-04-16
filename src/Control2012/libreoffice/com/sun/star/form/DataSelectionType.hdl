@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_FORM_DATASELECTIONTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_FORM_DATASELECTIONTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace form {
+
+enum DataSelectionType
+{
+    DataSelectionType_TABLE = 0,
+    DataSelectionType_QUERY = 1,
+    DataSelectionType_SQL = 2,
+    DataSelectionType_SQLPASSTHROUGH = 3,
+    DataSelectionType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::form::DataSelectionType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_FORM_DATASELECTIONTYPE_HDL

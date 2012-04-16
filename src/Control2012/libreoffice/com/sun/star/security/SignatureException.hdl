@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_SECURITY_SIGNATUREEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_SECURITY_SIGNATUREEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/security/CryptographyException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace security {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT SignatureException : public ::com::sun::star::security::CryptographyException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE SignatureException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE SignatureException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE SignatureException(SignatureException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~SignatureException();
+
+    inline CPPU_GCC_DLLPRIVATE SignatureException & operator =(SignatureException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::security::SignatureException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SECURITY_SIGNATUREEXCEPTION_HDL

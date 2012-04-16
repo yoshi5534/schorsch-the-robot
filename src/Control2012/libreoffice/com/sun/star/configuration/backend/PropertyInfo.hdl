@@ -1,0 +1,44 @@
+#ifndef INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_PROPERTYINFO_HDL
+#define INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_PROPERTYINFO_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Any.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace configuration { namespace backend {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct PropertyInfo {
+    inline PropertyInfo() SAL_THROW(());
+
+    inline PropertyInfo(const ::rtl::OUString& Name_, const ::rtl::OUString& Type_, const ::com::sun::star::uno::Any& Value_, const ::sal_Bool& Protected_) SAL_THROW(());
+
+    ::rtl::OUString Name;
+    ::rtl::OUString Type;
+    ::com::sun::star::uno::Any Value;
+    ::sal_Bool Protected;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::configuration::backend::PropertyInfo* );
+
+#endif // INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_PROPERTYINFO_HDL

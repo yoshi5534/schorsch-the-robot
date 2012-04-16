@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_HANDLECOOKIESREQUEST_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_HANDLECOOKIESREQUEST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/ucb/CookieRequest.hdl"
+#include "com/sun/star/task/ClassifiedInteractionRequest.hdl"
+#include "com/sun/star/ucb/Cookie.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT HandleCookiesRequest : public ::com::sun::star::task::ClassifiedInteractionRequest
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE HandleCookiesRequest() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE HandleCookiesRequest(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_, const ::rtl::OUString& URL_, const ::com::sun::star::uno::Sequence< ::com::sun::star::ucb::Cookie >& Cookies_, const ::com::sun::star::ucb::CookieRequest& Request_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE HandleCookiesRequest(HandleCookiesRequest const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~HandleCookiesRequest();
+
+    inline CPPU_GCC_DLLPRIVATE HandleCookiesRequest & operator =(HandleCookiesRequest const &);
+
+    ::rtl::OUString URL CPPU_GCC3_ALIGN( ::com::sun::star::task::ClassifiedInteractionRequest );
+    ::com::sun::star::uno::Sequence< ::com::sun::star::ucb::Cookie > Cookies;
+    ::com::sun::star::ucb::CookieRequest Request;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::HandleCookiesRequest* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_HANDLECOOKIESREQUEST_HDL

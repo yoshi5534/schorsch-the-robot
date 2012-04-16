@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_RESOURCE_XRESOURCEBUNDLELOADER_HDL
+#define INCLUDED_COM_SUN_STAR_RESOURCE_XRESOURCEBUNDLELOADER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/Locale.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace resource { class XResourceBundle; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/resource/MissingResourceException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace resource {
+
+class SAL_NO_VTABLE XResourceBundleLoader : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::resource::XResourceBundle > SAL_CALL loadBundle_Default( const ::rtl::OUString& aBaseName ) throw (::com::sun::star::resource::MissingResourceException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::resource::XResourceBundle > SAL_CALL loadBundle( const ::rtl::OUString& abaseName, const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::resource::MissingResourceException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::resource::XResourceBundleLoader >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_RESOURCE_XRESOURCEBUNDLELOADER_HDL

@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_NAMECLASHEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_NAMECLASHEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/task/ClassifiedInteractionRequest.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT NameClashException : public ::com::sun::star::task::ClassifiedInteractionRequest
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE NameClashException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NameClashException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_, const ::rtl::OUString& Name_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NameClashException(NameClashException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~NameClashException();
+
+    inline CPPU_GCC_DLLPRIVATE NameClashException & operator =(NameClashException const &);
+
+    ::rtl::OUString Name CPPU_GCC3_ALIGN( ::com::sun::star::task::ClassifiedInteractionRequest );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::NameClashException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_NAMECLASHEXCEPTION_HDL

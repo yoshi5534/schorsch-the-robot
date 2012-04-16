@@ -1,0 +1,52 @@
+#ifndef INCLUDED_COM_SUN_STAR_PACKAGES_ZIP_ZIPENTRY_HDL
+#define INCLUDED_COM_SUN_STAR_PACKAGES_ZIP_ZIPENTRY_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace packages { namespace zip {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ZipEntry {
+    inline ZipEntry() SAL_THROW(());
+
+    inline ZipEntry(const ::sal_Int16& nVersion_, const ::sal_Int16& nFlag_, const ::sal_Int16& nMethod_, const ::sal_Int32& nTime_, const ::sal_Int32& nCrc_, const ::sal_Int32& nCompressedSize_, const ::sal_Int32& nSize_, const ::sal_Int32& nOffset_, const ::sal_Int16& nDiskNumber_, const ::rtl::OUString& sName_, const ::com::sun::star::uno::Sequence< ::sal_Int8 >& extra_, const ::rtl::OUString& sComment_) SAL_THROW(());
+
+    ::sal_Int16 nVersion;
+    ::sal_Int16 nFlag;
+    ::sal_Int16 nMethod;
+    ::sal_Int32 nTime;
+    ::sal_Int32 nCrc;
+    ::sal_Int32 nCompressedSize;
+    ::sal_Int32 nSize;
+    ::sal_Int32 nOffset;
+    ::sal_Int16 nDiskNumber;
+    ::rtl::OUString sName;
+    ::com::sun::star::uno::Sequence< ::sal_Int8 > extra;
+    ::rtl::OUString sComment;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::packages::zip::ZipEntry* );
+
+#endif // INCLUDED_COM_SUN_STAR_PACKAGES_ZIP_ZIPENTRY_HDL

@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_LOCKDEPTH_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_LOCKDEPTH_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+enum LockDepth
+{
+    LockDepth_ZERO = 0,
+    LockDepth_ONE = 1,
+    LockDepth_INFINITY = 2,
+    LockDepth_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::LockDepth* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_LOCKDEPTH_HDL

@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_FILLDATEMODE_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_FILLDATEMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+enum FillDateMode
+{
+    FillDateMode_FILL_DATE_DAY = 0,
+    FillDateMode_FILL_DATE_WEEKDAY = 1,
+    FillDateMode_FILL_DATE_MONTH = 2,
+    FillDateMode_FILL_DATE_YEAR = 3,
+    FillDateMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::FillDateMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_FILLDATEMODE_HDL

@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_TAB_XTABPAGECONTAINERMODEL_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_TAB_XTABPAGECONTAINERMODEL_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/container/XContainer.hdl"
+#include "com/sun/star/container/XIndexContainer.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace awt { namespace tab {
+
+class SAL_NO_VTABLE XTabPageContainerModel : public ::com::sun::star::container::XIndexContainer, public ::com::sun::star::container::XContainer
+{
+public:
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::tab::XTabPageContainerModel >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_TAB_XTABPAGECONTAINERMODEL_HDL

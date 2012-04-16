@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_XINTERACTIONREPLACEEXISTINGDATA_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_XINTERACTIONREPLACEEXISTINGDATA_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/task/XInteractionContinuation.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class SAL_NO_VTABLE XInteractionReplaceExistingData : public ::com::sun::star::task::XInteractionContinuation
+{
+public:
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XInteractionReplaceExistingData >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_XINTERACTIONREPLACEEXISTINGDATA_HDL

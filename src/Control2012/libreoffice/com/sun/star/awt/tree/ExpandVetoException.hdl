@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_TREE_EXPANDVETOEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_TREE_EXPANDVETOEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/awt/tree/TreeExpansionEvent.hdl"
+#include "com/sun/star/util/VetoException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace awt { namespace tree {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT ExpandVetoException : public ::com::sun::star::util::VetoException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE ExpandVetoException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE ExpandVetoException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::awt::tree::TreeExpansionEvent& Event_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE ExpandVetoException(ExpandVetoException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~ExpandVetoException();
+
+    inline CPPU_GCC_DLLPRIVATE ExpandVetoException & operator =(ExpandVetoException const &);
+
+    ::com::sun::star::awt::tree::TreeExpansionEvent Event CPPU_GCC3_ALIGN( ::com::sun::star::util::VetoException );
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::awt::tree::ExpandVetoException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_TREE_EXPANDVETOEXCEPTION_HDL

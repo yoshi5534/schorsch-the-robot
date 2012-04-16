@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_DATATRANSFER_DND_XDRAGSOURCE_HDL
+#define INCLUDED_COM_SUN_STAR_DATATRANSFER_DND_XDRAGSOURCE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace datatransfer { class XTransferable; } } } }
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/datatransfer/dnd/DragGestureEvent.hdl"
+namespace com { namespace sun { namespace star { namespace datatransfer { namespace dnd { class XDragSourceListener; } } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace datatransfer { namespace dnd {
+
+class SAL_NO_VTABLE XDragSource : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL isDragImageSupported(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getDefaultCursor( ::sal_Int8 dragAction ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL startDrag( const ::com::sun::star::datatransfer::dnd::DragGestureEvent& trigger, ::sal_Int8 sourceActions, ::sal_Int32 cursor, ::sal_Int32 image, const ::com::sun::star::uno::Reference< ::com::sun::star::datatransfer::XTransferable >& trans, const ::com::sun::star::uno::Reference< ::com::sun::star::datatransfer::dnd::XDragSourceListener >& listener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::datatransfer::dnd::XDragSource >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DATATRANSFER_DND_XDRAGSOURCE_HDL

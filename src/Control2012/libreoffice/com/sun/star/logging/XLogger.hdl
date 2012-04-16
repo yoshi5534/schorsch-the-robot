@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_LOGGING_XLOGGER_HDL
+#define INCLUDED_COM_SUN_STAR_LOGGING_XLOGGER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace logging { class XLogHandler; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace logging {
+
+class SAL_NO_VTABLE XLogger : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Attributes
+    virtual ::rtl::OUString SAL_CALL getName() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getLevel() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLevel( ::sal_Int32 _level ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual void SAL_CALL addLogHandler( const ::com::sun::star::uno::Reference< ::com::sun::star::logging::XLogHandler >& LogHandler ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeLogHandler( const ::com::sun::star::uno::Reference< ::com::sun::star::logging::XLogHandler >& LogHandler ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isLoggable( ::sal_Int32 Level ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL log( ::sal_Int32 Level, const ::rtl::OUString& Message ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL logp( ::sal_Int32 Level, const ::rtl::OUString& SourceClassName, const ::rtl::OUString& SourceMethodName, const ::rtl::OUString& Message ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::logging::XLogger >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_LOGGING_XLOGGER_HDL

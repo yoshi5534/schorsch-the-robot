@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_ANIMATIONS_XITERATECONTAINER_HDL
+#define INCLUDED_COM_SUN_STAR_ANIMATIONS_XITERATECONTAINER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/animations/XTimeContainer.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace animations {
+
+class SAL_NO_VTABLE XIterateContainer : public ::com::sun::star::animations::XTimeContainer
+{
+public:
+
+    // Attributes
+    virtual ::com::sun::star::uno::Any SAL_CALL getTarget() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setTarget( const ::com::sun::star::uno::Any& _target ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getSubItem() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSubItem( ::sal_Int16 _subitem ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getIterateType() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setIterateType( ::sal_Int16 _iteratetype ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getIterateInterval() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setIterateInterval( double _iterateinterval ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::animations::XIterateContainer >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_ANIMATIONS_XITERATECONTAINER_HDL

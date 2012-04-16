@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART_CHARTDATACHANGEEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_CHART_CHARTDATACHANGEEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/chart/ChartDataChangeType.hdl"
+#include "com/sun/star/lang/EventObject.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace chart {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ChartDataChangeEvent: public ::com::sun::star::lang::EventObject {
+    inline ChartDataChangeEvent() SAL_THROW(());
+
+    inline ChartDataChangeEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::com::sun::star::chart::ChartDataChangeType& Type_, const ::sal_Int16& StartColumn_, const ::sal_Int16& EndColumn_, const ::sal_Int16& StartRow_, const ::sal_Int16& EndRow_) SAL_THROW(());
+
+    ::com::sun::star::chart::ChartDataChangeType Type CPPU_GCC3_ALIGN(::com::sun::star::lang::EventObject);
+    ::sal_Int16 StartColumn;
+    ::sal_Int16 EndColumn;
+    ::sal_Int16 StartRow;
+    ::sal_Int16 EndRow;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart::ChartDataChangeEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART_CHARTDATACHANGEEVENT_HDL

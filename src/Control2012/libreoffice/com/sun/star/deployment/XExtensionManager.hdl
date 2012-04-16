@@ -1,0 +1,59 @@
+#ifndef INCLUDED_COM_SUN_STAR_DEPLOYMENT_XEXTENSIONMANAGER_HDL
+#define INCLUDED_COM_SUN_STAR_DEPLOYMENT_XEXTENSIONMANAGER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace ucb { class XCommandEnvironment; } } } }
+namespace com { namespace sun { namespace star { namespace deployment { class XPackage; } } } }
+namespace com { namespace sun { namespace star { namespace task { class XAbortChannel; } } } }
+#include "com/sun/star/ucb/CommandAbortedException.hdl"
+#include "com/sun/star/beans/NamedValue.hdl"
+namespace com { namespace sun { namespace star { namespace deployment { class XPackageTypeInfo; } } } }
+#include "com/sun/star/deployment/DeploymentException.hdl"
+#include "com/sun/star/util/XModifyBroadcaster.hdl"
+#include "com/sun/star/ucb/CommandFailedException.hdl"
+#include "com/sun/star/lang/XComponent.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace deployment {
+
+class SAL_NO_VTABLE XExtensionManager : public ::com::sun::star::lang::XComponent, public ::com::sun::star::util::XModifyBroadcaster
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackageTypeInfo > > SAL_CALL getSupportedPackageTypes(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel > SAL_CALL createAbortChannel(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage > SAL_CALL addExtension( const ::rtl::OUString& url, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::NamedValue >& properties, const ::rtl::OUString& repository, const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeExtension( const ::rtl::OUString& identifier, const ::rtl::OUString& fileName, const ::rtl::OUString& repository, const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL enableExtension( const ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage >& extension, const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL disableExtension( const ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage >& extension, const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage > > SAL_CALL getDeployedExtensions( const ::rtl::OUString& repository, const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage > SAL_CALL getDeployedExtension( const ::rtl::OUString& repository, const ::rtl::OUString& identifier, const ::rtl::OUString& fileName, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage > > SAL_CALL getExtensionsWithSameIdentifier( const ::rtl::OUString& identifier, const ::rtl::OUString& fileName, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage > > > SAL_CALL getAllExtensions( const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL reinstallDeployedExtensions( const ::rtl::OUString& repository, const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL synchronize( const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL synchronizeBundledPrereg( const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage > > SAL_CALL getExtensionsWithUnacceptedLicenses( const ::rtl::OUString& repository, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL checkPrerequisitesAndEnable( const ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage >& extension, const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isReadOnlyRepository( const ::rtl::OUString& repository ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XExtensionManager >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DEPLOYMENT_XEXTENSIONMANAGER_HDL

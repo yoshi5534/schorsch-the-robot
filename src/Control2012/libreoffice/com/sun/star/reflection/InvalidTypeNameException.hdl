@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_REFLECTION_INVALIDTYPENAMEEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_REFLECTION_INVALIDTYPENAMEEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace reflection {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT InvalidTypeNameException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE InvalidTypeNameException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InvalidTypeNameException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InvalidTypeNameException(InvalidTypeNameException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~InvalidTypeNameException();
+
+    inline CPPU_GCC_DLLPRIVATE InvalidTypeNameException & operator =(InvalidTypeNameException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::reflection::InvalidTypeNameException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_REFLECTION_INVALIDTYPENAMEEXCEPTION_HDL

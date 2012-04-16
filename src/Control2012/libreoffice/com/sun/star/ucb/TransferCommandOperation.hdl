@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_TRANSFERCOMMANDOPERATION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_TRANSFERCOMMANDOPERATION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+enum TransferCommandOperation
+{
+    TransferCommandOperation_COPY = 0,
+    TransferCommandOperation_MOVE = 1,
+    TransferCommandOperation_LINK = 2,
+    TransferCommandOperation_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::TransferCommandOperation* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_TRANSFERCOMMANDOPERATION_HDL

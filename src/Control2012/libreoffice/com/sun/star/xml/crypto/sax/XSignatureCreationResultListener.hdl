@@ -1,0 +1,33 @@
+#ifndef INCLUDED_COM_SUN_STAR_XML_CRYPTO_SAX_XSIGNATURECREATIONRESULTLISTENER_HDL
+#define INCLUDED_COM_SUN_STAR_XML_CRYPTO_SAX_XSIGNATURECREATIONRESULTLISTENER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/xml/crypto/SecurityOperationStatus.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace xml { namespace crypto { namespace sax {
+
+class SAL_NO_VTABLE XSignatureCreationResultListener : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL signatureCreated( ::sal_Int32 securityId, ::com::sun::star::xml::crypto::SecurityOperationStatus creationResult ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::crypto::sax::XSignatureCreationResultListener >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_XML_CRYPTO_SAX_XSIGNATURECREATIONRESULTLISTENER_HDL

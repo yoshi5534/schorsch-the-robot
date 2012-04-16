@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_XDDELINKS_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_XDDELINKS_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace sheet { class XDDELink; } } } }
+#include "com/sun/star/sheet/DDELinkMode.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/container/XNameAccess.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+class SAL_NO_VTABLE XDDELinks : public ::com::sun::star::container::XNameAccess
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XDDELink > SAL_CALL addDDELink( const ::rtl::OUString& aApplication, const ::rtl::OUString& aTopic, const ::rtl::OUString& aItem, ::com::sun::star::sheet::DDELinkMode nMode ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XDDELinks >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_XDDELINKS_HDL

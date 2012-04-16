@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_FILLMODE_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_FILLMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+enum FillMode
+{
+    FillMode_SIMPLE = 0,
+    FillMode_LINEAR = 1,
+    FillMode_GROWTH = 2,
+    FillMode_DATE = 3,
+    FillMode_AUTO = 4,
+    FillMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::FillMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_FILLMODE_HDL

@@ -1,0 +1,31 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_GIOP_MSGTYPE_1_1_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_GIOP_MSGTYPE_1_1_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace giop {
+
+enum MsgType_1_1
+{
+    MsgType_1_1_Request = 0,
+    MsgType_1_1_Reply = 1,
+    MsgType_1_1_CancelRequest = 2,
+    MsgType_1_1_LocateRequest = 3,
+    MsgType_1_1_LocateReply = 4,
+    MsgType_1_1_CloseConnection = 5,
+    MsgType_1_1_MessageError = 6,
+    MsgType_1_1_Fragment = 7,
+    MsgType_1_1_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::giop::MsgType_1_1* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_GIOP_MSGTYPE_1_1_HDL

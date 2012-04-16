@@ -1,0 +1,56 @@
+#ifndef INCLUDED_COM_SUN_STAR_LINGUISTIC2_PROOFREADINGRESULT_HDL
+#define INCLUDED_COM_SUN_STAR_LINGUISTIC2_PROOFREADINGRESULT_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace linguistic2 { class XProofreader; } } } }
+#include "com/sun/star/beans/PropertyValue.hdl"
+#include "com/sun/star/linguistic2/SingleProofreadingError.hdl"
+#include "com/sun/star/lang/Locale.hdl"
+namespace com { namespace sun { namespace star { namespace text { class XFlatParagraph; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace linguistic2 {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ProofreadingResult {
+    inline ProofreadingResult() SAL_THROW(());
+
+    inline ProofreadingResult(const ::rtl::OUString& aDocumentIdentifier_, const ::com::sun::star::uno::Reference< ::com::sun::star::text::XFlatParagraph >& xFlatParagraph_, const ::rtl::OUString& aText_, const ::com::sun::star::lang::Locale& aLocale_, const ::sal_Int32& nStartOfSentencePosition_, const ::sal_Int32& nBehindEndOfSentencePosition_, const ::sal_Int32& nStartOfNextSentencePosition_, const ::com::sun::star::uno::Sequence< ::com::sun::star::linguistic2::SingleProofreadingError >& aErrors_, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& aProperties_, const ::com::sun::star::uno::Reference< ::com::sun::star::linguistic2::XProofreader >& xProofreader_) SAL_THROW(());
+
+    ::rtl::OUString aDocumentIdentifier;
+    ::com::sun::star::uno::Reference< ::com::sun::star::text::XFlatParagraph > xFlatParagraph;
+    ::rtl::OUString aText;
+    ::com::sun::star::lang::Locale aLocale;
+    ::sal_Int32 nStartOfSentencePosition;
+    ::sal_Int32 nBehindEndOfSentencePosition;
+    ::sal_Int32 nStartOfNextSentencePosition;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::linguistic2::SingleProofreadingError > aErrors;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue > aProperties;
+    ::com::sun::star::uno::Reference< ::com::sun::star::linguistic2::XProofreader > xProofreader;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::linguistic2::ProofreadingResult* );
+
+#endif // INCLUDED_COM_SUN_STAR_LINGUISTIC2_PROOFREADINGRESULT_HDL

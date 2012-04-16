@@ -1,0 +1,29 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_GIOP_REPLYSTATUSTYPE_1_2_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_GIOP_REPLYSTATUSTYPE_1_2_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace giop {
+
+enum ReplyStatusType_1_2
+{
+    ReplyStatusType_1_2_NO_EXCEPTION = 0,
+    ReplyStatusType_1_2_USER_EXCEPTION = 1,
+    ReplyStatusType_1_2_SYSTEM_EXCEPTION = 2,
+    ReplyStatusType_1_2_LOCATION_FORWARD = 3,
+    ReplyStatusType_1_2_LOCATION_FORWARD_PERM = 4,
+    ReplyStatusType_1_2_NEEDS_ADDRESSING_MODE = 5,
+    ReplyStatusType_1_2_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::giop::ReplyStatusType_1_2* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_GIOP_REPLYSTATUSTYPE_1_2_HDL

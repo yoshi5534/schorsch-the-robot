@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_WELCOMEDYNAMICRESULTSETSTRUCT_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_WELCOMEDYNAMICRESULTSETSTRUCT_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace sdbc { class XResultSet; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct WelcomeDynamicResultSetStruct {
+    inline WelcomeDynamicResultSetStruct() SAL_THROW(());
+
+    inline WelcomeDynamicResultSetStruct(const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XResultSet >& Old_, const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XResultSet >& New_) SAL_THROW(());
+
+    ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XResultSet > Old;
+    ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XResultSet > New;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::WelcomeDynamicResultSetStruct* );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_WELCOMEDYNAMICRESULTSETSTRUCT_HDL

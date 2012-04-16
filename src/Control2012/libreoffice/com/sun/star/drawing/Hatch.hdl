@@ -1,0 +1,44 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_HATCH_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_HATCH_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/util/Color.hdl"
+#include "com/sun/star/drawing/HatchStyle.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct Hatch {
+    inline Hatch() SAL_THROW(());
+
+    inline Hatch(const ::com::sun::star::drawing::HatchStyle& Style_, const ::sal_Int32& Color_, const ::sal_Int32& Distance_, const ::sal_Int32& Angle_) SAL_THROW(());
+
+    ::com::sun::star::drawing::HatchStyle Style;
+    ::sal_Int32 Color;
+    ::sal_Int32 Distance;
+    ::sal_Int32 Angle;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::Hatch* );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_HATCH_HDL

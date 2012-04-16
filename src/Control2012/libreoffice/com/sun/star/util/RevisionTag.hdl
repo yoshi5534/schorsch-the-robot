@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_UTIL_REVISIONTAG_HDL
+#define INCLUDED_COM_SUN_STAR_UTIL_REVISIONTAG_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/util/DateTime.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace util {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct RevisionTag {
+    inline RevisionTag() SAL_THROW(());
+
+    inline RevisionTag(const ::com::sun::star::util::DateTime& TimeStamp_, const ::rtl::OUString& Author_, const ::rtl::OUString& Comment_, const ::rtl::OUString& Identifier_) SAL_THROW(());
+
+    ::com::sun::star::util::DateTime TimeStamp;
+    ::rtl::OUString Author;
+    ::rtl::OUString Comment;
+    ::rtl::OUString Identifier;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::util::RevisionTag* );
+
+#endif // INCLUDED_COM_SUN_STAR_UTIL_REVISIONTAG_HDL

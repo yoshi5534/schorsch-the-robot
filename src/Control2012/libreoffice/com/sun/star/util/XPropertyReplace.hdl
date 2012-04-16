@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_UTIL_XPROPERTYREPLACE_HDL
+#define INCLUDED_COM_SUN_STAR_UTIL_XPROPERTYREPLACE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/beans/UnknownPropertyException.hdl"
+#include "com/sun/star/beans/PropertyValue.hdl"
+#include "com/sun/star/util/XReplaceDescriptor.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace util {
+
+class SAL_NO_VTABLE XPropertyReplace : public ::com::sun::star::util::XReplaceDescriptor
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL getValueSearch(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setValueSearch( ::sal_Bool bValueSearch ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue > SAL_CALL getSearchAttributes(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSearchAttributes( const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& aSearchAttribs ) throw (::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue > SAL_CALL getReplaceAttributes(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setReplaceAttributes( const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& aSearchAttribs ) throw (::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::util::XPropertyReplace >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UTIL_XPROPERTYREPLACE_HDL

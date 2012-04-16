@@ -1,0 +1,47 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_IIOP_PROFILEBODY_1_1_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_IIOP_PROFILEBODY_1_1_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/iop/TaggedComponent.hdl"
+#include "com/sun/star/corba/iiop/Version.hdl"
+#include "com/sun/star/corba/CorbaString8.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace iiop {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ProfileBody_1_1 {
+    inline ProfileBody_1_1() SAL_THROW(());
+
+    inline ProfileBody_1_1(const ::com::sun::star::corba::iiop::Version& iiop_version_, const ::com::sun::star::corba::CorbaString8& host_, const ::sal_uInt16& port_, const ::com::sun::star::uno::Sequence< ::sal_Int8 >& object_key_, const ::com::sun::star::uno::Sequence< ::com::sun::star::corba::iop::TaggedComponent >& components_) SAL_THROW(());
+
+    ::com::sun::star::corba::iiop::Version iiop_version;
+    ::com::sun::star::corba::CorbaString8 host;
+    ::sal_uInt16 port;
+    ::com::sun::star::uno::Sequence< ::sal_Int8 > object_key;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::corba::iop::TaggedComponent > components;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::iiop::ProfileBody_1_1* );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_IIOP_PROFILEBODY_1_1_HDL

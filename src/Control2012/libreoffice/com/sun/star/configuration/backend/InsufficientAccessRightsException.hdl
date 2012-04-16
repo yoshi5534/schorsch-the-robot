@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_INSUFFICIENTACCESSRIGHTSEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_INSUFFICIENTACCESSRIGHTSEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/configuration/backend/BackendAccessException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace configuration { namespace backend {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT InsufficientAccessRightsException : public ::com::sun::star::configuration::backend::BackendAccessException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE InsufficientAccessRightsException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InsufficientAccessRightsException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::uno::Any& TargetException_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InsufficientAccessRightsException(InsufficientAccessRightsException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~InsufficientAccessRightsException();
+
+    inline CPPU_GCC_DLLPRIVATE InsufficientAccessRightsException & operator =(InsufficientAccessRightsException const &);
+
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::configuration::backend::InsufficientAccessRightsException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_INSUFFICIENTACCESSRIGHTSEXCEPTION_HDL

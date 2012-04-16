@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_XRANGESELECTION_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_XRANGESELECTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace sheet { class XRangeSelectionChangeListener; } } } }
+namespace com { namespace sun { namespace star { namespace sheet { class XRangeSelectionListener; } } } }
+#include "com/sun/star/beans/PropertyValue.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+class SAL_NO_VTABLE XRangeSelection : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL startRangeSelection( const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& aArguments ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL abortRangeSelection(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addRangeSelectionListener( const ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XRangeSelectionListener >& aListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeRangeSelectionListener( const ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XRangeSelectionListener >& aListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addRangeSelectionChangeListener( const ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XRangeSelectionChangeListener >& aListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeRangeSelectionChangeListener( const ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XRangeSelectionChangeListener >& aListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XRangeSelection >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_XRANGESELECTION_HDL

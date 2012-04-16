@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_GRID_XSORTABLEGRIDDATA_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_GRID_XSORTABLEGRIDDATA_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/IndexOutOfBoundsException.hdl"
+#include "com/sun/star/beans/Pair.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace awt { namespace grid {
+
+class SAL_NO_VTABLE XSortableGridData : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL sortByColumn( ::sal_Int32 ColumnIndex, ::sal_Bool SortAscending ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeColumnSort(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::beans::Pair< ::sal_Int32, ::sal_Bool > SAL_CALL getCurrentSortOrder(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::grid::XSortableGridData >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_GRID_XSORTABLEGRIDDATA_HDL

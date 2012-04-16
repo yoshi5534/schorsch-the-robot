@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_SYSTEM_XSIMPLEMAILMESSAGE_HDL
+#define INCLUDED_COM_SUN_STAR_SYSTEM_XSIMPLEMAILMESSAGE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace system {
+
+class SAL_NO_VTABLE XSimpleMailMessage : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL setRecipient( const ::rtl::OUString& aRecipient ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getRecipient(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCcRecipient( const ::com::sun::star::uno::Sequence< ::rtl::OUString >& aCcRecipient ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getCcRecipient(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setBccRecipient( const ::com::sun::star::uno::Sequence< ::rtl::OUString >& aBccRecipient ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getBccRecipient(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setOriginator( const ::rtl::OUString& aOriginator ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getOriginator(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSubject( const ::rtl::OUString& aSubject ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getSubject(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setAttachement( const ::com::sun::star::uno::Sequence< ::rtl::OUString >& aAttachement ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getAttachement(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::system::XSimpleMailMessage >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SYSTEM_XSIMPLEMAILMESSAGE_HDL

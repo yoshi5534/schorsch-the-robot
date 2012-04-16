@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_XFORMS_XDATATYPEREPOSITORY_HDL
+#define INCLUDED_COM_SUN_STAR_XFORMS_XDATATYPEREPOSITORY_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/util/VetoException.hdl"
+#include "com/sun/star/container/ElementExistException.hdl"
+#include "com/sun/star/container/NoSuchElementException.hdl"
+#include "com/sun/star/container/XNameAccess.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/container/XEnumerationAccess.hdl"
+namespace com { namespace sun { namespace star { namespace xsd { class XDataType; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace xforms {
+
+class SAL_NO_VTABLE XDataTypeRepository : public ::com::sun::star::container::XEnumerationAccess, public ::com::sun::star::container::XNameAccess
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xsd::XDataType > SAL_CALL getBasicDataType( ::sal_Int16 dataTypeClass ) throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xsd::XDataType > SAL_CALL cloneDataType( const ::rtl::OUString& sourceName, const ::rtl::OUString& newName ) throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::container::ElementExistException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL revokeDataType( const ::rtl::OUString& typeName ) throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::util::VetoException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xsd::XDataType > SAL_CALL getDataType( const ::rtl::OUString& typeName ) throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::xforms::XDataTypeRepository >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_XFORMS_XDATATYPEREPOSITORY_HDL

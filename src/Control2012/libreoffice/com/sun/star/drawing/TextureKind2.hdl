@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_TEXTUREKIND2_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_TEXTUREKIND2_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum TextureKind2
+{
+    TextureKind2_LUMINANCE = 0,
+    TextureKind2_INTENSITY = 1,
+    TextureKind2_COLOR = 2,
+    TextureKind2_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::TextureKind2* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_TEXTUREKIND2_HDL

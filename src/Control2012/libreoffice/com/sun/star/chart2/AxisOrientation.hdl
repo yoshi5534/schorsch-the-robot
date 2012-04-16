@@ -1,0 +1,25 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART2_AXISORIENTATION_HDL
+#define INCLUDED_COM_SUN_STAR_CHART2_AXISORIENTATION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace chart2 {
+
+enum AxisOrientation
+{
+    AxisOrientation_MATHEMATICAL = 0,
+    AxisOrientation_REVERSE = 1,
+    AxisOrientation_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart2::AxisOrientation* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART2_AXISORIENTATION_HDL

@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_GRID_SELECTIONEVENTTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_GRID_SELECTIONEVENTTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace awt { namespace grid {
+
+enum SelectionEventType
+{
+    SelectionEventType_ADD = 0,
+    SelectionEventType_REMOVE = 1,
+    SelectionEventType_CHANGE = 2,
+    SelectionEventType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::awt::grid::SelectionEventType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_GRID_SELECTIONEVENTTYPE_HDL

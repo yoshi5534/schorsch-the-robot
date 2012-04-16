@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_MEMBERTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_MEMBERTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace script {
+
+enum MemberType
+{
+    MemberType_METHOD = 0,
+    MemberType_PROPERTY = 1,
+    MemberType_UNKNOWN = 2,
+    MemberType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::script::MemberType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_MEMBERTYPE_HDL

@@ -1,0 +1,52 @@
+#ifndef INCLUDED_COM_SUN_STAR_RENDERING_TEXTURE_HDL
+#define INCLUDED_COM_SUN_STAR_RENDERING_TEXTURE_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace rendering { class XBitmap; } } } }
+#include "com/sun/star/rendering/StrokeAttributes.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XParametricPolyPolygon2D; } } } }
+#include "com/sun/star/geometry/AffineMatrix2D.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace rendering {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct Texture {
+    inline Texture() SAL_THROW(());
+
+    inline Texture(const ::com::sun::star::geometry::AffineMatrix2D& AffineTransform_, const double& Alpha_, const ::sal_Int32& NumberOfHatchPolygons_, const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBitmap >& Bitmap_, const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XParametricPolyPolygon2D >& Gradient_, const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XParametricPolyPolygon2D >& Hatching_, const ::com::sun::star::rendering::StrokeAttributes& HatchAttributes_, const ::sal_Int8& RepeatModeX_, const ::sal_Int8& RepeatModeY_) SAL_THROW(());
+
+    ::com::sun::star::geometry::AffineMatrix2D AffineTransform;
+    double Alpha;
+    ::sal_Int32 NumberOfHatchPolygons;
+    ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBitmap > Bitmap;
+    ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XParametricPolyPolygon2D > Gradient;
+    ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XParametricPolyPolygon2D > Hatching;
+    ::com::sun::star::rendering::StrokeAttributes HatchAttributes;
+    ::sal_Int8 RepeatModeX;
+    ::sal_Int8 RepeatModeY;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::rendering::Texture* );
+
+#endif // INCLUDED_COM_SUN_STAR_RENDERING_TEXTURE_HDL

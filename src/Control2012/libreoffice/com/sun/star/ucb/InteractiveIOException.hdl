@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_INTERACTIVEIOEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_INTERACTIVEIOEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/ucb/IOErrorCode.hdl"
+#include "com/sun/star/task/ClassifiedInteractionRequest.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT InteractiveIOException : public ::com::sun::star::task::ClassifiedInteractionRequest
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE InteractiveIOException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveIOException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_, const ::com::sun::star::ucb::IOErrorCode& Code_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveIOException(InteractiveIOException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~InteractiveIOException();
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveIOException & operator =(InteractiveIOException const &);
+
+    ::com::sun::star::ucb::IOErrorCode Code CPPU_GCC3_ALIGN( ::com::sun::star::task::ClassifiedInteractionRequest );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::InteractiveIOException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_INTERACTIVEIOEXCEPTION_HDL

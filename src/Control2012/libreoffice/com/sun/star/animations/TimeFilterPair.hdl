@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_ANIMATIONS_TIMEFILTERPAIR_HDL
+#define INCLUDED_COM_SUN_STAR_ANIMATIONS_TIMEFILTERPAIR_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace animations {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct TimeFilterPair {
+    inline TimeFilterPair() SAL_THROW(());
+
+    inline TimeFilterPair(const double& Time_, const double& Progress_) SAL_THROW(());
+
+    double Time;
+    double Progress;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::animations::TimeFilterPair* );
+
+#endif // INCLUDED_COM_SUN_STAR_ANIMATIONS_TIMEFILTERPAIR_HDL

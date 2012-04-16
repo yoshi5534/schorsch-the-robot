@@ -1,0 +1,30 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_ESCAPEDIRECTION_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_ESCAPEDIRECTION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum EscapeDirection
+{
+    EscapeDirection_SMART = 0,
+    EscapeDirection_LEFT = 1,
+    EscapeDirection_RIGHT = 2,
+    EscapeDirection_UP = 3,
+    EscapeDirection_DOWN = 4,
+    EscapeDirection_HORIZONTAL = 5,
+    EscapeDirection_VERTICAL = 6,
+    EscapeDirection_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::EscapeDirection* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_ESCAPEDIRECTION_HDL

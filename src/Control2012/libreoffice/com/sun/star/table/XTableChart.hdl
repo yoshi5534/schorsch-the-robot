@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_TABLE_XTABLECHART_HDL
+#define INCLUDED_COM_SUN_STAR_TABLE_XTABLECHART_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/table/CellRangeAddress.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace table {
+
+class SAL_NO_VTABLE XTableChart : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL getHasColumnHeaders(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setHasColumnHeaders( ::sal_Bool bHasColumnHeaders ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getHasRowHeaders(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setHasRowHeaders( ::sal_Bool bHasRowHeaders ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::table::CellRangeAddress > SAL_CALL getRanges(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setRanges( const ::com::sun::star::uno::Sequence< ::com::sun::star::table::CellRangeAddress >& aRanges ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::table::XTableChart >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TABLE_XTABLECHART_HDL

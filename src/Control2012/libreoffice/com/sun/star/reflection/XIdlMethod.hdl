@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_REFLECTION_XIDLMETHOD_HDL
+#define INCLUDED_COM_SUN_STAR_REFLECTION_XIDLMETHOD_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/reflection/ParamInfo.hdl"
+#include "com/sun/star/reflection/MethodMode.hdl"
+#include "com/sun/star/reflection/InvocationTargetException.hdl"
+namespace com { namespace sun { namespace star { namespace reflection { class XIdlClass; } } } }
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/reflection/XIdlMember.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace reflection {
+
+class SAL_NO_VTABLE XIdlMethod : public ::com::sun::star::reflection::XIdlMember
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::reflection::XIdlClass > SAL_CALL getReturnType(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::reflection::XIdlClass > > SAL_CALL getParameterTypes(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::reflection::ParamInfo > SAL_CALL getParameterInfos(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::reflection::XIdlClass > > SAL_CALL getExceptionTypes(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::reflection::MethodMode SAL_CALL getMode(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Any SAL_CALL invoke( const ::com::sun::star::uno::Any& obj, ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any >& args ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::reflection::InvocationTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::reflection::XIdlMethod >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_REFLECTION_XIDLMETHOD_HDL

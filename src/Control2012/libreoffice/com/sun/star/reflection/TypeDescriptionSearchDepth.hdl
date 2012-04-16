@@ -1,0 +1,25 @@
+#ifndef INCLUDED_COM_SUN_STAR_REFLECTION_TYPEDESCRIPTIONSEARCHDEPTH_HDL
+#define INCLUDED_COM_SUN_STAR_REFLECTION_TYPEDESCRIPTIONSEARCHDEPTH_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace reflection {
+
+enum TypeDescriptionSearchDepth
+{
+    TypeDescriptionSearchDepth_INFINITE = -1,
+    TypeDescriptionSearchDepth_ONE = 1,
+    TypeDescriptionSearchDepth_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::reflection::TypeDescriptionSearchDepth* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_REFLECTION_TYPEDESCRIPTIONSEARCHDEPTH_HDL

@@ -1,0 +1,58 @@
+#ifndef INCLUDED_COM_SUN_STAR_PRESENTATION_XSLIDESHOW_HDL
+#define INCLUDED_COM_SUN_STAR_PRESENTATION_XSLIDESHOW_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace presentation { class XSlideShowListener; } } } }
+namespace com { namespace sun { namespace star { namespace presentation { class XShapeEventListener; } } } }
+namespace com { namespace sun { namespace star { namespace presentation { class XSlideShowView; } } } }
+namespace com { namespace sun { namespace star { namespace lang { class XMultiServiceFactory; } } } }
+namespace com { namespace sun { namespace star { namespace drawing { class XShape; } } } }
+namespace com { namespace sun { namespace star { namespace drawing { class XDrawPagesSupplier; } } } }
+namespace com { namespace sun { namespace star { namespace drawing { class XDrawPage; } } } }
+#include "com/sun/star/beans/PropertyValue.hdl"
+namespace com { namespace sun { namespace star { namespace animations { class XAnimationNode; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace presentation {
+
+class SAL_NO_VTABLE XSlideShow : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL nextEffect(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL previousEffect(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL startShapeActivity( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XShape >& xShape ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL stopShapeActivity( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XShape >& xShape ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL displaySlide( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XDrawPage >& xSlide, const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XDrawPagesSupplier >& xDrawPages, const ::com::sun::star::uno::Reference< ::com::sun::star::animations::XAnimationNode >& aAnimationNode, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& aProperties ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL pause( ::sal_Bool bPauseShow ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XDrawPage > SAL_CALL getCurrentSlide(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL registerUserPaintPolygons( const ::com::sun::star::uno::Reference< ::com::sun::star::lang::XMultiServiceFactory >& xDocFactory ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL setProperty( const ::com::sun::star::beans::PropertyValue& aShowProperty ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL addView( const ::com::sun::star::uno::Reference< ::com::sun::star::presentation::XSlideShowView >& xView ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL removeView( const ::com::sun::star::uno::Reference< ::com::sun::star::presentation::XSlideShowView >& xView ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL update( double& nNextTimeout ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addSlideShowListener( const ::com::sun::star::uno::Reference< ::com::sun::star::presentation::XSlideShowListener >& xListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeSlideShowListener( const ::com::sun::star::uno::Reference< ::com::sun::star::presentation::XSlideShowListener >& xListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addShapeEventListener( const ::com::sun::star::uno::Reference< ::com::sun::star::presentation::XShapeEventListener >& xListener, const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XShape >& xShape ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeShapeEventListener( const ::com::sun::star::uno::Reference< ::com::sun::star::presentation::XShapeEventListener >& xListener, const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XShape >& xShape ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setShapeCursor( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XShape >& xShape, ::sal_Int16 nPointerShape ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::presentation::XSlideShow >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_PRESENTATION_XSLIDESHOW_HDL

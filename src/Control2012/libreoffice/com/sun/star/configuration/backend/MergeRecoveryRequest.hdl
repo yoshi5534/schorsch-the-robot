@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_MERGERECOVERYREQUEST_HDL
+#define INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_MERGERECOVERYREQUEST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace configuration { namespace backend {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT MergeRecoveryRequest : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE MergeRecoveryRequest() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE MergeRecoveryRequest(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::uno::Any& ErrorDetails_, const ::rtl::OUString& ErrorLayerId_, const ::sal_Bool& IsRemovalRequest_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE MergeRecoveryRequest(MergeRecoveryRequest const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~MergeRecoveryRequest();
+
+    inline CPPU_GCC_DLLPRIVATE MergeRecoveryRequest & operator =(MergeRecoveryRequest const &);
+
+    ::com::sun::star::uno::Any ErrorDetails CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+    ::rtl::OUString ErrorLayerId;
+    ::sal_Bool IsRemovalRequest;
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::configuration::backend::MergeRecoveryRequest* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_MERGERECOVERYREQUEST_HDL

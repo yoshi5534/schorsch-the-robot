@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_XML_DOM_EVENTS_XMOUSEEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_XML_DOM_EVENTS_XMOUSEEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace xml { namespace dom { namespace views { class XAbstractView; } } } } } }
+namespace com { namespace sun { namespace star { namespace xml { namespace dom { namespace events { class XEventTarget; } } } } } }
+#include "com/sun/star/xml/dom/events/XUIEvent.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace xml { namespace dom { namespace events {
+
+class SAL_NO_VTABLE XMouseEvent : public ::com::sun::star::xml::dom::events::XUIEvent
+{
+public:
+
+    // Methods
+    virtual ::sal_Int32 SAL_CALL getScreenX(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getScreenY(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getClientX(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getClientY(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getCtrlKey(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getShiftKey(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getAltKey(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getMetaKey(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getButton(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::events::XEventTarget > SAL_CALL getRelatedTarget(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL initMouseEvent( const ::rtl::OUString& typeArg, ::sal_Bool canBubbleArg, ::sal_Bool cancelableArg, const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::views::XAbstractView >& viewArg, ::sal_Int32 detailArg, ::sal_Int32 screenXArg, ::sal_Int32 screenYArg, ::sal_Int32 clientXArg, ::sal_Int32 clientYArg, ::sal_Bool ctrlKeyArg, ::sal_Bool altKeyArg, ::sal_Bool shiftKeyArg, ::sal_Bool metaKeyArg, ::sal_Int16 buttonArg, const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::events::XEventTarget >& relatedTargetArg ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::events::XMouseEvent >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_XML_DOM_EVENTS_XMOUSEEVENT_HDL

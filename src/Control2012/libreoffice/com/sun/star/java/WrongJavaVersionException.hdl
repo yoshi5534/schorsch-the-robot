@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_JAVA_WRONGJAVAVERSIONEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_JAVA_WRONGJAVAVERSIONEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace java {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT WrongJavaVersionException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE WrongJavaVersionException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE WrongJavaVersionException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::rtl::OUString& LowestSupportedVersion_, const ::rtl::OUString& HighestSupportedVersion_, const ::rtl::OUString& DetectedVersion_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE WrongJavaVersionException(WrongJavaVersionException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~WrongJavaVersionException();
+
+    inline CPPU_GCC_DLLPRIVATE WrongJavaVersionException & operator =(WrongJavaVersionException const &);
+
+    ::rtl::OUString LowestSupportedVersion CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+    ::rtl::OUString HighestSupportedVersion;
+    ::rtl::OUString DetectedVersion;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::java::WrongJavaVersionException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_JAVA_WRONGJAVAVERSIONEXCEPTION_HDL

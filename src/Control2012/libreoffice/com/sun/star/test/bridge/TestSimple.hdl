@@ -1,0 +1,51 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTSIMPLE_HDL
+#define INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTSIMPLE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/test/bridge/TestEnum.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace test { namespace bridge {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct TestSimple {
+    inline TestSimple() SAL_THROW(());
+
+    inline TestSimple(const ::sal_Bool& Bool_, const ::sal_Unicode& Char_, const ::sal_Int8& Byte_, const ::sal_Int16& Short_, const ::sal_uInt16& UShort_, const ::sal_Int32& Long_, const ::sal_uInt32& ULong_, const ::sal_Int64& Hyper_, const ::sal_uInt64& UHyper_, const float& Float_, const double& Double_, const ::com::sun::star::test::bridge::TestEnum& Enum_) SAL_THROW(());
+
+    ::sal_Bool Bool;
+    ::sal_Unicode Char;
+    ::sal_Int8 Byte;
+    ::sal_Int16 Short;
+    ::sal_uInt16 UShort;
+    ::sal_Int32 Long;
+    ::sal_uInt32 ULong;
+    ::sal_Int64 Hyper;
+    ::sal_uInt64 UHyper;
+    float Float;
+    double Double;
+    ::com::sun::star::test::bridge::TestEnum Enum;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::test::bridge::TestSimple* );
+
+#endif // INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTSIMPLE_HDL

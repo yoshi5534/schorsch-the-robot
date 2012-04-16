@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_RESULTEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_RESULTEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/EventObject.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ResultEvent: public ::com::sun::star::lang::EventObject {
+    inline ResultEvent() SAL_THROW(());
+
+    inline ResultEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::com::sun::star::uno::Any& Value_) SAL_THROW(());
+
+    ::com::sun::star::uno::Any Value CPPU_GCC3_ALIGN(::com::sun::star::lang::EventObject);
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::ResultEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_RESULTEVENT_HDL

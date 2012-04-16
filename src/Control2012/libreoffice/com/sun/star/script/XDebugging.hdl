@@ -1,0 +1,47 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_XDEBUGGING_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_XDEBUGGING_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/script/ContextInformation.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace script {
+
+class SAL_NO_VTABLE XDebugging : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Int32 SAL_CALL setBreakPoint( const ::rtl::OUString& aModuleName, ::sal_Int32 nSourceCodeLine, ::sal_Bool bOn ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL clearAllBreakPoints( const ::rtl::OUString& aModuleName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL eval( const ::rtl::OUString& aSourceCode, ::sal_Int16 nCallStackPos ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getStackTrace(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::script::ContextInformation SAL_CALL getContextInformation( ::sal_Int16 nCallStackPos ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL dumpVariable( const ::rtl::OUString& aVariableName, ::sal_Int16 nCallStackPos ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setVariable( const ::rtl::OUString& aVariableName, const ::rtl::OUString& aValue, ::sal_Int16 nCallStackPos ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isVariable( const ::rtl::OUString& aVariableName, ::sal_Int16 nCallStackPos ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL stop(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL stepOver(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL stepIn(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL stepOut(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL doContinue(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::script::XDebugging >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_XDEBUGGING_HDL

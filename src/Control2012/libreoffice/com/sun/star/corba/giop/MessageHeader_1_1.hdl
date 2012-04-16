@@ -1,0 +1,47 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_GIOP_MESSAGEHEADER_1_1_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_GIOP_MESSAGEHEADER_1_1_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/giop/Version.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace giop {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct MessageHeader_1_1 {
+    inline MessageHeader_1_1() SAL_THROW(());
+
+    inline MessageHeader_1_1(const ::sal_Int8& magic_1_, const ::sal_Int8& magic_2_, const ::sal_Int8& magic_3_, const ::sal_Int8& magic_4_, const ::com::sun::star::corba::giop::Version& GIOP_version_, const ::sal_Int8& flags_, const ::sal_Int8& message_type_, const ::sal_uInt32& message_size_) SAL_THROW(());
+
+    ::sal_Int8 magic_1;
+    ::sal_Int8 magic_2;
+    ::sal_Int8 magic_3;
+    ::sal_Int8 magic_4;
+    ::com::sun::star::corba::giop::Version GIOP_version;
+    ::sal_Int8 flags;
+    ::sal_Int8 message_type;
+    ::sal_uInt32 message_size;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::giop::MessageHeader_1_1* );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_GIOP_MESSAGEHEADER_1_1_HDL

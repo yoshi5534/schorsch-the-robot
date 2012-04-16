@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_XMULTILAYERSTRATUM_HDL
+#define INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_XMULTILAYERSTRATUM_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace configuration { namespace backend { class XUpdatableLayer; } } } } }
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/configuration/backend/BackendAccessException.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/lang/NoSupportException.hdl"
+namespace com { namespace sun { namespace star { namespace configuration { namespace backend { class XLayer; } } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace configuration { namespace backend {
+
+class SAL_NO_VTABLE XMultiLayerStratum : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL listLayerIds( const ::rtl::OUString& aComponent, const ::rtl::OUString& aEntity ) throw (::com::sun::star::configuration::backend::BackendAccessException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getUpdateLayerId( const ::rtl::OUString& aComponent, const ::rtl::OUString& aEntity ) throw (::com::sun::star::configuration::backend::BackendAccessException, ::com::sun::star::lang::NoSupportException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::configuration::backend::XLayer > SAL_CALL getLayer( const ::rtl::OUString& aLayerId, const ::rtl::OUString& aTimestamp ) throw (::com::sun::star::configuration::backend::BackendAccessException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::configuration::backend::XLayer > > SAL_CALL getLayers( const ::com::sun::star::uno::Sequence< ::rtl::OUString >& aLayerIds, const ::rtl::OUString& aTimestamp ) throw (::com::sun::star::configuration::backend::BackendAccessException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::configuration::backend::XLayer > > SAL_CALL getMultipleLayers( const ::com::sun::star::uno::Sequence< ::rtl::OUString >& aLayerIds, const ::com::sun::star::uno::Sequence< ::rtl::OUString >& aTimestamps ) throw (::com::sun::star::configuration::backend::BackendAccessException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::configuration::backend::XUpdatableLayer > SAL_CALL getUpdatableLayer( const ::rtl::OUString& aLayerId ) throw (::com::sun::star::configuration::backend::BackendAccessException, ::com::sun::star::lang::NoSupportException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::configuration::backend::XMultiLayerStratum >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_XMULTILAYERSTRATUM_HDL

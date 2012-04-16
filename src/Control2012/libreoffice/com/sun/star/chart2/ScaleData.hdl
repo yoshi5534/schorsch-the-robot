@@ -1,0 +1,56 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART2_SCALEDATA_HDL
+#define INCLUDED_COM_SUN_STAR_CHART2_SCALEDATA_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/chart/TimeIncrement.hdl"
+#include "com/sun/star/chart2/IncrementData.hdl"
+namespace com { namespace sun { namespace star { namespace chart2 { namespace data { class XLabeledDataSequence; } } } } }
+#include "com/sun/star/chart2/AxisOrientation.hdl"
+namespace com { namespace sun { namespace star { namespace chart2 { class XScaling; } } } }
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace chart2 {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ScaleData {
+    inline ScaleData() SAL_THROW(());
+
+    inline ScaleData(const ::com::sun::star::uno::Any& Minimum_, const ::com::sun::star::uno::Any& Maximum_, const ::com::sun::star::uno::Any& Origin_, const ::com::sun::star::chart2::AxisOrientation& Orientation_, const ::com::sun::star::uno::Reference< ::com::sun::star::chart2::XScaling >& Scaling_, const ::com::sun::star::uno::Reference< ::com::sun::star::chart2::data::XLabeledDataSequence >& Categories_, const ::sal_Int32& AxisType_, const ::sal_Bool& AutoDateAxis_, const ::sal_Bool& ShiftedCategoryPosition_, const ::com::sun::star::chart2::IncrementData& IncrementData_, const ::com::sun::star::chart::TimeIncrement& TimeIncrement_) SAL_THROW(());
+
+    ::com::sun::star::uno::Any Minimum;
+    ::com::sun::star::uno::Any Maximum;
+    ::com::sun::star::uno::Any Origin;
+    ::com::sun::star::chart2::AxisOrientation Orientation;
+    ::com::sun::star::uno::Reference< ::com::sun::star::chart2::XScaling > Scaling;
+    ::com::sun::star::uno::Reference< ::com::sun::star::chart2::data::XLabeledDataSequence > Categories;
+    ::sal_Int32 AxisType;
+    ::sal_Bool AutoDateAxis;
+    ::sal_Bool ShiftedCategoryPosition;
+    ::com::sun::star::chart2::IncrementData IncrementData;
+    ::com::sun::star::chart::TimeIncrement TimeIncrement;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart2::ScaleData* );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART2_SCALEDATA_HDL

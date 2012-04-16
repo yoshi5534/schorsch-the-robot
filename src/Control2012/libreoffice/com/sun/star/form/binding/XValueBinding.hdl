@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_FORM_BINDING_XVALUEBINDING_HDL
+#define INCLUDED_COM_SUN_STAR_FORM_BINDING_XVALUEBINDING_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/form/binding/IncompatibleTypesException.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/form/binding/InvalidBindingStateException.hdl"
+#include "com/sun/star/lang/NoSupportException.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "com/sun/star/uno/Type.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace form { namespace binding {
+
+class SAL_NO_VTABLE XValueBinding : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Type > SAL_CALL getSupportedValueTypes(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL supportsType( const ::com::sun::star::uno::Type& aType ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Any SAL_CALL getValue( const ::com::sun::star::uno::Type& aType ) throw (::com::sun::star::form::binding::IncompatibleTypesException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setValue( const ::com::sun::star::uno::Any& aValue ) throw (::com::sun::star::form::binding::IncompatibleTypesException, ::com::sun::star::form::binding::InvalidBindingStateException, ::com::sun::star::lang::NoSupportException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::form::binding::XValueBinding >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_FORM_BINDING_XVALUEBINDING_HDL

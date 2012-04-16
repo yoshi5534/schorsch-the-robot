@@ -1,0 +1,47 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_GIOP_REQUESTHEADER_1_0_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_GIOP_REQUESTHEADER_1_0_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/CorbaString8.hdl"
+#include "com/sun/star/corba/iop/ServiceContextList.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace giop {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct RequestHeader_1_0 {
+    inline RequestHeader_1_0() SAL_THROW(());
+
+    inline RequestHeader_1_0(const ::com::sun::star::uno::Sequence< ::com::sun::star::corba::iop::ServiceContext >& service_context_, const ::sal_uInt32& request_id_, const ::sal_Bool& response_expected_, const ::com::sun::star::uno::Sequence< ::sal_Int8 >& object_key_, const ::com::sun::star::corba::CorbaString8& operation_, const ::com::sun::star::uno::Sequence< ::sal_Int8 >& requesting_principal_) SAL_THROW(());
+
+    ::com::sun::star::uno::Sequence< ::com::sun::star::corba::iop::ServiceContext > service_context;
+    ::sal_uInt32 request_id;
+    ::sal_Bool response_expected;
+    ::com::sun::star::uno::Sequence< ::sal_Int8 > object_key;
+    ::com::sun::star::corba::CorbaString8 operation;
+    ::com::sun::star::uno::Sequence< ::sal_Int8 > requesting_principal;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::giop::RequestHeader_1_0* );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_GIOP_REQUESTHEADER_1_0_HDL

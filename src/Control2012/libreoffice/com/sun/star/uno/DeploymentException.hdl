@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_UNO_DEPLOYMENTEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_UNO_DEPLOYMENTEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT DeploymentException : public ::com::sun::star::uno::RuntimeException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE DeploymentException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE DeploymentException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE DeploymentException(DeploymentException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~DeploymentException();
+
+    inline CPPU_GCC_DLLPRIVATE DeploymentException & operator =(DeploymentException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::DeploymentException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UNO_DEPLOYMENTEXCEPTION_HDL

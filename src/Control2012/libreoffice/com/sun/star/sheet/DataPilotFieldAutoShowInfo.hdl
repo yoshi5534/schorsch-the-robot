@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_DATAPILOTFIELDAUTOSHOWINFO_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_DATAPILOTFIELDAUTOSHOWINFO_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct DataPilotFieldAutoShowInfo {
+    inline DataPilotFieldAutoShowInfo() SAL_THROW(());
+
+    inline DataPilotFieldAutoShowInfo(const ::sal_Bool& IsEnabled_, const ::sal_Int32& ShowItemsMode_, const ::sal_Int32& ItemCount_, const ::rtl::OUString& DataField_) SAL_THROW(());
+
+    ::sal_Bool IsEnabled;
+    ::sal_Int32 ShowItemsMode;
+    ::sal_Int32 ItemCount;
+    ::rtl::OUString DataField;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::DataPilotFieldAutoShowInfo* );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_DATAPILOTFIELDAUTOSHOWINFO_HDL

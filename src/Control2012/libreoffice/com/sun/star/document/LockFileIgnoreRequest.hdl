@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_DOCUMENT_LOCKFILEIGNOREREQUEST_HDL
+#define INCLUDED_COM_SUN_STAR_DOCUMENT_LOCKFILEIGNOREREQUEST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/io/IOException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace document {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT LockFileIgnoreRequest : public ::com::sun::star::io::IOException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE LockFileIgnoreRequest() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE LockFileIgnoreRequest(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE LockFileIgnoreRequest(LockFileIgnoreRequest const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~LockFileIgnoreRequest();
+
+    inline CPPU_GCC_DLLPRIVATE LockFileIgnoreRequest & operator =(LockFileIgnoreRequest const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::document::LockFileIgnoreRequest* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DOCUMENT_LOCKFILEIGNOREREQUEST_HDL

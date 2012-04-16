@@ -1,0 +1,47 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_TABLEFILTERFIELD_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_TABLEFILTERFIELD_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/sheet/FilterOperator.hdl"
+#include "com/sun/star/sheet/FilterConnection.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct TableFilterField {
+    inline TableFilterField() SAL_THROW(());
+
+    inline TableFilterField(const ::com::sun::star::sheet::FilterConnection& Connection_, const ::sal_Int32& Field_, const ::com::sun::star::sheet::FilterOperator& Operator_, const ::sal_Bool& IsNumeric_, const double& NumericValue_, const ::rtl::OUString& StringValue_) SAL_THROW(());
+
+    ::com::sun::star::sheet::FilterConnection Connection;
+    ::sal_Int32 Field;
+    ::com::sun::star::sheet::FilterOperator Operator;
+    ::sal_Bool IsNumeric;
+    double NumericValue;
+    ::rtl::OUString StringValue;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::TableFilterField* );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_TABLEFILTERFIELD_HDL

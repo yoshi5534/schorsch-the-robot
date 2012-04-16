@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_DEPLOYMENT_INVALIDREMOVEDPARAMETEREXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_DEPLOYMENT_INVALIDREMOVEDPARAMETEREXCEPTION_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace deployment { class XPackage; } } } }
+#include "com/sun/star/uno/Exception.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace deployment {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT InvalidRemovedParameterException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE InvalidRemovedParameterException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InvalidRemovedParameterException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::sal_Bool& PreviousValue_, const ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage >& Extension_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InvalidRemovedParameterException(InvalidRemovedParameterException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~InvalidRemovedParameterException();
+
+    inline CPPU_GCC_DLLPRIVATE InvalidRemovedParameterException & operator =(InvalidRemovedParameterException const &);
+
+    ::sal_Bool PreviousValue CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+    ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage > Extension;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::deployment::InvalidRemovedParameterException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DEPLOYMENT_INVALIDREMOVEDPARAMETEREXCEPTION_HDL

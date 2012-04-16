@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_DATATRANSFER_DND_DRAGSOURCEDRAGEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_DATATRANSFER_DND_DRAGSOURCEDRAGEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/datatransfer/dnd/DragSourceEvent.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace datatransfer { namespace dnd {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct DragSourceDragEvent: public ::com::sun::star::datatransfer::dnd::DragSourceEvent {
+    inline DragSourceDragEvent() SAL_THROW(());
+
+    inline DragSourceDragEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::com::sun::star::uno::Reference< ::com::sun::star::datatransfer::dnd::XDragSourceContext >& DragSourceContext_, const ::com::sun::star::uno::Reference< ::com::sun::star::datatransfer::dnd::XDragSource >& DragSource_, const ::sal_Int8& DropAction_, const ::sal_Int8& UserAction_) SAL_THROW(());
+
+    ::sal_Int8 DropAction CPPU_GCC3_ALIGN(::com::sun::star::datatransfer::dnd::DragSourceEvent);
+    ::sal_Int8 UserAction;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::datatransfer::dnd::DragSourceDragEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_DATATRANSFER_DND_DRAGSOURCEDRAGEVENT_HDL

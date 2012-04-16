@@ -1,0 +1,35 @@
+#ifndef INCLUDED_COM_SUN_STAR_CONNECTION_XCONNECTION2_HDL
+#define INCLUDED_COM_SUN_STAR_CONNECTION_XCONNECTION2_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/connection/XConnection.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/io/IOException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace connection {
+
+class SAL_NO_VTABLE XConnection2 : public ::com::sun::star::connection::XConnection
+{
+public:
+
+    // Methods
+    virtual ::sal_Int32 SAL_CALL available(  ) throw (::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL readSomeBytes( ::com::sun::star::uno::Sequence< ::sal_Int8 >& aData, ::sal_Int32 nMaxBytesToRead ) throw (::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::connection::XConnection2 >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CONNECTION_XCONNECTION2_HDL

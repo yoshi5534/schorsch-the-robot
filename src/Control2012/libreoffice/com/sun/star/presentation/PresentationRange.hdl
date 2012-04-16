@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_PRESENTATION_PRESENTATIONRANGE_HDL
+#define INCLUDED_COM_SUN_STAR_PRESENTATION_PRESENTATIONRANGE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace presentation {
+
+enum PresentationRange
+{
+    PresentationRange_PRESENTATIONRANGE_ALL = 0,
+    PresentationRange_PRESENTATIONRANGE_FROM_PAGE = 1,
+    PresentationRange_PRESENTATIONRANGE_INDIVIDUAL = 2,
+    PresentationRange_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::presentation::PresentationRange* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_PRESENTATION_PRESENTATIONRANGE_HDL

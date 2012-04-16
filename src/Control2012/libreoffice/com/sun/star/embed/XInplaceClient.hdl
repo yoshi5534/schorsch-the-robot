@@ -1,0 +1,51 @@
+#ifndef INCLUDED_COM_SUN_STAR_EMBED_XINPLACECLIENT_HDL
+#define INCLUDED_COM_SUN_STAR_EMBED_XINPLACECLIENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/awt/Size.hdl"
+#include "com/sun/star/awt/KeyEvent.hdl"
+#include "com/sun/star/awt/Rectangle.hdl"
+#include "com/sun/star/embed/WrongStateException.hdl"
+namespace com { namespace sun { namespace star { namespace frame { class XLayoutManager; } } } }
+namespace com { namespace sun { namespace star { namespace frame { class XDispatchProvider; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Exception.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace embed {
+
+class SAL_NO_VTABLE XInplaceClient : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL canInplaceActivate(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL activatingInplace(  ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL activatingUI(  ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL deactivatedInplace(  ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL deactivatedUI(  ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::frame::XLayoutManager > SAL_CALL getLayoutManager(  ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::frame::XDispatchProvider > SAL_CALL getInplaceDispatchProvider(  ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::awt::Rectangle SAL_CALL getPlacement(  ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::awt::Rectangle SAL_CALL getClipRectangle(  ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL translateAccelerators( const ::com::sun::star::uno::Sequence< ::com::sun::star::awt::KeyEvent >& aKeys ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL scrollObject( const ::com::sun::star::awt::Size& aOffset ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL changedPlacement( const ::com::sun::star::awt::Rectangle& aPosRect ) throw (::com::sun::star::embed::WrongStateException, ::com::sun::star::uno::Exception, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::embed::XInplaceClient >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_EMBED_XINPLACECLIENT_HDL

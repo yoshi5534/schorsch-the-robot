@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_LDAP_LDAPCONNECTIONEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_LDAP_LDAPCONNECTIONEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ldap {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT LdapConnectionException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE LdapConnectionException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE LdapConnectionException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE LdapConnectionException(LdapConnectionException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~LdapConnectionException();
+
+    inline CPPU_GCC_DLLPRIVATE LdapConnectionException & operator =(LdapConnectionException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ldap::LdapConnectionException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_LDAP_LDAPCONNECTIONEXCEPTION_HDL

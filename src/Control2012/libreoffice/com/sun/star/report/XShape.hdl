@@ -1,0 +1,47 @@
+#ifndef INCLUDED_COM_SUN_STAR_REPORT_XSHAPE_HDL
+#define INCLUDED_COM_SUN_STAR_REPORT_XSHAPE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/report/XReportControlModel.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/beans/PropertyValue.hdl"
+#include "com/sun/star/drawing/HomogenMatrix3.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace report {
+
+class SAL_NO_VTABLE XShape : public ::com::sun::star::report::XReportControlModel
+{
+public:
+
+    // Attributes
+    virtual ::sal_Int32 SAL_CALL getZOrder() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setZOrder( ::sal_Int32 _zorder ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::drawing::HomogenMatrix3 SAL_CALL getTransformation() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setTransformation( const ::com::sun::star::drawing::HomogenMatrix3& _transformation ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getCustomShapeEngine() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCustomShapeEngine( const ::rtl::OUString& _customshapeengine ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getCustomShapeData() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCustomShapeData( const ::rtl::OUString& _customshapedata ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue > SAL_CALL getCustomShapeGeometry() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCustomShapeGeometry( const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& _customshapegeometry ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getOpaque() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setOpaque( ::sal_Bool _opaque ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::report::XShape >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_REPORT_XSHAPE_HDL

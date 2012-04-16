@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_CANNOTCONVERTEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_CANNOTCONVERTEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "com/sun/star/uno/TypeClass.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace script {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT CannotConvertException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE CannotConvertException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE CannotConvertException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::uno::TypeClass& DestinationTypeClass_, const ::sal_Int32& Reason_, const ::sal_Int32& ArgumentIndex_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE CannotConvertException(CannotConvertException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~CannotConvertException();
+
+    inline CPPU_GCC_DLLPRIVATE CannotConvertException & operator =(CannotConvertException const &);
+
+    ::com::sun::star::uno::TypeClass DestinationTypeClass CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+    ::sal_Int32 Reason;
+    ::sal_Int32 ArgumentIndex;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::script::CannotConvertException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_CANNOTCONVERTEXCEPTION_HDL

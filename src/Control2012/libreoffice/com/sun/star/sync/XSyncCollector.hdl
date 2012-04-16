@@ -1,0 +1,48 @@
+#ifndef INCLUDED_COM_SUN_STAR_SYNC_XSYNCCOLLECTOR_HDL
+#define INCLUDED_COM_SUN_STAR_SYNC_XSYNCCOLLECTOR_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace ucb { class XContent; } } } }
+#include "com/sun/star/sync/SyncInfo.hdl"
+#include "com/sun/star/sync/SyncElement.hdl"
+#include "com/sun/star/sync/SyncScheme.hdl"
+namespace com { namespace sun { namespace star { namespace ucb { class XContentProviderManager; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sync {
+
+class SAL_NO_VTABLE XSyncCollector : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL initialize( const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XContentProviderManager >& xMgr, const ::com::sun::star::uno::Sequence< ::com::sun::star::sync::SyncScheme >& aSyncSchemes, const ::rtl::OUString& aBaseFileName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::sync::SyncScheme > SAL_CALL getRegisteredSyncSchemes(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::sync::SyncElement > SAL_CALL getSyncSequence( const ::rtl::OUString& aSyncSchemeName, const ::com::sun::star::sync::SyncInfo& aSyncInfo ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL beginSynchronize(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL endSynchronize(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getCorrespondingElement( const ::com::sun::star::sync::SyncScheme& aSyncSchemeIn, const ::com::sun::star::sync::SyncElement& aSyncElementIn, ::com::sun::star::sync::SyncElement& aSyncElementOut ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL executeElementCommand( const ::rtl::OUString& aSyncSchemeName, const ::com::sun::star::sync::SyncElement& aSyncElement, const ::rtl::OUString& aCommandName, ::com::sun::star::uno::Any& aAny ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL elementSynchronized( const ::rtl::OUString& aSyncSchemeName, const ::com::sun::star::sync::SyncElement& aSyncElement, ::sal_uInt32 nSyncAction ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL notify( const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XContent >& XCnt, ::sal_uInt32 nEvent ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sync::XSyncCollector >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SYNC_XSYNCCOLLECTOR_HDL

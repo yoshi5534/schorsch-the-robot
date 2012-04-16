@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_MOZILLA_XPLUGININSTANCE_HDL
+#define INCLUDED_COM_SUN_STAR_MOZILLA_XPLUGININSTANCE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+namespace com { namespace sun { namespace star { namespace io { class XInputStream; } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace mozilla {
+
+class SAL_NO_VTABLE XPluginInstance : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL start(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL stop(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL destroy(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL createWindow( const ::com::sun::star::uno::Any& PlatformParentData, ::sal_Bool embedded ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL newStream( const ::rtl::OUString& MIMEDesc, const ::rtl::OUString& theURL, const ::rtl::OUString& filter, const ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream >& stream, const ::com::sun::star::uno::Any& sessionData ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL newURL( const ::rtl::OUString& MIMEDesc, const ::rtl::OUString& theURL, const ::rtl::OUString& filter, const ::com::sun::star::uno::Any& sessionData ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL getHttpServerURL( ::rtl::OUString& aHost, ::sal_uInt16& aPort, ::rtl::OUString& aPrefix ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::mozilla::XPluginInstance >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_MOZILLA_XPLUGININSTANCE_HDL

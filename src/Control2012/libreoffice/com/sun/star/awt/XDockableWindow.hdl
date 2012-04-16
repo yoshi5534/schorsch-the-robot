@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_XDOCKABLEWINDOW_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_XDOCKABLEWINDOW_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/awt/Rectangle.hdl"
+namespace com { namespace sun { namespace star { namespace awt { class XDockableWindowListener; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace awt {
+
+class SAL_NO_VTABLE XDockableWindow : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL addDockableWindowListener( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XDockableWindowListener >& xListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeDockableWindowListener( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XDockableWindowListener >& xListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL enableDocking( ::sal_Bool bEnable ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isFloating(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFloatingMode( ::sal_Bool bFloating ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL lock(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL unlock(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isLocked(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL startPopupMode( const ::com::sun::star::awt::Rectangle& WindowRect ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isInPopupMode(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XDockableWindow >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_XDOCKABLEWINDOW_HDL

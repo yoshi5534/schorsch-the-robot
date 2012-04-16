@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_XVIEW_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_XVIEW_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace awt { class XGraphics; } } } }
+#include "com/sun/star/awt/Size.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace awt {
+
+class SAL_NO_VTABLE XView : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL setGraphics( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XGraphics >& aDevice ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::XGraphics > SAL_CALL getGraphics(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::awt::Size SAL_CALL getSize(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL draw( ::sal_Int32 nX, ::sal_Int32 nY ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setZoom( float fZoomX, float fZoomY ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XView >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_XVIEW_HDL

@@ -1,0 +1,56 @@
+#ifndef INCLUDED_COM_SUN_STAR_FORM_RUNTIME_XFORMOPERATIONS_HDL
+#define INCLUDED_COM_SUN_STAR_FORM_RUNTIME_XFORMOPERATIONS_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/WrappedTargetException.hdl"
+#include "com/sun/star/sdbc/SQLException.hdl"
+namespace com { namespace sun { namespace star { namespace form { namespace runtime { class XFormController; } } } } }
+namespace com { namespace sun { namespace star { namespace sdbc { class XRowSet; } } } }
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/lang/XComponent.hdl"
+#include "com/sun/star/form/runtime/FeatureState.hdl"
+namespace com { namespace sun { namespace star { namespace form { namespace runtime { class XFeatureInvalidation; } } } } }
+namespace com { namespace sun { namespace star { namespace sdbc { class XResultSetUpdate; } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/beans/NamedValue.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace form { namespace runtime {
+
+class SAL_NO_VTABLE XFormOperations : public ::com::sun::star::lang::XComponent
+{
+public:
+
+    // Attributes
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XRowSet > SAL_CALL getCursor() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XResultSetUpdate > SAL_CALL getUpdateCursor() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFormController > SAL_CALL getController() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFeatureInvalidation > SAL_CALL getFeatureInvalidation() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFeatureInvalidation( const ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFeatureInvalidation >& _featureinvalidation ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual ::com::sun::star::form::runtime::FeatureState SAL_CALL getState( ::sal_Int16 Feature ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isEnabled( ::sal_Int16 Feature ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL execute( ::sal_Int16 Feature ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::sdbc::SQLException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL executeWithArguments( ::sal_Int16 Feature, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::NamedValue >& Arguments ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::sdbc::SQLException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL commitCurrentRecord( ::sal_Bool& RecordInserted ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL commitCurrentControl(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isInsertionRow(  ) throw (::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isModifiedRow(  ) throw (::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::form::runtime::XFormOperations >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_FORM_RUNTIME_XFORMOPERATIONS_HDL

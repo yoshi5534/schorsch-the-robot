@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_BEANS_PAIR_HDL
+#define INCLUDED_COM_SUN_STAR_BEANS_PAIR_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace beans {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+template< typename typeparam_T, typename typeparam_U > struct Pair {
+    inline Pair() SAL_THROW(());
+
+    inline Pair(typeparam_T const & First_, typeparam_U const & Second_) SAL_THROW(());
+
+    typeparam_T First;
+    typeparam_U Second;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+template< typename typeparam_T, typename typeparam_U > inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::beans::Pair< typeparam_T, typeparam_U >* );
+
+#endif // INCLUDED_COM_SUN_STAR_BEANS_PAIR_HDL

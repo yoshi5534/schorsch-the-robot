@@ -1,0 +1,32 @@
+#ifndef INCLUDED_COM_SUN_STAR_VIEW_PAPERFORMAT_HDL
+#define INCLUDED_COM_SUN_STAR_VIEW_PAPERFORMAT_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace view {
+
+enum PaperFormat
+{
+    PaperFormat_A3 = 0,
+    PaperFormat_A4 = 1,
+    PaperFormat_A5 = 2,
+    PaperFormat_B4 = 3,
+    PaperFormat_B5 = 4,
+    PaperFormat_LETTER = 5,
+    PaperFormat_LEGAL = 6,
+    PaperFormat_TABLOID = 7,
+    PaperFormat_USER = 8,
+    PaperFormat_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::view::PaperFormat* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_VIEW_PAPERFORMAT_HDL

@@ -1,0 +1,42 @@
+#ifndef INCLUDED_COM_SUN_STAR_RENDERING_XCANVASFONT_HDL
+#define INCLUDED_COM_SUN_STAR_RENDERING_XCANVASFONT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/beans/PropertyValue.hdl"
+#include "com/sun/star/rendering/FontMetrics.hdl"
+#include "com/sun/star/rendering/FontRequest.hdl"
+#include "com/sun/star/rendering/StringContext.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XTextLayout; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace rendering {
+
+class SAL_NO_VTABLE XCanvasFont : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XTextLayout > SAL_CALL createTextLayout( const ::com::sun::star::rendering::StringContext& aText, ::sal_Int8 nDirection, ::sal_Int64 nRandomSeed ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::rendering::FontRequest SAL_CALL getFontRequest(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::rendering::FontMetrics SAL_CALL getFontMetrics(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< double > SAL_CALL getAvailableSizes(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue > SAL_CALL getExtraFontProperties(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCanvasFont >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_RENDERING_XCANVASFONT_HDL

@@ -1,0 +1,49 @@
+#ifndef INCLUDED_COM_SUN_STAR_LINGUISTIC2_SINGLEPROOFREADINGERROR_HDL
+#define INCLUDED_COM_SUN_STAR_LINGUISTIC2_SINGLEPROOFREADINGERROR_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/beans/PropertyValue.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace linguistic2 {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct SingleProofreadingError {
+    inline SingleProofreadingError() SAL_THROW(());
+
+    inline SingleProofreadingError(const ::sal_Int32& nErrorStart_, const ::sal_Int32& nErrorLength_, const ::sal_Int32& nErrorType_, const ::rtl::OUString& aRuleIdentifier_, const ::rtl::OUString& aShortComment_, const ::rtl::OUString& aFullComment_, const ::com::sun::star::uno::Sequence< ::rtl::OUString >& aSuggestions_, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& aProperties_) SAL_THROW(());
+
+    ::sal_Int32 nErrorStart;
+    ::sal_Int32 nErrorLength;
+    ::sal_Int32 nErrorType;
+    ::rtl::OUString aRuleIdentifier;
+    ::rtl::OUString aShortComment;
+    ::rtl::OUString aFullComment;
+    ::com::sun::star::uno::Sequence< ::rtl::OUString > aSuggestions;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue > aProperties;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::linguistic2::SingleProofreadingError* );
+
+#endif // INCLUDED_COM_SUN_STAR_LINGUISTIC2_SINGLEPROOFREADINGERROR_HDL

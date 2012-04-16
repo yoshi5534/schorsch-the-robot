@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_ONETHREADID_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_ONETHREADID_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/OpaqueData.hdl"
+#include "com/sun/star/corba/ObjectSystemID.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct OneThreadID {
+    inline OneThreadID() SAL_THROW(());
+
+    inline OneThreadID(const ::sal_uInt32& objSysID_, const ::com::sun::star::uno::Sequence< ::sal_Int8 >& threadID_) SAL_THROW(());
+
+    ::sal_uInt32 objSysID;
+    ::com::sun::star::uno::Sequence< ::sal_Int8 > threadID;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::OneThreadID* );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_ONETHREADID_HDL

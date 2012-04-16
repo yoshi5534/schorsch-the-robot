@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_EMBED_NEEDSRUNNINGSTATEEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_EMBED_NEEDSRUNNINGSTATEEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/embed/WrongStateException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace embed {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT NeedsRunningStateException : public ::com::sun::star::embed::WrongStateException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE NeedsRunningStateException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NeedsRunningStateException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NeedsRunningStateException(NeedsRunningStateException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~NeedsRunningStateException();
+
+    inline CPPU_GCC_DLLPRIVATE NeedsRunningStateException & operator =(NeedsRunningStateException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::embed::NeedsRunningStateException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_EMBED_NEEDSRUNNINGSTATEEXCEPTION_HDL

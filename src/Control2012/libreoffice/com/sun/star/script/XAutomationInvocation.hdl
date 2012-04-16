@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_XAUTOMATIONINVOCATION_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_XAUTOMATIONINVOCATION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/reflection/InvocationTargetException.hdl"
+#include "com/sun/star/script/CannotConvertException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/script/XInvocation.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace script {
+
+class SAL_NO_VTABLE XAutomationInvocation : public ::com::sun::star::script::XInvocation
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Any SAL_CALL invokeGetProperty( const ::rtl::OUString& aFunctionName, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any >& aParams, ::com::sun::star::uno::Sequence< ::sal_Int16 >& aOutParamIndex, ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any >& aOutParam ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::script::CannotConvertException, ::com::sun::star::reflection::InvocationTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Any SAL_CALL invokePutProperty( const ::rtl::OUString& aFunctionName, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any >& aParams, ::com::sun::star::uno::Sequence< ::sal_Int16 >& aOutParamIndex, ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Any >& aOutParam ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::script::CannotConvertException, ::com::sun::star::reflection::InvocationTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::script::XAutomationInvocation >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_XAUTOMATIONINVOCATION_HDL

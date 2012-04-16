@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_IO_CONNECTEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_IO_CONNECTEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/io/SocketException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace io {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT ConnectException : public ::com::sun::star::io::SocketException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE ConnectException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE ConnectException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE ConnectException(ConnectException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~ConnectException();
+
+    inline CPPU_GCC_DLLPRIVATE ConnectException & operator =(ConnectException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::io::ConnectException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_IO_CONNECTEXCEPTION_HDL

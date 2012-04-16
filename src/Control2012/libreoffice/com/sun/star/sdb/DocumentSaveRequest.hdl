@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_SDB_DOCUMENTSAVEREQUEST_HDL
+#define INCLUDED_COM_SUN_STAR_SDB_DOCUMENTSAVEREQUEST_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace ucb { class XContent; } } } }
+#include "com/sun/star/task/ClassifiedInteractionRequest.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace sdb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT DocumentSaveRequest : public ::com::sun::star::task::ClassifiedInteractionRequest
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE DocumentSaveRequest() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE DocumentSaveRequest(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XContent >& Content_, const ::rtl::OUString& Name_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE DocumentSaveRequest(DocumentSaveRequest const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~DocumentSaveRequest();
+
+    inline CPPU_GCC_DLLPRIVATE DocumentSaveRequest & operator =(DocumentSaveRequest const &);
+
+    ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XContent > Content CPPU_GCC3_ALIGN( ::com::sun::star::task::ClassifiedInteractionRequest );
+    ::rtl::OUString Name;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sdb::DocumentSaveRequest* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SDB_DOCUMENTSAVEREQUEST_HDL

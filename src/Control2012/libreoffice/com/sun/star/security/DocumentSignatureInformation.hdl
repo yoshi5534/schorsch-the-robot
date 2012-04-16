@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_SECURITY_DOCUMENTSIGNATUREINFORMATION_HDL
+#define INCLUDED_COM_SUN_STAR_SECURITY_DOCUMENTSIGNATUREINFORMATION_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace security { class XCertificate; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace security {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct DocumentSignatureInformation {
+    inline DocumentSignatureInformation() SAL_THROW(());
+
+    inline DocumentSignatureInformation(const ::com::sun::star::uno::Reference< ::com::sun::star::security::XCertificate >& Signer_, const ::sal_Int32& SignatureDate_, const ::sal_Int32& SignatureTime_, const ::sal_Bool& SignatureIsValid_, const ::sal_Int32& CertificateStatus_, const ::sal_Bool& PartialDocumentSignature_) SAL_THROW(());
+
+    ::com::sun::star::uno::Reference< ::com::sun::star::security::XCertificate > Signer;
+    ::sal_Int32 SignatureDate;
+    ::sal_Int32 SignatureTime;
+    ::sal_Bool SignatureIsValid;
+    ::sal_Int32 CertificateStatus;
+    ::sal_Bool PartialDocumentSignature;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::security::DocumentSignatureInformation* );
+
+#endif // INCLUDED_COM_SUN_STAR_SECURITY_DOCUMENTSIGNATUREINFORMATION_HDL

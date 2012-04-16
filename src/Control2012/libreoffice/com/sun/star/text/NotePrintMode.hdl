@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEXT_NOTEPRINTMODE_HDL
+#define INCLUDED_COM_SUN_STAR_TEXT_NOTEPRINTMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace text {
+
+enum NotePrintMode
+{
+    NotePrintMode_NOT = 0,
+    NotePrintMode_ONLY = 1,
+    NotePrintMode_DOC_END = 2,
+    NotePrintMode_PAGE_END = 3,
+    NotePrintMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::text::NotePrintMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TEXT_NOTEPRINTMODE_HDL

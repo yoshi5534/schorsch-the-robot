@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_LOADER_CANNOTACTIVATEFACTORYEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_LOADER_CANNOTACTIVATEFACTORYEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace loader {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT CannotActivateFactoryException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE CannotActivateFactoryException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE CannotActivateFactoryException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE CannotActivateFactoryException(CannotActivateFactoryException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~CannotActivateFactoryException();
+
+    inline CPPU_GCC_DLLPRIVATE CannotActivateFactoryException & operator =(CannotActivateFactoryException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::loader::CannotActivateFactoryException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_LOADER_CANNOTACTIVATEFACTORYEXCEPTION_HDL

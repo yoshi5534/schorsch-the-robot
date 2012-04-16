@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_GENERALFUNCTION_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_GENERALFUNCTION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+enum GeneralFunction
+{
+    GeneralFunction_NONE = 0,
+    GeneralFunction_AUTO = 1,
+    GeneralFunction_SUM = 2,
+    GeneralFunction_COUNT = 3,
+    GeneralFunction_AVERAGE = 4,
+    GeneralFunction_MAX = 5,
+    GeneralFunction_MIN = 6,
+    GeneralFunction_PRODUCT = 7,
+    GeneralFunction_COUNTNUMS = 8,
+    GeneralFunction_STDEV = 9,
+    GeneralFunction_STDEVP = 10,
+    GeneralFunction_VAR = 11,
+    GeneralFunction_VARP = 12,
+    GeneralFunction_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::GeneralFunction* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_GENERALFUNCTION_HDL

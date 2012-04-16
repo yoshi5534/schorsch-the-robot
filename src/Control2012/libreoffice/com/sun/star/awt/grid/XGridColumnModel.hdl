@@ -1,0 +1,44 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_GRID_XGRIDCOLUMNMODEL_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_GRID_XGRIDCOLUMNMODEL_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/IndexOutOfBoundsException.hdl"
+namespace com { namespace sun { namespace star { namespace awt { namespace grid { class XGridColumn; } } } } }
+#include "com/sun/star/util/XCloneable.hdl"
+#include "com/sun/star/container/XContainer.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/lang/XComponent.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace awt { namespace grid {
+
+class SAL_NO_VTABLE XGridColumnModel : public ::com::sun::star::lang::XComponent, public ::com::sun::star::container::XContainer, public ::com::sun::star::util::XCloneable
+{
+public:
+
+    // Methods
+    virtual ::sal_Int32 SAL_CALL getColumnCount(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::grid::XGridColumn > SAL_CALL createColumn(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL addColumn( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::grid::XGridColumn >& column ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeColumn( ::sal_Int32 ColumnIndex ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::awt::grid::XGridColumn > > SAL_CALL getColumns(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::grid::XGridColumn > SAL_CALL getColumn( ::sal_Int32 index ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDefaultColumns( ::sal_Int32 elements ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::grid::XGridColumnModel >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_GRID_XGRIDCOLUMNMODEL_HDL

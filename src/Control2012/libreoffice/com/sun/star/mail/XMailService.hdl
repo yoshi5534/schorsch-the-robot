@@ -1,0 +1,51 @@
+#ifndef INCLUDED_COM_SUN_STAR_MAIL_XMAILSERVICE_HDL
+#define INCLUDED_COM_SUN_STAR_MAIL_XMAILSERVICE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/io/ConnectException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/io/AlreadyConnectedException.hdl"
+#include "com/sun/star/mail/MailException.hdl"
+namespace com { namespace sun { namespace star { namespace mail { class XAuthenticator; } } } }
+namespace com { namespace sun { namespace star { namespace mail { class XConnectionListener; } } } }
+#include "com/sun/star/io/NoRouteToHostException.hdl"
+#include "com/sun/star/auth/AuthenticationFailedException.hdl"
+#include "com/sun/star/io/NotConnectedException.hdl"
+namespace com { namespace sun { namespace star { namespace uno { class XCurrentContext; } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/io/UnknownHostException.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace mail {
+
+class SAL_NO_VTABLE XMailService : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getSupportedConnectionTypes(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addConnectionListener( const ::com::sun::star::uno::Reference< ::com::sun::star::mail::XConnectionListener >& xListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeConnectionListener( const ::com::sun::star::uno::Reference< ::com::sun::star::mail::XConnectionListener >& xListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::uno::XCurrentContext > SAL_CALL getCurrentConnectionContext(  ) throw (::com::sun::star::io::NotConnectedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL connect( const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XCurrentContext >& xConnectionContext, const ::com::sun::star::uno::Reference< ::com::sun::star::mail::XAuthenticator >& xAuthenticator ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::io::AlreadyConnectedException, ::com::sun::star::io::UnknownHostException, ::com::sun::star::io::NoRouteToHostException, ::com::sun::star::io::ConnectException, ::com::sun::star::auth::AuthenticationFailedException, ::com::sun::star::mail::MailException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL disconnect(  ) throw (::com::sun::star::mail::MailException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isConnected(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::mail::XMailService >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_MAIL_XMAILSERVICE_HDL

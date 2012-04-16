@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_EMBED_USEBACKUPEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_EMBED_USEBACKUPEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/io/IOException.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace embed {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT UseBackupException : public ::com::sun::star::io::IOException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE UseBackupException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE UseBackupException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::rtl::OUString& TemporaryFileURL_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE UseBackupException(UseBackupException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~UseBackupException();
+
+    inline CPPU_GCC_DLLPRIVATE UseBackupException & operator =(UseBackupException const &);
+
+    ::rtl::OUString TemporaryFileURL CPPU_GCC3_ALIGN( ::com::sun::star::io::IOException );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::embed::UseBackupException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_EMBED_USEBACKUPEXCEPTION_HDL

@@ -1,0 +1,15 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_IIOP_LISTENPOINTLIST_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_IIOP_LISTENPOINTLIST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/iiop/ListenPoint.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace iiop {
+
+typedef ::com::sun::star::uno::Sequence< ::com::sun::star::corba::iiop::ListenPoint > ListenPointList;
+
+} } } } }
+#endif // INCLUDED_COM_SUN_STAR_CORBA_IIOP_LISTENPOINTLIST_HDL

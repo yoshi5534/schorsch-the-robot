@@ -1,0 +1,56 @@
+#ifndef INCLUDED_COM_SUN_STAR_SDB_APPLICATION_XDATABASEDOCUMENTUI_HDL
+#define INCLUDED_COM_SUN_STAR_SDB_APPLICATION_XDATABASEDOCUMENTUI_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/beans/PropertyValue.hdl"
+#include "com/sun/star/container/NoSuchElementException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+namespace com { namespace sun { namespace star { namespace lang { class XComponent; } } } }
+namespace com { namespace sun { namespace star { namespace sdbc { class XConnection; } } } }
+#include "com/sun/star/sdbc/SQLException.hdl"
+namespace com { namespace sun { namespace star { namespace sdbc { class XDataSource; } } } }
+#include "com/sun/star/beans/Pair.hdl"
+namespace com { namespace sun { namespace star { namespace awt { class XWindow; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sdb { namespace application {
+
+class SAL_NO_VTABLE XDatabaseDocumentUI : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Attributes
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XDataSource > SAL_CALL getDataSource() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow > SAL_CALL getApplicationMainWindow() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XConnection > SAL_CALL getActiveConnection() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::lang::XComponent > > SAL_CALL getSubComponents() throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL isConnected(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL connect(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::beans::Pair< ::sal_Int32, ::rtl::OUString > SAL_CALL identifySubComponent( const ::com::sun::star::uno::Reference< ::com::sun::star::lang::XComponent >& SubComponent ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL closeSubComponents(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::lang::XComponent > SAL_CALL loadComponent( ::sal_Int32 ObjectType, const ::rtl::OUString& ObjectName, ::sal_Bool ForEditing ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::container::NoSuchElementException, ::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::lang::XComponent > SAL_CALL loadComponentWithArguments( ::sal_Int32 ObjectType, const ::rtl::OUString& ObjectName, ::sal_Bool ForEditing, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& Arguments ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::container::NoSuchElementException, ::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::lang::XComponent > SAL_CALL createComponent( ::sal_Int32 ObjectType, ::com::sun::star::uno::Reference< ::com::sun::star::lang::XComponent >& DocumentDefinition ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::lang::XComponent > SAL_CALL createComponentWithArguments( ::sal_Int32 ObjectType, const ::com::sun::star::uno::Sequence< ::com::sun::star::beans::PropertyValue >& Arguments, ::com::sun::star::uno::Reference< ::com::sun::star::lang::XComponent >& DocumentDefinition ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sdb::application::XDatabaseDocumentUI >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SDB_APPLICATION_XDATABASEDOCUMENTUI_HDL

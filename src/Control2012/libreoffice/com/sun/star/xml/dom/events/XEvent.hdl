@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_XML_DOM_EVENTS_XEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_XML_DOM_EVENTS_XEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/util/Time.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/xml/dom/events/PhaseType.hdl"
+namespace com { namespace sun { namespace star { namespace xml { namespace dom { namespace events { class XEventTarget; } } } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace xml { namespace dom { namespace events {
+
+class SAL_NO_VTABLE XEvent : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::rtl::OUString SAL_CALL getType(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::events::XEventTarget > SAL_CALL getTarget(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::events::XEventTarget > SAL_CALL getCurrentTarget(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::xml::dom::events::PhaseType SAL_CALL getEventPhase(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getBubbles(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getCancelable(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::util::Time SAL_CALL getTimeStamp(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL stopPropagation(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL preventDefault(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL initEvent( const ::rtl::OUString& eventTypeArg, ::sal_Bool canBubbleArg, ::sal_Bool cancelableArg ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::events::XEvent >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_XML_DOM_EVENTS_XEVENT_HDL

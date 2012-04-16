@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_MALFORMEDDATAEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_MALFORMEDDATAEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace configuration { namespace backend {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT MalformedDataException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE MalformedDataException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE MalformedDataException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::uno::Any& ErrorDetails_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE MalformedDataException(MalformedDataException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~MalformedDataException();
+
+    inline CPPU_GCC_DLLPRIVATE MalformedDataException & operator =(MalformedDataException const &);
+
+    ::com::sun::star::uno::Any ErrorDetails CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::configuration::backend::MalformedDataException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_MALFORMEDDATAEXCEPTION_HDL

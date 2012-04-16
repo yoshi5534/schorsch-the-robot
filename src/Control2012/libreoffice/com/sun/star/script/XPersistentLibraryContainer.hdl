@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_XPERSISTENTLIBRARYCONTAINER_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_XPERSISTENTLIBRARYCONTAINER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/script/XLibraryContainer2.hdl"
+#include "com/sun/star/lang/WrappedTargetException.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/util/XModifiable.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace script {
+
+class SAL_NO_VTABLE XPersistentLibraryContainer : public ::com::sun::star::util::XModifiable, public ::com::sun::star::script::XLibraryContainer2
+{
+public:
+
+    // Attributes
+    virtual ::com::sun::star::uno::Any SAL_CALL getRootLocation() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getContainerLocationName() throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual void SAL_CALL storeLibraries(  ) throw (::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::script::XPersistentLibraryContainer >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_XPERSISTENTLIBRARYCONTAINER_HDL

@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_STYLE_TABSTOP_HDL
+#define INCLUDED_COM_SUN_STAR_STYLE_TABSTOP_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/style/TabAlign.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace style {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct TabStop {
+    inline TabStop() SAL_THROW(());
+
+    inline TabStop(const ::sal_Int32& Position_, const ::com::sun::star::style::TabAlign& Alignment_, const ::sal_Unicode& DecimalChar_, const ::sal_Unicode& FillChar_) SAL_THROW(());
+
+    ::sal_Int32 Position;
+    ::com::sun::star::style::TabAlign Alignment;
+    ::sal_Unicode DecimalChar;
+    ::sal_Unicode FillChar;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::style::TabStop* );
+
+#endif // INCLUDED_COM_SUN_STAR_STYLE_TABSTOP_HDL

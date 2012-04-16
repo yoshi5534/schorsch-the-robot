@@ -1,0 +1,57 @@
+#ifndef INCLUDED_COM_SUN_STAR_RENDERING_XGRAPHICDEVICE_HDL
+#define INCLUDED_COM_SUN_STAR_RENDERING_XGRAPHICDEVICE_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace lang { class XMultiServiceFactory; } } } }
+namespace com { namespace sun { namespace star { namespace rendering { class XVolatileBitmap; } } } }
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XBitmap; } } } }
+#include "com/sun/star/geometry/RealBezierSegment2D.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/geometry/RealPoint2D.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XBezierPolyPolygon2D; } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XLinePolyPolygon2D; } } } }
+#include "com/sun/star/geometry/IntegerSize2D.hdl"
+#include "com/sun/star/geometry/RealSize2D.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XColorSpace; } } } }
+namespace com { namespace sun { namespace star { namespace rendering { class XBufferController; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace rendering {
+
+class SAL_NO_VTABLE XGraphicDevice : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBufferController > SAL_CALL getBufferController(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XColorSpace > SAL_CALL getDeviceColorSpace(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::geometry::RealSize2D SAL_CALL getPhysicalResolution(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::geometry::RealSize2D SAL_CALL getPhysicalSize(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XLinePolyPolygon2D > SAL_CALL createCompatibleLinePolyPolygon( const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< ::com::sun::star::geometry::RealPoint2D > >& points ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBezierPolyPolygon2D > SAL_CALL createCompatibleBezierPolyPolygon( const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< ::com::sun::star::geometry::RealBezierSegment2D > >& points ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBitmap > SAL_CALL createCompatibleBitmap( const ::com::sun::star::geometry::IntegerSize2D& size ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XVolatileBitmap > SAL_CALL createVolatileBitmap( const ::com::sun::star::geometry::IntegerSize2D& size ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBitmap > SAL_CALL createCompatibleAlphaBitmap( const ::com::sun::star::geometry::IntegerSize2D& size ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XVolatileBitmap > SAL_CALL createVolatileAlphaBitmap( const ::com::sun::star::geometry::IntegerSize2D& size ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::lang::XMultiServiceFactory > SAL_CALL getParametricPolyPolygonFactory(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL hasFullScreenMode(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL enterFullScreenMode( ::sal_Bool bEnter ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XGraphicDevice >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_RENDERING_XGRAPHICDEVICE_HDL

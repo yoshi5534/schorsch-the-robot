@@ -1,0 +1,55 @@
+#ifndef INCLUDED_COM_SUN_STAR_INSPECTION_LINEDESCRIPTOR_HDL
+#define INCLUDED_COM_SUN_STAR_INSPECTION_LINEDESCRIPTOR_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace graphic { class XGraphic; } } } }
+namespace com { namespace sun { namespace star { namespace inspection { class XPropertyControl; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace inspection {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct LineDescriptor {
+    inline LineDescriptor() SAL_THROW(());
+
+    inline LineDescriptor(const ::rtl::OUString& DisplayName_, const ::com::sun::star::uno::Reference< ::com::sun::star::inspection::XPropertyControl >& Control_, const ::rtl::OUString& HelpURL_, const ::sal_Bool& HasPrimaryButton_, const ::rtl::OUString& PrimaryButtonId_, const ::rtl::OUString& PrimaryButtonImageURL_, const ::com::sun::star::uno::Reference< ::com::sun::star::graphic::XGraphic >& PrimaryButtonImage_, const ::sal_Bool& HasSecondaryButton_, const ::rtl::OUString& SecondaryButtonId_, const ::rtl::OUString& SecondaryButtonImageURL_, const ::com::sun::star::uno::Reference< ::com::sun::star::graphic::XGraphic >& SecondaryButtonImage_, const ::sal_Int16& IndentLevel_, const ::rtl::OUString& Category_) SAL_THROW(());
+
+    ::rtl::OUString DisplayName;
+    ::com::sun::star::uno::Reference< ::com::sun::star::inspection::XPropertyControl > Control;
+    ::rtl::OUString HelpURL;
+    ::sal_Bool HasPrimaryButton;
+    ::rtl::OUString PrimaryButtonId;
+    ::rtl::OUString PrimaryButtonImageURL;
+    ::com::sun::star::uno::Reference< ::com::sun::star::graphic::XGraphic > PrimaryButtonImage;
+    ::sal_Bool HasSecondaryButton;
+    ::rtl::OUString SecondaryButtonId;
+    ::rtl::OUString SecondaryButtonImageURL;
+    ::com::sun::star::uno::Reference< ::com::sun::star::graphic::XGraphic > SecondaryButtonImage;
+    ::sal_Int16 IndentLevel;
+    ::rtl::OUString Category;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::inspection::LineDescriptor* );
+
+#endif // INCLUDED_COM_SUN_STAR_INSPECTION_LINEDESCRIPTOR_HDL

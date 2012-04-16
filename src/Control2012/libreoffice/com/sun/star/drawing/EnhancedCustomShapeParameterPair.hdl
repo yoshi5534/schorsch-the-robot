@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_ENHANCEDCUSTOMSHAPEPARAMETERPAIR_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_ENHANCEDCUSTOMSHAPEPARAMETERPAIR_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/drawing/EnhancedCustomShapeParameter.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct EnhancedCustomShapeParameterPair {
+    inline EnhancedCustomShapeParameterPair() SAL_THROW(());
+
+    inline EnhancedCustomShapeParameterPair(const ::com::sun::star::drawing::EnhancedCustomShapeParameter& First_, const ::com::sun::star::drawing::EnhancedCustomShapeParameter& Second_) SAL_THROW(());
+
+    ::com::sun::star::drawing::EnhancedCustomShapeParameter First;
+    ::com::sun::star::drawing::EnhancedCustomShapeParameter Second;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::EnhancedCustomShapeParameterPair* );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_ENHANCEDCUSTOMSHAPEPARAMETERPAIR_HDL

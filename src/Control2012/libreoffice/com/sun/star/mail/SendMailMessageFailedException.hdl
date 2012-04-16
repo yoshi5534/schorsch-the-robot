@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_MAIL_SENDMAILMESSAGEFAILEDEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_MAIL_SENDMAILMESSAGEFAILEDEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/mail/MailException.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace mail {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT SendMailMessageFailedException : public ::com::sun::star::mail::MailException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE SendMailMessageFailedException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE SendMailMessageFailedException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::uno::Sequence< ::rtl::OUString >& InvalidAddresses_, const ::com::sun::star::uno::Sequence< ::rtl::OUString >& ValidSentAddresses_, const ::com::sun::star::uno::Sequence< ::rtl::OUString >& ValidUnsentAddresses_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE SendMailMessageFailedException(SendMailMessageFailedException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~SendMailMessageFailedException();
+
+    inline CPPU_GCC_DLLPRIVATE SendMailMessageFailedException & operator =(SendMailMessageFailedException const &);
+
+    ::com::sun::star::uno::Sequence< ::rtl::OUString > InvalidAddresses CPPU_GCC3_ALIGN( ::com::sun::star::mail::MailException );
+    ::com::sun::star::uno::Sequence< ::rtl::OUString > ValidSentAddresses;
+    ::com::sun::star::uno::Sequence< ::rtl::OUString > ValidUnsentAddresses;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::mail::SendMailMessageFailedException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_MAIL_SENDMAILMESSAGEFAILEDEXCEPTION_HDL

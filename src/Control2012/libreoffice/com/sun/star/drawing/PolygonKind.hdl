@@ -1,0 +1,32 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_POLYGONKIND_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_POLYGONKIND_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum PolygonKind
+{
+    PolygonKind_LINE = 0,
+    PolygonKind_POLY = 1,
+    PolygonKind_PLIN = 2,
+    PolygonKind_PATHLINE = 3,
+    PolygonKind_PATHFILL = 4,
+    PolygonKind_FREELINE = 5,
+    PolygonKind_FREEFILL = 6,
+    PolygonKind_PATHPOLY = 7,
+    PolygonKind_PATHPLIN = 8,
+    PolygonKind_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::PolygonKind* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_POLYGONKIND_HDL

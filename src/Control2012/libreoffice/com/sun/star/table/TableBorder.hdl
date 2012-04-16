@@ -1,0 +1,53 @@
+#ifndef INCLUDED_COM_SUN_STAR_TABLE_TABLEBORDER_HDL
+#define INCLUDED_COM_SUN_STAR_TABLE_TABLEBORDER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/table/BorderLine.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace table {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct TableBorder {
+    inline TableBorder() SAL_THROW(());
+
+    inline TableBorder(const ::com::sun::star::table::BorderLine& TopLine_, const ::sal_Bool& IsTopLineValid_, const ::com::sun::star::table::BorderLine& BottomLine_, const ::sal_Bool& IsBottomLineValid_, const ::com::sun::star::table::BorderLine& LeftLine_, const ::sal_Bool& IsLeftLineValid_, const ::com::sun::star::table::BorderLine& RightLine_, const ::sal_Bool& IsRightLineValid_, const ::com::sun::star::table::BorderLine& HorizontalLine_, const ::sal_Bool& IsHorizontalLineValid_, const ::com::sun::star::table::BorderLine& VerticalLine_, const ::sal_Bool& IsVerticalLineValid_, const ::sal_Int16& Distance_, const ::sal_Bool& IsDistanceValid_) SAL_THROW(());
+
+    ::com::sun::star::table::BorderLine TopLine;
+    ::sal_Bool IsTopLineValid;
+    ::com::sun::star::table::BorderLine BottomLine;
+    ::sal_Bool IsBottomLineValid;
+    ::com::sun::star::table::BorderLine LeftLine;
+    ::sal_Bool IsLeftLineValid;
+    ::com::sun::star::table::BorderLine RightLine;
+    ::sal_Bool IsRightLineValid;
+    ::com::sun::star::table::BorderLine HorizontalLine;
+    ::sal_Bool IsHorizontalLineValid;
+    ::com::sun::star::table::BorderLine VerticalLine;
+    ::sal_Bool IsVerticalLineValid;
+    ::sal_Int16 Distance;
+    ::sal_Bool IsDistanceValid;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::table::TableBorder* );
+
+#endif // INCLUDED_COM_SUN_STAR_TABLE_TABLEBORDER_HDL

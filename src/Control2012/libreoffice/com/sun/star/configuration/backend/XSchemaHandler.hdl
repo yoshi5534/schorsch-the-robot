@@ -1,0 +1,52 @@
+#ifndef INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_XSCHEMAHANDLER_HDL
+#define INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_XSCHEMAHANDLER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/configuration/backend/TemplateIdentifier.hdl"
+#include "com/sun/star/lang/WrappedTargetException.hdl"
+#include "com/sun/star/configuration/backend/MalformedDataException.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Type.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace configuration { namespace backend {
+
+class SAL_NO_VTABLE XSchemaHandler : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL startSchema(  ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL endSchema(  ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL importComponent( const ::rtl::OUString& aName ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL startComponent( const ::rtl::OUString& aName ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL endComponent(  ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL startGroupTemplate( const ::com::sun::star::configuration::backend::TemplateIdentifier& aTemplate, ::sal_Int16 aAttributes ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL startSetTemplate( const ::com::sun::star::configuration::backend::TemplateIdentifier& aTemplate, ::sal_Int16 aAttributes, const ::com::sun::star::configuration::backend::TemplateIdentifier& aItemType ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL endTemplate(  ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL startGroup( const ::rtl::OUString& aName, ::sal_Int16 aAttributes ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL startSet( const ::rtl::OUString& aName, ::sal_Int16 aAttributes, const ::com::sun::star::configuration::backend::TemplateIdentifier& aItemType ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL endNode(  ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addProperty( const ::rtl::OUString& aName, ::sal_Int16 aAttributes, const ::com::sun::star::uno::Type& aType ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addPropertyWithDefault( const ::rtl::OUString& aName, ::sal_Int16 aAttributes, const ::com::sun::star::uno::Any& aDefaultValue ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addInstance( const ::rtl::OUString& aName, const ::com::sun::star::configuration::backend::TemplateIdentifier& aTemplate ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addItemType( const ::com::sun::star::configuration::backend::TemplateIdentifier& aItemType ) throw (::com::sun::star::configuration::backend::MalformedDataException, ::com::sun::star::lang::WrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::configuration::backend::XSchemaHandler >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CONFIGURATION_BACKEND_XSCHEMAHANDLER_HDL

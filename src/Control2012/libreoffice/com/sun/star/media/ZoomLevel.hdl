@@ -1,0 +1,32 @@
+#ifndef INCLUDED_COM_SUN_STAR_MEDIA_ZOOMLEVEL_HDL
+#define INCLUDED_COM_SUN_STAR_MEDIA_ZOOMLEVEL_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace media {
+
+enum ZoomLevel
+{
+    ZoomLevel_NOT_AVAILABLE = 0,
+    ZoomLevel_ORIGINAL = 1,
+    ZoomLevel_FIT_TO_WINDOW = 2,
+    ZoomLevel_FIT_TO_WINDOW_FIXED_ASPECT = 3,
+    ZoomLevel_FULLSCREEN = 4,
+    ZoomLevel_ZOOM_1_TO_4 = 5,
+    ZoomLevel_ZOOM_1_TO_2 = 6,
+    ZoomLevel_ZOOM_2_TO_1 = 7,
+    ZoomLevel_ZOOM_4_TO_1 = 8,
+    ZoomLevel_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::media::ZoomLevel* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_MEDIA_ZOOMLEVEL_HDL

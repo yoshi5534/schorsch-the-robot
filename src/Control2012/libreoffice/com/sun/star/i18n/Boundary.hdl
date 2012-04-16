@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_I18N_BOUNDARY_HDL
+#define INCLUDED_COM_SUN_STAR_I18N_BOUNDARY_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace i18n {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct Boundary {
+    inline Boundary() SAL_THROW(());
+
+    inline Boundary(const ::sal_Int32& startPos_, const ::sal_Int32& endPos_) SAL_THROW(());
+
+    ::sal_Int32 startPos;
+    ::sal_Int32 endPos;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::i18n::Boundary* );
+
+#endif // INCLUDED_COM_SUN_STAR_I18N_BOUNDARY_HDL

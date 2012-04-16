@@ -1,0 +1,29 @@
+#ifndef INCLUDED_COM_SUN_STAR_MOZILLA_XMOZILLABOOTSTRAP_HDL
+#define INCLUDED_COM_SUN_STAR_MOZILLA_XMOZILLABOOTSTRAP_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/mozilla/XProxyRunner.hdl"
+#include "com/sun/star/mozilla/XProfileDiscover.hdl"
+#include "com/sun/star/mozilla/XProfileManager.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace mozilla {
+
+class SAL_NO_VTABLE XMozillaBootstrap : public ::com::sun::star::mozilla::XProfileDiscover, public ::com::sun::star::mozilla::XProfileManager, public ::com::sun::star::mozilla::XProxyRunner
+{
+public:
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::mozilla::XMozillaBootstrap >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_MOZILLA_XMOZILLABOOTSTRAP_HDL

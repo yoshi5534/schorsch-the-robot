@@ -1,0 +1,31 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_OUTGOINGMESSAGESTATE_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_OUTGOINGMESSAGESTATE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+enum OutgoingMessageState
+{
+    OutgoingMessageState_WRITTEN = 0,
+    OutgoingMessageState_PARTIALLY_LOCALLY_SENT = 1,
+    OutgoingMessageState_COMPLETELY_LOCALLY_SENT = 2,
+    OutgoingMessageState_RECOVERABLE_LOCAL_ERROR = 3,
+    OutgoingMessageState_NONRECOVERABLE_LOCAL_ERROR = 4,
+    OutgoingMessageState_EXTERNAL_ERROR = 5,
+    OutgoingMessageState_WAITING_CONFIRMATION = 6,
+    OutgoingMessageState_CONFIRMED = 7,
+    OutgoingMessageState_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::OutgoingMessageState* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_OUTGOINGMESSAGESTATE_HDL

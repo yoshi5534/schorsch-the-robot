@@ -1,0 +1,60 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_XSLIDESORTERBASE_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_XSLIDESORTERBASE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/util/Color.hdl"
+namespace com { namespace sun { namespace star { namespace container { class XIndexAccess; } } } }
+#include "com/sun/star/drawing/XDrawView.hdl"
+#include "com/sun/star/drawing/framework/XView.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+class SAL_NO_VTABLE XSlideSorterBase : public ::com::sun::star::drawing::framework::XView, public ::com::sun::star::drawing::XDrawView
+{
+public:
+
+    // Attributes
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::container::XIndexAccess > SAL_CALL getDocumentSlides() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDocumentSlides( const ::com::sun::star::uno::Reference< ::com::sun::star::container::XIndexAccess >& _documentslides ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getIsHighlightCurrentSlide() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setIsHighlightCurrentSlide( ::sal_Bool _ishighlightcurrentslide ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getIsShowSelection() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setIsShowSelection( ::sal_Bool _isshowselection ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getIsShowFocus() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setIsShowFocus( ::sal_Bool _isshowfocus ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getIsCenterSelection() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setIsCenterSelection( ::sal_Bool _iscenterselection ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getIsSuspendPreviewUpdatesDuringFullScreenPresentation() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setIsSuspendPreviewUpdatesDuringFullScreenPresentation( ::sal_Bool _issuspendpreviewupdatesduringfullscreenpresentation ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getIsOrientationVertical() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setIsOrientationVertical( ::sal_Bool _isorientationvertical ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getIsSmoothScrolling() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setIsSmoothScrolling( ::sal_Bool _issmoothscrolling ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getBackgroundColor() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setBackgroundColor( ::sal_Int32 _backgroundcolor ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getTextColor() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setTextColor( ::sal_Int32 _textcolor ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getSelectionColor() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSelectionColor( ::sal_Int32 _selectioncolor ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getHighlightColor() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setHighlightColor( ::sal_Int32 _highlightcolor ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getIsUIReadOnly() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setIsUIReadOnly( ::sal_Bool _isuireadonly ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XSlideSorterBase >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_XSLIDESORTERBASE_HDL

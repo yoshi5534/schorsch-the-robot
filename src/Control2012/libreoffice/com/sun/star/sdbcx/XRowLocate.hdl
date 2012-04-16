@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_SDBCX_XROWLOCATE_HDL
+#define INCLUDED_COM_SUN_STAR_SDBCX_XROWLOCATE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/sdbc/SQLException.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sdbcx {
+
+class SAL_NO_VTABLE XRowLocate : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Any SAL_CALL getBookmark(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL moveToBookmark( const ::com::sun::star::uno::Any& bookmark ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL moveRelativeToBookmark( const ::com::sun::star::uno::Any& bookmark, ::sal_Int32 rows ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL compareBookmarks( const ::com::sun::star::uno::Any& first, const ::com::sun::star::uno::Any& second ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL hasOrderedBookmarks(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL hashBookmark( const ::com::sun::star::uno::Any& bookmark ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sdbcx::XRowLocate >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SDBCX_XROWLOCATE_HDL

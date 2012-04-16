@@ -1,0 +1,42 @@
+#ifndef INCLUDED_COM_SUN_STAR_IO_XDATAINPUTSTREAM_HDL
+#define INCLUDED_COM_SUN_STAR_IO_XDATAINPUTSTREAM_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/io/XInputStream.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/io/IOException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace io {
+
+class SAL_NO_VTABLE XDataInputStream : public ::com::sun::star::io::XInputStream
+{
+public:
+
+    // Methods
+    virtual ::sal_Int8 SAL_CALL readBoolean(  ) throw (::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int8 SAL_CALL readByte(  ) throw (::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Unicode SAL_CALL readChar(  ) throw (::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL readShort(  ) throw (::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL readLong(  ) throw (::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int64 SAL_CALL readHyper(  ) throw (::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual float SAL_CALL readFloat(  ) throw (::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL readDouble(  ) throw (::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL readUTF(  ) throw (::com::sun::star::io::IOException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::io::XDataInputStream >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_IO_XDATAINPUTSTREAM_HDL

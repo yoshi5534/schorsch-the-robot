@@ -1,0 +1,35 @@
+#ifndef INCLUDED_COM_SUN_STAR_ANIMATIONS_XANIMATECOLOR_HDL
+#define INCLUDED_COM_SUN_STAR_ANIMATIONS_XANIMATECOLOR_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/animations/XAnimate.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace animations {
+
+class SAL_NO_VTABLE XAnimateColor : public ::com::sun::star::animations::XAnimate
+{
+public:
+
+    // Attributes
+    virtual ::sal_Int16 SAL_CALL getColorInterpolation() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setColorInterpolation( ::sal_Int16 _colorinterpolation ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getDirection() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDirection( ::sal_Bool _direction ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::animations::XAnimateColor >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_ANIMATIONS_XANIMATECOLOR_HDL

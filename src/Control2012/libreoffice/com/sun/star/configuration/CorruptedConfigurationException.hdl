@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_CONFIGURATION_CORRUPTEDCONFIGURATIONEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_CONFIGURATION_CORRUPTEDCONFIGURATIONEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace configuration {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT CorruptedConfigurationException : public ::com::sun::star::uno::RuntimeException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE CorruptedConfigurationException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE CorruptedConfigurationException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::rtl::OUString& Details_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE CorruptedConfigurationException(CorruptedConfigurationException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~CorruptedConfigurationException();
+
+    inline CPPU_GCC_DLLPRIVATE CorruptedConfigurationException & operator =(CorruptedConfigurationException const &);
+
+    ::rtl::OUString Details CPPU_GCC3_ALIGN( ::com::sun::star::uno::RuntimeException );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::configuration::CorruptedConfigurationException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CONFIGURATION_CORRUPTEDCONFIGURATIONEXCEPTION_HDL

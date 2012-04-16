@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_COLORMODE_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_COLORMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum ColorMode
+{
+    ColorMode_STANDARD = 0,
+    ColorMode_GREYS = 1,
+    ColorMode_MONO = 2,
+    ColorMode_WATERMARK = 3,
+    ColorMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::ColorMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_COLORMODE_HDL

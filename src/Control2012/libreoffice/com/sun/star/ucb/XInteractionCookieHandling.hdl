@@ -1,0 +1,35 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_XINTERACTIONCOOKIEHANDLING_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_XINTERACTIONCOOKIEHANDLING_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/ucb/CookiePolicy.hdl"
+#include "com/sun/star/ucb/Cookie.hdl"
+#include "com/sun/star/task/XInteractionContinuation.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class SAL_NO_VTABLE XInteractionCookieHandling : public ::com::sun::star::task::XInteractionContinuation
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL setGeneralPolicy( ::com::sun::star::ucb::CookiePolicy Policy ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSpecificPolicy( const ::com::sun::star::ucb::Cookie& ConfirmCookie, ::sal_Bool Accept ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XInteractionCookieHandling >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_XINTERACTIONCOOKIEHANDLING_HDL

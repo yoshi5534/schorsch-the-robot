@@ -1,0 +1,33 @@
+#ifndef INCLUDED_COM_SUN_STAR_XFORMS_XFORMSEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_XFORMS_XFORMSEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/xml/dom/events/XEvent.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace xforms {
+
+class SAL_NO_VTABLE XFormsEvent : public ::com::sun::star::xml::dom::events::XEvent
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL initXFormsEvent( const ::rtl::OUString& typeArg, ::sal_Bool canBubbleArg, ::sal_Bool cancelableArg ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::xforms::XFormsEvent >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_XFORMS_XFORMSEVENT_HDL

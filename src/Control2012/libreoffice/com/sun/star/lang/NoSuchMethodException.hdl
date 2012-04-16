@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_LANG_NOSUCHMETHODEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_LANG_NOSUCHMETHODEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace lang {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT NoSuchMethodException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE NoSuchMethodException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NoSuchMethodException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NoSuchMethodException(NoSuchMethodException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~NoSuchMethodException();
+
+    inline CPPU_GCC_DLLPRIVATE NoSuchMethodException & operator =(NoSuchMethodException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::lang::NoSuchMethodException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_LANG_NOSUCHMETHODEXCEPTION_HDL

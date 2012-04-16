@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_LINEDASH_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_LINEDASH_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/drawing/DashStyle.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct LineDash {
+    inline LineDash() SAL_THROW(());
+
+    inline LineDash(const ::com::sun::star::drawing::DashStyle& Style_, const ::sal_Int16& Dots_, const ::sal_Int32& DotLen_, const ::sal_Int16& Dashes_, const ::sal_Int32& DashLen_, const ::sal_Int32& Distance_) SAL_THROW(());
+
+    ::com::sun::star::drawing::DashStyle Style;
+    ::sal_Int16 Dots;
+    ::sal_Int32 DotLen;
+    ::sal_Int16 Dashes;
+    ::sal_Int32 DashLen;
+    ::sal_Int32 Distance;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::LineDash* );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_LINEDASH_HDL

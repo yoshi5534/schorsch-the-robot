@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_XPRESENTERHELPER_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_XPRESENTERHELPER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/awt/Rectangle.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XSpriteCanvas; } } } }
+namespace com { namespace sun { namespace star { namespace rendering { class XBitmap; } } } }
+namespace com { namespace sun { namespace star { namespace rendering { class XCanvas; } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+namespace com { namespace sun { namespace star { namespace awt { class XWindow; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+class SAL_NO_VTABLE XPresenterHelper : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow > SAL_CALL createWindow( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow >& xParentWindow, ::sal_Bool bCreateSystemChildWindow, ::sal_Bool bInitiallyVisible, ::sal_Bool bEnableChildTransparentMode, ::sal_Bool bEnableParentClip ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCanvas > SAL_CALL createSharedCanvas( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XSpriteCanvas >& xUpdateCanvas, const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow >& xUpdateWindow, const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCanvas >& xSharedCanvas, const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow >& xSharedWindow, const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow >& xWindow ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCanvas > SAL_CALL createCanvas( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow >& xWindow, ::sal_Int16 nRequestedCanvasFeatureList, const ::rtl::OUString& sOptionalCanvasServiceName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL toTop( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow >& xWindow ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBitmap > SAL_CALL loadBitmap( const ::rtl::OUString& sURL, const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCanvas >& xCanvas ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL captureMouse( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow >& xWindow ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL releaseMouse( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow >& xWindow ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::awt::Rectangle SAL_CALL getWindowExtentsRelative( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow >& xChildWindow, const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow >& xParentWindow ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XPresenterHelper >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_XPRESENTERHELPER_HDL

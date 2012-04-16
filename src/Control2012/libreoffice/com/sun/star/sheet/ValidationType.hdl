@@ -1,0 +1,31 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_VALIDATIONTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_VALIDATIONTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+enum ValidationType
+{
+    ValidationType_ANY = 0,
+    ValidationType_WHOLE = 1,
+    ValidationType_DECIMAL = 2,
+    ValidationType_DATE = 3,
+    ValidationType_TIME = 4,
+    ValidationType_TEXT_LEN = 5,
+    ValidationType_LIST = 6,
+    ValidationType_CUSTOM = 7,
+    ValidationType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::ValidationType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_VALIDATIONTYPE_HDL

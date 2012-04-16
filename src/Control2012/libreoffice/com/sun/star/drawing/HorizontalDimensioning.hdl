@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_HORIZONTALDIMENSIONING_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_HORIZONTALDIMENSIONING_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum HorizontalDimensioning
+{
+    HorizontalDimensioning_AUTO = 0,
+    HorizontalDimensioning_LEFT = 1,
+    HorizontalDimensioning_CENTERED = 2,
+    HorizontalDimensioning_RIGHT = 3,
+    HorizontalDimensioning_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::HorizontalDimensioning* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_HORIZONTALDIMENSIONING_HDL

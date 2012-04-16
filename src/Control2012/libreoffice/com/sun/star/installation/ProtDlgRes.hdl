@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_INSTALLATION_PROTDLGRES_HDL
+#define INCLUDED_COM_SUN_STAR_INSTALLATION_PROTDLGRES_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace installation {
+
+enum ProtDlgRes
+{
+    ProtDlgRes_NOCHANGE = 0,
+    ProtDlgRes_CHECK = 1,
+    ProtDlgRes_UNCHECK = 2,
+    ProtDlgRes_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::installation::ProtDlgRes* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_INSTALLATION_PROTDLGRES_HDL

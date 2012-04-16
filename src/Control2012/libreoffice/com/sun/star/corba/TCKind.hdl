@@ -1,0 +1,56 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_TCKIND_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_TCKIND_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba {
+
+enum TCKind
+{
+    TCKind_tk_null = 0,
+    TCKind_tk_void = 1,
+    TCKind_tk_short = 2,
+    TCKind_tk_long = 3,
+    TCKind_tk_ushort = 4,
+    TCKind_tk_ulong = 5,
+    TCKind_tk_float = 6,
+    TCKind_tk_double = 7,
+    TCKind_tk_boolean = 8,
+    TCKind_tk_char = 9,
+    TCKind_tk_octet = 10,
+    TCKind_tk_any = 11,
+    TCKind_tk_TypeCode = 12,
+    TCKind_tk_Principal = 13,
+    TCKind_tk_objref = 14,
+    TCKind_tk_struct = 15,
+    TCKind_tk_union = 16,
+    TCKind_tk_enum = 17,
+    TCKind_tk_string = 18,
+    TCKind_tk_sequence = 19,
+    TCKind_tk_array = 20,
+    TCKind_tk_alias = 21,
+    TCKind_tk_except = 22,
+    TCKind_tk_longlong = 23,
+    TCKind_tk_ulonglong = 24,
+    TCKind_tk_longdouble = 25,
+    TCKind_tk_wchar = 26,
+    TCKind_tk_wstring = 27,
+    TCKind_tk_fixed = 28,
+    TCKind_tk_value = 29,
+    TCKind_tk_value_box = 30,
+    TCKind_tk_native = 31,
+    TCKind_tk_abstract_interface = 32,
+    TCKind_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::TCKind* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_TCKIND_HDL

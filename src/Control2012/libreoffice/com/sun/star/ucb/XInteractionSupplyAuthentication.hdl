@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_XINTERACTIONSUPPLYAUTHENTICATION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_XINTERACTIONSUPPLYAUTHENTICATION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/task/XInteractionContinuation.hdl"
+#include "com/sun/star/ucb/RememberAuthentication.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class SAL_NO_VTABLE XInteractionSupplyAuthentication : public ::com::sun::star::task::XInteractionContinuation
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL canSetRealm(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setRealm( const ::rtl::OUString& Realm ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL canSetUserName(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setUserName( const ::rtl::OUString& UserName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL canSetPassword(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setPassword( const ::rtl::OUString& Password ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::ucb::RememberAuthentication > SAL_CALL getRememberPasswordModes( ::com::sun::star::ucb::RememberAuthentication& Default ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setRememberPassword( ::com::sun::star::ucb::RememberAuthentication Remember ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL canSetAccount(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setAccount( const ::rtl::OUString& Account ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::ucb::RememberAuthentication > SAL_CALL getRememberAccountModes( ::com::sun::star::ucb::RememberAuthentication& Default ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setRememberAccount( ::com::sun::star::ucb::RememberAuthentication Remember ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XInteractionSupplyAuthentication >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_XINTERACTIONSUPPLYAUTHENTICATION_HDL

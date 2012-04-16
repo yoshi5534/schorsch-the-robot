@@ -1,0 +1,52 @@
+#ifndef INCLUDED_COM_SUN_STAR_I18N_XLOCALEDATA_HDL
+#define INCLUDED_COM_SUN_STAR_I18N_XLOCALEDATA_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/i18n/ForbiddenCharacters.hdl"
+#include "com/sun/star/i18n/Currency.hdl"
+#include "com/sun/star/i18n/LocaleDataItem.hdl"
+#include "com/sun/star/lang/Locale.hdl"
+#include "com/sun/star/i18n/FormatElement.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/i18n/LanguageCountryInfo.hdl"
+#include "com/sun/star/i18n/Implementation.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/i18n/Calendar.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace i18n {
+
+class SAL_NO_VTABLE XLocaleData : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::i18n::LanguageCountryInfo SAL_CALL getLanguageCountryInfo( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::i18n::LocaleDataItem SAL_CALL getLocaleItem( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::i18n::Calendar > SAL_CALL getAllCalendars( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::i18n::Currency > SAL_CALL getAllCurrencies( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::i18n::FormatElement > SAL_CALL getAllFormats( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::i18n::Implementation > SAL_CALL getCollatorImplementations( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getSearchOptions( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getCollationOptions( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getTransliterations( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::i18n::ForbiddenCharacters SAL_CALL getForbiddenCharacters( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getReservedWord( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::lang::Locale > SAL_CALL getAllInstalledLocaleNames(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::i18n::XLocaleData >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_I18N_XLOCALEDATA_HDL

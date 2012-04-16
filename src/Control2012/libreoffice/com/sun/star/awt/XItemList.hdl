@@ -1,0 +1,56 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_XITEMLIST_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_XITEMLIST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace awt { class XItemListListener; } } } }
+#include "com/sun/star/lang/IndexOutOfBoundsException.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/beans/Pair.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace awt {
+
+class SAL_NO_VTABLE XItemList : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Attributes
+    virtual ::sal_Int32 SAL_CALL getItemCount() throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual void SAL_CALL insertItem( ::sal_Int32 Position, const ::rtl::OUString& ItemText, const ::rtl::OUString& ItemImageURL ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL insertItemText( ::sal_Int32 Position, const ::rtl::OUString& ItemText ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL insertItemImage( ::sal_Int32 Position, const ::rtl::OUString& ItemImageURL ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeItem( ::sal_Int32 Position ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeAllItems(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setItemText( ::sal_Int32 Position, const ::rtl::OUString& ItemText ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setItemImage( ::sal_Int32 Position, const ::rtl::OUString& ItemImageURL ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setItemTextAndImage( ::sal_Int32 Position, const ::rtl::OUString& ItemText, const ::rtl::OUString& ItemImageURL ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setItemData( ::sal_Int32 Position, const ::com::sun::star::uno::Any& ItemData ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getItemText( ::sal_Int32 Position ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getItemImage( ::sal_Int32 Position ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::beans::Pair< ::rtl::OUString, ::rtl::OUString > SAL_CALL getItemTextAndImage( ::sal_Int32 Position ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Any SAL_CALL getItemData( ::sal_Int32 Position ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::beans::Pair< ::rtl::OUString, ::rtl::OUString > > SAL_CALL getAllItems(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addItemListListener( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XItemListListener >& Listener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeItemListListener( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XItemListListener >& Listener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XItemList >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_XITEMLIST_HDL

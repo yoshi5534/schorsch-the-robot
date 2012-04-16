@@ -1,0 +1,42 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCANNER_XSCANNERMANAGER_HDL
+#define INCLUDED_COM_SUN_STAR_SCANNER_XSCANNERMANAGER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace lang { class XEventListener; } } } }
+namespace com { namespace sun { namespace star { namespace awt { class XBitmap; } } } }
+#include "com/sun/star/scanner/ScannerException.hdl"
+#include "com/sun/star/scanner/ScanError.hdl"
+#include "com/sun/star/scanner/ScannerContext.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace scanner {
+
+class SAL_NO_VTABLE XScannerManager : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::scanner::ScannerContext > SAL_CALL getAvailableScanners(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL configureScanner( ::com::sun::star::scanner::ScannerContext& scanner_context ) throw (::com::sun::star::scanner::ScannerException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL startScan( const ::com::sun::star::scanner::ScannerContext& scanner_context, const ::com::sun::star::uno::Reference< ::com::sun::star::lang::XEventListener >& listener ) throw (::com::sun::star::scanner::ScannerException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::scanner::ScanError SAL_CALL getError( const ::com::sun::star::scanner::ScannerContext& scanner_context ) throw (::com::sun::star::scanner::ScannerException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::awt::XBitmap > SAL_CALL getBitmap( const ::com::sun::star::scanner::ScannerContext& scanner_context ) throw (::com::sun::star::scanner::ScannerException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::scanner::XScannerManager >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCANNER_XSCANNERMANAGER_HDL

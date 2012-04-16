@@ -1,0 +1,35 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_FILTEROPERATOR_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_FILTEROPERATOR_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+enum FilterOperator
+{
+    FilterOperator_EMPTY = 0,
+    FilterOperator_NOT_EMPTY = 1,
+    FilterOperator_EQUAL = 2,
+    FilterOperator_NOT_EQUAL = 3,
+    FilterOperator_GREATER = 4,
+    FilterOperator_GREATER_EQUAL = 5,
+    FilterOperator_LESS = 6,
+    FilterOperator_LESS_EQUAL = 7,
+    FilterOperator_TOP_VALUES = 8,
+    FilterOperator_TOP_PERCENT = 9,
+    FilterOperator_BOTTOM_VALUES = 10,
+    FilterOperator_BOTTOM_PERCENT = 11,
+    FilterOperator_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::FilterOperator* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_FILTEROPERATOR_HDL

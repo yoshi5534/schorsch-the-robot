@@ -1,0 +1,37 @@
+#ifndef INCLUDED_COM_SUN_STAR_PRESENTATION_CLICKACTION_HDL
+#define INCLUDED_COM_SUN_STAR_PRESENTATION_CLICKACTION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace presentation {
+
+enum ClickAction
+{
+    ClickAction_NONE = 0,
+    ClickAction_PREVPAGE = 1,
+    ClickAction_NEXTPAGE = 2,
+    ClickAction_FIRSTPAGE = 3,
+    ClickAction_LASTPAGE = 4,
+    ClickAction_BOOKMARK = 5,
+    ClickAction_DOCUMENT = 6,
+    ClickAction_INVISIBLE = 7,
+    ClickAction_SOUND = 8,
+    ClickAction_VERB = 9,
+    ClickAction_VANISH = 10,
+    ClickAction_PROGRAM = 11,
+    ClickAction_MACRO = 12,
+    ClickAction_STOPPRESENTATION = 13,
+    ClickAction_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::presentation::ClickAction* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_PRESENTATION_CLICKACTION_HDL

@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_SETUP_VERSIONIDENTIFIER_HDL
+#define INCLUDED_COM_SUN_STAR_SETUP_VERSIONIDENTIFIER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/setup/OSType.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace setup {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct VersionIdentifier {
+    inline VersionIdentifier() SAL_THROW(());
+
+    inline VersionIdentifier(const ::com::sun::star::setup::OSType& eOSType_, const ::sal_Int16& nLanguage_, const ::sal_Int32& nBuildnumber_, const ::rtl::OUString& strProductKey_, const ::rtl::OUString& strInstLanguages_, const ::rtl::OUString& strInstMinor_) SAL_THROW(());
+
+    ::com::sun::star::setup::OSType eOSType;
+    ::sal_Int16 nLanguage;
+    ::sal_Int32 nBuildnumber;
+    ::rtl::OUString strProductKey;
+    ::rtl::OUString strInstLanguages;
+    ::rtl::OUString strInstMinor;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::setup::VersionIdentifier* );
+
+#endif // INCLUDED_COM_SUN_STAR_SETUP_VERSIONIDENTIFIER_HDL

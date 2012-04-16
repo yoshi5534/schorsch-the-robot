@@ -1,0 +1,35 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_INTERACTIVEAPPEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_INTERACTIVEAPPEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/task/ClassifiedInteractionRequest.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT InteractiveAppException : public ::com::sun::star::task::ClassifiedInteractionRequest
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE InteractiveAppException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveAppException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_, const ::sal_uInt32& Code_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveAppException(InteractiveAppException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~InteractiveAppException();
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveAppException & operator =(InteractiveAppException const &);
+
+    ::sal_uInt32 Code CPPU_GCC3_ALIGN( ::com::sun::star::task::ClassifiedInteractionRequest );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::InteractiveAppException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_INTERACTIVEAPPEXCEPTION_HDL

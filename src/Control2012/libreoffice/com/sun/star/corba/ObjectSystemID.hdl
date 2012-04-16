@@ -1,0 +1,13 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_OBJECTSYSTEMID_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_OBJECTSYSTEMID_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba {
+
+typedef ::sal_uInt32 ObjectSystemID;
+
+} } } }
+#endif // INCLUDED_COM_SUN_STAR_CORBA_OBJECTSYSTEMID_HDL

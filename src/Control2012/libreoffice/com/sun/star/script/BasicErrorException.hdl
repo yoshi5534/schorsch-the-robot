@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_BASICERROREXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_BASICERROREXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace script {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT BasicErrorException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE BasicErrorException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE BasicErrorException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::sal_Int32& ErrorCode_, const ::rtl::OUString& ErrorMessageArgument_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE BasicErrorException(BasicErrorException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~BasicErrorException();
+
+    inline CPPU_GCC_DLLPRIVATE BasicErrorException & operator =(BasicErrorException const &);
+
+    ::sal_Int32 ErrorCode CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+    ::rtl::OUString ErrorMessageArgument;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::script::BasicErrorException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_BASICERROREXCEPTION_HDL

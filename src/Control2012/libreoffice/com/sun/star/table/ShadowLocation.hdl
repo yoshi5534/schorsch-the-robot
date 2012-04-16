@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_TABLE_SHADOWLOCATION_HDL
+#define INCLUDED_COM_SUN_STAR_TABLE_SHADOWLOCATION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace table {
+
+enum ShadowLocation
+{
+    ShadowLocation_NONE = 0,
+    ShadowLocation_TOP_LEFT = 1,
+    ShadowLocation_TOP_RIGHT = 2,
+    ShadowLocation_BOTTOM_LEFT = 3,
+    ShadowLocation_BOTTOM_RIGHT = 4,
+    ShadowLocation_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::table::ShadowLocation* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TABLE_SHADOWLOCATION_HDL

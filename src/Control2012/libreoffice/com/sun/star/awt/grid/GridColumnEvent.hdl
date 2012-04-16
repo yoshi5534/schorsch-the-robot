@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDCOLUMNEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDCOLUMNEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/EventObject.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace awt { namespace grid {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct GridColumnEvent: public ::com::sun::star::lang::EventObject {
+    inline GridColumnEvent() SAL_THROW(());
+
+    inline GridColumnEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::rtl::OUString& AttributeName_, const ::com::sun::star::uno::Any& OldValue_, const ::com::sun::star::uno::Any& NewValue_, const ::sal_Int32& ColumnIndex_) SAL_THROW(());
+
+    ::rtl::OUString AttributeName CPPU_GCC3_ALIGN(::com::sun::star::lang::EventObject);
+    ::com::sun::star::uno::Any OldValue;
+    ::com::sun::star::uno::Any NewValue;
+    ::sal_Int32 ColumnIndex;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::awt::grid::GridColumnEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDCOLUMNEVENT_HDL

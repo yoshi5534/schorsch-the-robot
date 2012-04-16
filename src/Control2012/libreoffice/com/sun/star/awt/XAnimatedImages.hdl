@@ -1,0 +1,48 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_XANIMATEDIMAGES_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_XANIMATEDIMAGES_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/IndexOutOfBoundsException.hdl"
+#include "com/sun/star/container/XContainer.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace awt {
+
+class SAL_NO_VTABLE XAnimatedImages : public ::com::sun::star::container::XContainer
+{
+public:
+
+    // Attributes
+    virtual ::sal_Int32 SAL_CALL getStepTime() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setStepTime( ::sal_Int32 _steptime ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getAutoRepeat() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setAutoRepeat( ::sal_Bool _autorepeat ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getScaleMode() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setScaleMode( ::sal_Int16 _scalemode ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual ::sal_Int32 SAL_CALL getImageSetCount(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getImageSet( ::sal_Int32 i_index ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL insertImageSet( ::sal_Int32 i_index, const ::com::sun::star::uno::Sequence< ::rtl::OUString >& i_imageURLs ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL replaceImageSet( ::sal_Int32 i_index, const ::com::sun::star::uno::Sequence< ::rtl::OUString >& i_imageURLs ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeImageSet( ::sal_Int32 i_index ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XAnimatedImages >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_XANIMATEDIMAGES_HDL

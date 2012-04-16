@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_JAVA_JAVANOTCONFIGUREDEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_JAVA_JAVANOTCONFIGUREDEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/java/JavaInitializationException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace java {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT JavaNotConfiguredException : public ::com::sun::star::java::JavaInitializationException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE JavaNotConfiguredException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE JavaNotConfiguredException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE JavaNotConfiguredException(JavaNotConfiguredException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~JavaNotConfiguredException();
+
+    inline CPPU_GCC_DLLPRIVATE JavaNotConfiguredException & operator =(JavaNotConfiguredException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::java::JavaNotConfiguredException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_JAVA_JAVANOTCONFIGUREDEXCEPTION_HDL

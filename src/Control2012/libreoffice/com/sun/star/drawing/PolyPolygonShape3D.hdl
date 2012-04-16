@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_POLYPOLYGONSHAPE3D_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_POLYPOLYGONSHAPE3D_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/drawing/DoubleSequenceSequence.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct PolyPolygonShape3D {
+    inline PolyPolygonShape3D() SAL_THROW(());
+
+    inline PolyPolygonShape3D(const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< double > >& SequenceX_, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< double > >& SequenceY_, const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< double > >& SequenceZ_) SAL_THROW(());
+
+    ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< double > > SequenceX;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< double > > SequenceY;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Sequence< double > > SequenceZ;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::PolyPolygonShape3D* );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_POLYPOLYGONSHAPE3D_HDL

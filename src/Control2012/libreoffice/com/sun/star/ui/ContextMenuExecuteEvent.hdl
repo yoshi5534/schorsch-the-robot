@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_UI_CONTEXTMENUEXECUTEEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_UI_CONTEXTMENUEXECUTEEVENT_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace view { class XSelectionSupplier; } } } }
+namespace com { namespace sun { namespace star { namespace container { class XIndexContainer; } } } }
+namespace com { namespace sun { namespace star { namespace awt { class XWindow; } } } }
+#include "com/sun/star/awt/Point.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ui {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ContextMenuExecuteEvent {
+    inline ContextMenuExecuteEvent() SAL_THROW(());
+
+    inline ContextMenuExecuteEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow >& SourceWindow_, const ::com::sun::star::awt::Point& ExecutePosition_, const ::com::sun::star::uno::Reference< ::com::sun::star::container::XIndexContainer >& ActionTriggerContainer_, const ::com::sun::star::uno::Reference< ::com::sun::star::view::XSelectionSupplier >& Selection_) SAL_THROW(());
+
+    ::com::sun::star::uno::Reference< ::com::sun::star::awt::XWindow > SourceWindow;
+    ::com::sun::star::awt::Point ExecutePosition;
+    ::com::sun::star::uno::Reference< ::com::sun::star::container::XIndexContainer > ActionTriggerContainer;
+    ::com::sun::star::uno::Reference< ::com::sun::star::view::XSelectionSupplier > Selection;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ui::ContextMenuExecuteEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_UI_CONTEXTMENUEXECUTEEVENT_HDL

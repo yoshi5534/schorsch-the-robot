@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_SETUP_MAKESHORTCUTACTION_HDL
+#define INCLUDED_COM_SUN_STAR_SETUP_MAKESHORTCUTACTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/setup/BaseAction.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace setup {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct MakeShortcutAction: public ::com::sun::star::setup::BaseAction {
+    inline MakeShortcutAction() SAL_THROW(());
+
+    inline MakeShortcutAction(const ::com::sun::star::setup::ActionType& eType_, const ::sal_Bool& bDone_, const ::sal_Bool& bProcess_, const ::rtl::OUString& strSource_, const ::rtl::OUString& strDestination_, const ::rtl::OUString& strPath_, const ::rtl::OUString& strDescription_) SAL_THROW(());
+
+    ::rtl::OUString strSource CPPU_GCC3_ALIGN(::com::sun::star::setup::BaseAction);
+    ::rtl::OUString strDestination;
+    ::rtl::OUString strPath;
+    ::rtl::OUString strDescription;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::setup::MakeShortcutAction* );
+
+#endif // INCLUDED_COM_SUN_STAR_SETUP_MAKESHORTCUTACTION_HDL

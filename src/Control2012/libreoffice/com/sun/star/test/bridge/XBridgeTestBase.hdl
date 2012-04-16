@@ -1,0 +1,82 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEST_BRIDGE_XBRIDGETESTBASE_HDL
+#define INCLUDED_COM_SUN_STAR_TEST_BRIDGE_XBRIDGETESTBASE_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace test { namespace bridge { class XRecursiveCall; } } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/test/bridge/TestElement.hdl"
+#include "com/sun/star/test/bridge/TestData.hdl"
+#include "com/sun/star/test/bridge/TestEnum.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace test { namespace bridge {
+
+class SAL_NO_VTABLE XBridgeTestBase : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Attributes
+    virtual ::sal_Bool SAL_CALL getBool() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setBool( ::sal_Bool _bool ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int8 SAL_CALL getByte() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setByte( ::sal_Int8 _byte ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Unicode SAL_CALL getChar() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setChar( ::sal_Unicode _char ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getShort() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setShort( ::sal_Int16 _short ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_uInt16 SAL_CALL getUShort() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setUShort( ::sal_uInt16 _ushort ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getLong() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLong( ::sal_Int32 _long ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_uInt32 SAL_CALL getULong() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setULong( ::sal_uInt32 _ulong ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int64 SAL_CALL getHyper() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setHyper( ::sal_Int64 _hyper ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_uInt64 SAL_CALL getUHyper() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setUHyper( ::sal_uInt64 _uhyper ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual float SAL_CALL getFloat() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFloat( float _float ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getDouble() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDouble( double _double ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::test::bridge::TestEnum SAL_CALL getEnum() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setEnum( ::com::sun::star::test::bridge::TestEnum _enum ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getString() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setString( const ::rtl::OUString& _string ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > SAL_CALL getInterface() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setInterface( const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& _interface ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Any SAL_CALL getAny() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setAny( const ::com::sun::star::uno::Any& _any ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::test::bridge::TestElement > SAL_CALL getSequence() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSequence( const ::com::sun::star::uno::Sequence< ::com::sun::star::test::bridge::TestElement >& _sequence ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::test::bridge::TestDataElements SAL_CALL getStruct() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setStruct( const ::com::sun::star::test::bridge::TestDataElements& _struct ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual void SAL_CALL setValues( ::sal_Bool bBool, ::sal_Unicode cChar, ::sal_Int8 nByte, ::sal_Int16 nShort, ::sal_uInt16 nUShort, ::sal_Int32 nLong, ::sal_uInt32 nULong, ::sal_Int64 nHyper, ::sal_uInt64 nUHyper, float fFloat, double fDouble, ::com::sun::star::test::bridge::TestEnum eEnum, const ::rtl::OUString& aString, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& xInterface, const ::com::sun::star::uno::Any& aAny, const ::com::sun::star::uno::Sequence< ::com::sun::star::test::bridge::TestElement >& aSequence, const ::com::sun::star::test::bridge::TestDataElements& aStruct ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::test::bridge::TestDataElements SAL_CALL setValues2( ::sal_Bool& bBool, ::sal_Unicode& cChar, ::sal_Int8& nByte, ::sal_Int16& nShort, ::sal_uInt16& nUShort, ::sal_Int32& nLong, ::sal_uInt32& nULong, ::sal_Int64& nHyper, ::sal_uInt64& nUHyper, float& fFloat, double& fDouble, ::com::sun::star::test::bridge::TestEnum& eEnum, ::rtl::OUString& aString, ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& xInterface, ::com::sun::star::uno::Any& aAny, ::com::sun::star::uno::Sequence< ::com::sun::star::test::bridge::TestElement >& aSequence, ::com::sun::star::test::bridge::TestDataElements& aStruct ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::test::bridge::TestDataElements SAL_CALL getValues( ::sal_Bool& bBool, ::sal_Unicode& cChar, ::sal_Int8& nByte, ::sal_Int16& nShort, ::sal_uInt16& nUShort, ::sal_Int32& nLong, ::sal_uInt32& nULong, ::sal_Int64& nHyper, ::sal_uInt64& nUHyper, float& fFloat, double& fDouble, ::com::sun::star::test::bridge::TestEnum& eEnum, ::rtl::OUString& aString, ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& xInterface, ::com::sun::star::uno::Any& aAny, ::com::sun::star::uno::Sequence< ::com::sun::star::test::bridge::TestElement >& aSequence, ::com::sun::star::test::bridge::TestDataElements& aStruct ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Any SAL_CALL transportAny( const ::com::sun::star::uno::Any& value ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL call( ::sal_Int32 nCallId, ::sal_Int32 nWaitMUSEC ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL callOneway( ::sal_Int32 nCallId, ::sal_Int32 nWaitMUSEC ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL sequenceOfCallTestPassed(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL startRecursiveCall( const ::com::sun::star::uno::Reference< ::com::sun::star::test::bridge::XRecursiveCall >& xCall, ::sal_Int32 nToCall ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::test::bridge::XBridgeTestBase >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TEST_BRIDGE_XBRIDGETESTBASE_HDL

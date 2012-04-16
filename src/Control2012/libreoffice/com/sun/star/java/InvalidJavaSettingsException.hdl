@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_JAVA_INVALIDJAVASETTINGSEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_JAVA_INVALIDJAVASETTINGSEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/java/JavaInitializationException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace java {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT InvalidJavaSettingsException : public ::com::sun::star::java::JavaInitializationException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE InvalidJavaSettingsException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InvalidJavaSettingsException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InvalidJavaSettingsException(InvalidJavaSettingsException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~InvalidJavaSettingsException();
+
+    inline CPPU_GCC_DLLPRIVATE InvalidJavaSettingsException & operator =(InvalidJavaSettingsException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::java::InvalidJavaSettingsException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_JAVA_INVALIDJAVASETTINGSEXCEPTION_HDL

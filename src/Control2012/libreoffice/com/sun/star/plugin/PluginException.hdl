@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_PLUGIN_PLUGINEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_PLUGIN_PLUGINEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace plugin {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT PluginException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE PluginException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE PluginException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::sal_Int16& ErrorCode_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE PluginException(PluginException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~PluginException();
+
+    inline CPPU_GCC_DLLPRIVATE PluginException & operator =(PluginException const &);
+
+    ::sal_Int16 ErrorCode CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::plugin::PluginException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_PLUGIN_PLUGINEXCEPTION_HDL

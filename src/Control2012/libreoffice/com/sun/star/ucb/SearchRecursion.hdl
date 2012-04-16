@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_SEARCHRECURSION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_SEARCHRECURSION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+enum SearchRecursion
+{
+    SearchRecursion_NONE = 0,
+    SearchRecursion_ONE_LEVEL = 1,
+    SearchRecursion_DEEP = 2,
+    SearchRecursion_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::SearchRecursion* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_SEARCHRECURSION_HDL

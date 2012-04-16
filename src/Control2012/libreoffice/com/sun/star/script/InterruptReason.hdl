@@ -1,0 +1,31 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_INTERRUPTREASON_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_INTERRUPTREASON_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace script {
+
+enum InterruptReason
+{
+    InterruptReason_Cancel = 0,
+    InterruptReason_RuntimeError = 1,
+    InterruptReason_CompileError = 2,
+    InterruptReason_BreakPoint = 3,
+    InterruptReason_Step = 4,
+    InterruptReason_StepOver = 5,
+    InterruptReason_StepOut = 6,
+    InterruptReason_StepStatement = 7,
+    InterruptReason_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::script::InterruptReason* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_INTERRUPTREASON_HDL

@@ -1,0 +1,64 @@
+#ifndef INCLUDED_COM_SUN_STAR_SDBC_XSQLOUTPUT_HDL
+#define INCLUDED_COM_SUN_STAR_SDBC_XSQLOUTPUT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace sdbc { class XArray; } } } }
+namespace com { namespace sun { namespace star { namespace sdbc { class XStruct; } } } }
+namespace com { namespace sun { namespace star { namespace sdbc { class XClob; } } } }
+#include "com/sun/star/sdbc/SQLException.hdl"
+namespace com { namespace sun { namespace star { namespace sdbc { class XBlob; } } } }
+namespace com { namespace sun { namespace star { namespace io { class XInputStream; } } } }
+#include "com/sun/star/util/DateTime.hdl"
+#include "com/sun/star/util/Time.hdl"
+namespace com { namespace sun { namespace star { namespace sdbc { class XSQLData; } } } }
+#include "com/sun/star/util/Date.hdl"
+namespace com { namespace sun { namespace star { namespace sdbc { class XRef; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sdbc {
+
+class SAL_NO_VTABLE XSQLOutput : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL writeString( const ::rtl::OUString& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeBoolean( ::sal_Bool x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeByte( ::sal_Int8 x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeShort( ::sal_Int16 x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeInt( ::sal_Int32 x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeLong( ::sal_Int64 x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeFloat( float x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeDouble( double x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeBytes( const ::com::sun::star::uno::Sequence< ::sal_Int8 >& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeDate( const ::com::sun::star::util::Date& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeTime( const ::com::sun::star::util::Time& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeTimestamp( const ::com::sun::star::util::DateTime& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeBinaryStream( const ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream >& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeCharacterStream( const ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream >& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeObject( const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XSQLData >& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeRef( const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XRef >& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeBlob( const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XBlob >& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeClob( const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XClob >& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeStruct( const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XStruct >& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL writeArray( const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XArray >& x ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XSQLOutput >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SDBC_XSQLOUTPUT_HDL

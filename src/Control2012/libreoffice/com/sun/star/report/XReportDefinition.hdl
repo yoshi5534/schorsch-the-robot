@@ -1,0 +1,92 @@
+#ifndef INCLUDED_COM_SUN_STAR_REPORT_XREPORTDEFINITION_HDL
+#define INCLUDED_COM_SUN_STAR_REPORT_XREPORTDEFINITION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/container/NoSuchElementException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/uno/Exception.hdl"
+namespace com { namespace sun { namespace star { namespace report { class XSection; } } } }
+namespace com { namespace sun { namespace star { namespace report { class XGroups; } } } }
+namespace com { namespace sun { namespace star { namespace sdbc { class XConnection; } } } }
+#include "com/sun/star/report/XFunctionsSupplier.hdl"
+#include "com/sun/star/report/XReportComponent.hdl"
+#include "com/sun/star/lang/DisposedException.hdl"
+#include "com/sun/star/embed/XVisualObject.hdl"
+#include "com/sun/star/document/XViewDataSupplier.hdl"
+#include "com/sun/star/document/XStorageBasedDocument.hdl"
+#include "com/sun/star/util/XCloseable.hdl"
+#include "com/sun/star/util/XModifiable2.hdl"
+#include "com/sun/star/document/XDocumentSubStorageSupplier.hdl"
+#include "com/sun/star/style/XStyleFamiliesSupplier.hdl"
+#include "com/sun/star/ui/XUIConfigurationManagerSupplier.hdl"
+namespace com { namespace sun { namespace star { namespace document { class XEventBroadcaster; } } } }
+#include "com/sun/star/frame/XLoadable.hdl"
+#include "com/sun/star/frame/XModel.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace report {
+
+class SAL_NO_VTABLE XReportDefinition : public ::com::sun::star::frame::XModel, public ::com::sun::star::frame::XLoadable, public ::com::sun::star::embed::XVisualObject, public ::com::sun::star::document::XStorageBasedDocument, public ::com::sun::star::document::XViewDataSupplier, public ::com::sun::star::util::XCloseable, public ::com::sun::star::ui::XUIConfigurationManagerSupplier, public ::com::sun::star::document::XDocumentSubStorageSupplier, public ::com::sun::star::style::XStyleFamiliesSupplier, public ::com::sun::star::util::XModifiable2, public ::com::sun::star::report::XReportComponent, public ::com::sun::star::report::XFunctionsSupplier
+{
+public:
+
+    // Attributes
+    virtual ::rtl::OUString SAL_CALL getMimeType() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setMimeType( const ::rtl::OUString& _mimetype ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getCaption() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCaption( const ::rtl::OUString& _caption ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getGroupKeepTogether() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setGroupKeepTogether( ::sal_Int16 _groupkeeptogether ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getPageHeaderOption() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setPageHeaderOption( ::sal_Int16 _pageheaderoption ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getPageFooterOption() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setPageFooterOption( ::sal_Int16 _pagefooteroption ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getCommand() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCommand( const ::rtl::OUString& _command ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getCommandType() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCommandType( ::sal_Int32 _commandtype ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getFilter() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFilter( const ::rtl::OUString& _filter ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getEscapeProcessing() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setEscapeProcessing( ::sal_Bool _escapeprocessing ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XConnection > SAL_CALL getActiveConnection() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setActiveConnection( const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XConnection >& _activeconnection ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getDataSourceName() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDataSourceName( const ::rtl::OUString& _datasourcename ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getReportHeaderOn() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setReportHeaderOn( ::sal_Bool _reportheaderon ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getReportFooterOn() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setReportFooterOn( ::sal_Bool _reportfooteron ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getPageHeaderOn() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setPageHeaderOn( ::sal_Bool _pageheaderon ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getPageFooterOn() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setPageFooterOn( ::sal_Bool _pagefooteron ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::report::XGroups > SAL_CALL getGroups() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::report::XSection > SAL_CALL getReportHeader() throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::report::XSection > SAL_CALL getPageHeader() throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::report::XSection > SAL_CALL getDetail() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::report::XSection > SAL_CALL getPageFooter() throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::report::XSection > SAL_CALL getReportFooter() throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::document::XEventBroadcaster > SAL_CALL getEventBroadcaster(  ) throw (::com::sun::star::lang::DisposedException, ::com::sun::star::uno::Exception, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getAvailableMimeTypes(  ) throw (::com::sun::star::lang::DisposedException, ::com::sun::star::uno::Exception, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::report::XReportDefinition >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_REPORT_XREPORTDEFINITION_HDL

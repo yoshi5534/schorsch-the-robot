@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_DOCUMENT_AMBIGOUSFILTERREQUEST_HDL
+#define INCLUDED_COM_SUN_STAR_DOCUMENT_AMBIGOUSFILTERREQUEST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace document {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT AmbigousFilterRequest : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE AmbigousFilterRequest() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE AmbigousFilterRequest(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::rtl::OUString& URL_, const ::rtl::OUString& SelectedFilter_, const ::rtl::OUString& DetectedFilter_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE AmbigousFilterRequest(AmbigousFilterRequest const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~AmbigousFilterRequest();
+
+    inline CPPU_GCC_DLLPRIVATE AmbigousFilterRequest & operator =(AmbigousFilterRequest const &);
+
+    ::rtl::OUString URL CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+    ::rtl::OUString SelectedFilter;
+    ::rtl::OUString DetectedFilter;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::document::AmbigousFilterRequest* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DOCUMENT_AMBIGOUSFILTERREQUEST_HDL

@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDINVALIDDATAEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDINVALIDDATAEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace awt { namespace grid {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT GridInvalidDataException : public ::com::sun::star::uno::RuntimeException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE GridInvalidDataException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE GridInvalidDataException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE GridInvalidDataException(GridInvalidDataException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~GridInvalidDataException();
+
+    inline CPPU_GCC_DLLPRIVATE GridInvalidDataException & operator =(GridInvalidDataException const &);
+
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::awt::grid::GridInvalidDataException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_GRID_GRIDINVALIDDATAEXCEPTION_HDL

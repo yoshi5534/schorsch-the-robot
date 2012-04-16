@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_COOKIEPOLICY_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_COOKIEPOLICY_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+enum CookiePolicy
+{
+    CookiePolicy_CONFIRM = 0,
+    CookiePolicy_ACCEPT = 1,
+    CookiePolicy_IGNORE = 2,
+    CookiePolicy_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::CookiePolicy* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_COOKIEPOLICY_HDL

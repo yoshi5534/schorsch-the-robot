@@ -1,0 +1,64 @@
+#ifndef INCLUDED_COM_SUN_STAR_SDB_XCOLUMN_HDL
+#define INCLUDED_COM_SUN_STAR_SDB_XCOLUMN_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace sdbc { class XArray; } } } }
+namespace com { namespace sun { namespace star { namespace sdbc { class XClob; } } } }
+namespace com { namespace sun { namespace star { namespace container { class XNameAccess; } } } }
+#include "com/sun/star/sdbc/SQLException.hdl"
+namespace com { namespace sun { namespace star { namespace sdbc { class XBlob; } } } }
+namespace com { namespace sun { namespace star { namespace io { class XInputStream; } } } }
+#include "com/sun/star/util/DateTime.hdl"
+#include "com/sun/star/util/Time.hdl"
+#include "com/sun/star/util/Date.hdl"
+namespace com { namespace sun { namespace star { namespace sdbc { class XRef; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sdb {
+
+class SAL_NO_VTABLE XColumn : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL wasNull(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getString(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getBoolean(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int8 SAL_CALL getByte(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getShort(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getInt(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int64 SAL_CALL getLong(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual float SAL_CALL getFloat(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getDouble(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::sal_Int8 > SAL_CALL getBytes(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::util::Date SAL_CALL getDate(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::util::Time SAL_CALL getTime(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::util::DateTime SAL_CALL getTimestamp(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream > SAL_CALL getBinaryStream(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream > SAL_CALL getCharacterStream(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Any SAL_CALL getObject( const ::com::sun::star::uno::Reference< ::com::sun::star::container::XNameAccess >& typeMap ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XRef > SAL_CALL getRef(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XBlob > SAL_CALL getBlob(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XClob > SAL_CALL getClob(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XArray > SAL_CALL getArray(  ) throw (::com::sun::star::sdbc::SQLException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sdb::XColumn >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SDB_XCOLUMN_HDL

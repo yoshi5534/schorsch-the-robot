@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_INTERACTIVECHAOSEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_INTERACTIVECHAOSEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/task/ClassifiedInteractionRequest.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT InteractiveCHAOSException : public ::com::sun::star::task::ClassifiedInteractionRequest
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE InteractiveCHAOSException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveCHAOSException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_, const ::sal_Int32& ID_, const ::com::sun::star::uno::Sequence< ::rtl::OUString >& Arguments_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveCHAOSException(InteractiveCHAOSException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~InteractiveCHAOSException();
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveCHAOSException & operator =(InteractiveCHAOSException const &);
+
+    ::sal_Int32 ID CPPU_GCC3_ALIGN( ::com::sun::star::task::ClassifiedInteractionRequest );
+    ::com::sun::star::uno::Sequence< ::rtl::OUString > Arguments;
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::InteractiveCHAOSException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_INTERACTIVECHAOSEXCEPTION_HDL

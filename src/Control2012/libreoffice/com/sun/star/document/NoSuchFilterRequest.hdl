@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_DOCUMENT_NOSUCHFILTERREQUEST_HDL
+#define INCLUDED_COM_SUN_STAR_DOCUMENT_NOSUCHFILTERREQUEST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace document {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT NoSuchFilterRequest : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE NoSuchFilterRequest() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NoSuchFilterRequest(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::rtl::OUString& URL_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NoSuchFilterRequest(NoSuchFilterRequest const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~NoSuchFilterRequest();
+
+    inline CPPU_GCC_DLLPRIVATE NoSuchFilterRequest & operator =(NoSuchFilterRequest const &);
+
+    ::rtl::OUString URL CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::document::NoSuchFilterRequest* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DOCUMENT_NOSUCHFILTERREQUEST_HDL

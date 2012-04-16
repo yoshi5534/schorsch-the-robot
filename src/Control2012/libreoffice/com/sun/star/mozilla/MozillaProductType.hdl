@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_MOZILLA_MOZILLAPRODUCTTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_MOZILLA_MOZILLAPRODUCTTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace mozilla {
+
+enum MozillaProductType
+{
+    MozillaProductType_Default = 0,
+    MozillaProductType_Mozilla = 1,
+    MozillaProductType_Firefox = 2,
+    MozillaProductType_Thunderbird = 3,
+    MozillaProductType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::mozilla::MozillaProductType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_MOZILLA_MOZILLAPRODUCTTYPE_HDL

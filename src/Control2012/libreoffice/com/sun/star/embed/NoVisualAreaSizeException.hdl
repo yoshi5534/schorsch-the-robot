@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_EMBED_NOVISUALAREASIZEEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_EMBED_NOVISUALAREASIZEEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace embed {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT NoVisualAreaSizeException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE NoVisualAreaSizeException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NoVisualAreaSizeException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE NoVisualAreaSizeException(NoVisualAreaSizeException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~NoVisualAreaSizeException();
+
+    inline CPPU_GCC_DLLPRIVATE NoVisualAreaSizeException & operator =(NoVisualAreaSizeException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::embed::NoVisualAreaSizeException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_EMBED_NOVISUALAREASIZEEXCEPTION_HDL

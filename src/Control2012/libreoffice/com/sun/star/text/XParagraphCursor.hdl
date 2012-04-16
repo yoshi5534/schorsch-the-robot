@@ -1,0 +1,37 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEXT_XPARAGRAPHCURSOR_HDL
+#define INCLUDED_COM_SUN_STAR_TEXT_XPARAGRAPHCURSOR_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/text/XTextCursor.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace text {
+
+class SAL_NO_VTABLE XParagraphCursor : public ::com::sun::star::text::XTextCursor
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL isStartOfParagraph(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isEndOfParagraph(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL gotoStartOfParagraph( ::sal_Bool bExpand ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL gotoEndOfParagraph( ::sal_Bool bExpand ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL gotoNextParagraph( ::sal_Bool bExpand ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL gotoPreviousParagraph( ::sal_Bool bExpand ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::text::XParagraphCursor >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TEXT_XPARAGRAPHCURSOR_HDL

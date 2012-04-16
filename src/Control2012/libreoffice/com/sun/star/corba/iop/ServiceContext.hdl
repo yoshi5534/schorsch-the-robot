@@ -1,0 +1,42 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_IOP_SERVICECONTEXT_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_IOP_SERVICECONTEXT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/iop/ServiceId.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace iop {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ServiceContext {
+    inline ServiceContext() SAL_THROW(());
+
+    inline ServiceContext(const ::sal_uInt32& context_id_, const ::com::sun::star::uno::Sequence< ::sal_Int8 >& context_data_) SAL_THROW(());
+
+    ::sal_uInt32 context_id;
+    ::com::sun::star::uno::Sequence< ::sal_Int8 > context_data;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::iop::ServiceContext* );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_IOP_SERVICECONTEXT_HDL

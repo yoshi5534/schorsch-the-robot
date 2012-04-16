@@ -1,0 +1,29 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_CONTENTCREATIONERROR_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_CONTENTCREATIONERROR_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+enum ContentCreationError
+{
+    ContentCreationError_UNKNOWN = 0,
+    ContentCreationError_NO_CONTENT_BROKER = 1,
+    ContentCreationError_NO_IDENTIFIER_FACTORY = 2,
+    ContentCreationError_IDENTIFIER_CREATION_FAILED = 3,
+    ContentCreationError_NO_CONTENT_PROVIDER = 4,
+    ContentCreationError_CONTENT_CREATION_FAILED = 5,
+    ContentCreationError_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::ContentCreationError* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_CONTENTCREATIONERROR_HDL

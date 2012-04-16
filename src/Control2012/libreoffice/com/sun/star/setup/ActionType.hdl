@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_SETUP_ACTIONTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_SETUP_ACTIONTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace setup {
+
+enum ActionType
+{
+    ActionType_INVALID = 0,
+    ActionType_DOWNLOAD = 1,
+    ActionType_MAKEDIR = 2,
+    ActionType_DELETEDIR = 3,
+    ActionType_COPYFILE = 4,
+    ActionType_UNZIPFILE = 5,
+    ActionType_DELETEFILE = 6,
+    ActionType_MAKEFOLDER = 7,
+    ActionType_MAKEFOLDERITEM = 8,
+    ActionType_DELETEFOLDER = 9,
+    ActionType_DELETEFOLDERITEM = 10,
+    ActionType_PROFILEITEM = 11,
+    ActionType_FONT = 12,
+    ActionType_CREATESHORTCUT = 13,
+    ActionType_WINREGISTRY = 14,
+    ActionType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::setup::ActionType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SETUP_ACTIONTYPE_HDL

@@ -1,0 +1,52 @@
+#ifndef INCLUDED_COM_SUN_STAR_SMARTTAGS_XSMARTTAGACTION_HDL
+#define INCLUDED_COM_SUN_STAR_SMARTTAGS_XSMARTTAGACTION_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace text { class XTextRange; } } } }
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+namespace com { namespace sun { namespace star { namespace frame { class XController; } } } }
+#include "com/sun/star/lang/IndexOutOfBoundsException.hdl"
+#include "com/sun/star/lang/Locale.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/XInitialization.hdl"
+namespace com { namespace sun { namespace star { namespace container { class XStringKeyMap; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace smarttags {
+
+class SAL_NO_VTABLE XSmartTagAction : public ::com::sun::star::lang::XInitialization
+{
+public:
+
+    // Attributes
+    virtual ::sal_Int32 SAL_CALL getSmartTagCount() throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual ::rtl::OUString SAL_CALL getName( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getDescription( const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getSmartTagName( ::sal_Int32 nSmartTagIndex ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getSmartTagCaption( ::sal_Int32 nSmartTagIndex, const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::lang::IndexOutOfBoundsException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getActionCount( const ::rtl::OUString& aSmartTagName, const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XController >& xController ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getActionID( const ::rtl::OUString& aSmartTagName, ::sal_Int32 nActionIndex, const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XController >& xController ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getActionCaptionFromID( ::sal_Int32 nActionID, const ::rtl::OUString& aApplicationName, const ::com::sun::star::lang::Locale& aLocale, const ::com::sun::star::uno::Reference< ::com::sun::star::container::XStringKeyMap >& xProperties, const ::rtl::OUString& aText, const ::rtl::OUString& aXML, const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XController >& xController, const ::com::sun::star::uno::Reference< ::com::sun::star::text::XTextRange >& xTarget ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getActionNameFromID( ::sal_Int32 nActionID, const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XController >& xController ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL invokeAction( ::sal_Int32 nActionID, const ::rtl::OUString& aApplicationName, const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XController >& xController, const ::com::sun::star::uno::Reference< ::com::sun::star::text::XTextRange >& xTarget, const ::com::sun::star::uno::Reference< ::com::sun::star::container::XStringKeyMap >& xProperties, const ::rtl::OUString& aText, const ::rtl::OUString& aXML, const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isCaptionDynamic( ::sal_Int32 nActionID, const ::rtl::OUString& aApplicationName, const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XController >& xController, const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isShowSmartTagIndicator( ::sal_Int32 nActionID, const ::rtl::OUString& aApplicationName, const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XController >& xController, const ::com::sun::star::lang::Locale& aLocale ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::smarttags::XSmartTagAction >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SMARTTAGS_XSMARTTAGACTION_HDL

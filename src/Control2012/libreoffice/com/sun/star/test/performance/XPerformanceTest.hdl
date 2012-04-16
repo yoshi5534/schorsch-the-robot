@@ -1,0 +1,82 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEST_PERFORMANCE_XPERFORMANCETEST_HDL
+#define INCLUDED_COM_SUN_STAR_TEST_PERFORMANCE_XPERFORMANCETEST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace test { namespace performance { class XPerformanceTest; } } } } }
+#include "com/sun/star/test/performance/ComplexTypes.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace test { namespace performance {
+
+class SAL_NO_VTABLE XPerformanceTest : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Attributes
+    virtual ::sal_Int32 SAL_CALL getLong_attr() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLong_attr( ::sal_Int32 _long_attr ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int64 SAL_CALL getHyper_attr() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setHyper_attr( ::sal_Int64 _hyper_attr ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual float SAL_CALL getFloat_attr() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFloat_attr( float _float_attr ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getDouble_attr() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDouble_attr( double _double_attr ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getString_attr() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setString_attr( const ::rtl::OUString& _string_attr ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > SAL_CALL getInterface_attr() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setInterface_attr( const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& _interface_attr ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Any SAL_CALL getAny_attr() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setAny_attr( const ::com::sun::star::uno::Any& _any_attr ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > > SAL_CALL getSequence_attr() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSequence_attr( const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > >& _sequence_attr ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::test::performance::ComplexTypes SAL_CALL getStruct_attr() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setStruct_attr( const ::com::sun::star::test::performance::ComplexTypes& _struct_attr ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual void SAL_CALL async(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL sync(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::test::performance::ComplexTypes SAL_CALL complex_in( const ::com::sun::star::test::performance::ComplexTypes& aVal ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::test::performance::ComplexTypes SAL_CALL complex_inout( ::com::sun::star::test::performance::ComplexTypes& aVal ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL complex_oneway( const ::com::sun::star::test::performance::ComplexTypes& aVal ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL complex_noreturn( const ::com::sun::star::test::performance::ComplexTypes& aVal ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::test::performance::XPerformanceTest > SAL_CALL createObject(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getLong(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLong( ::sal_Int32 n ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int64 SAL_CALL getHyper(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setHyper( ::sal_Int64 n ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual float SAL_CALL getFloat(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFloat( float f ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getDouble(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDouble( double f ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getString(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setString( const ::rtl::OUString& s ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > SAL_CALL getInterface(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setInterface( const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& x ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Any SAL_CALL getAny(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setAny( const ::com::sun::star::uno::Any& a ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > > SAL_CALL getSequence(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSequence( const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface > >& seq ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::test::performance::ComplexTypes SAL_CALL getStruct(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setStruct( const ::com::sun::star::test::performance::ComplexTypes& c ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL raiseRuntimeException(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::test::performance::XPerformanceTest >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TEST_PERFORMANCE_XPERFORMANCETEST_HDL

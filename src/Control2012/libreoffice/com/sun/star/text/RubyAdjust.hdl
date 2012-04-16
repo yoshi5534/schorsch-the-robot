@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEXT_RUBYADJUST_HDL
+#define INCLUDED_COM_SUN_STAR_TEXT_RUBYADJUST_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace text {
+
+enum RubyAdjust
+{
+    RubyAdjust_LEFT = 0,
+    RubyAdjust_CENTER = 1,
+    RubyAdjust_RIGHT = 2,
+    RubyAdjust_BLOCK = 3,
+    RubyAdjust_INDENT_BLOCK = 4,
+    RubyAdjust_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::text::RubyAdjust* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TEXT_RUBYADJUST_HDL

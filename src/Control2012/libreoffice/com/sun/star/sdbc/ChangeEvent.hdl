@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_SDBC_CHANGEEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_SDBC_CHANGEEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/EventObject.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace sdbc {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct ChangeEvent: public ::com::sun::star::lang::EventObject {
+    inline ChangeEvent() SAL_THROW(());
+
+    inline ChangeEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::sal_Int32& Action_, const ::sal_Int32& Rows_) SAL_THROW(());
+
+    ::sal_Int32 Action CPPU_GCC3_ALIGN(::com::sun::star::lang::EventObject);
+    ::sal_Int32 Rows;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sdbc::ChangeEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_SDBC_CHANGEEVENT_HDL

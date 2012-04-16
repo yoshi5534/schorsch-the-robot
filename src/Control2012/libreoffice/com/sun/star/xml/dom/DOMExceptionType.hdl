@@ -1,0 +1,38 @@
+#ifndef INCLUDED_COM_SUN_STAR_XML_DOM_DOMEXCEPTIONTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_XML_DOM_DOMEXCEPTIONTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace xml { namespace dom {
+
+enum DOMExceptionType
+{
+    DOMExceptionType_DOMSTRING_SIZE_ERR = 0,
+    DOMExceptionType_HIERARCHY_REQUEST_ERR = 1,
+    DOMExceptionType_INDEX_SIZE_ERR = 2,
+    DOMExceptionType_INUSE_ATTRIBUTE_ERR = 3,
+    DOMExceptionType_INVALID_ACCESS_ERR = 4,
+    DOMExceptionType_INVALID_CHARACTER_ERR = 5,
+    DOMExceptionType_INVALID_MODIFICATION_ERR = 6,
+    DOMExceptionType_INVALID_STATE_ERR = 7,
+    DOMExceptionType_NAMESPACE_ERR = 8,
+    DOMExceptionType_NO_DATA_ALLOWED_ERR = 9,
+    DOMExceptionType_NO_MODIFICATION_ALLOWED_ERR = 10,
+    DOMExceptionType_NOT_FOUND_ERR = 11,
+    DOMExceptionType_NOT_SUPPORTED_ERR = 12,
+    DOMExceptionType_SYNTAX_ERR = 13,
+    DOMExceptionType_WRONG_DOCUMENT_ERR = 14,
+    DOMExceptionType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::xml::dom::DOMExceptionType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_XML_DOM_DOMEXCEPTIONTYPE_HDL

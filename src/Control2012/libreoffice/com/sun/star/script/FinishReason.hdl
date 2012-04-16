@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_FINISHREASON_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_FINISHREASON_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace script {
+
+enum FinishReason
+{
+    FinishReason_OK = 0,
+    FinishReason_Cancel = 1,
+    FinishReason_Error = 2,
+    FinishReason_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::script::FinishReason* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_FINISHREASON_HDL

@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_XSHEETCONDITION_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_XSHEETCONDITION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/table/CellAddress.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/sheet/ConditionOperator.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+class SAL_NO_VTABLE XSheetCondition : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::sheet::ConditionOperator SAL_CALL getOperator(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setOperator( ::com::sun::star::sheet::ConditionOperator nOperator ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getFormula1(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFormula1( const ::rtl::OUString& aFormula1 ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getFormula2(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFormula2( const ::rtl::OUString& aFormula2 ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::table::CellAddress SAL_CALL getSourcePosition(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSourcePosition( const ::com::sun::star::table::CellAddress& aSourcePosition ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sheet::XSheetCondition >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_XSHEETCONDITION_HDL

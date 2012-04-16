@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_XML_ATTRIBUTE_HDL
+#define INCLUDED_COM_SUN_STAR_XML_ATTRIBUTE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+
+namespace com { namespace sun { namespace star { namespace xml {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct Attribute {
+    inline Attribute() SAL_THROW(());
+
+    inline Attribute(const ::rtl::OUString& Name_, const ::rtl::OUString& NamespaceURL_, const ::rtl::OUString& Value_) SAL_THROW(());
+
+    ::rtl::OUString Name;
+    ::rtl::OUString NamespaceURL;
+    ::rtl::OUString Value;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::xml::Attribute* );
+
+#endif // INCLUDED_COM_SUN_STAR_XML_ATTRIBUTE_HDL

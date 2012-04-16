@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_XRESOURCEID_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_XRESOURCEID_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace drawing { namespace framework { class XResourceId; } } } } }
+#include "com/sun/star/drawing/framework/AnchorBindingMode.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/util/URL.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace drawing { namespace framework {
+
+class SAL_NO_VTABLE XResourceId : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::rtl::OUString SAL_CALL getResourceURL(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::util::URL SAL_CALL getFullResourceURL(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL hasAnchor(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::drawing::framework::XResourceId > SAL_CALL getAnchor(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getAnchorURLs(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getResourceTypePrefix(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL compareTo( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::framework::XResourceId >& xId ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isBoundTo( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::framework::XResourceId >& xId, ::com::sun::star::drawing::framework::AnchorBindingMode eMode ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isBoundToURL( const ::rtl::OUString& sAnchorURL, ::com::sun::star::drawing::framework::AnchorBindingMode eMode ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::drawing::framework::XResourceId > SAL_CALL clone(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::framework::XResourceId >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_FRAMEWORK_XRESOURCEID_HDL

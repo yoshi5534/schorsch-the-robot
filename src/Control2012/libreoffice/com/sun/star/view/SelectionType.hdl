@@ -1,0 +1,27 @@
+#ifndef INCLUDED_COM_SUN_STAR_VIEW_SELECTIONTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_VIEW_SELECTIONTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace view {
+
+enum SelectionType
+{
+    SelectionType_NONE = 0,
+    SelectionType_SINGLE = 1,
+    SelectionType_MULTI = 2,
+    SelectionType_RANGE = 3,
+    SelectionType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::view::SelectionType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_VIEW_SELECTIONTYPE_HDL

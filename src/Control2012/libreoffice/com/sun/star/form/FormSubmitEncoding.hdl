@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_FORM_FORMSUBMITENCODING_HDL
+#define INCLUDED_COM_SUN_STAR_FORM_FORMSUBMITENCODING_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace form {
+
+enum FormSubmitEncoding
+{
+    FormSubmitEncoding_URL = 0,
+    FormSubmitEncoding_MULTIPART = 1,
+    FormSubmitEncoding_TEXT = 2,
+    FormSubmitEncoding_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::form::FormSubmitEncoding* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_FORM_FORMSUBMITENCODING_HDL

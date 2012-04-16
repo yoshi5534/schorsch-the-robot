@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_RESOURCE_MISSINGRESOURCEEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_RESOURCE_MISSINGRESOURCEEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace resource {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT MissingResourceException : public ::com::sun::star::uno::RuntimeException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE MissingResourceException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE MissingResourceException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE MissingResourceException(MissingResourceException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~MissingResourceException();
+
+    inline CPPU_GCC_DLLPRIVATE MissingResourceException & operator =(MissingResourceException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::resource::MissingResourceException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_RESOURCE_MISSINGRESOURCEEXCEPTION_HDL

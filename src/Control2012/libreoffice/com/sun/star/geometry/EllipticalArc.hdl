@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_GEOMETRY_ELLIPTICALARC_HDL
+#define INCLUDED_COM_SUN_STAR_GEOMETRY_ELLIPTICALARC_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/geometry/RealPoint2D.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace geometry {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct EllipticalArc {
+    inline EllipticalArc() SAL_THROW(());
+
+    inline EllipticalArc(const ::com::sun::star::geometry::RealPoint2D& StartPosition_, const ::com::sun::star::geometry::RealPoint2D& EndPosition_, const double& RadiusX_, const double& RadiusY_, const double& XAxisRotation_, const ::sal_Bool& IsLargeArc_, const ::sal_Bool& IsClockwiseSweep_) SAL_THROW(());
+
+    ::com::sun::star::geometry::RealPoint2D StartPosition;
+    ::com::sun::star::geometry::RealPoint2D EndPosition;
+    double RadiusX;
+    double RadiusY;
+    double XAxisRotation;
+    ::sal_Bool IsLargeArc;
+    ::sal_Bool IsClockwiseSweep;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::geometry::EllipticalArc* );
+
+#endif // INCLUDED_COM_SUN_STAR_GEOMETRY_ELLIPTICALARC_HDL

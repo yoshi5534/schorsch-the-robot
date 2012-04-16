@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET_TABLEOPERATIONMODE_HDL
+#define INCLUDED_COM_SUN_STAR_SHEET_TABLEOPERATIONMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sheet {
+
+enum TableOperationMode
+{
+    TableOperationMode_COLUMN = 0,
+    TableOperationMode_ROW = 1,
+    TableOperationMode_BOTH = 2,
+    TableOperationMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sheet::TableOperationMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET_TABLEOPERATIONMODE_HDL

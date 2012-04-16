@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEXT_TEXTMARKUPDESCRIPTOR_HDL
+#define INCLUDED_COM_SUN_STAR_TEXT_TEXTMARKUPDESCRIPTOR_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace container { class XStringKeyMap; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace text {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct TextMarkupDescriptor {
+    inline TextMarkupDescriptor() SAL_THROW(());
+
+    inline TextMarkupDescriptor(const ::sal_Int32& nType_, const ::rtl::OUString& aIdentifier_, const ::sal_Int32& nOffset_, const ::sal_Int32& nLength_, const ::com::sun::star::uno::Reference< ::com::sun::star::container::XStringKeyMap >& xMarkupInfoContainer_) SAL_THROW(());
+
+    ::sal_Int32 nType;
+    ::rtl::OUString aIdentifier;
+    ::sal_Int32 nOffset;
+    ::sal_Int32 nLength;
+    ::com::sun::star::uno::Reference< ::com::sun::star::container::XStringKeyMap > xMarkupInfoContainer;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::text::TextMarkupDescriptor* );
+
+#endif // INCLUDED_COM_SUN_STAR_TEXT_TEXTMARKUPDESCRIPTOR_HDL

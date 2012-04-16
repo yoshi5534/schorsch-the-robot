@@ -1,0 +1,47 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_XCURRENCYFIELD_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_XCURRENCYFIELD_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace awt {
+
+class SAL_NO_VTABLE XCurrencyField : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL setValue( double Value ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getValue(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setMin( double Value ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getMin(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setMax( double Value ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getMax(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFirst( double Value ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getFirst(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLast( double Value ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getLast(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSpinSize( double Value ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual double SAL_CALL getSpinSize(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDecimalDigits( ::sal_Int16 nDigits ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getDecimalDigits(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setStrictFormat( ::sal_Bool bStrict ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isStrictFormat(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XCurrencyField >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_XCURRENCYFIELD_HDL

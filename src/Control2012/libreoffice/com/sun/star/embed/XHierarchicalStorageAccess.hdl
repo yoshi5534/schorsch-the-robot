@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_EMBED_XHIERARCHICALSTORAGEACCESS_HDL
+#define INCLUDED_COM_SUN_STAR_EMBED_XHIERARCHICALSTORAGEACCESS_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/container/NoSuchElementException.hdl"
+#include "com/sun/star/io/IOException.hdl"
+#include "com/sun/star/packages/WrongPasswordException.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/embed/InvalidStorageException.hdl"
+#include "com/sun/star/packages/NoEncryptionException.hdl"
+namespace com { namespace sun { namespace star { namespace embed { class XExtendedStorageStream; } } } }
+#include "com/sun/star/embed/StorageWrappedTargetException.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace embed {
+
+class SAL_NO_VTABLE XHierarchicalStorageAccess : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::embed::XExtendedStorageStream > SAL_CALL openStreamElementByHierarchicalName( const ::rtl::OUString& sStreamPath, ::sal_Int32 nOpenMode ) throw (::com::sun::star::embed::InvalidStorageException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::packages::WrongPasswordException, ::com::sun::star::io::IOException, ::com::sun::star::embed::StorageWrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::embed::XExtendedStorageStream > SAL_CALL openEncryptedStreamElementByHierarchicalName( const ::rtl::OUString& sStreamName, ::sal_Int32 nOpenMode, const ::rtl::OUString& sPassword ) throw (::com::sun::star::embed::InvalidStorageException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::packages::NoEncryptionException, ::com::sun::star::packages::WrongPasswordException, ::com::sun::star::io::IOException, ::com::sun::star::embed::StorageWrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeStreamElementByHierarchicalName( const ::rtl::OUString& sElementPath ) throw (::com::sun::star::embed::InvalidStorageException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::container::NoSuchElementException, ::com::sun::star::io::IOException, ::com::sun::star::embed::StorageWrappedTargetException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::embed::XHierarchicalStorageAccess >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_EMBED_XHIERARCHICALSTORAGEACCESS_HDL

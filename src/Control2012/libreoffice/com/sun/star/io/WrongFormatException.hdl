@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_IO_WRONGFORMATEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_IO_WRONGFORMATEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/io/IOException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace io {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT WrongFormatException : public ::com::sun::star::io::IOException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE WrongFormatException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE WrongFormatException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE WrongFormatException(WrongFormatException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~WrongFormatException();
+
+    inline CPPU_GCC_DLLPRIVATE WrongFormatException & operator =(WrongFormatException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::io::WrongFormatException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_IO_WRONGFORMATEXCEPTION_HDL

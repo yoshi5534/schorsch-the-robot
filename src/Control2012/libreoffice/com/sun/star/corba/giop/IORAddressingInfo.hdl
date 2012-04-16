@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_GIOP_IORADDRESSINGINFO_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_GIOP_IORADDRESSINGINFO_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/iop/IOR.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace giop {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct IORAddressingInfo {
+    inline IORAddressingInfo() SAL_THROW(());
+
+    inline IORAddressingInfo(const ::sal_uInt32& selected_profile_index_, const ::com::sun::star::corba::iop::IOR& ior_) SAL_THROW(());
+
+    ::sal_uInt32 selected_profile_index;
+    ::com::sun::star::corba::iop::IOR ior;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::giop::IORAddressingInfo* );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_GIOP_IORADDRESSINGINFO_HDL

@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_FRAME_XSTATUSBARCONTROLLER_HDL
+#define INCLUDED_COM_SUN_STAR_FRAME_XSTATUSBARCONTROLLER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace awt { class XGraphics; } } } }
+#include "com/sun/star/awt/Rectangle.hdl"
+#include "com/sun/star/awt/MouseEvent.hdl"
+#include "com/sun/star/awt/Point.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace frame {
+
+class SAL_NO_VTABLE XStatusbarController : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL mouseButtonDown( const ::com::sun::star::awt::MouseEvent& aMouseEvent ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL mouseMove( const ::com::sun::star::awt::MouseEvent& aMouseEvent ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL mouseButtonUp( const ::com::sun::star::awt::MouseEvent& aMouseEvent ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL command( const ::com::sun::star::awt::Point& aPos, ::sal_Int32 nCommand, ::sal_Bool bMouseEvent, const ::com::sun::star::uno::Any& aData ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL paint( const ::com::sun::star::uno::Reference< ::com::sun::star::awt::XGraphics >& xGraphics, const ::com::sun::star::awt::Rectangle& rOutputRectangle, ::sal_Int32 nItemId, ::sal_Int32 nStyle ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL click(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL doubleClick(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XStatusbarController >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_FRAME_XSTATUSBARCONTROLLER_HDL

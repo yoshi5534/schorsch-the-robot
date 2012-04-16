@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_RENDERING_RENDERSTATE_HDL
+#define INCLUDED_COM_SUN_STAR_RENDERING_RENDERSTATE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/geometry/AffineMatrix2D.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XPolyPolygon2D; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace rendering {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct RenderState {
+    inline RenderState() SAL_THROW(());
+
+    inline RenderState(const ::com::sun::star::geometry::AffineMatrix2D& AffineTransform_, const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XPolyPolygon2D >& Clip_, const ::com::sun::star::uno::Sequence< double >& DeviceColor_, const ::sal_Int8& CompositeOperation_) SAL_THROW(());
+
+    ::com::sun::star::geometry::AffineMatrix2D AffineTransform;
+    ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XPolyPolygon2D > Clip;
+    ::com::sun::star::uno::Sequence< double > DeviceColor;
+    ::sal_Int8 CompositeOperation;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::rendering::RenderState* );
+
+#endif // INCLUDED_COM_SUN_STAR_RENDERING_RENDERSTATE_HDL

@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_TEXTANIMATIONKIND_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_TEXTANIMATIONKIND_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum TextAnimationKind
+{
+    TextAnimationKind_NONE = 0,
+    TextAnimationKind_BLINK = 1,
+    TextAnimationKind_SCROLL = 2,
+    TextAnimationKind_ALTERNATE = 3,
+    TextAnimationKind_SLIDE = 4,
+    TextAnimationKind_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::TextAnimationKind* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_TEXTANIMATIONKIND_HDL

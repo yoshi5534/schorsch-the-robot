@@ -1,0 +1,70 @@
+#ifndef INCLUDED_COM_SUN_STAR_DEPLOYMENT_XPACKAGE_HDL
+#define INCLUDED_COM_SUN_STAR_DEPLOYMENT_XPACKAGE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/beans/Ambiguous.hdl"
+namespace com { namespace sun { namespace star { namespace graphic { class XGraphic; } } } }
+#include "com/sun/star/deployment/ExtensionRemovedException.hdl"
+namespace com { namespace sun { namespace star { namespace ucb { class XCommandEnvironment; } } } }
+#include "com/sun/star/beans/Optional.hdl"
+#include "com/sun/star/lang/XComponent.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/ucb/CommandAbortedException.hdl"
+namespace com { namespace sun { namespace star { namespace task { class XAbortChannel; } } } }
+namespace com { namespace sun { namespace star { namespace deployment { class XPackage; } } } }
+#include "com/sun/star/deployment/DeploymentException.hdl"
+namespace com { namespace sun { namespace star { namespace deployment { class XPackageTypeInfo; } } } }
+#include "com/sun/star/util/XModifyBroadcaster.hdl"
+#include "com/sun/star/ucb/CommandFailedException.hdl"
+#include "com/sun/star/beans/StringPair.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace deployment {
+
+class SAL_NO_VTABLE XPackage : public ::com::sun::star::lang::XComponent, public ::com::sun::star::util::XModifyBroadcaster
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel > SAL_CALL createAbortChannel(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL checkPrerequisites( const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv, ::sal_Bool alreadyInstalled ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL checkDependencies( const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::beans::Optional< ::com::sun::star::beans::Ambiguous< ::sal_Bool > > SAL_CALL isRegistered( const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL registerPackage( ::sal_Bool startup, const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL revokePackage( const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isBundle(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage > > SAL_CALL getBundle( const ::com::sun::star::uno::Reference< ::com::sun::star::task::XAbortChannel >& xAbortChannel, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::DeploymentException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getName(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::beans::Optional< ::rtl::OUString > SAL_CALL getIdentifier(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getVersion(  ) throw (::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getURL(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getDisplayName(  ) throw (::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getDescription(  ) throw (::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getLicenseText(  ) throw (::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getUpdateInformationURLs(  ) throw (::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::beans::StringPair SAL_CALL getPublisherInfo(  ) throw (::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackageTypeInfo > SAL_CALL getPackageType(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL exportTo( const ::rtl::OUString& destFolderURL, const ::rtl::OUString& newTitle, ::sal_Int32 nameClashAction, const ::com::sun::star::uno::Reference< ::com::sun::star::ucb::XCommandEnvironment >& xCmdEnv ) throw (::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::ucb::CommandFailedException, ::com::sun::star::ucb::CommandAbortedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::graphic::XGraphic > SAL_CALL getIcon( ::sal_Bool highContrast ) throw (::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getRepositoryName(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::beans::Optional< ::rtl::OUString > SAL_CALL getRegistrationDataURL(  ) throw (::com::sun::star::deployment::ExtensionRemovedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isRemoved(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::deployment::XPackage >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DEPLOYMENT_XPACKAGE_HDL

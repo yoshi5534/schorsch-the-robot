@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEXT_XTEXTTABLE_HDL
+#define INCLUDED_COM_SUN_STAR_TEXT_XTEXTTABLE_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace text { class XTextTableCursor; } } } }
+namespace com { namespace sun { namespace star { namespace table { class XCell; } } } }
+namespace com { namespace sun { namespace star { namespace table { class XTableColumns; } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace table { class XTableRows; } } } }
+#include "com/sun/star/text/XTextContent.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace text {
+
+class SAL_NO_VTABLE XTextTable : public ::com::sun::star::text::XTextContent
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL initialize( ::sal_Int32 nRows, ::sal_Int32 nColumns ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::table::XTableRows > SAL_CALL getRows(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::table::XTableColumns > SAL_CALL getColumns(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::table::XCell > SAL_CALL getCellByName( const ::rtl::OUString& aCellName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getCellNames(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::text::XTextTableCursor > SAL_CALL createCursorByCellName( const ::rtl::OUString& aCellName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::text::XTextTable >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TEXT_XTEXTTABLE_HDL

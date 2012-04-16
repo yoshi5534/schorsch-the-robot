@@ -1,0 +1,29 @@
+#ifndef INCLUDED_COM_SUN_STAR_VIEW_PRINTABLESTATE_HDL
+#define INCLUDED_COM_SUN_STAR_VIEW_PRINTABLESTATE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace view {
+
+enum PrintableState
+{
+    PrintableState_JOB_STARTED = 0,
+    PrintableState_JOB_COMPLETED = 1,
+    PrintableState_JOB_SPOOLED = 2,
+    PrintableState_JOB_ABORTED = 3,
+    PrintableState_JOB_FAILED = 4,
+    PrintableState_JOB_SPOOLING_FAILED = 5,
+    PrintableState_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::view::PrintableState* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_VIEW_PRINTABLESTATE_HDL

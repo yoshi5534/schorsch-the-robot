@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_SCRIPT_CANNOTCREATEADAPTEREXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_SCRIPT_CANNOTCREATEADAPTEREXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace script {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT CannotCreateAdapterException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE CannotCreateAdapterException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE CannotCreateAdapterException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE CannotCreateAdapterException(CannotCreateAdapterException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~CannotCreateAdapterException();
+
+    inline CPPU_GCC_DLLPRIVATE CannotCreateAdapterException & operator =(CannotCreateAdapterException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::script::CannotCreateAdapterException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SCRIPT_CANNOTCREATEADAPTEREXCEPTION_HDL

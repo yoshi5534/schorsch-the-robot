@@ -1,0 +1,47 @@
+#ifndef INCLUDED_COM_SUN_STAR_XML_SAX_XFASTSHAPECONTEXTHANDLER_HDL
+#define INCLUDED_COM_SUN_STAR_XML_SAX_XFASTSHAPECONTEXTHANDLER_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace io { class XInputStream; } } } }
+namespace com { namespace sun { namespace star { namespace drawing { class XDrawPage; } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace drawing { class XShape; } } } }
+namespace com { namespace sun { namespace star { namespace frame { class XModel; } } } }
+#include "com/sun/star/xml/sax/XFastContextHandler.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace xml { namespace sax {
+
+class SAL_NO_VTABLE XFastShapeContextHandler : public ::com::sun::star::xml::sax::XFastContextHandler
+{
+public:
+
+    // Attributes
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XShape > SAL_CALL getShape() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XDrawPage > SAL_CALL getDrawPage() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setDrawPage( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XDrawPage >& _drawpage ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::frame::XModel > SAL_CALL getModel() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setModel( const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XModel >& _model ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream > SAL_CALL getInputStream() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setInputStream( const ::com::sun::star::uno::Reference< ::com::sun::star::io::XInputStream >& _inputstream ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getRelationFragmentPath() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setRelationFragmentPath( const ::rtl::OUString& _relationfragmentpath ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getStartToken() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setStartToken( ::sal_Int32 _starttoken ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::sax::XFastShapeContextHandler >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_XML_SAX_XFASTSHAPECONTEXTHANDLER_HDL

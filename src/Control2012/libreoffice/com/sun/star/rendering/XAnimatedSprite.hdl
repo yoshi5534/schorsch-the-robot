@@ -1,0 +1,41 @@
+#ifndef INCLUDED_COM_SUN_STAR_RENDERING_XANIMATEDSPRITE_HDL
+#define INCLUDED_COM_SUN_STAR_RENDERING_XANIMATEDSPRITE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/geometry/RealPoint2D.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/rendering/RenderState.hdl"
+#include "com/sun/star/rendering/ViewState.hdl"
+#include "com/sun/star/rendering/XSprite.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace rendering {
+
+class SAL_NO_VTABLE XAnimatedSprite : public ::com::sun::star::rendering::XSprite
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL startAnimation( double nSpeed ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL stopAnimation(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL resetAnimation(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL updateAnimation(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setViewState( const ::com::sun::star::rendering::ViewState& aViewState ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setAll( const ::com::sun::star::geometry::RealPoint2D& aNewPos, const ::com::sun::star::rendering::ViewState& aViewState, const ::com::sun::star::rendering::RenderState& aRenderState, double nAlpha, ::sal_Bool bUpdateAnimation ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XAnimatedSprite >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_RENDERING_XANIMATEDSPRITE_HDL

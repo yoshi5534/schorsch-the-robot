@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_UTIL_XNUMBERFORMATS_HDL
+#define INCLUDED_COM_SUN_STAR_UTIL_XNUMBERFORMATS_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/util/MalformedNumberFormatException.hdl"
+#include "com/sun/star/lang/Locale.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace beans { class XPropertySet; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace util {
+
+class SAL_NO_VTABLE XNumberFormats : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::beans::XPropertySet > SAL_CALL getByKey( ::sal_Int32 nKey ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::sal_Int32 > SAL_CALL queryKeys( ::sal_Int16 nType, const ::com::sun::star::lang::Locale& nLocale, ::sal_Bool bCreate ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL queryKey( const ::rtl::OUString& aFormat, const ::com::sun::star::lang::Locale& nLocale, ::sal_Bool bScan ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL addNew( const ::rtl::OUString& aFormat, const ::com::sun::star::lang::Locale& nLocale ) throw (::com::sun::star::util::MalformedNumberFormatException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL addNewConverted( const ::rtl::OUString& aFormat, const ::com::sun::star::lang::Locale& nLocale, const ::com::sun::star::lang::Locale& nNewLocale ) throw (::com::sun::star::util::MalformedNumberFormatException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeByKey( ::sal_Int32 nKey ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL generateFormat( ::sal_Int32 nBaseKey, const ::com::sun::star::lang::Locale& nLocale, ::sal_Bool bThousands, ::sal_Bool bRed, ::sal_Int16 nDecimals, ::sal_Int16 nLeading ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::util::XNumberFormats >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UTIL_XNUMBERFORMATS_HDL

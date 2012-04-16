@@ -1,0 +1,17 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_GIOP_TARGETADDRESSGROUP_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_GIOP_TARGETADDRESSGROUP_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace giop { namespace TargetAddressGroup {
+
+static const ::sal_Int16 KeyAddr = (sal_Int16)0;
+static const ::sal_Int16 ProfileAddr = (sal_Int16)1;
+static const ::sal_Int16 ReferenceAddr = (sal_Int16)2;
+
+} } } } } }
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_GIOP_TARGETADDRESSGROUP_HDL

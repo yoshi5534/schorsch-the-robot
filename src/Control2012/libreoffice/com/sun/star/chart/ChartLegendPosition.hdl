@@ -1,0 +1,28 @@
+#ifndef INCLUDED_COM_SUN_STAR_CHART_CHARTLEGENDPOSITION_HDL
+#define INCLUDED_COM_SUN_STAR_CHART_CHARTLEGENDPOSITION_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace chart {
+
+enum ChartLegendPosition
+{
+    ChartLegendPosition_NONE = 0,
+    ChartLegendPosition_LEFT = 1,
+    ChartLegendPosition_TOP = 2,
+    ChartLegendPosition_RIGHT = 3,
+    ChartLegendPosition_BOTTOM = 4,
+    ChartLegendPosition_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::chart::ChartLegendPosition* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_CHART_CHARTLEGENDPOSITION_HDL

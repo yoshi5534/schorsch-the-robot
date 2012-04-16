@@ -1,0 +1,36 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_UNSUPPORTEDNAMECLASHEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_UNSUPPORTEDNAMECLASHEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT UnsupportedNameClashException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE UnsupportedNameClashException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE UnsupportedNameClashException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::sal_Int32& NameClash_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE UnsupportedNameClashException(UnsupportedNameClashException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~UnsupportedNameClashException();
+
+    inline CPPU_GCC_DLLPRIVATE UnsupportedNameClashException & operator =(UnsupportedNameClashException const &);
+
+    ::sal_Int32 NameClash CPPU_GCC3_ALIGN( ::com::sun::star::uno::Exception );
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::UnsupportedNameClashException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_UNSUPPORTEDNAMECLASHEXCEPTION_HDL

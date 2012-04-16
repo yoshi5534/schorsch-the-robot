@@ -1,0 +1,39 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_LOGICALTHREADID_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_LOGICALTHREADID_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/ThreadIDs.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct LogicalThreadID {
+    inline LogicalThreadID() SAL_THROW(());
+
+    inline LogicalThreadID(const ::com::sun::star::uno::Sequence< ::com::sun::star::corba::OneThreadID >& IDs_) SAL_THROW(());
+
+    ::com::sun::star::uno::Sequence< ::com::sun::star::corba::OneThreadID > IDs;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::LogicalThreadID* );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_LOGICALTHREADID_HDL

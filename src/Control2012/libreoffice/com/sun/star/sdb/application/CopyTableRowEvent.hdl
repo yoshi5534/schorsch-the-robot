@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_SDB_APPLICATION_COPYTABLEROWEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_SDB_APPLICATION_COPYTABLEROWEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/EventObject.hdl"
+namespace com { namespace sun { namespace star { namespace sdbc { class XResultSet; } } } }
+#include "com/sun/star/uno/Any.h"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace sdb { namespace application {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct CopyTableRowEvent: public ::com::sun::star::lang::EventObject {
+    inline CopyTableRowEvent() SAL_THROW(());
+
+    inline CopyTableRowEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XResultSet >& SourceData_, const ::com::sun::star::uno::Any& Error_) SAL_THROW(());
+
+    ::com::sun::star::uno::Reference< ::com::sun::star::sdbc::XResultSet > SourceData CPPU_GCC3_ALIGN(::com::sun::star::lang::EventObject);
+    ::com::sun::star::uno::Any Error;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::sdb::application::CopyTableRowEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_SDB_APPLICATION_COPYTABLEROWEVENT_HDL

@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_MAIL_MAILSERVICETYPE_HDL
+#define INCLUDED_COM_SUN_STAR_MAIL_MAILSERVICETYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace mail {
+
+enum MailServiceType
+{
+    MailServiceType_SMTP = 0,
+    MailServiceType_POP3 = 1,
+    MailServiceType_IMAP = 2,
+    MailServiceType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::mail::MailServiceType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_MAIL_MAILSERVICETYPE_HDL

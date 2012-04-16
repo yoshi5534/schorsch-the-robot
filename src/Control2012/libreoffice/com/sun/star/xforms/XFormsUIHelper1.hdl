@@ -1,0 +1,60 @@
+#ifndef INCLUDED_COM_SUN_STAR_XFORMS_XFORMSUIHELPER1_HDL
+#define INCLUDED_COM_SUN_STAR_XFORMS_XFORMSUIHELPER1_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace frame { class XModel; } } } }
+namespace com { namespace sun { namespace star { namespace xml { namespace dom { class XDocument; } } } } }
+namespace com { namespace sun { namespace star { namespace xforms { class XModel; } } } }
+namespace com { namespace sun { namespace star { namespace xml { namespace dom { class XNode; } } } } }
+namespace com { namespace sun { namespace star { namespace beans { class XPropertySet; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace xforms {
+
+class SAL_NO_VTABLE XFormsUIHelper1 : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::rtl::OUString SAL_CALL getDefaultServiceNameForNode( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& xNode ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getDefaultBindingExpressionForNode( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& xNode ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getNodeDisplayName( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& xNode, ::sal_Bool bDetail ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getNodeName( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& xNode ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getBindingName( const ::com::sun::star::uno::Reference< ::com::sun::star::beans::XPropertySet >& xBinding, ::sal_Bool bDetail ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getSubmissionName( const ::com::sun::star::uno::Reference< ::com::sun::star::beans::XPropertySet >& xSubm, ::sal_Bool bDetail ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::beans::XPropertySet > SAL_CALL cloneBindingAsGhost( const ::com::sun::star::uno::Reference< ::com::sun::star::beans::XPropertySet >& binding ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeBindingIfUseless( const ::com::sun::star::uno::Reference< ::com::sun::star::beans::XPropertySet >& xBinding ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XDocument > SAL_CALL newInstance( const ::rtl::OUString& sName, const ::rtl::OUString& sURL, ::sal_Bool bURLOnce ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL renameInstance( const ::rtl::OUString& sFrom, const ::rtl::OUString& sTo, const ::rtl::OUString& sURL, ::sal_Bool bURLOnce ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeInstance( const ::rtl::OUString& sName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xforms::XModel > SAL_CALL newModel( const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XModel >& xModel, const ::rtl::OUString& sName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL renameModel( const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XModel >& xModel, const ::rtl::OUString& sFrom, const ::rtl::OUString& sTo ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeModel( const ::com::sun::star::uno::Reference< ::com::sun::star::frame::XModel >& xModel, const ::rtl::OUString& sName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode > SAL_CALL createElement( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& xParent, const ::rtl::OUString& sName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode > SAL_CALL createAttribute( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& xParent, const ::rtl::OUString& sName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode > SAL_CALL renameNode( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& xNode, const ::rtl::OUString& sName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::beans::XPropertySet > SAL_CALL getBindingForNode( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& xNode, ::sal_Bool bCreate ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removeBindingForNode( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& xNode ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getResultForExpression( const ::com::sun::star::uno::Reference< ::com::sun::star::beans::XPropertySet >& xBinding, ::sal_Bool bIsBindingExpression, const ::rtl::OUString& sExpression ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isValidXMLName( const ::rtl::OUString& sName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL isValidPrefixName( const ::rtl::OUString& sName ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setNodeValue( const ::com::sun::star::uno::Reference< ::com::sun::star::xml::dom::XNode >& xNode, const ::rtl::OUString& sValue ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::xforms::XFormsUIHelper1 >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_XFORMS_XFORMSUIHELPER1_HDL

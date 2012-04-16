@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_PRESENTATION_ANIMATIONSPEED_HDL
+#define INCLUDED_COM_SUN_STAR_PRESENTATION_ANIMATIONSPEED_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace presentation {
+
+enum AnimationSpeed
+{
+    AnimationSpeed_SLOW = 0,
+    AnimationSpeed_MEDIUM = 1,
+    AnimationSpeed_FAST = 2,
+    AnimationSpeed_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::presentation::AnimationSpeed* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_PRESENTATION_ANIMATIONSPEED_HDL

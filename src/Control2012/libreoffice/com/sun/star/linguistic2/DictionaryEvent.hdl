@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_LINGUISTIC2_DICTIONARYEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_LINGUISTIC2_DICTIONARYEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/EventObject.hdl"
+namespace com { namespace sun { namespace star { namespace linguistic2 { class XDictionaryEntry; } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace linguistic2 {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct DictionaryEvent: public ::com::sun::star::lang::EventObject {
+    inline DictionaryEvent() SAL_THROW(());
+
+    inline DictionaryEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::sal_Int16& nEvent_, const ::com::sun::star::uno::Reference< ::com::sun::star::linguistic2::XDictionaryEntry >& xDictionaryEntry_) SAL_THROW(());
+
+    ::sal_Int16 nEvent CPPU_GCC3_ALIGN(::com::sun::star::lang::EventObject);
+    ::com::sun::star::uno::Reference< ::com::sun::star::linguistic2::XDictionaryEntry > xDictionaryEntry;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::linguistic2::DictionaryEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_LINGUISTIC2_DICTIONARYEVENT_HDL

@@ -1,0 +1,48 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_COOKIE_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_COOKIE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/ucb/CookiePolicy.hdl"
+#include "com/sun/star/util/DateTime.hdl"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct Cookie {
+    inline Cookie() SAL_THROW(());
+
+    inline Cookie(const ::rtl::OUString& Name_, const ::rtl::OUString& Value_, const ::rtl::OUString& Domain_, const ::rtl::OUString& Path_, const ::com::sun::star::util::DateTime& Expires_, const ::sal_Bool& Secure_, const ::com::sun::star::ucb::CookiePolicy& Policy_) SAL_THROW(());
+
+    ::rtl::OUString Name;
+    ::rtl::OUString Value;
+    ::rtl::OUString Domain;
+    ::rtl::OUString Path;
+    ::com::sun::star::util::DateTime Expires;
+    ::sal_Bool Secure;
+    ::com::sun::star::ucb::CookiePolicy Policy;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::Cookie* );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_COOKIE_HDL

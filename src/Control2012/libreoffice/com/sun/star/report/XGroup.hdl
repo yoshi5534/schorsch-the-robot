@@ -1,0 +1,60 @@
+#ifndef INCLUDED_COM_SUN_STAR_REPORT_XGROUP_HDL
+#define INCLUDED_COM_SUN_STAR_REPORT_XGROUP_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/container/NoSuchElementException.hdl"
+namespace com { namespace sun { namespace star { namespace report { class XSection; } } } }
+#include "com/sun/star/report/XFunctionsSupplier.hdl"
+#include "com/sun/star/lang/XComponent.hdl"
+namespace com { namespace sun { namespace star { namespace report { class XGroups; } } } }
+#include "com/sun/star/container/XChild.hdl"
+#include "com/sun/star/beans/XPropertySet.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace report {
+
+class SAL_NO_VTABLE XGroup : public ::com::sun::star::container::XChild, public ::com::sun::star::beans::XPropertySet, public ::com::sun::star::lang::XComponent, public ::com::sun::star::report::XFunctionsSupplier
+{
+public:
+
+    // Attributes
+    virtual ::sal_Bool SAL_CALL getSortAscending() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setSortAscending( ::sal_Bool _sortascending ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getHeaderOn() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setHeaderOn( ::sal_Bool _headeron ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getFooterOn() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setFooterOn( ::sal_Bool _footeron ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::report::XSection > SAL_CALL getHeader() throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::report::XSection > SAL_CALL getFooter() throw (::com::sun::star::container::NoSuchElementException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getGroupOn() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setGroupOn( ::sal_Int16 _groupon ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getGroupInterval() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setGroupInterval( ::sal_Int32 _groupinterval ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getKeepTogether() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setKeepTogether( ::sal_Int16 _keeptogether ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::report::XGroups > SAL_CALL getGroups() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getExpression() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setExpression( const ::rtl::OUString& _expression ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getStartNewColumn() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setStartNewColumn( ::sal_Bool _startnewcolumn ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getResetPageNumber() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setResetPageNumber( ::sal_Bool _resetpagenumber ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::report::XGroup >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_REPORT_XGROUP_HDL

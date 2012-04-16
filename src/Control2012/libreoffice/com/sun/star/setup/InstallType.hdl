@@ -1,0 +1,31 @@
+#ifndef INCLUDED_COM_SUN_STAR_SETUP_INSTALLTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_SETUP_INSTALLTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace setup {
+
+enum InstallType
+{
+    InstallType_INVALID = 0,
+    InstallType_INSTALL = 1,
+    InstallType_FULLINSTALL = 2,
+    InstallType_CHANGE = 3,
+    InstallType_REPAIR = 4,
+    InstallType_DELETE = 5,
+    InstallType_FULLDELETE = 6,
+    InstallType_UPDATE = 7,
+    InstallType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::setup::InstallType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SETUP_INSTALLTYPE_HDL

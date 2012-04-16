@@ -1,0 +1,6 @@
+#ifndef INCLUDED_COM_SUN_STAR_SHEET__NAMEDRANGE_HPP
+#define INCLUDED_COM_SUN_STAR_SHEET__NAMEDRANGE_HPP
+
+#include "com/sun/star/sheet/_NamedRange.hdl"
+
+#endif // INCLUDED_COM_SUN_STAR_SHEET__NAMEDRANGE_HPP

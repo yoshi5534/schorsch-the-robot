@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_XSLIDEPREVIEWCACHE_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_XSLIDEPREVIEWCACHE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+namespace com { namespace sun { namespace star { namespace drawing { class XSlidePreviewCacheListener; } } } }
+namespace com { namespace sun { namespace star { namespace rendering { class XCanvas; } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XBitmap; } } } }
+namespace com { namespace sun { namespace star { namespace container { class XIndexAccess; } } } }
+#include "com/sun/star/geometry/IntegerSize2D.hdl"
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+class SAL_NO_VTABLE XSlidePreviewCache : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL setDocumentSlides( const ::com::sun::star::uno::Reference< ::com::sun::star::container::XIndexAccess >& xSlides, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& xDocument ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setVisibleRange( ::sal_Int32 nFirstVisibleSlideIndex, ::sal_Int32 nLastVisibleSlideIndex ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setPreviewSize( const ::com::sun::star::geometry::IntegerSize2D& aSize ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBitmap > SAL_CALL getSlidePreview( ::sal_Int32 nSlideIndex, const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCanvas >& xCanvas ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL addPreviewCreationNotifyListener( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XSlidePreviewCacheListener >& xListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL removePreviewCreationNotifyListener( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XSlidePreviewCacheListener >& xListener ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL pause(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL resume(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XSlidePreviewCache >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_XSLIDEPREVIEWCACHE_HDL

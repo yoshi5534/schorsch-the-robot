@@ -1,0 +1,33 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_XSELECTIONFUNCTION_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_XSELECTIONFUNCTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/awt/XMouseMotionHandler.hdl"
+#include "com/sun/star/awt/XMouseClickHandler.hdl"
+#include "com/sun/star/awt/XKeyHandler.hdl"
+#include "com/sun/star/frame/XDispatch.hdl"
+#include "com/sun/star/view/XSelectionChangeListener.hdl"
+#include "com/sun/star/lang/XComponent.hdl"
+#include "com/sun/star/lang/XServiceInfo.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+class SAL_NO_VTABLE XSelectionFunction : public ::com::sun::star::lang::XComponent, public ::com::sun::star::lang::XServiceInfo, public ::com::sun::star::frame::XDispatch, public ::com::sun::star::awt::XKeyHandler, public ::com::sun::star::awt::XMouseClickHandler, public ::com::sun::star::awt::XMouseMotionHandler, public ::com::sun::star::view::XSelectionChangeListener
+{
+public:
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::drawing::XSelectionFunction >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_XSELECTIONFUNCTION_HDL

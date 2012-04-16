@@ -1,0 +1,44 @@
+#ifndef INCLUDED_COM_SUN_STAR_RESOURCE_XSTRINGRESOURCERESOLVER_HDL
+#define INCLUDED_COM_SUN_STAR_RESOURCE_XSTRINGRESOURCERESOLVER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/resource/MissingResourceException.hdl"
+#include "com/sun/star/lang/Locale.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/util/XModifyBroadcaster.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace resource {
+
+class SAL_NO_VTABLE XStringResourceResolver : public ::com::sun::star::util::XModifyBroadcaster
+{
+public:
+
+    // Methods
+    virtual ::rtl::OUString SAL_CALL resolveString( const ::rtl::OUString& ResourceID ) throw (::com::sun::star::resource::MissingResourceException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL resolveStringForLocale( const ::rtl::OUString& ResourceID, const ::com::sun::star::lang::Locale& locale ) throw (::com::sun::star::resource::MissingResourceException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL hasEntryForId( const ::rtl::OUString& ResourceID ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL hasEntryForIdAndLocale( const ::rtl::OUString& ResourceID, const ::com::sun::star::lang::Locale& locale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getResourceIDs(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getResourceIDsForLocale( const ::com::sun::star::lang::Locale& locale ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::lang::Locale SAL_CALL getCurrentLocale(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::lang::Locale SAL_CALL getDefaultLocale(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::com::sun::star::lang::Locale > SAL_CALL getLocales(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::resource::XStringResourceResolver >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_RESOURCE_XSTRINGRESOURCERESOLVER_HDL

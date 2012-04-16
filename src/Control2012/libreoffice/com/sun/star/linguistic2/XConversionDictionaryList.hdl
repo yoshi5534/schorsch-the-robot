@@ -1,0 +1,44 @@
+#ifndef INCLUDED_COM_SUN_STAR_LINGUISTIC2_XCONVERSIONDICTIONARYLIST_HDL
+#define INCLUDED_COM_SUN_STAR_LINGUISTIC2_XCONVERSIONDICTIONARYLIST_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/linguistic2/ConversionDirection.hdl"
+#include "com/sun/star/container/ElementExistException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/lang/Locale.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace container { class XNameContainer; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+namespace com { namespace sun { namespace star { namespace linguistic2 { class XConversionDictionary; } } } }
+#include "com/sun/star/lang/NoSupportException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace linguistic2 {
+
+class SAL_NO_VTABLE XConversionDictionaryList : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::container::XNameContainer > SAL_CALL getDictionaryContainer(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::linguistic2::XConversionDictionary > SAL_CALL addNewDictionary( const ::rtl::OUString& aName, const ::com::sun::star::lang::Locale& aLocale, ::sal_Int16 nConversionDictionaryType ) throw (::com::sun::star::lang::NoSupportException, ::com::sun::star::container::ElementExistException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL queryConversions( const ::rtl::OUString& aText, ::sal_Int32 nStartPos, ::sal_Int32 nLength, const ::com::sun::star::lang::Locale& aLocale, ::sal_Int16 nConversionDictionaryType, ::com::sun::star::linguistic2::ConversionDirection eDirection, ::sal_Int32 nTextConversionOptions ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::lang::NoSupportException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL queryMaxCharCount( const ::com::sun::star::lang::Locale& aLocale, ::sal_Int16 nConversionDictionaryType, ::com::sun::star::linguistic2::ConversionDirection eDirection ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::linguistic2::XConversionDictionaryList >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_LINGUISTIC2_XCONVERSIONDICTIONARYLIST_HDL

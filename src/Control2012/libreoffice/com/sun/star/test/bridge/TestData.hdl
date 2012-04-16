@@ -1,0 +1,14 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTDATA_HDL
+#define INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTDATA_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/test/bridge/TestDataElements.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace test { namespace bridge {
+
+typedef ::com::sun::star::test::bridge::TestDataElements TestData;
+
+} } } } }
+#endif // INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTDATA_HDL

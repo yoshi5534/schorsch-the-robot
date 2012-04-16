@@ -1,0 +1,25 @@
+#ifndef INCLUDED_COM_SUN_STAR_REFLECTION_METHODMODE_HDL
+#define INCLUDED_COM_SUN_STAR_REFLECTION_METHODMODE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace reflection {
+
+enum MethodMode
+{
+    MethodMode_ONEWAY = 0,
+    MethodMode_TWOWAY = 1,
+    MethodMode_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::reflection::MethodMode* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_REFLECTION_METHODMODE_HDL

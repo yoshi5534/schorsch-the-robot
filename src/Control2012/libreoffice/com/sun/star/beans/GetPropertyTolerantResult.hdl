@@ -1,0 +1,43 @@
+#ifndef INCLUDED_COM_SUN_STAR_BEANS_GETPROPERTYTOLERANTRESULT_HDL
+#define INCLUDED_COM_SUN_STAR_BEANS_GETPROPERTYTOLERANTRESULT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/beans/PropertyState.hdl"
+#include "com/sun/star/uno/Any.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace beans {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct GetPropertyTolerantResult {
+    inline GetPropertyTolerantResult() SAL_THROW(());
+
+    inline GetPropertyTolerantResult(const ::sal_Int16& Result_, const ::com::sun::star::beans::PropertyState& State_, const ::com::sun::star::uno::Any& Value_) SAL_THROW(());
+
+    ::sal_Int16 Result;
+    ::com::sun::star::beans::PropertyState State;
+    ::com::sun::star::uno::Any Value;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::beans::GetPropertyTolerantResult* );
+
+#endif // INCLUDED_COM_SUN_STAR_BEANS_GETPROPERTYTOLERANTRESULT_HDL

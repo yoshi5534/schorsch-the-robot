@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_RENDERING_XSPRITECANVAS_HDL
+#define INCLUDED_COM_SUN_STAR_RENDERING_XSPRITECANVAS_HDL
+
+#include "sal/config.h"
+
+namespace com { namespace sun { namespace star { namespace rendering { class XSprite; } } } }
+namespace com { namespace sun { namespace star { namespace rendering { class XCustomSprite; } } } }
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/rendering/VolatileContentDestroyedException.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XBitmap; } } } }
+namespace com { namespace sun { namespace star { namespace rendering { class XAnimation; } } } }
+#include "com/sun/star/geometry/RealSize2D.hdl"
+namespace com { namespace sun { namespace star { namespace rendering { class XAnimatedSprite; } } } }
+#include "com/sun/star/rendering/XBitmapCanvas.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace rendering {
+
+class SAL_NO_VTABLE XSpriteCanvas : public ::com::sun::star::rendering::XBitmapCanvas
+{
+public:
+
+    // Methods
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XAnimatedSprite > SAL_CALL createSpriteFromAnimation( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XAnimation >& animation ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XAnimatedSprite > SAL_CALL createSpriteFromBitmaps( const ::com::sun::star::uno::Sequence< ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XBitmap > >& animationBitmaps, ::sal_Int8 interpolationMode ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::rendering::VolatileContentDestroyedException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XCustomSprite > SAL_CALL createCustomSprite( const ::com::sun::star::geometry::RealSize2D& spriteSize ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XSprite > SAL_CALL createClonedSprite( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XSprite >& original ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL updateScreen( ::sal_Bool bUpdateAll ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::rendering::XSpriteCanvas >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_RENDERING_XSPRITECANVAS_HDL

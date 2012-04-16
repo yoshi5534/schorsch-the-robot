@@ -1,0 +1,46 @@
+#ifndef INCLUDED_COM_SUN_STAR_LOGGING_XCSVLOGFORMATTER_HDL
+#define INCLUDED_COM_SUN_STAR_LOGGING_XCSVLOGFORMATTER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/logging/XLogFormatter.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace logging {
+
+class SAL_NO_VTABLE XCsvLogFormatter : public ::com::sun::star::logging::XLogFormatter
+{
+public:
+
+    // Attributes
+    virtual ::sal_Bool SAL_CALL getLogEventNo() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLogEventNo( ::sal_Bool _logeventno ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getLogThread() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLogThread( ::sal_Bool _logthread ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getLogTimestamp() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLogTimestamp( ::sal_Bool _logtimestamp ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getLogSource() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setLogSource( ::sal_Bool _logsource ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Sequence< ::rtl::OUString > SAL_CALL getColumnnames() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setColumnnames( const ::com::sun::star::uno::Sequence< ::rtl::OUString >& _columnnames ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    // Methods
+    virtual ::rtl::OUString SAL_CALL formatMultiColumn( const ::com::sun::star::uno::Sequence< ::rtl::OUString >& column_data ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::logging::XCsvLogFormatter >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_LOGGING_XCSVLOGFORMATTER_HDL

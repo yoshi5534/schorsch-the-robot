@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_BEANS_AMBIGUOUS_HDL
+#define INCLUDED_COM_SUN_STAR_BEANS_AMBIGUOUS_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace beans {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+template< typename typeparam_T > struct Ambiguous {
+    inline Ambiguous() SAL_THROW(());
+
+    inline Ambiguous(typeparam_T const & Value_, const ::sal_Bool& IsAmbiguous_) SAL_THROW(());
+
+    typeparam_T Value;
+    ::sal_Bool IsAmbiguous;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+template< typename typeparam_T > inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::beans::Ambiguous< typeparam_T >* );
+
+#endif // INCLUDED_COM_SUN_STAR_BEANS_AMBIGUOUS_HDL

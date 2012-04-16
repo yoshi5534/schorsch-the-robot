@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_BEANS_PROPERTYEXISTEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_BEANS_PROPERTYEXISTEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/Exception.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace beans {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT PropertyExistException : public ::com::sun::star::uno::Exception
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE PropertyExistException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE PropertyExistException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE PropertyExistException(PropertyExistException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~PropertyExistException();
+
+    inline CPPU_GCC_DLLPRIVATE PropertyExistException & operator =(PropertyExistException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::beans::PropertyExistException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_BEANS_PROPERTYEXISTEXCEPTION_HDL

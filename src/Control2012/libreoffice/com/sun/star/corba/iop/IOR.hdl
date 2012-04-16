@@ -1,0 +1,42 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_IOP_IOR_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_IOP_IOR_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/corba/iop/TaggedProfile.hdl"
+#include "com/sun/star/corba/CorbaString8.hdl"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace iop {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct IOR {
+    inline IOR() SAL_THROW(());
+
+    inline IOR(const ::com::sun::star::corba::CorbaString8& type_id_, const ::com::sun::star::uno::Sequence< ::com::sun::star::corba::iop::TaggedProfile >& profiles_) SAL_THROW(());
+
+    ::com::sun::star::corba::CorbaString8 type_id;
+    ::com::sun::star::uno::Sequence< ::com::sun::star::corba::iop::TaggedProfile > profiles;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::corba::iop::IOR* );
+
+#endif // INCLUDED_COM_SUN_STAR_CORBA_IOP_IOR_HDL

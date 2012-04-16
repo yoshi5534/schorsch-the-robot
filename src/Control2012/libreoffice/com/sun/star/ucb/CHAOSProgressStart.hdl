@@ -1,0 +1,42 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_CHAOSPROGRESSSTART_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_CHAOSPROGRESSSTART_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct CHAOSProgressStart {
+    inline CHAOSProgressStart() SAL_THROW(());
+
+    inline CHAOSProgressStart(const ::rtl::OUString& Text_, const ::sal_Int32& Minimum_, const ::sal_Int32& Maximum_) SAL_THROW(());
+
+    ::rtl::OUString Text;
+    ::sal_Int32 Minimum;
+    ::sal_Int32 Maximum;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::CHAOSProgressStart* );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_CHAOSPROGRESSSTART_HDL

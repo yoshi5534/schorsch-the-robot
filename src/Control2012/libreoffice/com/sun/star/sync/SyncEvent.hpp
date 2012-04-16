@@ -1,0 +1,6 @@
+#ifndef INCLUDED_COM_SUN_STAR_SYNC_SYNCEVENT_HPP
+#define INCLUDED_COM_SUN_STAR_SYNC_SYNCEVENT_HPP
+
+#include "com/sun/star/sync/SyncEvent.hdl"
+
+#endif // INCLUDED_COM_SUN_STAR_SYNC_SYNCEVENT_HPP

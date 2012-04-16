@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_FORM_VALIDATION_XVALIDATABLE_HDL
+#define INCLUDED_COM_SUN_STAR_FORM_VALIDATION_XVALIDATABLE_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/util/VetoException.hdl"
+namespace com { namespace sun { namespace star { namespace form { namespace validation { class XValidator; } } } } }
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace form { namespace validation {
+
+class SAL_NO_VTABLE XValidatable : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual void SAL_CALL setValidator( const ::com::sun::star::uno::Reference< ::com::sun::star::form::validation::XValidator >& Validator ) throw (::com::sun::star::util::VetoException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::form::validation::XValidator > SAL_CALL getValidator(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::form::validation::XValidatable >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_FORM_VALIDATION_XVALIDATABLE_HDL

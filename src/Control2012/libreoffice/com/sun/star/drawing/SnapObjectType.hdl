@@ -1,0 +1,26 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_SNAPOBJECTTYPE_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_SNAPOBJECTTYPE_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum SnapObjectType
+{
+    SnapObjectType_POINT = 0,
+    SnapObjectType_VERTICAL = 1,
+    SnapObjectType_HORIZONTAL = 2,
+    SnapObjectType_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::SnapObjectType* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_SNAPOBJECTTYPE_HDL

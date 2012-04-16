@@ -1,0 +1,45 @@
+#ifndef INCLUDED_COM_SUN_STAR_AWT_DOCKINGEVENT_HDL
+#define INCLUDED_COM_SUN_STAR_AWT_DOCKINGEVENT_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/lang/EventObject.hdl"
+#include "com/sun/star/awt/Point.hdl"
+#include "com/sun/star/awt/Rectangle.hdl"
+#include "cppu/macros.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace awt {
+
+#ifdef SAL_W32
+#   pragma pack(push, 8)
+#elif defined(SAL_OS2)
+#   pragma pack(8)
+#endif
+
+struct DockingEvent: public ::com::sun::star::lang::EventObject {
+    inline DockingEvent() SAL_THROW(());
+
+    inline DockingEvent(const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Source_, const ::com::sun::star::awt::Rectangle& TrackingRectangle_, const ::com::sun::star::awt::Point& MousePos_, const ::sal_Bool& bLiveMode_, const ::sal_Bool& bInteractive_) SAL_THROW(());
+
+    ::com::sun::star::awt::Rectangle TrackingRectangle CPPU_GCC3_ALIGN(::com::sun::star::lang::EventObject);
+    ::com::sun::star::awt::Point MousePos;
+    ::sal_Bool bLiveMode;
+    ::sal_Bool bInteractive;
+};
+
+#ifdef SAL_W32
+#   pragma pack(pop)
+#elif defined(SAL_OS2)
+#   pragma pack()
+#endif
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::awt::DockingEvent* );
+
+#endif // INCLUDED_COM_SUN_STAR_AWT_DOCKINGEVENT_HDL

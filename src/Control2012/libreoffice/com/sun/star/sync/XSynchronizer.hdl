@@ -1,0 +1,40 @@
+#ifndef INCLUDED_COM_SUN_STAR_SYNC_XSYNCHRONIZER_HDL
+#define INCLUDED_COM_SUN_STAR_SYNC_XSYNCHRONIZER_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+#include "com/sun/star/sync/FilterData.hdl"
+#include "com/sun/star/sync/SyncElement.hdl"
+namespace com { namespace sun { namespace star { namespace sync { class XSyncCollector; } } } }
+#include "com/sun/star/uno/XInterface.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "com/sun/star/uno/Sequence.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace sync {
+
+class SAL_NO_VTABLE XSynchronizer : public ::com::sun::star::uno::XInterface
+{
+public:
+
+    // Methods
+    virtual ::sal_Bool SAL_CALL beginSynchronize( const ::com::sun::star::uno::Reference< ::com::sun::star::sync::XSyncCollector >& xClientCollector, const ::com::sun::star::uno::Reference< ::com::sun::star::sync::XSyncCollector >& xServerCollector, const ::rtl::OUString& aSchemeName, const ::com::sun::star::uno::Sequence< ::rtl::OUString >& aFilterData, ::sal_uInt32 nSyncMode, ::sal_uInt32 nSyncOptions ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getSyncList( ::com::sun::star::uno::Sequence< ::com::sun::star::sync::SyncElement >& aSyncSeq ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL performSync( const ::com::sun::star::uno::Sequence< ::com::sun::star::sync::SyncElement >& aSyncSeq ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL endSynchronize(  ) throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::sync::XSynchronizer >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_SYNC_XSYNCHRONIZER_HDL

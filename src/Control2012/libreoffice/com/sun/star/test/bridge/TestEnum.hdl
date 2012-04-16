@@ -1,0 +1,30 @@
+#ifndef INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTENUM_HDL
+#define INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTENUM_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace test { namespace bridge {
+
+enum TestEnum
+{
+    TestEnum_TEST = 0,
+    TestEnum_ONE = 1,
+    TestEnum_TWO = 2,
+    TestEnum_CHECK = 3,
+    TestEnum_LOLA = 4,
+    TestEnum_PALOO = 5,
+    TestEnum_ZA = 6,
+    TestEnum_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::test::bridge::TestEnum* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_TEST_BRIDGE_TESTENUM_HDL

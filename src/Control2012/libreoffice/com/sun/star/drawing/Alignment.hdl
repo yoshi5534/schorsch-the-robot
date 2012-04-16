@@ -1,0 +1,32 @@
+#ifndef INCLUDED_COM_SUN_STAR_DRAWING_ALIGNMENT_HDL
+#define INCLUDED_COM_SUN_STAR_DRAWING_ALIGNMENT_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace drawing {
+
+enum Alignment
+{
+    Alignment_TOP_LEFT = 0,
+    Alignment_TOP = 1,
+    Alignment_TOP_RIGHT = 2,
+    Alignment_LEFT = 3,
+    Alignment_CENTER = 4,
+    Alignment_RIGHT = 5,
+    Alignment_BOTTOM_LEFT = 6,
+    Alignment_BOTTOM = 7,
+    Alignment_BOTTOM_RIGHT = 8,
+    Alignment_MAKE_FIXED_SIZE = SAL_MAX_ENUM
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::drawing::Alignment* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_DRAWING_ALIGNMENT_HDL

@@ -1,0 +1,34 @@
+#ifndef INCLUDED_COM_SUN_STAR_UCB_INTERACTIVENETWORKOFFLINEEXCEPTION_HDL
+#define INCLUDED_COM_SUN_STAR_UCB_INTERACTIVENETWORKOFFLINEEXCEPTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/ucb/InteractiveNetworkException.hdl"
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace ucb {
+
+class CPPU_GCC_DLLPUBLIC_EXPORT InteractiveNetworkOffLineException : public ::com::sun::star::ucb::InteractiveNetworkException
+{
+public:
+    inline CPPU_GCC_DLLPRIVATE InteractiveNetworkOffLineException() SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveNetworkOffLineException(const ::rtl::OUString& Message_, const ::com::sun::star::uno::Reference< ::com::sun::star::uno::XInterface >& Context_, const ::com::sun::star::task::InteractionClassification& Classification_) SAL_THROW( () );
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveNetworkOffLineException(InteractiveNetworkOffLineException const &);
+
+    inline CPPU_GCC_DLLPRIVATE ~InteractiveNetworkOffLineException();
+
+    inline CPPU_GCC_DLLPRIVATE InteractiveNetworkOffLineException & operator =(InteractiveNetworkOffLineException const &);
+
+};
+
+} } } }
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::ucb::InteractiveNetworkOffLineException* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_UCB_INTERACTIVENETWORKOFFLINEEXCEPTION_HDL

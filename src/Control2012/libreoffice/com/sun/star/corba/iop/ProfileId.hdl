@@ -1,0 +1,13 @@
+#ifndef INCLUDED_COM_SUN_STAR_CORBA_IOP_PROFILEID_HDL
+#define INCLUDED_COM_SUN_STAR_CORBA_IOP_PROFILEID_HDL
+
+#include "sal/config.h"
+
+#include "cppu/macros.hxx"
+
+namespace com { namespace sun { namespace star { namespace corba { namespace iop {
+
+typedef ::sal_uInt32 ProfileId;
+
+} } } } }
+#endif // INCLUDED_COM_SUN_STAR_CORBA_IOP_PROFILEID_HDL

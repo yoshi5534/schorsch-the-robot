@@ -1,0 +1,68 @@
+#ifndef INCLUDED_COM_SUN_STAR_REPORT_XSECTION_HDL
+#define INCLUDED_COM_SUN_STAR_REPORT_XSECTION_HDL
+
+#include "sal/config.h"
+
+#include "com/sun/star/uno/RuntimeException.hdl"
+namespace com { namespace sun { namespace star { namespace report { class XGroup; } } } }
+#include "com/sun/star/util/Color.hdl"
+#include "com/sun/star/lang/XComponent.hdl"
+#include "com/sun/star/beans/UnknownPropertyException.hdl"
+#include "com/sun/star/lang/IllegalArgumentException.hdl"
+#include "com/sun/star/container/XEnumerationAccess.hdl"
+namespace com { namespace sun { namespace star { namespace report { class XReportDefinition; } } } }
+#include "com/sun/star/container/XContainer.hdl"
+#include "com/sun/star/beans/XPropertySet.hdl"
+#include "com/sun/star/drawing/XShapes.hdl"
+#include "com/sun/star/container/XChild.hdl"
+#include "com/sun/star/uno/Reference.h"
+#include "cppu/macros.hxx"
+#include "rtl/ustring.hxx"
+#include "sal/types.h"
+
+namespace com { namespace sun { namespace star { namespace uno {
+class Type;
+} } } }
+
+namespace com { namespace sun { namespace star { namespace report {
+
+class SAL_NO_VTABLE XSection : public ::com::sun::star::container::XChild, public ::com::sun::star::container::XContainer, public ::com::sun::star::drawing::XShapes, public ::com::sun::star::container::XEnumerationAccess, public ::com::sun::star::beans::XPropertySet, public ::com::sun::star::lang::XComponent
+{
+public:
+
+    // Attributes
+    virtual ::sal_Bool SAL_CALL getVisible() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setVisible( ::sal_Bool _visible ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getName() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setName( const ::rtl::OUString& _name ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_uInt32 SAL_CALL getHeight() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setHeight( ::sal_uInt32 _height ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int32 SAL_CALL getBackColor() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setBackColor( ::sal_Int32 _backcolor ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getBackTransparent() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setBackTransparent( ::sal_Bool _backtransparent ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::rtl::OUString SAL_CALL getConditionalPrintExpression() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setConditionalPrintExpression( const ::rtl::OUString& _conditionalprintexpression ) throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getForceNewPage() throw (::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setForceNewPage( ::sal_Int16 _forcenewpage ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Int16 SAL_CALL getNewRowOrCol() throw (::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setNewRowOrCol( ::sal_Int16 _newroworcol ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getKeepTogether() throw (::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setKeepTogether( ::sal_Bool _keeptogether ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getCanGrow() throw (::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCanGrow( ::sal_Bool _cangrow ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getCanShrink() throw (::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setCanShrink( ::sal_Bool _canshrink ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::sal_Bool SAL_CALL getRepeatSection() throw (::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual void SAL_CALL setRepeatSection( ::sal_Bool _repeatsection ) throw (::com::sun::star::lang::IllegalArgumentException, ::com::sun::star::beans::UnknownPropertyException, ::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::report::XGroup > SAL_CALL getGroup() throw (::com::sun::star::uno::RuntimeException) = 0;
+    virtual ::com::sun::star::uno::Reference< ::com::sun::star::report::XReportDefinition > SAL_CALL getReportDefinition() throw (::com::sun::star::uno::RuntimeException) = 0;
+
+    static inline ::com::sun::star::uno::Type const & SAL_CALL static_type(void * = 0);
+};
+
+} } } }
+
+inline const ::com::sun::star::uno::Type& SAL_CALL getCppuType( const ::com::sun::star::uno::Reference< ::com::sun::star::report::XSection >* ) SAL_THROW( () );
+
+#endif // INCLUDED_COM_SUN_STAR_REPORT_XSECTION_HDL

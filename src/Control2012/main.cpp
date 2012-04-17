@@ -1,60 +1,6 @@
 #include <QtGui/QApplication>
 #include "maingui.h"
 
-// int main(int argc, char *argv[])
-// {
-//     QApplication a(argc, argv);
-//     mainGUI w;
-//     w.show();
-//     return a.exec();
-// 
-// 
-// 
-// }
-
-/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
-/*************************************************************************
- *
- *  The Contents of this file are made available subject to the terms of
- *  the BSD license.
- *  
- *  Copyright 2000, 2010 Oracle and/or its affiliates.
- *  All rights reserved.
- *
- *  Redistribution and use in source and binary forms, with or without
- *  modification, are permitted provided that the following conditions
- *  are met:
- *  1. Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *  2. Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *  3. Neither the name of Sun Microsystems, Inc. nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
- *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
- *  OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- *  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
- *  TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
- *  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *     
- *************************************************************************/
-
-/*****************************************************************************
- *****************************************************************************
- *
- * Simple client application using the UnoUrlResolver service.
- *
- *****************************************************************************
- *****************************************************************************/
-
 #define UNX
 #define SAL_UNX
 #define CPPU_ENV
@@ -108,11 +54,6 @@ SAL_IMPLEMENT_MAIN_WITH_ARGS(argc, argv)
     {
         rtl_getAppCommandArg(1, &sConnectionString.pData);
     }
-    
-//     Reference <com::sun::star::registry::XSimpleRegistry > xRegistry(::cppu::createSimpleRegistry());
-//     xRegistry->open(OUString(RTL_CONSTASCII_USTRINGPARAM("file:////usr/lib/libreoffice/basis3.4/program/offapi.rdb")),sal_True, sal_False);
-//      Reference< XComponentContext > xComponentContext(::cppu::bootstrap_InitialComponentContext(xRegistry));
-
   
     Reference< XComponentContext > xComponentContext(::cppu::defaultBootstrap_InitialComponentContext());
       /* Gets the service manager instance to be used (or null). This method has
@@ -166,42 +107,6 @@ SAL_IMPLEMENT_MAIN_WITH_ARGS(argc, argv)
             OUString( RTL_CONSTASCII_USTRINGPARAM("com.sun.star.frame.Desktop" ) ),
             xComponentContext ), UNO_QUERY );
     
-//     /* Loads a component specified by an URL into the specified new or existing
-//        frame.
-//     */
-//     OUString sAbsoluteDocUrl, sWorkingDir, sDocPathUrl, sArgDocUrl;
-//     rtl_getAppCommandArg(0, &sArgDocUrl.pData);
-// 
-//     osl_getProcessWorkingDir(&sWorkingDir.pData);
-//     osl::FileBase::getFileURLFromSystemPath( sArgDocUrl, sDocPathUrl);
-//     osl::FileBase::getAbsoluteFileURL( sWorkingDir, sDocPathUrl, sAbsoluteDocUrl);
-//     
-//      printf("connection '%s':\n      url %s\n",
-// 	     OUStringToOString(sConnectionString, RTL_TEXTENCODING_ASCII_US).getStr(),
-// 	     OUStringToOString(sArgDocUrl, RTL_TEXTENCODING_ASCII_US).getStr());
-//     
-//     Reference< XComponent > xComponent = xComponentLoader->loadComponentFromURL(
-//         sArgDocUrl, OUString( RTL_CONSTASCII_USTRINGPARAM("_blank") ), 0,
-//         Sequence < ::com::sun::star::beans::PropertyValue >() );
-//     
-// 
-//     Reference< ::com::sun::star::presentation::XPresentationSupplier > showsupplier(xComponent, UNO_QUERY); 
-//     Reference< ::com::sun::star::presentation::XPresentation > show = showsupplier->getPresentation(); 
-// //     Reference< XPropertySet > mPres_Props(show, UNO_QUERY); 
-// //     sal_Int16 startpage = 0; 
-// //     mPres_Props->setPropertyValue(createStr("FirstPage"), makeAny(startpage) ); 
-// //   show->start(); 
-//     Reference< ::com::sun::star::presentation::XPresentation2 > show2(show, UNO_QUERY);
-//     show2->getController()->gotoNextSlide();
-//     show2->getController()->gotoNextSlide();
-//     show2->getController()->gotoNextSlide();
-//     show2->start();
-// 	
-//     // dispose the local service manager
-//     Reference< XComponent >::query( xMultiComponentFactoryClient )->dispose();
-    
-    
-//   
     QApplication application(argc, argv);
     mainGUI mainWindow(xComponentLoader);
     mainWindow.show();

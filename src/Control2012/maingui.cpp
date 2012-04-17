@@ -50,8 +50,6 @@ void mainGUI::uploadProgram()
     this->robot->getPort()->sendQuedCommands(2);      
 }
  
-//robot->getPort()->executeProgram(1);    
-
 void mainGUI::abortTransmission()
 {
     this->robot->getPort()->abortDataTransmission();

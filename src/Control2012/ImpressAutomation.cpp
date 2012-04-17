@@ -41,14 +41,6 @@
 
 #include <string>
 
-
-//#include <stdio.h>
-//#include "/usr/include/libreoffice/cppuhelper/bootstrap.hxx"
-//#include "/usr/include/libreoffice/com/sun/star/bridge/XUnoUrlResolver.hpp"
-//#include "/usr/include/libreoffice/com/sun/star/lang/XMultiServiceFactory.hpp"
-// added
-//#include "/usr/include/libreoffice/com/sun/star/frame/XComponentLoader.hpp"
-
 #include <stdexcept>
 #include "ImpressAutomation.h"
 
@@ -78,40 +70,19 @@ void ImpressAutomation::loadPresentation(std::string fileName)
   using ::rtl::OUString;
   using ::rtl::OUStringToOString;
   
-  
-      /* Loads a component specified by an URL into the specified new or existing
-       frame.
-    */
-    //OUString sAbsoluteDocUrl, sWorkingDir, sDocPathUrl, sArgDocUrl;
-    //rtl_getAppCommandArg(0, &sArgDocUrl.pData);
-    
-   //OUString sAbsoluteDocUrl(RTL_CONSTASCII_USTRINGPARAM(""));
-    //OUString sWorkingDir(RTL_CONSTASCII_USTRINGPARAM(""));
-   // OUString sDocPathUrl(RTL_CONSTASCII_USTRINGPARAM(""));
-    OUString sArgDocUrl(RTL_CONSTASCII_USTRINGPARAM("file:////home/oswald/projekt/control/control2011.ppt"));
-    
-// -env:URE_MORE_TYPES="file:////usr/lib/libreoffice/basis3.4/program/offapi.rdb" "file:////home/oswald/projekt/control/control2011.ppt" "uno:socket,host=localhost,port=2083;urp;StarOffice.ServiceManager"
 
-   // osl_getProcessWorkingDir(&sWorkingDir.pData);
-   //osl::FileBase::getFileURLFromSystemPath( sArgDocUrl, sDocPathUrl);
-   // osl::FileBase::getAbsoluteFileURL( sWorkingDir, sDocPathUrl, sAbsoluteDocUrl);
-/*    
-     printf("connection '%s':\n      url %s\n",
-	     OUStringToOString(sConnectionString, RTL_TEXTENCODING_ASCII_US).getStr(),
-	     OUStringToOString(sArgDocUrl, RTL_TEXTENCODING_ASCII_US).getStr());
-    */
-    Reference< XComponent > xComponent = xComponentLoader->loadComponentFromURL(
-        sArgDocUrl, OUString( RTL_CONSTASCII_USTRINGPARAM("_blank") ), 0,
-        Sequence < ::com::sun::star::beans::PropertyValue >() );
-    
+  OUString sArgDocUrl(RTL_CONSTASCII_USTRINGPARAM("file:////home/oswald/projekt/control/control2011.ppt"));
 
-    Reference< ::com::sun::star::presentation::XPresentationSupplier > showsupplier(xComponent, UNO_QUERY); 
-    Reference< ::com::sun::star::presentation::XPresentation > show = showsupplier->getPresentation(); 
-//     Reference< XPropertySet > mPres_Props(show, UNO_QUERY); 
-//     sal_Int16 startpage = 0; 
-//     mPres_Props->setPropertyValue(createStr("FirstPage"), makeAny(startpage) ); 
-//   show->start(); 
-    Reference< ::com::sun::star::presentation::XPresentation2 > show2(show, UNO_QUERY);
+
+  Reference< XComponent > xComponent = xComponentLoader->loadComponentFromURL(
+  sArgDocUrl, OUString( RTL_CONSTASCII_USTRINGPARAM("_blank") ), 0,
+  Sequence < ::com::sun::star::beans::PropertyValue >() );
+
+
+  Reference< ::com::sun::star::presentation::XPresentationSupplier > showsupplier(xComponent, UNO_QUERY); 
+  Reference< ::com::sun::star::presentation::XPresentation > show = showsupplier->getPresentation(); 
+
+  Reference< ::com::sun::star::presentation::XPresentation2 > show2(show, UNO_QUERY);
     presentation = show2;
 }
 

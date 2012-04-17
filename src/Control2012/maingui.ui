@@ -14,43 +14,69 @@
    <string>Control 2012 - Die Gui für Blöde</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="buttonYes">
+   <widget class="QPushButton" name="loadPresentation">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>30</y>
-      <width>83</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Yes</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="buttonAbortTransmission">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>60</y>
-      <width>60</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Abort</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="buttonUpload">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>60</y>
+      <x>10</x>
+      <y>0</y>
       <width>121</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
-     <string>Upload Program</string>
+     <string>Load Presentation</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="abortPresentation">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>20</y>
+      <width>141</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Stop Presentation</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="nextSlide">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>50</y>
+      <width>99</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Next Slide</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="previousSlide">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>99</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Previous Slide</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startPresentation">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>121</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Start Presentation</string>
     </property>
    </widget>
   </widget>
@@ -76,20 +102,20 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>buttonYes</tabstop>
-  <tabstop>buttonAbortTransmission</tabstop>
+  <tabstop>loadPresentation</tabstop>
+  <tabstop>abortPresentation</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
-   <sender>buttonAbortTransmission</sender>
+   <sender>abortPresentation</sender>
    <signal>clicked()</signal>
    <receiver>mainGUI</receiver>
    <slot>abortTransmission()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>99</x>
-     <y>110</y>
+     <x>199</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
      <x>379</x>
@@ -98,30 +124,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonUpload</sender>
+   <sender>loadPresentation</sender>
    <signal>clicked()</signal>
    <receiver>mainGUI</receiver>
-   <slot>uploadProgram()</slot>
+   <slot>loadPresentation()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>207</x>
-     <y>110</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>378</x>
-     <y>155</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonYes</sender>
-   <signal>clicked()</signal>
-   <receiver>mainGUI</receiver>
-   <slot>yesClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>70</x>
-     <y>72</y>
+     <x>40</x>
+     <y>48</y>
     </hint>
     <hint type="destinationlabel">
      <x>162</x>
@@ -129,10 +139,78 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>previousSlide</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>previousSlide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>80</x>
+     <y>88</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>104</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>nextSlide</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>nextSlide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>245</x>
+     <y>86</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>241</x>
+     <y>127</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>startPresentation</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>startPresentation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>109</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>142</x>
+     <y>83</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>abortPresentation</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>stopPresentation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>267</x>
+     <y>59</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>334</x>
+     <y>63</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
-  <slot>yesClicked()</slot>
+  <slot>startPresentation()</slot>
   <slot>uploadProgram()</slot>
   <slot>abortTransmission()</slot>
+  <slot>nextSlide()</slot>
+  <slot>previousSlide()</slot>
+  <slot>stopPresentation()</slot>
+  <slot>loadPresentation()</slot>
  </slots>
 </ui>

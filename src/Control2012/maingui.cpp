@@ -15,12 +15,10 @@
 #include "../RobotLib/PlaneToCoordinateSystem.h"
 #include "../RobotLib/Where.h"
 
-#include "ImpressAutomation.h"
-
-
-mainGUI::mainGUI(QWidget *parent) :
+mainGUI::mainGUI(com::sun::star::uno::Reference<com::sun::star::frame::XComponentLoader> createdXComponentLoader, QWidget *parent) :
         QMainWindow(parent),
-        ui(new Ui::mainGUI)
+        ui(new Ui::mainGUI),
+        impressAutomation(createdXComponentLoader)
 {
     ui->setupUi(this);
 
@@ -51,14 +49,8 @@ void mainGUI::uploadProgram()
     this->robot->goHome();   
     this->robot->getPort()->sendQuedCommands(2);      
 }
-
-void mainGUI::yesClicked()
-{
-  ImpressAutomation impressAutomation;
-  impressAutomation.connect();
-  
-  robot->getPort()->executeProgram(1);    
-}
+ 
+//robot->getPort()->executeProgram(1);    
 
 void mainGUI::abortTransmission()
 {
@@ -86,4 +78,29 @@ bool mainGUI::robotIsAtHomePossition(float64 allowedDelta)
     }
 
     return false;
+}
+
+void mainGUI::loadPresentation()
+{
+  impressAutomation.loadPresentation("hallo.odi");
+}
+
+void mainGUI::startPresentation()
+{
+  impressAutomation.startPresentation();
+}
+
+void mainGUI::stopPresentation()
+{
+  impressAutomation.stopPresentation();
+}
+
+void mainGUI::nextSlide()
+{
+  impressAutomation.nextSlide();
+}
+
+void mainGUI::previousSlide()
+{
+  impressAutomation.previousSlide();
 }

@@ -109,12 +109,13 @@ SAL_IMPLEMENT_MAIN_WITH_ARGS(argc, argv)
         rtl_getAppCommandArg(1, &sConnectionString.pData);
     }
     
-    Reference <com::sun::star::registry::XSimpleRegistry > xRegistry(::cppu::createSimpleRegistry());
-    xRegistry->open(OUString(RTL_CONSTASCII_USTRINGPARAM("file:////usr/lib/libreoffice/basis3.4/program/offapi.rdb")),sal_True, sal_False);
-    // Reference< XComponentContext > xComponentContext(::cppu::defaultBootstrap_InitialComponentContext());
-    Reference< XComponentContext > xComponentContext(::cppu::bootstrap_InitialComponentContext(xRegistry));
+//     Reference <com::sun::star::registry::XSimpleRegistry > xRegistry(::cppu::createSimpleRegistry());
+//     xRegistry->open(OUString(RTL_CONSTASCII_USTRINGPARAM("file:////usr/lib/libreoffice/basis3.4/program/offapi.rdb")),sal_True, sal_False);
+//      Reference< XComponentContext > xComponentContext(::cppu::bootstrap_InitialComponentContext(xRegistry));
 
-    /* Gets the service manager instance to be used (or null). This method has
+  
+    Reference< XComponentContext > xComponentContext(::cppu::defaultBootstrap_InitialComponentContext());
+      /* Gets the service manager instance to be used (or null). This method has
        been added for convenience, because the service manager is a often used
        object.
     */
@@ -160,45 +161,54 @@ SAL_IMPLEMENT_MAIN_WITH_ARGS(argc, argv)
     /* Creates an instance of a component which supports the services specified
        by the factory. Important: using the office component context.
     */
-    Reference < XComponentLoader > xComponentLoader(
+    com::sun::star::uno::Reference< com::sun::star::frame::XComponentLoader > xComponentLoader(
         xMultiComponentFactoryServer->createInstanceWithContext( 
             OUString( RTL_CONSTASCII_USTRINGPARAM("com.sun.star.frame.Desktop" ) ),
             xComponentContext ), UNO_QUERY );
     
-    /* Loads a component specified by an URL into the specified new or existing
-       frame.
-    */
-    OUString sAbsoluteDocUrl, sWorkingDir, sDocPathUrl, sArgDocUrl;
-    rtl_getAppCommandArg(0, &sArgDocUrl.pData);
-
-    osl_getProcessWorkingDir(&sWorkingDir.pData);
-    osl::FileBase::getFileURLFromSystemPath( sArgDocUrl, sDocPathUrl);
-    osl::FileBase::getAbsoluteFileURL( sWorkingDir, sDocPathUrl, sAbsoluteDocUrl);
+//     /* Loads a component specified by an URL into the specified new or existing
+//        frame.
+//     */
+//     OUString sAbsoluteDocUrl, sWorkingDir, sDocPathUrl, sArgDocUrl;
+//     rtl_getAppCommandArg(0, &sArgDocUrl.pData);
+// 
+//     osl_getProcessWorkingDir(&sWorkingDir.pData);
+//     osl::FileBase::getFileURLFromSystemPath( sArgDocUrl, sDocPathUrl);
+//     osl::FileBase::getAbsoluteFileURL( sWorkingDir, sDocPathUrl, sAbsoluteDocUrl);
+//     
+//      printf("connection '%s':\n      url %s\n",
+// 	     OUStringToOString(sConnectionString, RTL_TEXTENCODING_ASCII_US).getStr(),
+// 	     OUStringToOString(sArgDocUrl, RTL_TEXTENCODING_ASCII_US).getStr());
+//     
+//     Reference< XComponent > xComponent = xComponentLoader->loadComponentFromURL(
+//         sArgDocUrl, OUString( RTL_CONSTASCII_USTRINGPARAM("_blank") ), 0,
+//         Sequence < ::com::sun::star::beans::PropertyValue >() );
+//     
+// 
+//     Reference< ::com::sun::star::presentation::XPresentationSupplier > showsupplier(xComponent, UNO_QUERY); 
+//     Reference< ::com::sun::star::presentation::XPresentation > show = showsupplier->getPresentation(); 
+// //     Reference< XPropertySet > mPres_Props(show, UNO_QUERY); 
+// //     sal_Int16 startpage = 0; 
+// //     mPres_Props->setPropertyValue(createStr("FirstPage"), makeAny(startpage) ); 
+// //   show->start(); 
+//     Reference< ::com::sun::star::presentation::XPresentation2 > show2(show, UNO_QUERY);
+//     show2->getController()->gotoNextSlide();
+//     show2->getController()->gotoNextSlide();
+//     show2->getController()->gotoNextSlide();
+//     show2->start();
+// 	
+//     // dispose the local service manager
+//     Reference< XComponent >::query( xMultiComponentFactoryClient )->dispose();
     
-     printf("connection '%s':\n      url %s\n",
-	     OUStringToOString(sConnectionString, RTL_TEXTENCODING_ASCII_US).getStr(),
-	     OUStringToOString(sArgDocUrl, RTL_TEXTENCODING_ASCII_US).getStr());
     
-    Reference< XComponent > xComponent = xComponentLoader->loadComponentFromURL(
-        sArgDocUrl, OUString( RTL_CONSTASCII_USTRINGPARAM("_blank") ), 0,
-        Sequence < ::com::sun::star::beans::PropertyValue >() );
+//   
+    QApplication application(argc, argv);
+    mainGUI mainWindow(xComponentLoader);
+    mainWindow.show();
+    int result = application.exec();
     
-
-    Reference< ::com::sun::star::presentation::XPresentationSupplier > showsupplier(xComponent, UNO_QUERY); 
-    Reference< ::com::sun::star::presentation::XPresentation > show = showsupplier->getPresentation(); 
-//     Reference< XPropertySet > mPres_Props(show, UNO_QUERY); 
-//     sal_Int16 startpage = 0; 
-//     mPres_Props->setPropertyValue(createStr("FirstPage"), makeAny(startpage) ); 
-    show->start(); 
-    Reference< ::com::sun::star::presentation::XPresentation2 > show2(show, UNO_QUERY);
-    show2->getController()->gotoNextSlide();
-    show2->getController()->gotoNextSlide();
-    show2->getController()->gotoNextSlide();
-	
     // dispose the local service manager
     Reference< XComponent >::query( xMultiComponentFactoryClient )->dispose();
-
-    return 0;
 }
 
 /* vim:set shiftwidth=4 softtabstop=4 expandtab: */

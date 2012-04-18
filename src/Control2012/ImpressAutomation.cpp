@@ -95,6 +95,23 @@ void ImpressAutomation::previousSlide()
     presentation->getController()->gotoPreviousSlide();
 }
 
+void ImpressAutomation::showSlide(uint64 index)
+{
+  if( index > presentation->getController()->getSlideCount())
+  {
+    presentation->getController()->getSlideByIndex(index);
+  }
+  else
+  {
+    blankScreen();
+  }
+}
+
+void ImpressAutomation::blankScreen()
+{
+  presentation->getController()->blankScreen(0);
+}
+
 
 
 

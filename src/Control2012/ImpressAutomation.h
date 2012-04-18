@@ -9,6 +9,8 @@
 #include <com/sun/star/frame/XComponentLoader.hpp>
 #include <com/sun/star/presentation/XPresentation2.hpp>
 
+#include "../RobotLib/Types.h"
+
 class ImpressAutomation
 {
 private:
@@ -24,6 +26,8 @@ public:
     void stopPresentation();
     void nextSlide();
     void previousSlide();
+    void showSlide(uint64 index);
+    void blankScreen();
 };
 
 #endif // IMPRESSAUTOMATION_H

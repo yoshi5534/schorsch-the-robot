@@ -8,8 +8,8 @@
 #include "RobotPort.h"
 #include "Vector.h"
 #include "Where.h"
-
-
+#include <time.h>
+#include <complex>
 
 class Robot
 {
@@ -94,6 +94,14 @@ public:
             std::string(", "   ) + dataToString(b)
         );
     }
+    
+    void moveLinearTo(Where where)
+    {
+      Vector positionToMoveTo(where.x, where.y, where.z);
+     
+      moveTo(positionToMoveTo, where.a, where.b);
+      return;
+    }
 
     void moveRelative(Vector positionToMoveTo)
     {
@@ -124,6 +132,41 @@ public:
         _robotPort->sendCommand("MO 1");
     }
 
+    bool waitUntilRobotIsAtTargetPosition(Where targetLocation, uint64 timeOutInMicroSeconds, float64 allowedDelta)
+    {
+      float64 startingTimeInEpochSeconds = clock()/static_cast<float64>(CLOCKS_PER_SEC);
+      
+      while(true)
+      {
+	//difference
+	Where currentLocation = whereIsRobot();
+
+	float64 deltaX = std::abs(currentLocation.x - targetLocation.x);
+	float64 deltaY = std::abs(currentLocation.y - targetLocation.y);
+	float64 deltaZ = std::abs(currentLocation.z - targetLocation.z);
+	float64 deltaA = std::abs(currentLocation.a - targetLocation.a);
+	float64 deltaB = std::abs(currentLocation.b - targetLocation.b);
+	
+	float64 currentDelta = std::max(deltaX, std::max(deltaY, std::max(deltaZ, std::max(deltaA, deltaB))));
+	
+	if(currentDelta <= allowedDelta)
+	{	
+	  return true;	  
+	}
+
+	//time update
+	float64 timeRightNowInEpochSeconds = clock()/static_cast<float64>(CLOCKS_PER_SEC);
+	float64 differenceInEpochSeconds = timeRightNowInEpochSeconds - startingTimeInEpochSeconds;
+
+	if(differenceInEpochSeconds >= (timeOutInMicroSeconds/1000.0))
+	{
+	  return false;
+	}	
+      }
+
+      return false;
+    }   
+    
     Where whereIsHome()
     {
         Where robotHome;

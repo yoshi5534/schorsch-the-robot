@@ -1,5 +1,5 @@
 #include <fstream>
-#include <complex>
+#include <complex> 
 
 #include <QFileDialog>
 #include <QFileSystemModel>
@@ -39,43 +39,125 @@ mainGUI::~mainGUI()
 
 void mainGUI::uploadProgram()
 {
-    // nein sagen
-    robot->speed(30);
-    this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
-    this->robot->moveLinearTo(Vector(490, -510, 372), 90,118);
-    this->robot->moveLinearTo(Vector(600, 370, 370), 12, 118);
-    this->robot->moveLinearTo(Vector(490, -510, 372), 90,118);
-    this->robot->moveLinearTo(Vector(705, -53, 372), 48,118);
-    this->robot->goHome();   
-    this->robot->getPort()->sendQuedCommands(2);      
+    positions.reserve(13);
+    positions[AboveSpecimen] 		= Where(90, 350, -310,-166,186);
+    positions[SlightyAboveSpecimen] 	= Where(90, 350, -340,-166,186);
+    positions[ProjectionBeginPosition] 	= Where(+32.40,-882.27,+428.44,+286.04,+85.25);
+    positions[ProjectionIntoBeam] 	= Where(+32.40,-985.23,+428.44,+286.28,+85.25);
+    positions[EndoscopeSavety] 		= Where(+882.33,+30.68,+428.43,+196.15,+85.25);
+    positions[EndoscopeInside] 		= Where(+882.33,+30.68,+450.43,+196.15,+85.25);
+    positions[ComputedTomographyBegin] 	= Where(0,-633.39,+877.04,-110.07,+0.46);
+    positions[ComputedTomographyEnd] 	= Where(0,-633.39,+877.04,+289.33,+1.81);
+    positions[EndOfGripSpecimen] 	= Where(90, 350, -300,-166,186);
+    positions[EndOfProjection] 		= Where(+32.40,-872.27,+428.44,+286.04,+85.25);
+    positions[EndOfEndoscope] 		= Where(+882.33,+30.68,+438.43,+196.15,+85.25);
+    positions[EndOfComputedThomography] = positions[EndOfProjection];
+    positions[EndOfGoHome]	 	= robot->whereIsHome();
+
+    //grip specimen
+    {
+        this->robot->moveLinearTo(positions[AboveSpecimen]); 
+	this->robot->grip.open();				     	//open gripper
+        this->robot->moveLinearTo(positions[SlightyAboveSpecimen]);	//slowly down
+        this->robot->grip.close();				     	//close gripper
+        this->robot->moveLinearTo(positions[AboveSpecimen]);
+	this->robot->moveLinearTo(positions[EndOfGripSpecimen]);
+        this->robot->getPort()->sendQuedCommands(1);
+    }
+
+    //projection
+    {
+        //this->robot->moveLinearTo(Vector(705, -53, 372), 48,118); //above specimen
+        this->robot->moveLinearTo(positions[ProjectionBeginPosition]);  //to projection begin position
+        this->robot->wait(100);
+        this->robot->moveLinearTo(positions[ProjectionIntoBeam]);  //into beam
+        this->robot->wait(20);
+        this->robot->moveLinearTo(positions[ProjectionBeginPosition]);  //to projection begin position
+	this->robot->moveLinearTo(positions[EndOfProjection]);
+        this->robot->wait(100);
+        this->robot->getPort()->sendQuedCommands(2);
+    }
+    //endoscope
+    {
+        this->robot->moveLinearTo(positions[EndoscopeSavety]);
+	this->robot->moveLinearTo(positions[EndoscopeInside]);
+	this->robot->moveLinearTo(positions[EndoscopeSavety]);
+	this->robot->moveLinearTo(positions[EndOfEndoscope]);
+        this->robot->getPort()->sendQuedCommands(3);
+    }
+    //ct
+    {
+        this->robot->moveLinearTo(positions[ProjectionBeginPosition]);  //to projection begin position
+        this->robot->moveLinearTo(positions[ComputedTomographyBegin]);//ct begin
+        this->robot->moveLinearTo(positions[ComputedTomographyEnd]);//ct end
+        this->robot->moveLinearTo(positions[ProjectionBeginPosition]);  //to projection begin position
+	this->robot->moveLinearTo(positions[EndOfComputedThomography]);
+        this->robot->getPort()->sendQuedCommands(4);
+    }
+    //release specimen
+    {
+        this->robot->moveLinearTo(positions[AboveSpecimen]); 	//above specimen
+        this->robot->moveLinearTo(positions[SlightyAboveSpecimen]);	//slowly down
+        this->robot->grip.open();				     	//open gripper
+        this->robot->moveLinearTo(positions[AboveSpecimen]); 	//above specimen
+        this->robot->grip.close();				     	//close gripper
+	this->robot->moveLinearTo(positions[EndOfGoHome]);
+        this->robot->getPort()->sendQuedCommands(5);
+    }
 }
- 
+
+void mainGUI::startProgram()
+{
+    loadPresentation();
+    startPresentation();
+
+    while (true)
+    {               
+        //grip specimen
+        {
+            robot->getPort()->executeProgram(1);
+            impressAutomation.showSlide(1);
+            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGripSpecimen], 2000, 1.0);
+        }
+        //projection
+        {
+            robot->getPort()->executeProgram(2);
+            impressAutomation.showSlide(2);
+            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfProjection], 2000, 1.0);
+        }
+
+        //endoscope
+        {
+            robot->getPort()->executeProgram(3);
+            impressAutomation.showSlide(3);
+            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfEndoscope], 2000, 1.0);
+        }
+
+        //ct
+        {
+            robot->getPort()->executeProgram(4);
+            impressAutomation.showSlide(4);
+            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfComputedThomography], 2000, 1.0);
+        }
+
+        //release specimen
+        {
+            robot->getPort()->executeProgram(5);
+            impressAutomation.showSlide(5);
+            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGoHome], 2000, 1.0);
+        }
+
+        // intermediate
+        {
+            impressAutomation.blankScreen();
+            usleep(1000);
+        }
+    }
+}
+
 void mainGUI::abortTransmission()
 {
     this->robot->getPort()->abortDataTransmission();
-}
-
-bool mainGUI::robotIsAtHomePossition(float64 allowedDelta)
-{
-    Where currentLocation = robot->whereIsRobot();
-    Where robotHome = robot->whereIsHome();
-
-    float64 deltaX = std::abs(currentLocation.x - robotHome.x);
-    float64 deltaY = std::abs(currentLocation.y - robotHome.y);
-    float64 deltaZ = std::abs(currentLocation.z - robotHome.z);
-    float64 deltaA = std::abs(currentLocation.a - robotHome.a);
-    float64 deltaB = std::abs(currentLocation.b - robotHome.b);
-
-    if ( deltaX <= allowedDelta &&
-            deltaY <= allowedDelta &&
-            deltaZ <= allowedDelta &&
-            deltaA <= allowedDelta &&
-            deltaB <= allowedDelta)
-    {
-        return true;
-    }
-
-    return false;
 }
 
 void mainGUI::selectPresentation()
@@ -92,25 +174,25 @@ void mainGUI::selectPresentation()
 
 void mainGUI::loadPresentation()
 {
-  impressAutomation.loadPresentation(this->ui->selectedPresentation->text().toStdString());
+    impressAutomation.loadPresentation(this->ui->selectedPresentation->text().toStdString());
 }
 
 void mainGUI::startPresentation()
 {
-  impressAutomation.startPresentation();
+    impressAutomation.startPresentation();
 }
 
 void mainGUI::stopPresentation()
 {
-  impressAutomation.stopPresentation();
+    impressAutomation.stopPresentation();
 }
 
 void mainGUI::nextSlide()
 {
-  impressAutomation.nextSlide();
+    impressAutomation.nextSlide();
 }
 
 void mainGUI::previousSlide()
 {
-  impressAutomation.previousSlide();
+    impressAutomation.previousSlide();
 }

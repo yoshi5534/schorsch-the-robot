@@ -1,4 +1,5 @@
 #include <QtGui/QApplication>
+#include <QProcess>
 #include "maingui.h"
 
 #define UNX
@@ -39,6 +40,14 @@ using ::rtl::OUStringToOString;
 //============================================================================
 SAL_IMPLEMENT_MAIN_WITH_ARGS(argc, argv)
 {
+  //start service manager
+     //QString program = "soffice";
+     //QStringList arguments;
+     //arguments << " --accept=\"socket,host=localhost,port=2083;urp;StarOffice.ServiceManager\"";
+     //QProcess libreOfficeProccess;
+     //libreOfficeProccess.start(program, arguments);
+  
+  //connect 
     OUString sConnectionString(RTL_CONSTASCII_USTRINGPARAM("uno:socket,host=localhost,port=2083;urp;StarOffice.ServiceManager"));
 
     sal_Int32 nCount = (sal_Int32)rtl_getAppCommandArgCount();

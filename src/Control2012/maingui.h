@@ -1,11 +1,14 @@
 #ifndef MAINGUI_H
 #define MAINGUI_H
 
+#include <vector>
+
 #include <QMainWindow>
 #include <QTimer>
 #include <QTime>
-#include "../RobotLib/Robot.h"
+#include <QProcess>
 
+#include "../RobotLib/Robot.h"
 #include "ImpressAutomation.h"
 
 namespace Ui 
@@ -23,8 +26,27 @@ private:
     Ui::mainGUI *ui;
     Robot *robot;
     ImpressAutomation impressAutomation;
-        
+    
+    std::vector< Where > positions;
+            
     bool robotIsAtHomePossition(float64 allowedDelta);
+    
+    enum PositionEnum
+    {
+      AboveSpecimen = 0,
+      SlightyAboveSpecimen,
+      ProjectionBeginPosition,
+      ProjectionIntoBeam,
+      EndoscopeSavety,
+      EndoscopeInside,
+      ComputedTomographyBegin,
+      ComputedTomographyEnd,   
+      EndOfGripSpecimen,
+      EndOfProjection,
+      EndOfEndoscope,
+      EndOfComputedThomography,
+      EndOfGoHome      
+    }positionEnum;
 
 public slots:
     void abortTransmission();
@@ -35,6 +57,7 @@ public slots:
     void stopPresentation();
     void nextSlide();
     void previousSlide();
+    void startProgram();
 
     
 };

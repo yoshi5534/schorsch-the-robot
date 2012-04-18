@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>637</width>
-    <height>143</height>
+    <height>242</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -64,6 +64,20 @@
       </property>
      </widget>
     </item>
+    <item row="4" column="0">
+     <widget class="QPushButton" name="uploadProgram">
+      <property name="text">
+       <string>upload Program</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QPushButton" name="startProgram">
+      <property name="text">
+       <string>start Program</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -105,8 +119,8 @@
    <slot>abortTransmission()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>209</x>
-     <y>107</y>
+     <x>221</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>306</x>
@@ -138,11 +152,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>74</x>
-     <y>138</y>
+     <y>147</y>
     </hint>
     <hint type="destinationlabel">
      <x>91</x>
-     <y>163</y>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -153,12 +167,12 @@
    <slot>nextSlide()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>215</x>
-     <y>136</y>
+     <x>227</x>
+     <y>145</y>
     </hint>
     <hint type="destinationlabel">
      <x>248</x>
-     <y>161</y>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
@@ -170,7 +184,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>103</x>
-     <y>99</y>
+     <y>105</y>
     </hint>
     <hint type="destinationlabel">
      <x>110</x>
@@ -185,8 +199,8 @@
    <slot>stopPresentation()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>98</y>
+     <x>289</x>
+     <y>104</y>
     </hint>
     <hint type="destinationlabel">
      <x>288</x>
@@ -201,12 +215,44 @@
    <slot>selectPresentation()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>387</x>
-     <y>53</y>
+     <x>500</x>
+     <y>56</y>
     </hint>
     <hint type="destinationlabel">
      <x>380</x>
      <y>30</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>uploadProgram</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>uploadProgram()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>192</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>540</x>
+     <y>110</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>startProgram</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>startProgram()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>221</x>
+     <y>184</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>366</x>
+     <y>204</y>
     </hint>
    </hints>
   </connection>
@@ -220,5 +266,6 @@
   <slot>stopPresentation()</slot>
   <slot>loadPresentation()</slot>
   <slot>selectPresentation()</slot>
+  <slot>startProgram()</slot>
  </slots>
 </ui>

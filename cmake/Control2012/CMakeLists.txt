@@ -19,12 +19,11 @@ FILE(GLOB UIFiles ${CMAKE_CURRENT_SOURCE_DIR}/../../src/Control2012/*.ui)
 #FILE(GLOB SourceFiles  ${CMAKE_CURRENT_SOURCE_DIR}/../../src/Control2012/main.cpp  ${CMAKE_CURRENT_SOURCE_DIR}/../../src/Control2012/maingui.cpp)
 FILE(GLOB IncludeFiles ../../src/Control2012/*.h)
 FILE(GLOB SourceFiles  ../../src/Control2012/*.cpp)
+add_executable(Control2012 ${IncludeFiles} ${Control2012_FORMS_HEADERS} ${UIFiles} ${SourceFiles} ${Control2012_HEADERS_MOC} ) 
 
 include_directories("/usr/include/libreoffice/")
 include_directories("/home/oswald/projekt/schorsch-the-robot/src/Control2012/libreoffice/")
 
-
-add_executable(Control2012 ../../src/Control2012/ImpressAutomation.cpp ${IncludeFiles} ${Control2012_FORMS_HEADERS} ${UIFiles} ${SourceFiles} ${Control2012_HEADERS_MOC} ) 
 
 target_link_libraries (Control2012 RobotLib)
 target_link_libraries (Control2012 ${CMAKE_CURRENT_SOURCE_DIR}/../../src/qextserialport/src/build/libqextserialportd.a)

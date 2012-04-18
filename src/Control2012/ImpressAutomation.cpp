@@ -97,7 +97,8 @@ void ImpressAutomation::previousSlide()
 
 void ImpressAutomation::showSlide(uint64 index)
 {
-  if( index > presentation->getController()->getSlideCount())
+  uint64 slideCount = presentation->getController()->getSlideCount();
+  if( index < slideCount)
   {
     presentation->getController()->getSlideByIndex(index);
   }

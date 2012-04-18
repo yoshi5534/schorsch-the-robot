@@ -29,6 +29,7 @@ private:
 public slots:
     void abortTransmission();
     void uploadProgram();
+    void selectPresentation();
     void loadPresentation();
     void startPresentation();
     void stopPresentation();

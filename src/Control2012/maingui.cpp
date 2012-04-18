@@ -78,9 +78,21 @@ bool mainGUI::robotIsAtHomePossition(float64 allowedDelta)
     return false;
 }
 
+void mainGUI::selectPresentation()
+{
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.selectFile(this->ui->selectedPresentation->text());
+
+    if (dialog.exec())
+    {
+        this->ui->selectedPresentation->setText(dialog.selectedFiles().first());
+    }
+}
+
 void mainGUI::loadPresentation()
 {
-  impressAutomation.loadPresentation("hallo.odi");
+  impressAutomation.loadPresentation(this->ui->selectedPresentation->text().toStdString());
 }
 
 void mainGUI::startPresentation()

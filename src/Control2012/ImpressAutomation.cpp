@@ -60,30 +60,18 @@ void ImpressAutomation::loadPresentation(std::string fileName)
   #define SAL_UNX
   #define CPPU_ENV
   
-  using namespace com::sun::star::uno;
-  using namespace com::sun::star::lang;
-  using namespace com::sun::star::beans;
-  using namespace com::sun::star::bridge;
-  using namespace com::sun::star::frame;
-  using namespace com::sun::star::registry;
+  std::string extendedFileName = "file:///" + fileName;
+  rtl::OUString ducumentUrl(extendedFileName.c_str(), extendedFileName.length(), RTL_TEXTENCODING_UTF8);
 
-  using ::rtl::OUString;
-  using ::rtl::OUStringToOString;
-  
+  com::sun::star::uno::Reference< com::sun::star::lang::XComponent > xComponent = xComponentLoader->loadComponentFromURL(
+  ducumentUrl, rtl::OUString( RTL_CONSTASCII_USTRINGPARAM("_blank") ), 0,
+  com::sun::star::uno::Sequence < ::com::sun::star::beans::PropertyValue >() );
 
-  OUString sArgDocUrl(RTL_CONSTASCII_USTRINGPARAM("file:////home/oswald/projekt/control/control2011.ppt"));
+  com::sun::star::uno::Reference< ::com::sun::star::presentation::XPresentationSupplier > showsupplier(xComponent, com::sun::star::uno::UNO_QUERY); 
+  com::sun::star::uno::Reference< ::com::sun::star::presentation::XPresentation > show = showsupplier->getPresentation(); 
 
-
-  Reference< XComponent > xComponent = xComponentLoader->loadComponentFromURL(
-  sArgDocUrl, OUString( RTL_CONSTASCII_USTRINGPARAM("_blank") ), 0,
-  Sequence < ::com::sun::star::beans::PropertyValue >() );
-
-
-  Reference< ::com::sun::star::presentation::XPresentationSupplier > showsupplier(xComponent, UNO_QUERY); 
-  Reference< ::com::sun::star::presentation::XPresentation > show = showsupplier->getPresentation(); 
-
-  Reference< ::com::sun::star::presentation::XPresentation2 > show2(show, UNO_QUERY);
-    presentation = show2;
+  com::sun::star::uno::Reference< ::com::sun::star::presentation::XPresentation2 > show2(show, com::sun::star::uno::UNO_QUERY);
+  presentation = show2;
 }
 
 

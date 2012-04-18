@@ -6,86 +6,72 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>380</width>
-    <height>156</height>
+    <width>637</width>
+    <height>143</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Control 2012 - Die Gui für Blöde</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="loadPresentation">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>121</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Load Presentation</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="abortPresentation">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>20</y>
-      <width>141</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Stop Presentation</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="nextSlide">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>50</y>
-      <width>99</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Next Slide</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="previousSlide">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>99</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Previous Slide</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="startPresentation">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>121</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Start Presentation</string>
-    </property>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="loadPresentation">
+      <property name="text">
+       <string>Load Presentation</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" colspan="2">
+     <widget class="QLineEdit" name="selectedPresentation">
+      <property name="text">
+       <string>/home/oswald/projekt/control/control2011.ppt</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="startPresentation">
+      <property name="text">
+       <string>Start Presentation</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="previousSlide">
+      <property name="text">
+       <string>Previous Slide</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QPushButton" name="selectPresentation">
+      <property name="text">
+       <string>...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="abortPresentation">
+      <property name="text">
+       <string>Stop Presentation</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="nextSlide">
+      <property name="text">
+       <string>Next Slide</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>380</width>
+     <width>637</width>
      <height>20</height>
     </rect>
    </property>
@@ -103,7 +89,12 @@
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>loadPresentation</tabstop>
+  <tabstop>selectedPresentation</tabstop>
+  <tabstop>selectPresentation</tabstop>
+  <tabstop>startPresentation</tabstop>
   <tabstop>abortPresentation</tabstop>
+  <tabstop>previousSlide</tabstop>
+  <tabstop>nextSlide</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -114,12 +105,12 @@
    <slot>abortTransmission()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>199</x>
-     <y>68</y>
+     <x>209</x>
+     <y>107</y>
     </hint>
     <hint type="destinationlabel">
-     <x>379</x>
-     <y>155</y>
+     <x>306</x>
+     <y>97</y>
     </hint>
    </hints>
   </connection>
@@ -134,8 +125,8 @@
      <y>48</y>
     </hint>
     <hint type="destinationlabel">
-     <x>162</x>
-     <y>36</y>
+     <x>55</x>
+     <y>28</y>
     </hint>
    </hints>
   </connection>
@@ -146,12 +137,12 @@
    <slot>previousSlide()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>80</x>
-     <y>88</y>
+     <x>74</x>
+     <y>138</y>
     </hint>
     <hint type="destinationlabel">
-     <x>104</x>
-     <y>129</y>
+     <x>91</x>
+     <y>163</y>
     </hint>
    </hints>
   </connection>
@@ -162,12 +153,12 @@
    <slot>nextSlide()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>245</x>
-     <y>86</y>
+     <x>215</x>
+     <y>136</y>
     </hint>
     <hint type="destinationlabel">
-     <x>241</x>
-     <y>127</y>
+     <x>248</x>
+     <y>161</y>
     </hint>
    </hints>
   </connection>
@@ -178,12 +169,12 @@
    <slot>startPresentation()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>109</x>
-     <y>60</y>
+     <x>103</x>
+     <y>99</y>
     </hint>
     <hint type="destinationlabel">
-     <x>142</x>
-     <y>83</y>
+     <x>110</x>
+     <y>77</y>
     </hint>
    </hints>
   </connection>
@@ -194,12 +185,28 @@
    <slot>stopPresentation()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>267</x>
-     <y>59</y>
+     <x>277</x>
+     <y>98</y>
     </hint>
     <hint type="destinationlabel">
-     <x>334</x>
-     <y>63</y>
+     <x>288</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectPresentation</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>selectPresentation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>387</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>380</x>
+     <y>30</y>
     </hint>
    </hints>
   </connection>
@@ -212,5 +219,6 @@
   <slot>previousSlide()</slot>
   <slot>stopPresentation()</slot>
   <slot>loadPresentation()</slot>
+  <slot>selectPresentation()</slot>
  </slots>
 </ui>

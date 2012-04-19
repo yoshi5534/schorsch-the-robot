@@ -132,12 +132,15 @@ public:
         _robotPort->sendCommand("MO 1");
     }
 
-    bool waitUntilRobotIsAtTargetPosition(Where targetLocation, uint64 timeOutInMicroSeconds, float64 allowedDelta)
+    bool waitUntilRobotIsAtTargetPosition(Where targetLocation, uint64 timeOutInSeconds, float64 allowedDelta)
     {
-      float64 startingTimeInEpochSeconds = clock()/static_cast<float64>(CLOCKS_PER_SEC);
+      time_t currentTime;
+      time(&currentTime);
       
-      while(true)
+      time_t endTime = currentTime + timeOutInSeconds;
+      while(currentTime < endTime)
       {
+	 time(&currentTime);
 	//difference
 	Where currentLocation = whereIsRobot();
 
@@ -153,15 +156,6 @@ public:
 	{	
 	  return true;	  
 	}
-
-	//time update
-	float64 timeRightNowInEpochSeconds = clock()/static_cast<float64>(CLOCKS_PER_SEC);
-	float64 differenceInEpochSeconds = timeRightNowInEpochSeconds - startingTimeInEpochSeconds;
-
-	if(differenceInEpochSeconds >= (timeOutInMicroSeconds/1000.0))
-	{
-	  return false;
-	}	
       }
 
       return false;
@@ -182,7 +176,9 @@ public:
     Where whereIsRobot()
     {
 	Where currentWhere;
-      
+	bool savedStatusOfLIveCommandMode = getPort()->getLiveCommandMode();
+	getPort()->setLiveCommandMode(true);
+	
         std::string whereResult = _robotPort->sendAndReceive("WH");
         size_t lastPosition = 0;
 
@@ -215,10 +211,11 @@ public:
                 currentWhere.b = stringToData< float64 >( result );
             }
         }
-        
+
+	getPort()->setLiveCommandMode(savedStatusOfLIveCommandMode);
         return currentWhere;
     }
-
+    
     void reset()
     {
         bool currentCommandMode;

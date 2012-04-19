@@ -45,7 +45,7 @@ private:
       EndOfProjection,
       EndOfEndoscope,
       EndOfComputedThomography,
-      EndOfGoHome      
+      EndOfGoHome   
     }positionEnum;
 
 public slots:

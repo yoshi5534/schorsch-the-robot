@@ -41,12 +41,12 @@ using ::rtl::OUStringToOString;
 SAL_IMPLEMENT_MAIN_WITH_ARGS(argc, argv)
 {
   //start service manager
-     //QString program = "soffice";
-     //QStringList arguments;
-     //arguments << " --accept=\"socket,host=localhost,port=2083;urp;StarOffice.ServiceManager\"";
-     //QProcess libreOfficeProccess;
-     //libreOfficeProccess.start(program, arguments);
-  
+//      QString program = "soffice";
+//      QStringList arguments;
+//      arguments << "--accept=\"socket,host=localhost,port=2083;urp;StarOffice.ServiceManager\"";
+//      QProcess libreOfficeProccess;
+//      libreOfficeProccess.start(program, arguments);
+//  
   //connect 
     OUString sConnectionString(RTL_CONSTASCII_USTRINGPARAM("uno:socket,host=localhost,port=2083;urp;StarOffice.ServiceManager"));
 
@@ -92,7 +92,7 @@ SAL_IMPLEMENT_MAIN_WITH_ARGS(argc, argv)
         xInterface = Reference< XInterface >( 
             resolver->resolve( sConnectionString ), UNO_QUERY );
     }
-    catch ( Exception& e )
+    catch ( Exception e )
     {
         printf("Error: cannot establish a connection using '%s':\n       %s\n",
                OUStringToOString(sConnectionString, RTL_TEXTENCODING_ASCII_US).getStr(),

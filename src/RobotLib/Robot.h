@@ -172,14 +172,21 @@ public:
 
         return robotHome;
     }
-
-    Where whereIsRobot()
+    
+    std::string getWhereString()
     {
-	Where currentWhere;
 	bool savedStatusOfLIveCommandMode = getPort()->getLiveCommandMode();
 	getPort()->setLiveCommandMode(true);
 	
         std::string whereResult = _robotPort->sendAndReceive("WH");
+	getPort()->setLiveCommandMode(savedStatusOfLIveCommandMode);
+	return whereResult;
+    }
+
+    Where whereIsRobot()
+    {
+        Where currentWhere;
+        std::string whereResult = getWhereString();
         size_t lastPosition = 0;
 
         for (uint8 index = 0; index < 5; index++)
@@ -212,8 +219,18 @@ public:
             }
         }
 
-	getPort()->setLiveCommandMode(savedStatusOfLIveCommandMode);
         return currentWhere;
+    }
+    
+    bool isGrabberClosed()
+    {
+      std::string whereResult = getWhereString();
+      std::size_t position = whereResult.find_last_of("C");
+      if( position == whereResult.size())
+      {
+	return true;
+      }
+      return false;      
     }
     
     void reset()

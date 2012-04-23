@@ -78,6 +78,16 @@
       </property>
      </widget>
     </item>
+    <item row="4" column="2">
+     <widget class="QPushButton" name="stopProgram">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>stop Program</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -256,6 +266,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>stopProgram</sender>
+   <signal>clicked()</signal>
+   <receiver>mainGUI</receiver>
+   <slot>stopProgram()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>424</x>
+     <y>195</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>557</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>startPresentation()</slot>
@@ -267,5 +293,6 @@
   <slot>loadPresentation()</slot>
   <slot>selectPresentation()</slot>
   <slot>startProgram()</slot>
+  <slot>stopProgram()</slot>
  </slots>
 </ui>

@@ -7,9 +7,10 @@
 #include <QTimer>
 #include <QTime>
 #include <QProcess>
+#include <QThread>
 
 #include "../RobotLib/Robot.h"
-#include "ImpressAutomation.h"
+#include "AutomationThread.h"
 
 namespace Ui 
 {
@@ -24,30 +25,8 @@ public:
 
 private:
     Ui::mainGUI *ui;
-    Robot *robot;
-    ImpressAutomation impressAutomation;
-    
-    std::vector< Where > positions;
-            
-    bool robotIsAtHomePossition(float64 allowedDelta);
-    
-    enum PositionEnum
-    {
-      AboveSpecimen = 0,
-      SlightyAboveSpecimen,
-      ProjectionBeginPosition,
-      ProjectionIntoBeam,
-      EndoscopeSavety,
-      EndoscopeInside,
-      ComputedTomographyBegin,
-      ComputedTomographyEnd,   
-      EndOfGripSpecimen,
-      EndOfProjection,
-      EndOfEndoscope,
-      EndOfComputedThomography,
-      EndOfGoHome   
-    }positionEnum;
-
+    AutomationThread automationThread;
+ 
 public slots:
     void abortTransmission();
     void uploadProgram();
@@ -58,8 +37,7 @@ public slots:
     void nextSlide();
     void previousSlide();
     void startProgram();
-
-    
+    void stopProgram();    
 };
 
 #endif // MAINGUI_H

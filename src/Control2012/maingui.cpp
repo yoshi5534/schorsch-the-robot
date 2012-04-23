@@ -9,158 +9,44 @@
 #include "maingui.h"
 #include "../../cmake/build/Control2012/ui_maingui.h"
 
-#include "../RobotLib/Matrix.h"
-#include "../RobotLib/Vector.h"
-#include "../RobotLib/Text.h"
-#include "../RobotLib/PlaneToCoordinateSystem.h"
-#include "../RobotLib/Where.h"
 
 mainGUI::mainGUI(com::sun::star::uno::Reference<com::sun::star::frame::XComponentLoader> createdXComponentLoader, QWidget *parent) :
         QMainWindow(parent),
         ui(new Ui::mainGUI),
-        impressAutomation(createdXComponentLoader)
+        automationThread(createdXComponentLoader)
 {
-    ui->setupUi(this);
-
-    this->robot = new Robot("/dev/ttyS0", 750000);
-    this->robot->getPort()->setLiveCommandMode(false);
-    
-    positions.reserve(13);
-    positions[AboveSpecimen] 		= Where(90, 350, -310,-166,186);
-    positions[SlightyAboveSpecimen] 	= Where(90, 350, -340,-166,186);
-    positions[ProjectionBeginPosition] 	= Where(+32.40,-882.27,+428.44,+286.04,+85.25);
-    positions[ProjectionIntoBeam] 	= Where(+32.40,-985.23,+428.44,+286.28,+85.25);
-    positions[EndoscopeSavety] 		= Where(+882.33,+30.68,+428.43,+196.15,+85.25);
-    positions[EndoscopeInside] 		= Where(+882.33,+30.68,+450.43,+196.15,+85.25);
-    positions[ComputedTomographyBegin] 	= Where(+32.40,-923.52,+428.44,+286.14,+85.25);
-    positions[ComputedTomographyEnd] 	= Where(+32.40,-923.52,+428.44,-103.03,+85.25);
-    positions[EndOfGripSpecimen] 	= Where(90, 350, -300,-166,186);
-    positions[EndOfProjection] 		= Where(+32.40,-872.27,+428.44,+286.04,+85.25);
-    positions[EndOfEndoscope] 		= Where(+882.33,+30.68,+438.43,+196.15,+85.25);
-    positions[EndOfComputedThomography] = positions[EndOfProjection];
-    positions[EndOfGoHome]	 	= robot->whereIsHome();
+    ui->setupUi(this);   
 }
 
 mainGUI::~mainGUI()
 {
-    impressAutomation.stopPresentation();
-    if (this->robot != NULL)
-    {
-        delete this->robot;
-        this->robot = NULL;
-    }
-
     delete ui;
 }
 
 void mainGUI::uploadProgram()
 {
-    //grip specimen
-    {
-        this->robot->moveLinearTo(positions[AboveSpecimen]); 
-	this->robot->grip.open();				     	//open gripper
-        this->robot->moveLinearTo(positions[SlightyAboveSpecimen]);	//slowly down
-        this->robot->grip.close();				     	//close gripper
-        this->robot->moveLinearTo(positions[AboveSpecimen]);
-	this->robot->moveLinearTo(positions[EndOfGripSpecimen]);
-        this->robot->getPort()->sendQuedCommands(1);
-    }
-
-    //projection
-    {
-        //this->robot->moveLinearTo(Vector(705, -53, 372), 48,118); //above specimen
-        this->robot->moveLinearTo(positions[ProjectionBeginPosition]);  //to projection begin position
-        this->robot->wait(100);
-        this->robot->moveLinearTo(positions[ProjectionIntoBeam]);  //into beam
-        this->robot->wait(20);
-        this->robot->moveLinearTo(positions[ProjectionBeginPosition]);  //to projection begin position
-	this->robot->moveLinearTo(positions[EndOfProjection]);
-        this->robot->wait(100);
-        this->robot->getPort()->sendQuedCommands(2);
-    }
-    //endoscope
-    {
-        this->robot->moveLinearTo(positions[EndoscopeSavety]);
-	this->robot->moveLinearTo(positions[EndoscopeInside]);
-	this->robot->moveLinearTo(positions[EndoscopeSavety]);
-	this->robot->moveLinearTo(positions[EndOfEndoscope]);
-        this->robot->getPort()->sendQuedCommands(3);
-    }
-    //ct
-    {
-        this->robot->moveLinearTo(positions[ProjectionBeginPosition]);  //to projection begin position
-        this->robot->moveLinearTo(positions[ComputedTomographyBegin]);//ct begin
-        this->robot->moveLinearTo(positions[ComputedTomographyEnd]);//ct end
-        this->robot->moveLinearTo(positions[ProjectionBeginPosition]);  //to projection begin position
-	this->robot->moveLinearTo(positions[EndOfComputedThomography]);
-        this->robot->getPort()->sendQuedCommands(4);
-    }
-    //release specimen
-    {
-        this->robot->moveLinearTo(positions[AboveSpecimen]); 	//above specimen
-        this->robot->moveLinearTo(positions[SlightyAboveSpecimen]);	//slowly down
-        this->robot->grip.open();				     	//open gripper
-        this->robot->moveLinearTo(positions[AboveSpecimen]); 	//above specimen
-        this->robot->grip.close();				     	//close gripper
-	this->robot->moveLinearTo(positions[EndOfGoHome]);
-        this->robot->getPort()->sendQuedCommands(5);
-    }
+    automationThread.uploadProgram();
 }
 
 void mainGUI::startProgram()
 {
     loadPresentation();
-    startPresentation();
-    
-    usleep(3000000); // wait until the presentation has been loaded
+    automationThread.startPresentation();
+    automationThread.start();
+    ui->startProgram->setDisabled(true);
+    ui->stopProgram->setDisabled(false);
+}
 
-    while (true)
-    {               
-        //grip specimen
-        {
-            robot->getPort()->executeProgram(1);
-            impressAutomation.showSlide(1);
-            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGripSpecimen], 2, 1.0);
-        }
-        //projection
-        {
-            robot->getPort()->executeProgram(2);
-            impressAutomation.showSlide(2);
-            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfProjection], 20, 1.0);
-        }
-
-        //endoscope
-        {
-            robot->getPort()->executeProgram(3);
-            impressAutomation.showSlide(3);
-            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfEndoscope], 20, 1.0);
-        }
-
-        //ct
-        {
-            robot->getPort()->executeProgram(4);
-            impressAutomation.showSlide(4);
-            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfComputedThomography], 20, 1.0);
-        }
-
-        //release specimen
-        {
-            robot->getPort()->executeProgram(5);
-            impressAutomation.showSlide(5);
-            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGoHome], 20, 1.0);
-        }
-
-        // intermediate
-        {
-            impressAutomation.blankScreen();
-            usleep(1000);
-        }
-    }
+void mainGUI::stopProgram()
+{
+    automationThread.stopProgram();
+    ui->startProgram->setDisabled(false);
+    ui->stopProgram->setDisabled(true);
 }
 
 void mainGUI::abortTransmission()
 {
-    this->robot->getPort()->abortDataTransmission();
+  automationThread.abortTransmission();
 }
 
 void mainGUI::selectPresentation()
@@ -177,25 +63,25 @@ void mainGUI::selectPresentation()
 
 void mainGUI::loadPresentation()
 {
-    impressAutomation.loadPresentation(this->ui->selectedPresentation->text().toStdString());
+   automationThread.loadPresentation(this->ui->selectedPresentation->text().toStdString());
 }
 
 void mainGUI::startPresentation()
 {
-    impressAutomation.startPresentation();
+  automationThread.startPresentation();
 }
 
 void mainGUI::stopPresentation()
 {
-    impressAutomation.stopPresentation();
+  automationThread.stopPresentation();
 }
 
 void mainGUI::nextSlide()
 {
-    impressAutomation.nextSlide();
+   automationThread.nextSlide();
 }
 
 void mainGUI::previousSlide()
 {
-    impressAutomation.previousSlide();
+   automationThread.previousSlide();
 }

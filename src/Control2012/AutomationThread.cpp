@@ -90,7 +90,6 @@ void AutomationThread::uploadProgram()
         this->robot->moveLinearTo(positions[SlightyAboveSpecimen]);	//slowly down
         this->robot->grip.open();				     	//open gripper
         this->robot->moveLinearTo(positions[AboveSpecimen]); 	//above specimen
-        this->robot->grip.close();				     	//close gripper
 	this->robot->moveLinearTo(positions[EndOfGoHome]);
         this->robot->getPort()->sendQuedCommands(5);
     }
@@ -102,45 +101,17 @@ void AutomationThread::run()
     usleep(3000000); // wait until the presentation has been loaded
 
     while(running)
-    {               
-        //grip specimen
-        if(running)
-        {
-            robot->getPort()->executeProgram(1);
-            impressAutomation.showSlide(1);
-            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGripSpecimen], 2, 1.0);
-        }
-        //projection
-        if(running)
-        {
-            robot->getPort()->executeProgram(2);
-            impressAutomation.showSlide(2);
-            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfProjection], 20, 1.0);
-        }
-
-        //endoscope
-        if(running)
-        {
-            robot->getPort()->executeProgram(3);
-            impressAutomation.showSlide(3);
-            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfEndoscope], 20, 1.0);
-        }
-
-        //ct
-        if(running)
-        {
-            robot->getPort()->executeProgram(4);
-            impressAutomation.showSlide(4);
-            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfComputedThomography], 20, 1.0);
-        }
-
-        //release specimen
-        if(running)
-        {
-            robot->getPort()->executeProgram(5);
-            impressAutomation.showSlide(5);
-            bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGoHome], 20, 1.0);
-        }
+    {           
+	if(this->robot->isGrabberClosed())
+	{
+	    releaseSpecimen();
+	}
+	
+	pickupSpecimen();
+	acquireRadioscopieData();
+	acquireEnoscopeData();
+	acquireComputerTomographyData();
+	releaseSpecimen();
 
         // intermediate
         if(running)
@@ -148,6 +119,55 @@ void AutomationThread::run()
             impressAutomation.blankScreen();
             usleep(1000);
         }
+    }
+}
+
+void AutomationThread::pickupSpecimen()
+{
+    if(running)
+    {
+	robot->getPort()->executeProgram(1);
+	impressAutomation.showSlide(1);
+	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGripSpecimen], 2, 1.0);
+    }   
+}
+void AutomationThread::acquireRadioscopieData()
+{
+    if(running)
+    {
+	robot->getPort()->executeProgram(2);
+	impressAutomation.showSlide(2);
+	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfProjection], 20, 1.0);
+    }
+}
+
+void AutomationThread::acquireEnoscopeData()
+{
+    if(running)
+    {
+	robot->getPort()->executeProgram(3);
+	impressAutomation.showSlide(3);
+	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfEndoscope], 20, 1.0);
+    }
+}
+
+void AutomationThread::acquireComputerTomographyData()
+{
+    if (running)
+    {
+	robot->getPort()->executeProgram(4);
+	impressAutomation.showSlide(4);
+	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfComputedThomography], 20, 1.0);
+    }  
+}
+    
+void AutomationThread::releaseSpecimen()
+{
+    if(running)
+    {
+	robot->getPort()->executeProgram(5);
+	impressAutomation.showSlide(5);
+	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGoHome], 20, 1.0);
     }
 }
 

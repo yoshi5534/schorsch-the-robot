@@ -20,7 +20,7 @@ private:
     ImpressAutomation impressAutomation;
     QThread *automationThread;
     bool running;
-    
+ 
     std::vector< Where > positions;
             
     bool robotIsAtHomePossition(float64 allowedDelta);
@@ -54,6 +54,12 @@ public:
     void nextSlide();
     void previousSlide();
     void stopProgram();
+    
+    void pickupSpecimen();
+    void acquireEnoscopeData();
+    void acquireComputerTomographyData();
+    void acquireRadioscopieData();
+    void releaseSpecimen();
 };
 
 #endif // AutomationThread_H

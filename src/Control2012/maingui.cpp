@@ -15,7 +15,8 @@ mainGUI::mainGUI(com::sun::star::uno::Reference<com::sun::star::frame::XComponen
         ui(new Ui::mainGUI),
         automationThread(createdXComponentLoader)
 {
-    ui->setupUi(this);   
+    ui->setupUi(this);  
+    ui->groupBoxAdvanced->setVisible(false);
 }
 
 mainGUI::~mainGUI()

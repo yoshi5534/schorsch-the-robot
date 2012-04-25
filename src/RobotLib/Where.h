@@ -22,6 +22,26 @@ class Where
 	
       }
       
+      bool operator==( const Where& otherWhere )
+      {
+	if (this->a == otherWhere.a &&
+	    this->b == otherWhere.b &&
+	    this->x == otherWhere.x &&
+	    this->y == otherWhere.y &&
+	    this->z == otherWhere.z)
+	{
+	  return true;
+	}
+	
+	return false;
+      }
+      
+      bool operator!=( const Where& otherWhere )
+      {
+	return !(*this == otherWhere);
+      }
+	
+      
       float64 x;
       float64 y;
       float64 z;

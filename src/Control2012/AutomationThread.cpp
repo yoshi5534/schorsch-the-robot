@@ -17,19 +17,19 @@ AutomationThread::AutomationThread(com::sun::star::uno::Reference<com::sun::star
     this->robot->getPort()->setLiveCommandMode(false);
     
     positions.reserve(13);
-    positions[AboveSpecimen] 		= Where(90, 350, -310,-166,186);
-    positions[SlightyAboveSpecimen] 	= Where(90, 350, -340,-166,186);
+    positions[AboveSpecimen] 		= Where(-96.90,+379.82,-107.17,-184.51,+186.25);
+    positions[SlightyAboveSpecimen] 	= Where(-96.90,+379.82,-212.32,-184.51,+186.25);
     positions[ProjectionBeginPosition] 	= Where(+32.40,-882.27,+428.44,+286.04,+85.25);
     positions[ProjectionIntoBeam] 	= Where(+32.40,-985.23,+428.44,+286.28,+85.25);
     positions[EndoscopeSavety] 		= Where(+882.33,+30.68,+428.43,+196.15,+85.25);
     positions[EndoscopeInside] 		= Where(+882.33,+30.68,+450.43,+196.15,+85.25);
     positions[ComputedTomographyBegin] 	= Where(+32.40,-923.52,+428.44,+286.14,+85.25);
     positions[ComputedTomographyEnd] 	= Where(+32.40,-923.52,+428.44,-103.03,+85.25);
-    positions[EndOfGripSpecimen] 	= Where(90, 350, -300,-166,186);
+    positions[EndOfGripSpecimen] 	= Where(-96.90,379.82,-107.17,-184.51,186.25);
     positions[EndOfProjection] 		= Where(+32.40,-872.27,+428.44,+286.04,+85.25);
     positions[EndOfEndoscope] 		= Where(+882.33,+30.68,+438.43,+196.15,+85.25);
     positions[EndOfComputedThomography] = positions[EndOfProjection];
-    positions[EndOfGoHome]	 	= robot->whereIsHome();
+    positions[EndOfGoHome]	 	= Where(275.0,0,110,32.58,180.0);
 }
 
 AutomationThread::~AutomationThread()
@@ -102,7 +102,7 @@ void AutomationThread::run()
 
     while(running)
     {           
-	if(this->robot->isGrabberClosed())
+	if(this->robot->whereIsRobot() != positions[EndOfGoHome])
 	{
 	    releaseSpecimen();
 	}

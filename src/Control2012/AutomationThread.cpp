@@ -9,12 +9,16 @@
 #include "../RobotLib/PlaneToCoordinateSystem.h"
 #include "../RobotLib/Where.h"
 
+
+
 AutomationThread::AutomationThread(com::sun::star::uno::Reference<com::sun::star::frame::XComponentLoader> createdXComponentLoader) :
         impressAutomation(createdXComponentLoader),
         running(false)
 {
     this->robot = new Robot("/dev/ttyS0", 750000);
     this->robot->getPort()->setLiveCommandMode(false);
+    this->meishiGateControl = new MeishiGateControl("/dev/ttyACM0");
+    
     
     positions.reserve(13);
     positions[AboveSpecimen] 		= Where(-96.90,+379.82,-107.17,-184.51,+186.25);
@@ -40,12 +44,19 @@ AutomationThread::~AutomationThread()
         delete this->robot;
         this->robot = NULL;
     }
+    
+    if(this->meishiGateControl != NULL)
+    {
+	delete this->meishiGateControl;
+	this->meishiGateControl = NULL;
+    }
 }
 
 void AutomationThread::uploadProgram()
 {
     //grip specimen
     {
+	this->robot->speed(20);
         this->robot->moveLinearTo(positions[AboveSpecimen]); 
 	this->robot->grip.open();				     	//open gripper
         this->robot->moveLinearTo(positions[SlightyAboveSpecimen]);	//slowly down
@@ -58,6 +69,7 @@ void AutomationThread::uploadProgram()
     //projection
     {
         //this->robot->moveLinearTo(Vector(705, -53, 372), 48,118); //above specimen
+	this->robot->speed(20);
         this->robot->moveLinearTo(positions[ProjectionBeginPosition]);  //to projection begin position
         this->robot->wait(100);
         this->robot->moveLinearTo(positions[ProjectionIntoBeam]);  //into beam
@@ -69,6 +81,7 @@ void AutomationThread::uploadProgram()
     }
     //endoscope
     {
+	this->robot->speed(20);
         this->robot->moveLinearTo(positions[EndoscopeSavety]);
 	this->robot->moveLinearTo(positions[EndoscopeInside]);
 	this->robot->moveLinearTo(positions[EndoscopeSavety]);
@@ -77,6 +90,7 @@ void AutomationThread::uploadProgram()
     }
     //ct
     {
+	this->robot->speed(20);
         this->robot->moveLinearTo(positions[ProjectionBeginPosition]);  //to projection begin position
         this->robot->moveLinearTo(positions[ComputedTomographyBegin]);//ct begin
         this->robot->moveLinearTo(positions[ComputedTomographyEnd]);//ct end
@@ -86,6 +100,7 @@ void AutomationThread::uploadProgram()
     }
     //release specimen
     {
+ 	this->robot->speed(20);
         this->robot->moveLinearTo(positions[AboveSpecimen]); 	//above specimen
         this->robot->moveLinearTo(positions[SlightyAboveSpecimen]);	//slowly down
         this->robot->grip.open();				     	//open gripper
@@ -97,11 +112,14 @@ void AutomationThread::uploadProgram()
 
 void AutomationThread::run()
 {
+    //this->robot->speed(30);
     running= true;
     usleep(3000000); // wait until the presentation has been loaded
 
     while(running)
     {           
+	std::string temp = this->meishiGateControl->readLine();
+	std::cout << temp << std::endl;
 	if(this->robot->whereIsRobot() != positions[EndOfGoHome])
 	{
 	    releaseSpecimen();

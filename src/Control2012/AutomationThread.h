@@ -6,7 +6,7 @@
 
 #include "../RobotLib/Robot.h"
 #include "ImpressAutomation.h"
-
+#include "MeishiGateControl.h"
 
 class AutomationThread : public QThread
 {
@@ -17,6 +17,7 @@ public:
 
 private:
     Robot *robot;
+    MeishiGateControl *meishiGateControl;
     ImpressAutomation impressAutomation;
     QThread *automationThread;
     bool running;

@@ -44,6 +44,9 @@ class RobotPort
             _port->setFlowControl(FLOW_OFF);
             _port->setTextModeEnabled(true);
             _port->setTimeout(1000);
+	    _port->setDtr(false);
+	    _port->setRts(false);
+	    
             if(_port->isOpen())
             {
                 _port->close();

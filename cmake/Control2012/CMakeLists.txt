@@ -35,4 +35,6 @@ target_link_libraries (Control2012 "/usr/lib/libreoffice/basis3.4/sdk/lib/libuno
 target_link_libraries (Control2012 "/usr/lib/libreoffice/basis3.4/sdk/lib/libuno_sal.so")
 target_link_libraries (Control2012 "/usr/lib/libreoffice/basis3.4/sdk/lib/libuno_salhelpergcc3.so")
 
+target_link_libraries (Control2012 "/usr/local/lib/libserial.so")
+
 	  

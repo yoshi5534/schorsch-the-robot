@@ -17,10 +17,10 @@ AutomationThread::AutomationThread(com::sun::star::uno::Reference<com::sun::star
 {
     this->robot = new Robot("/dev/ttyS0", 750000);
     this->robot->getPort()->setLiveCommandMode(false);
-    this->meishiGateControl = new MeishiGateControl("/dev/ttyACM0");
+    //this->meishiGateControl = new MeishiGateControl("/dev/ttyACM0");
     
     
-    positions.reserve(13);
+    positions.reserve(30);
     positions[AboveSpecimen] 		= Where(-96.90,+379.82,-107.17,-184.51,+186.25);
     positions[SlightyAboveSpecimen] 	= Where(-96.90,+379.82,-212.32,-184.51,+186.25);
     positions[ProjectionBeginPosition] 	= Where(+32.40,-882.27,+428.44,+286.04,+85.25);
@@ -34,6 +34,17 @@ AutomationThread::AutomationThread(com::sun::star::uno::Reference<com::sun::star
     positions[EndOfEndoscope] 		= Where(+882.33,+30.68,+438.43,+196.15,+85.25);
     positions[EndOfComputedThomography] = positions[EndOfProjection];
     positions[EndOfGoHome]	 	= Where(275.0,0,110,32.58,180.0);
+       
+
+    positions[BeOffended]	 	= Where(275.0,0,110,32.58,180.0);
+    positions[DoTaunting]	 	= Where(275.0,0,110,32.58,180.0);
+    positions[EndOfBeOffended]	 	= Where(275.0,0,110,32.58,180.0);
+    positions[EndOfTaunting]	 	= Where(275.0,0,110,32.58,180.0);
+    
+    positions[GotoMeishi1Safety] 	= Where(791.01,-4.20,205.06,-6.93,95.10);   
+    positions[GotoMeishi1Grip]	 	= Where(889.08,-4.20,205.06,-6.93,95.10);   
+    positions[GotoMeishi1Drop]	 	= Where(-27.51,226.56,-173.15,-101.28,190.66);    
+    
 }
 
 AutomationThread::~AutomationThread()
@@ -108,6 +119,51 @@ void AutomationThread::uploadProgram()
 	this->robot->moveLinearTo(positions[EndOfGoHome]);
         this->robot->getPort()->sendQuedCommands(5);
     }
+      
+    // beOffended
+    {
+ 	this->robot->speed(20);
+
+        this->robot->getPort()->sendQuedCommands(6);
+    } 
+    
+    // doTaunting
+    {
+ 	this->robot->speed(20);
+
+        this->robot->getPort()->sendQuedCommands(7);
+    }    
+    
+    //gotoMeishi1
+    {
+      	this->robot->speed(20);
+	this->robot->grip.open();
+	this->robot->moveLinearTo(positions[GotoMeishi1Safety]); 	
+        this->robot->getPort()->sendQuedCommands(8);
+    } 
+    
+    //gripMeishi1
+    {
+      	this->robot->speed(20);
+        this->robot->moveLinearTo(positions[GotoMeishi1Grip]);	
+	this->robot->grip.close();
+        this->robot->getPort()->sendQuedCommands(9);
+    }   
+    
+    //backToMeishi1
+    {
+      	this->robot->speed(20);
+        this->robot->moveLinearTo(positions[GotoMeishi1Safety]);	
+        this->robot->getPort()->sendQuedCommands(10);
+    } 
+    
+    //dropMeishi1
+    {
+      	this->robot->speed(20);
+        this->robot->moveLinearTo(positions[GotoMeishi1Drop]);	
+	this->robot->grip.open();
+        this->robot->getPort()->sendQuedCommands(11);
+    } 
 }
 
 void AutomationThread::run()
@@ -115,20 +171,28 @@ void AutomationThread::run()
     //this->robot->speed(30);
     running= true;
     usleep(3000000); // wait until the presentation has been loaded
+    std::string gateName = "1";
+    checkAndGrabMeishi(gateName);
 
     while(running)
     {           
-	std::string temp = this->meishiGateControl->readLine();
-	std::cout << temp << std::endl;
 	if(this->robot->whereIsRobot() != positions[EndOfGoHome])
 	{
 	    releaseSpecimen();
 	}
 	
 	pickupSpecimen();
-	acquireRadioscopieData();
+	checkAndGrabMeishi(gateName);
+	
+	acquireRadioscopieData(0);
+	checkAndGrabMeishi(gateName);	
+	
 	acquireEnoscopeData();
+	checkAndGrabMeishi(gateName);	
+	
 	acquireComputerTomographyData();
+	checkAndGrabMeishi(gateName);	
+	
 	releaseSpecimen();
 
         // intermediate
@@ -140,6 +204,53 @@ void AutomationThread::run()
     }
 }
 
+void AutomationThread::checkAndGrabMeishi(std::string gateName)
+{
+  return;
+
+    if(meishiGateControl->checkGate(gateName))
+    {
+	releaseSpecimen();
+	if(!meishiGateControl->checkGate(gateName))
+	{
+	    beOffended();
+	    pickupSpecimen();
+	}
+	
+	robot->getPort()->executeProgram(8);	
+	robot->waitUntilRobotIsAtTargetPosition( positions[GotoMeishi1Safety], 2, 1.0);
+	if(!meishiGateControl->checkGate(gateName))
+	{
+	    beOffended();
+	    pickupSpecimen();
+	}
+	
+	robot->getPort()->executeProgram(9);
+	if(!meishiGateControl->checkGate(gateName))
+	{
+	    robot->waitUntilRobotIsAtTargetPosition( positions[GotoMeishi1Grip], 2, 1.0);
+	    robot->getPort()->setLiveCommandMode(true);
+	    this->robot->grip.open();	
+	    this->robot->wait(1000);
+	    if (meishiGateControl->checkGate(gateName))
+	    {
+	      	this->robot->grip.close();
+	    }
+	    robot->getPort()->setLiveCommandMode(false);
+	    
+	    if(!meishiGateControl->checkGate(gateName))    
+	    {
+	      beOffended();
+	      pickupSpecimen();
+	    }
+	}
+		
+	robot->getPort()->executeProgram(10);	
+	robot->waitUntilRobotIsAtTargetPosition( positions[GotoMeishi1Safety], 2, 1.0);
+	doTaunting();
+    } 
+}
+
 void AutomationThread::pickupSpecimen()
 {
     if(running)
@@ -149,13 +260,25 @@ void AutomationThread::pickupSpecimen()
 	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGripSpecimen], 2, 1.0);
     }   
 }
-void AutomationThread::acquireRadioscopieData()
+
+void AutomationThread::acquireRadioscopieData(int32 isarData)
 {
     if(running)
     {
-	robot->getPort()->executeProgram(2);
-	impressAutomation.showSlide(2);
-	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfProjection], 20, 1.0);
+      switch(isarData)
+      {
+	case 0:
+	{    
+	  robot->getPort()->executeProgram(2);
+	  impressAutomation.showSlide(2);
+	  bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfProjection], 20, 1.0);
+	  break;
+	}
+	default:
+	{
+	  
+	}
+      }
     }
 }
 
@@ -172,10 +295,10 @@ void AutomationThread::acquireEnoscopeData()
 void AutomationThread::acquireComputerTomographyData()
 {
     if (running)
-    {
-	robot->getPort()->executeProgram(4);
-	impressAutomation.showSlide(4);
-	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfComputedThomography], 20, 1.0);
+    { 
+      robot->getPort()->executeProgram(4);
+      impressAutomation.showSlide(4);
+      bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfComputedThomography], 20, 1.0);
     }  
 }
     
@@ -187,6 +310,37 @@ void AutomationThread::releaseSpecimen()
 	impressAutomation.showSlide(5);
 	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGoHome], 20, 1.0);
     }
+}
+
+
+void AutomationThread::beOffended()   
+{
+    if (running)
+    {
+	robot->getPort()->executeProgram(6);
+	impressAutomation.showSlide(2);
+	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfBeOffended], 20, 1.0);
+    }  
+}
+
+void AutomationThread::doTaunting()
+{
+    if (running)
+    {
+	robot->getPort()->executeProgram(7);
+	impressAutomation.showSlide(3);
+	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfTaunting], 20, 1.0);
+    }  
+}
+
+void AutomationThread::gotoMeishi(std::string gateName)
+{
+/*    if (running)
+    {
+	robot->getPort()->executeProgram(8);
+	impressAutomation.showSlide(1);
+	bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGotoMeishi], 20, 1.0);
+    } */ 
 }
 
 void AutomationThread::stopProgram()
@@ -216,10 +370,16 @@ void AutomationThread::stopPresentation()
 
 void AutomationThread::nextSlide()
 {
-    impressAutomation.nextSlide();
+  {
+    this->meishiGateControl->send("1");
+    std::string temp = this->meishiGateControl->readLine();
+    std::cout << temp << std::endl;
+  }
+ //   impressAutomation.nextSlide();
 }
 
 void AutomationThread::previousSlide()
 {
     impressAutomation.previousSlide();
 }
+

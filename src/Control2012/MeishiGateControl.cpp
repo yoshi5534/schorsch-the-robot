@@ -27,12 +27,37 @@ void MeishiGateControl::openPort()
 {
     _port = new QextSerialPort(_deviceName.c_str(), QextSerialPort::Polling);
     _port->setBaudRate(BAUD9600);
+    _port->setParity(PAR_NONE);
+    _port->setDataBits(DATA_8);
+    _port->setStopBits(STOP_1);
+    _port->setFlowControl(FLOW_OFF);
+    _port->setTextModeEnabled(true);
+    _port->setTimeout(1000);
+    
+   /*
+    _port->setBaudRate(BAUD9600);
     _port->setParity(PAR_EVEN);
     _port->setDataBits(DATA_8);
     _port->setStopBits(STOP_2);
     _port->setFlowControl(FLOW_OFF);
     _port->setTextModeEnabled(true);
     _port->setTimeout(1000);
+    
+    *
+    **/ 
+    
+    /*
+     * 
+     *  // Initialize the DCBlength member.
+    lpTest.DCBlength = sizeof (DCB);
+    GetCommState(hDevice,&lpTest); //com state
+   // lpTest.BaudRate = CBR_9600;//load baud
+    lpTest.ByteSize = 8;// load no. bits
+    lpTest.Parity = NOPARITY;//parity
+    lpTest.StopBits = ONESTOPBIT;//stop bits
+
+     * 
+     * */
     if(_port->isOpen())
     {
 	_port->close();
@@ -94,3 +119,23 @@ std::string MeishiGateControl::readLine()
     return resultString;
 }
 
+
+void MeishiGateControl::send( std::string data)
+{
+  data += "\n";
+  _port->write(data.c_str());
+}
+
+bool MeishiGateControl::checkGate(std::string gateName)
+{
+    this->send(gateName);
+    
+    if(this->readLine().compare("active") == 0)
+    {
+	return true;
+    }
+    else
+    {
+      return false;
+    }    
+}

@@ -13,6 +13,8 @@ public:
     MeishiGateControl(std::string deviceName);
     virtual ~MeishiGateControl();
     std::string readLine();
+    void send(std::string data);
+    bool checkGate(std::string gateName);
     
 private:
     void openPort();

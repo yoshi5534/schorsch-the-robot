@@ -14,32 +14,47 @@
    <string>Control 2012 - Die Gui für Blöde</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QPushButton" name="startProgram">
-      <property name="text">
-       <string>start Program</string>
-      </property>
-     </widget>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="startProgram">
+          <property name="text">
+           <string>start Program</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="stopProgram">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>stop Program</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>soffice --accept=&quot;socket,host=localhost,port=2083;urp;StarOffice.ServiceManager&quot;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="stopProgram">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>stop Program</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
+    <item>
      <widget class="QCheckBox" name="checkBoxAdvanced">
       <property name="text">
        <string>Advanced</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="0" colspan="2">
+    <item>
      <widget class="QGroupBox" name="groupBoxAdvanced">
       <property name="enabled">
        <bool>true</bool>
@@ -61,7 +76,7 @@
        <item row="1" column="1">
         <widget class="QLineEdit" name="selectedPresentation">
          <property name="text">
-          <string>/home/oswald/projekt/control/control2011.ppt</string>
+          <string>/home/oswald/projekt/control/control2011.odp</string>
          </property>
         </widget>
        </item>

@@ -40,7 +40,14 @@ private:
       EndOfProjection,
       EndOfEndoscope,
       EndOfComputedThomography,
-      EndOfGoHome   
+      EndOfGoHome,
+      EndOfBeOffended,
+      EndOfTaunting,
+      GotoMeishi1Safety,
+      GotoMeishi1Grip, 
+      GotoMeishi1Drop,
+      BeOffended,
+      DoTaunting,	
     }positionEnum;
     
 protected:
@@ -56,10 +63,15 @@ public:
     void previousSlide();
     void stopProgram();
     
+    void checkAndGrabMeishi(std::string gateName);
+    void doTaunting();
+    void beOffended();    
+    void gotoMeishi(std::string gateName);
+    
     void pickupSpecimen();
     void acquireEnoscopeData();
     void acquireComputerTomographyData();
-    void acquireRadioscopieData();
+    void acquireRadioscopieData(int32 isarData);
     void releaseSpecimen();
 };
 

@@ -7,6 +7,7 @@
 #define CPPU_ENV
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <wchar.h>
 
 #include <sal/main.h>
@@ -63,7 +64,7 @@ SAL_IMPLEMENT_MAIN_WITH_ARGS(argc, argv)
     {
         rtl_getAppCommandArg(1, &sConnectionString.pData);
     }
-  
+ 
     Reference< XComponentContext > xComponentContext(::cppu::defaultBootstrap_InitialComponentContext());
       /* Gets the service manager instance to be used (or null). This method has
        been added for convenience, because the service manager is a often used

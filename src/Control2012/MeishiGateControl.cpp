@@ -2,7 +2,8 @@
 #include <stdexcept>
 #include <sstream>
 
-MeishiGateControl::MeishiGateControl(std::string deviceName)
+MeishiGateControl::MeishiGateControl(std::string deviceName) :
+  _port(deviceName.c_str())
 {
     this->_deviceName = deviceName;
     openPort();
@@ -15,24 +16,22 @@ MeishiGateControl::~MeishiGateControl()
 
 void MeishiGateControl::deletePort()
 {
-    if( _port != NULL )
+    if( _port.IsOpen() )
     {
-	_port->close();
-	delete _port;
-	_port = NULL;
+	_port.Close();
     }
 }
 
 void MeishiGateControl::openPort()
 {
-    _port = new QextSerialPort(_deviceName.c_str(), QextSerialPort::Polling);
-    _port->setBaudRate(BAUD9600);
-    _port->setParity(PAR_NONE);
-    _port->setDataBits(DATA_8);
-    _port->setStopBits(STOP_1);
-    _port->setFlowControl(FLOW_OFF);
-    _port->setTextModeEnabled(true);
-    _port->setTimeout(1000);
+//     _port = new QextSerialPort(_deviceName.c_str(), QextSerialPort::Polling);
+//     _port->setBaudRate(BAUD9600);
+//     _port->setParity(PAR_NONE);
+//     _port->setDataBits(DATA_8);
+//     _port->setStopBits(STOP_1);
+//     _port->setFlowControl(FLOW_OFF);
+//     _port->setTextModeEnabled(true);
+//     _port->setTimeout(1000);
     
    /*
     _port->setBaudRate(BAUD9600);
@@ -58,20 +57,34 @@ void MeishiGateControl::openPort()
 
      * 
      * */
-    if(_port->isOpen())
+    
+    _port.Open();
+    _port.SetBaudRate( SerialPort::BAUD_9600);
+    _port.SetParity(SerialPort::PARITY_NONE);
+    _port.SetCharSize(SerialPort::CHAR_SIZE_8);
+    _port.SetNumOfStopBits(SerialPort::STOP_BITS_1);
+    _port.SetFlowControl(SerialPort::FLOW_CONTROL_NONE);
+    
+    if(_port.IsOpen())
     {
-	_port->close();
-	_port->open(QIODevice::ReadWrite);
-
-	if( _port->isWritable() )
-	{
-	    return;
-	}
+      return;
     }
-
-    deletePort();
-    delete _port;
-    _port = NULL;
+    
+    
+//     if(_port->isOpen())
+//     {
+// 	_port->close();
+// 	_port->open(QIODevice::ReadWrite);
+// 
+// 	if( _port->isWritable() )
+// 	{
+// 	    return;
+// 	}
+//     }
+// 
+//     deletePort();
+//     delete _port;
+//     _port = NULL;
 
     std::string errorMessage("RobotPort::openPort unable to open device ");
     errorMessage += _deviceName;
@@ -87,22 +100,22 @@ std::string MeishiGateControl::readLine()
     int32 failCounter = 300; // wait max for 3 seconds
     char lastTerminatorChar = terminator[terminator.size()-1];
 
-    while( true )
+    while( _port.IsDataAvailable() )
     {
 	char receivedChar;
-	qint64 result = _port->read(&receivedChar, 1);
-	if(result != 0)
-	{
-	    failCounter--;
-	    if(failCounter <= 0)
-	    {
-		std::stringstream stringStream;
-		stringStream << result;
-
-		throw(std::runtime_error(("RobotPort::read() result " + stringStream.str() + " was returned by serial port too often. Timeout hit!").c_str()));
-	    }
-	    usleep(10000);
-	}
+	receivedChar = _port.ReadByte();
+// 	if(result != 0)
+// 	{
+// 	    failCounter--;
+// 	    if(failCounter <= 0)
+// 	    {
+// 		std::stringstream stringStream;
+// 		stringStream << result;
+// 
+// 		throw(std::runtime_error(("RobotPort::read() result " + stringStream.str() + " was returned by serial port too often. Timeout hit!").c_str()));
+// 	    }
+// 	    usleep(10000);
+// 	}
 	resultString.append(&receivedChar,1);
 
 	// to save time we are just comparing the string when the last char of the terminator string is fetched
@@ -123,7 +136,7 @@ std::string MeishiGateControl::readLine()
 void MeishiGateControl::send( std::string data)
 {
   data += "\n";
-  _port->write(data.c_str());
+  _port.Write(data);
 }
 
 bool MeishiGateControl::checkGate(std::string gateName)

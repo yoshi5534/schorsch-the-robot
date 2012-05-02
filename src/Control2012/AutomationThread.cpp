@@ -15,9 +15,10 @@ AutomationThread::AutomationThread(com::sun::star::uno::Reference<com::sun::star
         impressAutomation(createdXComponentLoader),
         running(false)
 {
+    this->meishiGateControl = new MeishiGateControl("/dev/ttyACM0");
     this->robot = new Robot("/dev/ttyS0", 750000);
     this->robot->getPort()->setLiveCommandMode(false);
-    //this->meishiGateControl = new MeishiGateControl("/dev/ttyACM0");
+ 
     
     
     positions.reserve(30);
@@ -180,6 +181,7 @@ void AutomationThread::run()
 	{
 	    releaseSpecimen();
 	}
+	checkAndGrabMeishi(gateName);
 	
 	pickupSpecimen();
 	checkAndGrabMeishi(gateName);
@@ -206,8 +208,6 @@ void AutomationThread::run()
 
 void AutomationThread::checkAndGrabMeishi(std::string gateName)
 {
-  return;
-
     if(meishiGateControl->checkGate(gateName))
     {
 	releaseSpecimen();

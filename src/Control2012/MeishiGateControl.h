@@ -2,8 +2,10 @@
 #define MEISHIGATECONTROL_H
 
 #include <string>
-#include "../qextserialport/src/qextserialport.h"
-#include "../qextserialport/src/qextserialenumerator.h"
+//#include "../qextserialport/src/qextserialport.h"
+//#include "../qextserialport/src/qextserialenumerator.h"
+#include <SerialPort.h>
+
 #include "../RobotLib/Types.h"
 
 class MeishiGateControl
@@ -20,7 +22,7 @@ private:
     void openPort();
     void deletePort();
     
-    QextSerialPort*  _port;
+    SerialPort  _port;
     std::string _deviceName;
 };
 

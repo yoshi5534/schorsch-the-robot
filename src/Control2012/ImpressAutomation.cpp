@@ -23,6 +23,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <wchar.h>
+#include <iostream>
 
 #include <sal/main.h>
 
@@ -97,10 +98,12 @@ void ImpressAutomation::previousSlide()
 
 void ImpressAutomation::showSlide(uint64 index)
 {
+  uint64 zeroBasedInde = index - 1;
   uint64 slideCount = presentation->getController()->getSlideCount();
-  if( index < slideCount)
+  if( zeroBasedInde < slideCount)
   {
-    presentation->getController()->gotoSlideIndex(index);
+    std::cout << "ImpressAutomation::showSlide " << index << std::endl;
+    presentation->getController()->gotoSlideIndex(zeroBasedInde);
   }
   else
   {

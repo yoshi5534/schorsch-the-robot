@@ -49,6 +49,12 @@ SAL_IMPLEMENT_MAIN_WITH_ARGS(argc, argv)
 //      libreOfficeProccess.start(program, arguments);
 //  
   //connect 
+    std::cout << "#######################################################################################" << std::endl;
+    std::cout << "# If an error occours please start an konsole (ALT+F2 konsole) and execute            #" << std::endl;
+    std::cout << "# soffice --accept=\"socket,host=localhost,port=2083;urp;StarOffice.ServiceManager\"    #" << std::endl;
+    std::cout << "# and restart this programm                                                           #" << std::endl;
+    std::cout << "#######################################################################################" << std::endl;
+ 
     OUString sConnectionString(RTL_CONSTASCII_USTRINGPARAM("uno:socket,host=localhost,port=2083;urp;StarOffice.ServiceManager"));
 
     sal_Int32 nCount = (sal_Int32)rtl_getAppCommandArgCount();

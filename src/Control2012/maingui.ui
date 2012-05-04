@@ -38,13 +38,6 @@
         </item>
        </layout>
       </item>
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>soffice --accept=&quot;socket,host=localhost,port=2083;urp;StarOffice.ServiceManager&quot;</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
     <item>
@@ -279,6 +272,22 @@
    </hints>
   </connection>
   <connection>
+   <sender>checkBoxAdvanced</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBoxAdvanced</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>304</x>
+     <y>64</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>531</x>
+     <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>startProgram</sender>
    <signal>clicked()</signal>
    <receiver>mainGUI</receiver>
@@ -307,22 +316,6 @@
     <hint type="destinationlabel">
      <x>557</x>
      <y>206</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBoxAdvanced</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBoxAdvanced</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>304</x>
-     <y>64</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>531</x>
-     <y>103</y>
     </hint>
    </hints>
   </connection>

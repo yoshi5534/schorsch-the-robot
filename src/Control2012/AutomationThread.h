@@ -17,7 +17,7 @@ public:
 
 private:
     Robot *robot;
-    MeishiGateControl *meishiGateControl;
+    //MeishiGateControl *meishiGateControl;
     ImpressAutomation impressAutomation;
     QThread *automationThread;
     bool running;
@@ -31,9 +31,12 @@ private:
       AboveSpecimen = 0,
       SlightyAboveSpecimen,
       ProjectionBeginPosition,
-      ProjectionIntoBeam,
+      ProjectionIntoBeam1,
+      ProjectionIntoBeam2,
+      ProjectionIntoBeam3,
       EndoscopeSavety,
-      EndoscopeInside,
+      EndoscopeInside1,
+      EndoscopeInside2,
       ComputedTomographyBegin,
       ComputedTomographyEnd,   
       EndOfGripSpecimen,
@@ -69,9 +72,9 @@ public:
     void gotoMeishi(std::string gateName);
     
     void pickupSpecimen();
-    void acquireEnoscopeData();
-    void acquireComputerTomographyData();
-    void acquireRadioscopieData(int32 isarData);
+    void acquireEnoscopeData(bool withImpress = true);
+    void acquireComputerTomographyData(bool withImpress = true);
+    void acquireRadioscopieData(bool withImpress = true);
     void releaseSpecimen();
 };
 

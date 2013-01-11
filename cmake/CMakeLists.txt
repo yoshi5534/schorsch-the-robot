@@ -10,4 +10,5 @@ add_subdirectory (CooleConsole)
 add_subdirectory (DrawTextToPlaneGUI)
 add_subdirectory (OhEsWeihnachtetSehr)
 add_subdirectory (Control2012)
+add_subdirectory (MeishiGateControl)
 

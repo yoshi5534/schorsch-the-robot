@@ -14,4 +14,5 @@ add_executable(MeishiGateControl ${IncludeFiles} ${SourceFiles})
 target_link_libraries (MeishiGateControl RobotLib)
 target_link_libraries (MeishiGateControl "/usr/local/lib/libserial.so")
 target_link_libraries (MeishiGateControl ${QT_LIBRARIES})
+target_link_libraries (MeishiGateControl ${CMAKE_CURRENT_SOURCE_DIR}/../../src/qextserialport/src/build/libqextserialportd.a)
 	 

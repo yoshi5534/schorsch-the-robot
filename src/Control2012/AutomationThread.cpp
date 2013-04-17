@@ -125,7 +125,7 @@ void AutomationThread::uploadProgram()
 	this->robot->speed(20);
         this->robot->moveLinearTo(positions[ComputedTomographyBegin]);//ct begin
 	this->robot->wait(200);
-	this->robot->speed(10);
+	this->robot->speed(10);	
         this->robot->moveLinearTo(positions[ComputedTomographyEnd]);//ct end
 	this->robot->speed(20);
         this->robot->moveLinearTo(positions[ProjectionBeginPosition]);  //to projection begin position
@@ -234,17 +234,17 @@ void AutomationThread::run()
 	
 	//releaseSpecimen();
 	
-	for( uint8 i = 0; i < 4; i++)
-	{
-	  impressAutomation.showSlide(12);
-	  robot->getPort()->executeProgram(5);
-	  bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGoHome], 20, 1.0);
-	  acquireRadioscopieData(false);
-	  acquireEnoscopeData(false);
-	  acquireComputerTomographyData(false);
-	}
-	usleep(1000000); //Wait for pressentation end ##### <--- we don know the duration of the pressentation 
-	                 //but one schorsch loop will take 80 seconds.
+// 	for( uint8 i = 0; i < 4; i++)
+// 	{
+// 	  impressAutomation.showSlide(12);
+// 	  robot->getPort()->executeProgram(5);
+// 	  bool targetReached = robot->waitUntilRobotIsAtTargetPosition( positions[EndOfGoHome], 20, 1.0);
+// 	  acquireRadioscopieData(false);
+// 	  acquireEnoscopeData(false);
+// 	  acquireComputerTomographyData(false);
+// 	}
+// 	usleep(1000000); //Wait for pressentation end ##### <--- we don know the duration of the pressentation 
+// 	                 //but one schorsch loop will take 80 seconds.
 
         // intermediate
         if(running)
